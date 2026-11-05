@@ -1,0 +1,25 @@
+{
+  "rlsUnchanged": true,
+  "policiesUnchanged": true,
+  "constraintsUnchanged": true,
+  "newColumns": [
+    {
+      "default": null,
+      "name": "privacy_consent_at",
+      "nullable": "YES",
+      "type": "timestamp with time zone"
+    },
+    {
+      "default": null,
+      "name": "privacy_policy_version",
+      "nullable": "YES",
+      "type": "text"
+    },
+    {
+      "default": null,
+      "name": "signup_source",
+      "nullable": "YES",
+      "type": "text"
+    }
+  ]
+}

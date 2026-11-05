@@ -1,0 +1,9 @@
+# Copy this file to .env.local. All .env* files are ignored by Git.
+# Local / Preview remain disabled until the final release checks.
+BETA_SIGNUP_PERSISTENCE=disabled
+SUPABASE_URL=https://yxiubxjpapiacvhbkxvd.supabase.co
+SUPABASE_PUBLISHABLE_KEY=
+# Optional legacy anon JWT fallback. Never supply a service-role / secret key.
+SUPABASE_ANON_KEY=
+# Final Mission 5 deployment origin, without a path. Leave empty locally.
+SITE_URL=

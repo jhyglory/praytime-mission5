@@ -1,0 +1,54 @@
+{
+  "project_id": "e4aa3c3a-e142-4dc1-8fc0-74ba94ff47f7",
+  "ref": "660f70b4d2854d82e018618d00122ce875880e46",
+  "rows": [
+    {
+      "metadata": {
+        "constraints": [
+          {
+            "definition": "UNIQUE (email)",
+            "name": "beta_signups_email_key",
+            "type": "u"
+          },
+          {
+            "definition": "PRIMARY KEY (id)",
+            "name": "beta_signups_pkey",
+            "type": "p"
+          }
+        ],
+        "indexes": [
+          {
+            "definition": "CREATE UNIQUE INDEX beta_signups_pkey ON public.beta_signups USING btree (id)",
+            "name": "beta_signups_pkey"
+          },
+          {
+            "definition": "CREATE UNIQUE INDEX beta_signups_email_key ON public.beta_signups USING btree (email)",
+            "name": "beta_signups_email_key"
+          }
+        ],
+        "policies": [
+          {
+            "command": "INSERT",
+            "name": "Anyone can submit a beta signup",
+            "roles": [
+              "anon",
+              "authenticated"
+            ],
+            "using": null,
+            "with_check": "((email ~* '^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$'::text) AND (length(email) <= 255) AND (os = ANY (ARRAY['iPhone'::text, 'Android'::text, '둘 다 / 잘 모르겠어요'::text])) AND ((age_range IS NULL) OR (length(age_range) <= 40)) AND (COALESCE(array_length(target_apps, 1), 0) <= 10))"
+          }
+        ],
+        "privileges": {
+          "anon_insert": true,
+          "anon_select": true
+        },
+        "public_consent_columns": [],
+        "rls": {
+          "enabled": true,
+          "forced": false
+        },
+        "triggers": []
+      }
+    }
+  ]
+}

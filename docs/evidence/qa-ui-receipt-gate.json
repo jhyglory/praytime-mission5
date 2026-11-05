@@ -1,0 +1,8 @@
+{
+  "environment": "production build, local UI and Route Handler, real existing Supabase backend",
+  "new_qa_rows": 1,
+  "before_receipt_delivery": { "loadingVisible": true, "successVisible": false, "ariaBusy": true },
+  "after_real_201_receipt_delivery": { "successVisible": true, "ariaBusy": false },
+  "duplicate_real_409": { "duplicateVisible": true, "successVisible": false, "genericErrorVisible": false },
+  "method": "A QA-only local reverse proxy briefly held the real server response. No simulated success response was used."
+}
