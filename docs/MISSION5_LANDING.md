@@ -306,6 +306,6 @@ Minimum:
 
 Visual freeze ended with final Desktop933:3 / Mobile933:4. The final frames override earlier Hero / app-theme / four-phone composition instructions above. Do not mount the previous Hero Light/Dark toggle or repeated phone previews: final Hero is full-bleed artwork and product behavior is the supplied Time Select mockup. Keep existing interaction code reusable, not visible additions to the final design.
 
-Recheck existing schema; nullable consent fields are already applied. Reuse the adapter and existing DB, no RLS or constraint change. Final QA authorizes one new synthetic record and the same email for duplicate validation; scope reads to QA only. Automated tests stay mocked/disabled.
+Recheck existing schema; nullable consent fields are already applied. Reuse the adapter and existing DB, no RLS or constraint change. Actual INSERT QA is deferred until privacy notice alignment. Keep Production/Preview persistence off; production server returns503 PRIVACY_REVIEW_REQUIRED before accessing the store. Automated tests stay mocked/disabled.
 
 Finalize README and deployment evidence, commit/push feature branch and open [하영]-미션5 PR against main. Do not merge. Connect GitHub to Vercel and smoke-test the real URL. Keep current policy text until user supplies approved legal copy; report discrepancies rather than writing it.

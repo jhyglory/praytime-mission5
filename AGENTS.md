@@ -103,7 +103,7 @@ The user delivered FINAL Figma Desktop 933:3 / Mobile 933:4. These supersede 913
 - Hero full bleed, transparent overlay nav, warm-white text / red mark; Paper White + Lavender Mist light areas; Ink percentages and proportional red gauges; exact supplied Time Select mockup.
 - Feature branch feature/mission-5-landing; private remote jhyglory/praytime-mission5. Create final commit/push and PR titled [하영]-미션5. Never merge the PR. main receives only a minimal baseline, final implementation goes through feature PR.
 - Reuse existing public.beta_signups; keep UNIQUE(email) and INSERT-only RLS. No public SELECT/UPDATE/DELETE, no service-role key or client env exposure.
-- Recheck schema before changes: the prior approved nullable consent columns already exist, so do not rerun migration. Final QA authorizes exactly one new synthetic applicant, duplicate requests using that same identity, and scoped verification of that QA row only. Never read/modify existing users.
+- Recheck schema before changes: the prior approved nullable consent columns already exist, so do not rerun migration. The latest user instruction defers actual INSERT QA until privacy notice alignment; do not submit the prepared identity now. Never read/modify existing users.
 - Automated tests always mock/disable persistence. Production uses the existing public insert binding through the server adapter.
 - All .env* files are ignored; safe template config/environment.example. Final deployment is Vercel with GitHub connection; do not replace this requested platform with Sites hosting.
 - Check lint / typecheck / unit / browser / build and smoke-test production, mobile and incognito. Keep documentation candid about privacy copy discrepancies and external browser-extension interference.

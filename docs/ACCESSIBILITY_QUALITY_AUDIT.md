@@ -1,3 +1,5 @@
+> Historical Pre-Figma audit. Current final-design verification: FINAL_DELIVERY.md and FIGMA_FINAL_COMPARISON.md.
+
 # Accessibility / Quality Audit
 
 확인일: 2026-11-06 KST. 최종 Figma 대기 중 **시각 디자인은 수정하지 않고** semantic HTML / keyboard / metadata / 테스트를 점검했습니다. 모든 accessibility 표준을 충족한다는 인증은 아닙니다.

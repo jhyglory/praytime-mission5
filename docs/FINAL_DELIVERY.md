@@ -23,3 +23,5 @@ Vercel GitHub connection is in progress; GitHub email sudo verification has pass
 ## Known limitations
 
 Existing privacy policy still omits nickname / signup_reason / consent metadata and labels os optional; app/reduction-method wording needs review. The user confirmed there is no approved Terms URL; keep the existing Privacy URL and do not create Terms or legal copy. LEGAL REVIEW REQUIRED. This blocks collecting production applications, not deployment of the landing with writes off. Legal copy is not invented or changed. Normal Chrome profile's injected dictionary extension causes a hydration warning; clean automated Chrome has no corresponding app console error. Production normal/incognito verification is pending deployment.
+
+Vercel setup: Production branch tracking is now feature/mission-5-landing. The project has only BETA_SIGNUP_PERSISTENCE=disabled for Production/Preview, with system env exposed and no Supabase credentials. GitHub and Vercel email reauthentication are complete; deployment is being retriggered after the account verification step.
