@@ -1,6 +1,6 @@
 # Vercel Deployment Checklist
 
-현재 상태: **준비만 완료, production deploy 미실행**. GitHub private repository는 생성했지만 소스 commit/push는 최종 Figma 반영 후 진행합니다.
+현재 상태: **최종 구현 commit/push 완료, Vercel 연결 진행 중**. GitHub 계정 연결의 최종 권한 승인을 대기 중입니다. production URL과 실제 QA 결과는 배포 후 기록합니다.
 
 ## Import / Build
 
@@ -40,6 +40,6 @@
 - [ ] Production deployment 및 실제 Vercel URL을 README에 반영
 - [ ] 최종 commit / push / PR. 제목 `[하영]-미션5`
 
-현재 branch는 아직 첫 commit 전입니다. PR diff를 만들려면 별도 main base가 필요합니다. 최종 제출 시 먼저 main에 제출용 기본 문서만 담은 초기 commit을 두고, feature에 전체 구현을 commit한 뒤 비교 PR을 만드는 방식을 사용합니다. 지금은 commit/push하지 않습니다.
+main의 최소 review baseline과 feature 전체 구현 commit을 만들고 각각 push했습니다. Vercel production source는 feature/mission-5-landing으로 지정해 mentor merge 전에도 검수할 수 있게 합니다. 멘토가 PR을 merge한 뒤 production branch를 main으로 전환할 수 있습니다. 에이전트는 PR을 merge하지 않습니다.
 
 공식 참고(2026-11-06 확인): [Next.js on Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs), [Build settings](https://vercel.com/docs/builds/configure-a-build), [Environment variables](https://vercel.com/docs/environment-variables).

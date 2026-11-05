@@ -4,12 +4,12 @@
 
 - Branch: `feature/mission-5-landing`
 - Remote origin: https://github.com/jhyglory/praytime-mission5.git (private)
-- 현재 상태: 첫 commit 전, staging 없음, push 없음, PR 없음. 기존 작업을 reset하지 않고 Git을 초기화했습니다.
+- 현재 상태: main에는 최소 review baseline, feature에는 전체 최종 구현 commit이 있습니다. 두 branch를 push했고 작업 파일을 reset하지 않았습니다. PR은 Vercel URL과 최종 QA 결과를 반영해 생성합니다.
 - 최종 PR 제목: **[하영]-미션5**
 
 `.env*`, node_modules, .next, .vercel, tsbuildinfo, test-results, playwright-report, coverage, Supabase CLI temp, logs는 제외합니다. 안전한 템플릿만 `config/environment.example`에 별도 보관합니다. key 값은 저장소에 넣지 않습니다.
 
-최종 Figma 이후:
+최종 제출 흐름:
 
 1. 최종 visual pass와 체크리스트를 완료합니다.
 2. 변경 파일과 secret / generated file 제외 여부를 검토합니다.

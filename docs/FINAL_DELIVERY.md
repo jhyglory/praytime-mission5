@@ -18,7 +18,7 @@ Read-only system catalog recheck confirms the same beta_signups table, existing 
 
 ## Deployment / PR
 
-Vercel GitHub connection is in progress; GitHub requested email sudo reauthentication. User handles that verification. Commit/push and PR delivery are recorded after completion; PR must remain unmerged.
+Vercel GitHub connection is in progress; GitHub email sudo verification has passed; the final Vercel user authorization is pending. Implementation commit 05e0944 and minimal main baseline 3a6f3b4 are pushed. The PR will include the deployment URL and must remain unmerged.
 
 ## Known limitations
 
