@@ -11,7 +11,8 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 - Repository: [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5) (private)
 - 작업 branch: `feature/mission-5-landing`
 - 최종 PR 제목: `[하영]-미션5`
-- Vercel URL: **TODO — 최종 디자인 반영 후 배포 URL 입력**
+- Vercel URL: [praytime-mission5.vercel.app](https://praytime-mission5.vercel.app)
+- PR: [[하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1), merge하지 않음
 
 ## Tech Stack
 
@@ -94,7 +95,7 @@ npm run start
 
 기존 Lovable 프로젝트와 동일한 저장소를 사용합니다. `beta_signups_email_key UNIQUE(email)`와 INSERT용 RLS를 유지합니다. `.insert()`만 사용하고 `.select()` / upsert / UPDATE / DELETE는 하지 않습니다. `23505`는 409 duplicate, provider 실패는 502, 연결 미설정은 503입니다.
 
-기존 승인 작업에서 nullable 동의 컬럼 3개 추가와 QA 신청 1건 검증이 이미 완료되었습니다. **이번 단계에서는 DB 변경·추가 운영 POST를 하지 않았습니다.** 재검토 SQL 초안은 active migration 폴더 밖에 두었습니다. 고지와 수집 항목의 불일치는 아직 승인 보완이 필요합니다.
+기존 승인 작업에서 nullable 동의 컬럼 3개 추가와 QA 신청 1건 검증이 이미 완료되었습니다. **이번 단계에서는 DB 변경·실제 INSERT를 하지 않았습니다. 배포 후 가상 QA payload의 HTTP POST는 저장 차단503과 validation422만 검증했습니다.** 재검토 SQL 초안은 active migration 폴더 밖에 두었습니다. 고지와 수집 항목의 불일치는 아직 승인 보완이 필요합니다.
 
 상세: [Backend architecture](docs/BACKEND_ARCHITECTURE.md), [Privacy audit](docs/PRIVACY_AUDIT.md), [Migration runbook](docs/CONSENT_MIGRATION_RUNBOOK.md).
 
@@ -120,14 +121,14 @@ config/environment.example    값이 없는 환경 템플릿
 
 Vercel에서 GitHub repo를 import하고 Framework **Next.js**, Root Directory **.**, Install Command `npm ci`, Build Command `npm run build`, Node **24.x**를 사용합니다. Preview는 `BETA_SIGNUP_PERSISTENCE=disabled`로 유지하세요. Production / Preview persistence는 disabled로 유지하고 Supabase key를 등록하지 않습니다. 고지 정합성 승인 후에만 release gate와 기존 connection을 검토합니다. SITE_URL은 실제 배포 origin으로 설정합니다. env 변경 후 재배포가 필요합니다. 상세 [배포 체크리스트](VERCEL_DEPLOYMENT_CHECKLIST.md).
 
-아직 배포하지 않았으며, Vercel URL은 위 placeholder를 실제 URL로 교체해야 합니다.
+Vercel `glorifier1/praytime-mission5`에 배포했습니다. Production source는 `feature/mission-5-landing`이며 mentor merge 후 `main`으로 전환할 수 있습니다. Production/Preview에 Supabase credentials는 등록하지 않았습니다. 운영 검증은 [최종 상태](docs/FINAL_DELIVERY.md)와 [HTTP 증거](docs/evidence/production-blocked-http-qa.json), [브라우저 증거](docs/evidence/production-browser-qa.json)에 기록했습니다.
 
 ## Known limitations
 
 - 최종 Figma에 없는 제품 기능이나 site-wide theme toggle은 추가하지 않았습니다.
 - 개인정보 고지의 누락·필수 여부·표현 범위 보완 승인이 필요합니다. 법률 문구는 임의 작성하지 않았습니다.
 - OG는 승인된 Hero 원본 이미지, favicon은 승인 Pause Mark 원본 export를 재사용합니다. 별도 social composition을 만들지 않았습니다.
-- `SITE_URL` 미설정 시 canonical / OG URL 생략. 검색 indexing은 기존 noindex 유지, 공개 시 검토 필요.
+- `SITE_URL` 미설정 시 Vercel system production URL을 metadata origin으로 사용합니다. 검색 indexing은 기존 noindex 유지, 공개 시 검토 필요.
 - 베타 신청 API는 기본 disabled. 실제 INSERT QA는 개인정보 고지 정합성 승인 후로 보류합니다. Production handler도503 PRIVACY_REVIEW_REQUIRED로 저장을 차단합니다. 일반 자동 테스트는 항상 mock / disabled입니다.
 - OS 접근 제한·기도 실행 등 제품 기능은 Landing의 설명·프리뷰입니다.
 - 자동 a11y 검증이 screen reader 전체 사용성·최종 색상 contrast 감사를 대체하지 않습니다.
@@ -135,3 +136,5 @@ Vercel에서 GitHub repo를 import하고 Framework **Next.js**, Root Directory *
 Full-page QA PNG export (optional): `CAPTURE_QA_SCREENSHOTS=1 npm run test:e2e`. Required browser assertions always run.
 
 Vercel system variables (automatic): VERCEL_ENV selects the Production legal-review gate; VERCEL_PROJECT_PRODUCTION_URL supplies the metadata origin when SITE_URL is empty. Do not manually override these.
+
+일반 Chrome 프로필에서는 외부 확장 경고와 React hydration418이 관찰되었습니다. 확장 없는 별도 Chrome context에서는 page error가 없었습니다. native 시크릿 창 수동 검증은 도구 timeout으로 미완료이며, 격리 context 검증과 구분합니다.

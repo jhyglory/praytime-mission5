@@ -18,10 +18,19 @@ Read-only system catalog recheck confirms the same beta_signups table, existing 
 
 ## Deployment / PR
 
-Vercel GitHub connection is in progress; GitHub email sudo verification has passed; Vercel user authorization is confirmed. Implementation commit 05e0944 and minimal main baseline 3a6f3b4 are pushed. The PR will include the deployment URL and must remain unmerged.
+Production: https://praytime-mission5.vercel.app — Vercel glorifier1/praytime-mission5, Next.js / root . / Node24.x. First verified deployment dpl_BexH5rUW59WVEcp8n5pMN5SAAHef is READY. Production branch tracks feature/mission-5-landing. Environment: BETA_SIGNUP_PERSISTENCE=disabled only; no Supabase credentials. Local .env*, OIDC token, .vercel, dependencies and build files are excluded from Git and Vercel upload; sensitive-value scan found zero upload/client matches.
+
+PR: https://github.com/jhyglory/praytime-mission5/pull/1 — [하영]-미션5, feature/mission-5-landing → main. Implementation is pushed; PR is submitted for review after the final evidence push. Never merged by the agent. main remains the minimal review baseline.
+
+## Production QA
+
+- Unauthenticated GET200; title / OG / Twitter point to the real production domain. Approved Hero OG and Pause Mark favicon are reused.
+- Live synthetic POST: valid-but-locked503 PRIVACY_REVIEW_REQUIRED; invalid email, missing consent and missing required field422; no receipt in every response. No INSERT or applicant read/update/delete.
+- Normal Chrome: rendered Desktop1440 and Mobile393; anchor, wheel tap/keyboard and FAQ work. External extensions emit warnings and React418 was observed in that profile. The specific extension causing the production hydration mismatch is unconfirmed; do not suppress hydration errors in app code to hide it.
+- Clean isolated Chrome context: all eight widths320–1440 have no overflow or missing images. Anchor heading focus, wheel tap/keyboard/swipe, FAQ click/keyboard, live503 UI error/input retention and absent success state passed. No page errors or failed assets. This is an isolated context, not a claim of native incognito-window manual verification.
+- Native incognito UI automation timed out; the manual incognito step remains unverified. Isolation QA above covers a fresh browser storage/session without profile extensions.
+- HTTP evidence: evidence/production-blocked-http-qa.json. Browser evidence: evidence/production-browser-qa.json. Success / duplicate / provider failures remain mocked unit/browser evidence, not live database evidence.
 
 ## Known limitations
 
-Existing privacy policy still omits nickname / signup_reason / consent metadata and labels os optional; app/reduction-method wording needs review. The user confirmed there is no approved Terms URL; keep the existing Privacy URL and do not create Terms or legal copy. LEGAL REVIEW REQUIRED. This blocks collecting production applications, not deployment of the landing with writes off. Legal copy is not invented or changed. Normal Chrome profile's injected dictionary extension causes a hydration warning; clean automated Chrome has no corresponding app console error. Production normal/incognito verification is pending deployment.
-
-Vercel setup: Production branch tracking is now feature/mission-5-landing. The project has only BETA_SIGNUP_PERSISTENCE=disabled for Production/Preview, with system env exposed and no Supabase credentials. GitHub and Vercel email reauthentication are complete; deployment is being retriggered after the account verification step.
+Existing privacy policy still omits nickname / signup_reason / consent metadata and labels os optional; app/reduction-method wording needs review. The user confirmed there is no approved Terms URL; keep the existing Privacy URL and do not create Terms or legal copy. LEGAL REVIEW REQUIRED. This blocks collecting production applications, not deployment of the landing with writes off. Legal copy is not invented or changed. Normal Chrome profile has external extension warnings and a hydration mismatch; clean automated Chrome has no app page error. Manual native incognito QA remains unverified as described above.
