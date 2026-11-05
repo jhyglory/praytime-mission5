@@ -15,6 +15,7 @@ function request(data: unknown = valid, origin = "https://praytime.test") {
   return new Request("https://praytime.test/api/beta-signup", { method: "POST", headers: { "Content-Type": "application/json", origin }, body: JSON.stringify(data) });
 }
 beforeEach(() => {
+  vi.stubEnv("VERCEL_ENV", "test");
   vi.stubEnv("BETA_SIGNUP_PERSISTENCE", "disabled");
   vi.stubEnv("SUPABASE_PUBLISHABLE_KEY", "");
   vi.stubEnv("SUPABASE_ANON_KEY", "");
@@ -23,6 +24,15 @@ beforeEach(() => {
 afterEach(() => { vi.unstubAllEnvs(); vi.unstubAllGlobals(); });
 
 describe("Beta signup boundary", () => {
+  it("blocks production writes during legal review even if persistence is configured", async () => {
+    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("BETA_SIGNUP_PERSISTENCE", "supabase");
+    const getStore = vi.fn();
+    const response = await createSignupHandler(getStore)(request());
+    expect(response.status).toBe(503);
+    expect(await response.json()).toMatchObject({ status: "error", code: "PRIVACY_REVIEW_REQUIRED" });
+    expect(getStore).not.toHaveBeenCalled();
+  });
   it.each(["nickname", "email", "os", "signup_reason"] as const)("rejects missing required %s before persistence", async field => {
     const payload: Record<string, unknown> = { ...valid };
     delete payload[field];

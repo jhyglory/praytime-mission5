@@ -1,6 +1,7 @@
 import { fieldErrorsFrom, requestSchema } from "./beta-signup";
 import { recordSignupConsent } from "./signup-consent";
 import { BackendUnconfirmedError, type SignupStore } from "./signup-store";
+import { PRIVACY_COLLECTION_APPROVED } from "./privacy-policy";
 
 const serverMessage = "신청을 접수하지 못했습니다. 입력 내용은 유지됩니다. 잠시 후 다시 시도해주세요.";
 function reply(body: unknown, status: number) {
@@ -32,6 +33,10 @@ export function createSignupHandler(getStore: () => SignupStore, serverNow: () =
     if (!parsed.success) return reply({ status: "invalid", errors: fieldErrorsFrom(parsed.error.issues) }, 422);
     // A trap submission never produces a receipt or a success/conversion signal.
     if (parsed.data.company.trim()) return reply({ status: "rejected", message: serverMessage }, 422);
+    // A deployment setting alone must not bypass the pending legal review.
+    if (process.env.VERCEL_ENV === "production" && !PRIVACY_COLLECTION_APPROVED) {
+      return reply({ status: "error", code: "PRIVACY_REVIEW_REQUIRED", message: serverMessage }, 503);
+    }
     try {
       const store = getStore();
       const result = await store.insert(recordSignupConsent(parsed.data, serverNow()));

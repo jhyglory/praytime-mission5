@@ -107,3 +107,7 @@ The user delivered FINAL Figma Desktop 933:3 / Mobile 933:4. These supersede 913
 - Automated tests always mock/disable persistence. Production uses the existing public insert binding through the server adapter.
 - All .env* files are ignored; safe template config/environment.example. Final deployment is Vercel with GitHub connection; do not replace this requested platform with Sites hosting.
 - Check lint / typecheck / unit / browser / build and smoke-test production, mobile and incognito. Keep documentation candid about privacy copy discrepancies and external browser-extension interference.
+
+## Latest release constraint
+
+The user deferred ALL actual INSERT QA until privacy notice alignment. Do not create the prepared final QA applicant now. Keep Production/Preview persistence disabled; do not register Supabase credentials in Vercel. PRIVACY_COLLECTION_APPROVED=false blocks VERCEL_ENV=production even if persistence is accidentally configured. Report LEGAL REVIEW REQUIRED. Keep the existing Privacy URL; do not invent Terms or legal copy. Deployment and PR may proceed with writes off; verify real503 and no receipt.

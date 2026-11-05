@@ -1,6 +1,6 @@
 # Vercel Deployment Checklist
 
-현재 상태: **최종 구현 commit/push 완료, Vercel 연결 진행 중**. GitHub 계정 연결의 최종 권한 승인을 대기 중입니다. production URL과 실제 QA 결과는 배포 후 기록합니다.
+현재 상태: **최종 구현 commit/push 완료, Vercel 연결 진행 중**. GitHub 계정 연결을 완료했습니다. 실제 저장 기능은 user instruction에 따라 비활성화합니다. production URL과 실제 QA 결과는 배포 후 기록합니다.
 
 ## Import / Build
 
@@ -16,9 +16,9 @@
 
 | 이름 | Development / Preview | 최종 승인 후 Production |
 | --- | --- | --- |
-| BETA_SIGNUP_PERSISTENCE | disabled | supabase |
+| BETA_SIGNUP_PERSISTENCE | disabled | disabled (LEGAL REVIEW REQUIRED) |
 | SUPABASE_URL | 비우거나 기존 URL, disabled 유지 | 기존 project HTTPS URL |
-| SUPABASE_PUBLISHABLE_KEY | 비움 | 기존 public INSERT publishable key |
+| SUPABASE_PUBLISHABLE_KEY | 비움 | 비움, 고지 승인 전 등록 금지 |
 | SUPABASE_ANON_KEY | 비움 | 일반적으로 비움, legacy anon JWT 필요 시만 |
 | SITE_URL | 로컬 비움, Preview는 검증할 preview origin 선택 | 실제 Mission 5 production origin |
 
@@ -35,7 +35,7 @@
 - [ ] 개인정보 고지 불일치 보완 승인, 게시본 snapshot / version hash 갱신
 - [ ] 승인 favicon / OG asset 등록, SITE_URL 설정, indexing 정책 검토
 - [ ] lint / typecheck / unit / browser / production build 통과
-- [ ] 최종 UI 이후 실제 QA POST는 요청 범위의 1회 계획으로 진행. 기존 QA 중복 재실행 금지
+- [ ] 실제 INSERT QA는 고지 정합성 승인 후로 보류. 현재 production503/no receipt 차단을 검증
 - [ ] Preview에서 disabled 응답 / 입력 유지, console·asset·anchor 확인
 - [ ] Production deployment 및 실제 Vercel URL을 README에 반영
 - [ ] 최종 commit / push / PR. 제목 `[하영]-미션5`

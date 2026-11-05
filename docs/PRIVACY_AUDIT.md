@@ -1,5 +1,7 @@
 # Mission 5 개인정보 고지 정합성 감사
 
+**LEGAL REVIEW REQUIRED** — 현재 운영 Privacy URL을 유지합니다. Terms와 법률 문구를 임의로 만들지 않습니다. 고지 정합성이 해결되기 전에는 실제 INSERT와 production submission을 비활성화합니다.
+
 확인일: 2026-11-06 KST. [운영 개인정보처리방침](https://praytime.glorifier.kr/privacy)과 실제 `beta-signup.ts` / form / server consent payload를 비교했습니다. 법률 문구의 새 작성·수정은 하지 않았습니다.
 
 공개 페이지의 배포 module `privacy-DqWsLzak.js`를 다시 읽어 보관 중인 snapshot과 수집 항목 표현이 같음을 확인했습니다. 정확한 전문은 `privacy/operating-policy-snapshot.txt`, 식별·정규화 규칙은 `privacy/snapshot.json`에 있습니다. 이 문서는 법률 적합성 판정이 아닌 항목·필수 여부·표현 범위 비교입니다.
@@ -25,3 +27,15 @@
 현재 version identifier는 보관된 고지 전문의 SHA-256입니다. 문서에 시행일이 없어 날짜를 임의로 법적 version으로 만들지 않았습니다. 고지가 승인 수정되면 운영 URL의 실제 게시 내용, snapshot, SHA-256, `PRIVACY_POLICY_VERSION` 및 테스트를 함께 갱신해야 합니다. 현재 기록용 hash가 위 불일치를 해결하는 것은 아닙니다.
 
 운영 사용자 row 조회·수정이나 신규 POST는 이번 감사에 포함하지 않았습니다.
+
+## Legal review에 필요한 항목 목록
+
+- 누락된 닉네임, 신청 이유, 동의 시각·고지 버전의 수집 항목 반영 여부 검토
+- 기기 필수/선택 표시를 실제 폼과 일치시키는 검토
+- 관심 앱/줄이고 싶은 앱, 스크린타임 경험/최근 3개월 감소 시도의 표현 범위 검토
+- signup_source를 포함한 유입 경로 식별 고지 범위 확인
+- 승인·게시 후 snapshot/hash 갱신, server release gate 검토, 이후 별도 승인된 INSERT QA
+
+이는 필요한 항목 목록이며 법률 문구 초안이 아닙니다. 별도 Terms URL은 없으며 추정하거나 만들지 않습니다.
+
+Production 보호: persistence는 disabled, Supabase key는 Vercel에 등록하지 않습니다. 추가로 handler가 VERCEL_ENV=production 및 PRIVACY_COLLECTION_APPROVED=false 상태에서 유효 payload도503 PRIVACY_REVIEW_REQUIRED로 막고 store를 호출하지 않습니다. 성공 receipt를 발행하지 않습니다.
