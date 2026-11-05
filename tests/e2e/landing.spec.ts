@@ -89,7 +89,7 @@ for (const width of widths) {
       expect(artwork!.width).toBe(width === 1440 ? 1440 : 640);
       expect(artwork!.height).toBeCloseTo(width === 1440 ? 684 : 280.316, 1);
     }
-    if (width === 1440 || width === 393) {
+    if (process.env.CAPTURE_QA_SCREENSHOTS === "1" && (width === 1440 || width === 393)) {
       const hero = await page.locator("#hero").boundingBox();
       await page.screenshot({ path: path.join(qa, `hero-${width}.png`), clip: { x: 0, y: 0, width, height: hero!.height } });
       await page.screenshot({ path: path.join(qa, `full-${width}.png`), fullPage: true });
@@ -123,8 +123,8 @@ test("final Hero overlay, percentage gauges and anchors match the approved behav
   }
   await page.getByRole("link", { name: "작동 방식 보기", exact: true }).focus();
   await page.keyboard.press("Enter");
-  await expect(page).toHaveURL(/#how-it-works$/);
-  await expect(page.locator("#how-heading")).toBeFocused();
+  await expect(page).toHaveURL(/#the-gap$/);
+  await expect(page.locator("#gap-heading")).toBeFocused();
   await page.getByRole("link", { name: "기도와 선택", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.locator("#prayer-heading")).toBeFocused();
@@ -180,3 +180,22 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
     expect(await page.evaluate(() => window.qaConversions)).toBe(outcome === "success" ? 1 : 0);
   });
 }
+
+
+test("Time Select supports tap, keyboard and horizontal swipe with 10 minutes initially selected", async ({ page }) => {
+  await page.goto("/");
+  const wheel = page.getByRole("radiogroup", { name: "사용 시간 미리보기" });
+  await expect(wheel.getByRole("radio", { name: "10분", exact: true })).toHaveAttribute("aria-checked", "true");
+  await wheel.getByRole("radio", { name: "15분", exact: true }).click();
+  await expect(wheel).toHaveAttribute("data-selected", "15");
+  await page.keyboard.press("Home");
+  await expect(wheel.getByRole("radio", { name: "5분", exact: true })).toBeFocused();
+  await expect(wheel).toHaveAttribute("data-selected", "5");
+  const box = (await wheel.boundingBox())!;
+  await page.mouse.move(box.x + box.width * .8, box.y + box.height * .5);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width * .2, box.y + box.height * .5, { steps: 8 });
+  await page.mouse.up();
+  await expect(wheel).toHaveAttribute("data-selected", "10");
+  await expect(wheel.getByRole("radio", { name: "10분", exact: true })).toHaveAttribute("aria-checked", "true");
+});

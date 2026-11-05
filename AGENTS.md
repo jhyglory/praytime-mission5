@@ -36,7 +36,7 @@ Approved implementation frames:
 
 - Desktop: node `933:3`
 - Mobile: node `933:4`
-- Developer Handoff: node `913:15`
+- Developer Handoff: node `933:5`
 
 Important supporting visual sources:
 

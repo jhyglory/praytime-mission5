@@ -60,7 +60,7 @@ npm run start
 | `SUPABASE_URL` | 기존 프로젝트의 HTTPS endpoint |
 | `SUPABASE_PUBLISHABLE_KEY` | 기존 public INSERT용 publishable key |
 | `SUPABASE_ANON_KEY` | legacy anon JWT가 필요한 경우만 fallback, 보통 비움 |
-| `SITE_URL` | 최종 Mission 5 배포 origin, 로컬은 비움 |
+| `SITE_URL` | 최종 배포 origin override. Vercel은 자동 VERCEL_PROJECT_PRODUCTION_URL fallback, 로컬은 비움 |
 
 `NEXT_PUBLIC_` Supabase 변수와 secret/service-role key를 사용하지 않습니다. key 값은 문서에 포함하지 않습니다. 원본 Lovable의 `VITE_SUPABASE_*`는 운영 원본의 변수이며 이 Next.js 앱의 변수 이름이 아닙니다.
 
@@ -70,9 +70,9 @@ npm run start
 
 - [Desktop 933:3](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4?node-id=933-3)
 - [Mobile 933:4](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4?node-id=933-4)
-- [Developer Handoff 913:15](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4?node-id=913-15)
+- [Developer Handoff 933:5](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4?node-id=933-5)
 
-최종 visual authority는 Desktop / Mobile입니다. Handoff `913:15`는 기존 제품·폼 계약 참고이며 최신 두 화면보다 우선하지 않습니다. branding / UX를 재설계하지 않습니다.
+최종 visual authority는 Desktop / Mobile입니다. Handoff `933:5`는 최신 개발 인계 참고이며 최신 두 화면보다 우선하지 않습니다. branding / UX를 재설계하지 않습니다.
 
 ## 구현한 Interaction / Responsive
 
@@ -80,7 +80,7 @@ npm run start
 
 - CTA / 메뉴 anchor, 키보드 사용 시 목적지 heading focus
 - FAQ 5개 독립 토글, 첫 항목만 기본 펼침, Enter / Space
-- 최종 TIME SELECT 프리뷰: 5 / 10 / 15분 중 10분 selected. 원본 mockup 재사용. Hero 앱 테마 toggle은 최종 Figma에 없어 노출하지 않습니다.
+- 최종 TIME SELECT 프리뷰: 5 / 10 / 15분 중 10분 selected. 원본 mockup 재사용, swipe·중앙 snap·tap·키보드 선택 지원. Hero 앱 테마 toggle은 최종 Figma에 없어 노출하지 않습니다.
 - 8개 폼 그룹, client·server validation, 최초 오류 focus
 - loading / success / duplicate / server error, 입력 유지, 중복 전송 차단
 - 실제 HTTP 201 + receipt 이후에만 success와 전환 이벤트
@@ -131,3 +131,7 @@ Vercel에서 GitHub repo를 import하고 Framework **Next.js**, Root Directory *
 - 베타 신청 API는 기본 disabled. 실제 INSERT QA는 개인정보 고지 정합성 승인 후로 보류합니다. Production handler도503 PRIVACY_REVIEW_REQUIRED로 저장을 차단합니다. 일반 자동 테스트는 항상 mock / disabled입니다.
 - OS 접근 제한·기도 실행 등 제품 기능은 Landing의 설명·프리뷰입니다.
 - 자동 a11y 검증이 screen reader 전체 사용성·최종 색상 contrast 감사를 대체하지 않습니다.
+
+Full-page QA PNG export (optional): `CAPTURE_QA_SCREENSHOTS=1 npm run test:e2e`. Required browser assertions always run.
+
+Vercel system variables (automatic): VERCEL_ENV selects the Production legal-review gate; VERCEL_PROJECT_PRODUCTION_URL supplies the metadata origin when SITE_URL is empty. Do not manually override these.

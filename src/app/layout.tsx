@@ -6,7 +6,8 @@ import "./globals.css";
 const pretendard = localFont({ src: "../../public/fonts/PretendardVariable.woff2", display: "swap", variable: "--font-pretendard", weight: "100 900" });
 const inter = localFont({ src: "../../public/fonts/InterVariable.woff2", display: "swap", variable: "--font-inter", weight: "100 900" });
 
-export const metadata: Metadata = buildSiteMetadata(process.env.SITE_URL);
+const siteUrl = process.env.SITE_URL || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : undefined);
+export const metadata: Metadata = buildSiteMetadata(siteUrl);
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="ko" className={`${pretendard.variable} ${inter.variable}`}><body>{children}</body></html>;

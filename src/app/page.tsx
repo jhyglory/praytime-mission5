@@ -1,7 +1,8 @@
-/* eslint-disable @next/next/no-img-element -- Use the exact approved Figma raster assets and crops. */
+/* Use the exact approved Figma raster assets and crops. */
 import { buttonClass } from "@/components/ui/button";
 import { AnchorLink } from "@/components/landing/anchor-link";
 import { PauseMark } from "@/components/landing/pause-mark";
+import { TimeSelectPreview } from "@/components/landing/time-select-preview";
 import { Puzz } from "@/components/landing/puzz";
 import { FAQ } from "@/components/landing/faq";
 import { BetaSignupForm } from "@/components/landing/beta-signup-form";
@@ -24,7 +25,7 @@ function Hero() {
       <p className="eyebrow">기독교 기반 디지털 웰니스</p>
       <h1 id="hero-heading" tabIndex={-1}>무심코 SNS를<span className="mobile-break"><br /></span><span className="desktop-space"> </span>여는 순간,<br />기도로 멈추고<span className="mobile-break"><br /></span><span className="desktop-space"> </span>다시 선택하세요.</h1>
       <p className="body-copy">SNS를 열기 전 잠깐 기도하고,<br />지금도 필요한지 돌아보세요.</p>
-      <div className="hero-actions"><AnchorLink href="#beta-signup" className={buttonClass()}>베타 사전신청</AnchorLink><AnchorLink href="#how-it-works" className={buttonClass("secondary")}>작동 방식 보기</AnchorLink></div>
+      <div className="hero-actions"><AnchorLink href="#beta-signup" className={buttonClass()}>베타 사전신청</AnchorLink><AnchorLink href="#the-gap" className={buttonClass("secondary")}>작동 방식 보기</AnchorLink></div>
       <p className="small-copy">기도를 마쳐도 SNS가 자동으로 열리지는 않습니다.</p>
     </div>
   </section>;
@@ -47,14 +48,14 @@ function WhyNow() {
 function TheGap() {
   return <section className="landing-section section-depth gap-section" id="the-gap" aria-labelledby="gap-heading"><div className="container section-stack">
     <p className="eyebrow">04 / THE GAP</p><div className="gap-threshold" aria-hidden="true"><PauseMark /></div>
-    <h2 id="gap-heading">충동과 행동 사이,<br />기도가 머물 작은 틈을<span className="mobile-break"><br /></span><span className="desktop-space"> </span>만듭니다.</h2>
+    <h2 id="gap-heading" tabIndex={-1}>충동과 행동 사이,<br />기도가 머물 작은 틈을<span className="mobile-break"><br /></span><span className="desktop-space"> </span>만듭니다.</h2>
     <p className="body-copy">PrayTime은 SNS를 여는 순간에 개입합니다.<br />짧게 기도한 뒤, 지금도 필요한 사용인지<span className="mobile-break"><br /></span><span className="desktop-space"> </span>다시 선택합니다.</p>
     <div className="equal-outcomes"><div><p>필요하지 않다면</p><h3>지금은 돌아가기</h3></div><div><p>필요하다면</p><h3>5 · 10 · 15분 선택</h3></div></div>
   </div></section>;
 }
 
 function TimeSelect() {
-  return <section className="time-section" id="how-it-works" aria-labelledby="how-heading"><div className="time-layout container"><div className="content-stack time-story"><p className="eyebrow">PRAY · THEN CHOOSE</p><h2 id="how-heading" tabIndex={-1}>기도 후에도,<br />선택은 나에게.</h2><p className="body-copy">기도를 마쳐도 SNS가 자동으로 열리지 않습니다.<br />지금 필요한지 다시 보고, 필요하다면 사용할 시간을 직접 정합니다.</p><p className="time-reminder desktop-reminder">정한 시간이 끝나면 다시 제한되고,<br />더 사용하려면 다시 기도하고 선택합니다.</p></div><img className="time-mockup" src="/assets/time-select-wheel.png" width="330" height="715.42" alt="PrayTime 시간 선택 화면. 5분·10분·15분 중 10분 선택. 이 시간만 사용하기. 시간이 끝나면 다시 멈춥니다." /><p className="time-reminder mobile-reminder">정한 시간이 끝나면 다시 제한되고,<br />더 사용하려면 다시 기도하고 선택합니다.</p></div></section>;
+  return <section className="time-section" id="how-it-works" aria-labelledby="how-heading"><div className="time-layout container"><div className="content-stack time-story"><p className="eyebrow">PRAY · THEN CHOOSE</p><h2 id="how-heading" tabIndex={-1}>기도 후에도,<br />선택은 나에게.</h2><p className="body-copy">기도를 마쳐도 SNS가 자동으로 열리지 않습니다.<br />지금 필요한지 다시 보고, 필요하다면 사용할 시간을 직접 정합니다.</p><p className="time-reminder desktop-reminder">정한 시간이 끝나면 다시 제한되고,<br />더 사용하려면 다시 기도하고 선택합니다.</p></div><TimeSelectPreview /><p className="time-reminder mobile-reminder">정한 시간이 끝나면 다시 제한되고,<br />더 사용하려면 다시 기도하고 선택합니다.</p></div></section>;
 }
 
 function PrayerBeforeChoice() {

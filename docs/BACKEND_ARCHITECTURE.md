@@ -99,3 +99,7 @@ publishable key는 `apikey`에 넣고 동일 publishable key의 Bearer Authoriza
 - 기존 public INSERT는 그대로 접근 가능하므로 Mission 5 서버의 동의 강제는 이 Route Handler를 통과한 신청에 적용됩니다. 기존 Lovable client를 포함한 모든 직접 insert에 동의 metadata를 강제하는 DB 제약은 추가하지 않았습니다.
 
 근거: `docs/evidence/lovable-db-metadata.json`, `consent-migration-security-verification.json`, 마스킹된 env와 원본 코드, `CONSENT_RECORDING_QA.md`. DB에 새로 연결해 재조회한 결과로 표현하지 않습니다.
+
+## Latest production gate
+
+LEGAL REVIEW REQUIRED. The user deferred all actual INSERT QA until notice alignment. Vercel Production/Preview persistence stays disabled, without Supabase credentials. In Production, PRIVACY_COLLECTION_APPROVED=false returns503 PRIVACY_REVIEW_REQUIRED before getStore, even if persistence is misconfigured. Missing/invalid fields still return422 before this gate. Success/duplicate/provider failure remain covered by mocked tests; no final-stage live applicant was created.
