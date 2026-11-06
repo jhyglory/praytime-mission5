@@ -6,12 +6,15 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/beta-signup", route => route.abort());
 });
 
-test("standalone intro reveals the whole word then the actual logo once, with no SNS layers", async ({ page }) => {
+test("restored white intro reveals the whole word, slit and aperture before the logo on entry, with no SNS layers", async ({ page }) => {
   for (const width of [1440,393]) {
     await page.setViewportSize({ width,height:width === 1440 ? 760 : 680 });
     await page.goto("/");
     const clean=page.locator("[data-clean-intro]");
     const cards=page.locator(".card-intro__cards");
+    await expect(clean).toHaveAttribute("data-intro-state","paused");
+    await page.waitForTimeout(500);
+    expect(await clean.evaluate(el => el.getAnimations({subtree:true}).every(a => a.currentTime === 0))).toBe(true);
     await clean.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
     await expect(clean).toHaveAttribute("data-intro-state","running");
     expect(await clean.evaluate(el => el.tagName)).toBe("SECTION");
@@ -20,20 +23,32 @@ test("standalone intro reveals the whole word then the actual logo once, with no
     await expect(cards).toHaveCSS("overflow-x","clip");
     await expect(clean).toHaveCSS("isolation","isolate");
     await expect(clean.locator(".ambient-card,.card-intro__art,.card-intro__particle,.card-intro__masonry")).toHaveCount(0);
-    await expect(clean.locator("img")).toHaveCount(1);
+    await expect(clean.locator("img")).toHaveCount(5);
     await expect(clean.locator(".card-intro__pause")).toHaveCount(0);
     const logo=clean.locator("[data-brand-asset]");
-    expect(await logo.evaluate(el => (el as HTMLImageElement).currentSrc)).toContain("praytime-wordmark-" + (width === 1440 ? "desktop" : "mobile") + ".png");
+    expect(await logo.evaluate(el => (el as HTMLImageElement).currentSrc)).toContain("praytime-wordmark-" + (width === 1440 ? "desktop" : "mobile") + ".svg");
     await expect(clean.locator(".card-intro__therefore")).toHaveText("그래서");
+    await expect(clean.locator(".card-intro__therefore")).toHaveCSS("color","rgb(24, 24, 27)");
+    await expect(clean.locator(".clean-intro__paper")).toHaveCSS("background-color","rgb(245, 242, 247)");
     expect(await clean.locator(".card-intro__therefore").evaluate(el => el.childElementCount)).toBe(0);
     const samples=await clean.evaluate(el => {
       const animations=el.getAnimations({ subtree:true });
-      return [0,650,1350,1951,4000,16000].map(time => {
+      return [0,650,1200,1650,2200,4000,16000].map(time => {
         for (const animation of animations) { animation.pause();animation.currentTime=time; }
-        return ["therefore","brand"].map(part => Number(getComputedStyle(el.querySelector('[data-intro-part="' + part + '"]')!).opacity));
+        return Object.fromEntries(["paper","therefore","slit","outer","brand"].map(part => [part,Number(getComputedStyle(el.querySelector('[data-intro-part="' + part + '"]')!).opacity)]));
       });
     });
-    expect(samples).toEqual([[0,0],[1,0],[1,0],[1,1],[1,1],[1,1]]);
+    expect(samples[0]).toEqual({paper:1,therefore:0,slit:0,outer:0,brand:0});
+    expect(samples[1].therefore).toBe(1);
+    expect(samples[1].paper).toBeGreaterThan(.5);
+    expect(samples[1].brand).toBe(0);
+    expect(samples[2].paper).toBe(0);
+    expect(samples[2].therefore).toBe(0);
+    expect(samples[2].slit).toBe(1);
+    expect(samples[3].outer).toBe(1);
+    expect(samples[3].brand).toBeGreaterThan(.8);
+    expect(samples[4].brand).toBe(1);
+    for (const final of samples.slice(5)) expect(final).toEqual({paper:0,therefore:0,slit:0,outer:0,brand:1});
     await cards.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
     await expect(clean).toHaveAttribute("data-intro-state","complete");
     await clean.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
@@ -41,6 +56,8 @@ test("standalone intro reveals the whole word then the actual logo once, with no
     await expect(clean.locator(".card-intro__brand")).toHaveCSS("opacity","1");
     await expect(cards.locator(".card-intro__therefore,.card-intro__brand")).toHaveCount(0);
     expect(await page.getByText("열기 전, 무엇 때문에 열었는지 떠올려 보세요.",{exact:true}).count()).toBe(0);
+    expect(await page.getByText("행동하기 전에, 잠깐의 틈을 만듭니다.",{exact:true}).count()).toBe(0);
+    await expect(clean.locator('[class*="dot"],img[src*="transition-dot"]')).toHaveCount(0);
   }
 });
 
@@ -97,8 +114,9 @@ test("Final SNS frame follows Figma and the independent intro fills the viewport
   }
 });
 
-test("photo streams stay unique and continuous through every source seam and repeated 15s loops while particles retain 12s", async ({ page }) => {
-  test.setTimeout(180_000);
+test("alternating photo streams run at 70% speed without gaps or duplicate photos through two cycles; particles retain 12s", async ({ page }) => {
+  test.setTimeout(240_000);
+  const cardDuration=15000 / 0.7;
   for (const width of [1440,393,360]) {
     const variant=width === 1440 ? "desktop" : "mobile";
     await page.setViewportSize({ width,height:width === 1440 ? 1080 : 932 });
@@ -107,13 +125,13 @@ test("photo streams stay unique and continuous through every source seam and rep
     await scene.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
     const transition=page.locator("[data-signature-transition]");
     await expect(transition).toHaveAttribute("data-motion-state","running");
-    await expect(transition).toHaveAttribute("data-motion-duration","15000");
+    await expect(transition).toHaveAttribute("data-motion-duration",String(cardDuration));
     await expect(transition).toHaveAttribute("data-particle-motion-duration","12000");
     expect(streams[variant].duration).toBe(12000);
     await page.evaluate(() => { for (const img of document.images) img.loading="eager"; });
     await expect.poll(() => page.evaluate(() => [...document.images].filter(img => !img.complete || !img.naturalWidth).length),{timeout:30_000}).toBe(0);
-    const resetTimes=streams[variant].tracks.filter(track => track.frames.some(frame => "transform" in frame) && track.nodeId.startsWith("1284:")).map(track => track.frames[1].offset * 15000);
-    const result=await scene.evaluate((el,{resetTimes,baseHeight}) => {
+    const resetTimes=streams[variant].tracks.filter(track => track.frames.some(frame => "transform" in frame) && track.nodeId.startsWith("1284:")).map(track => track.frames[1].offset * cardDuration);
+    const result=await scene.evaluate((el,{resetTimes,baseHeight,cardDuration}) => {
       const animations=el.getAnimations({subtree:true});
       const clip=el.getBoundingClientRect();
       const columns=[...el.querySelectorAll<HTMLElement>(".card-intro__column")];
@@ -138,32 +156,41 @@ test("photo streams stay unique and continuous through every source seam and rep
           return [{column:index,count:cards.length,top:cards[0]?.top ?? Infinity,bottom:cards.at(-1)?.bottom ?? -Infinity,maxGap:Math.max(0,...cards.slice(1).map((card,i) => card.top-cards[i].bottom))}];
         });
         const particles=[...el.querySelectorAll<HTMLElement>(".card-intro__particle")].map(p => ({kind:p.parentElement!.dataset.particleKind,opacity:Number(getComputedStyle(p).opacity),transform:getComputedStyle(p).transform}));
-        const transforms=columns.map(column => ({direction:column.dataset.columnDirection,y:new DOMMatrixReadOnly(getComputedStyle(column).transform).m42}));
+        const transforms=columns.map(column => ({direction:column.dataset.columnDirection,y:new DOMMatrixReadOnly(getComputedStyle(column).transform).m42,cycleHeight:Number.parseFloat(column.style.height)/2}));
         return {time,photos,particles,coverage,transforms};
       };
-      const pairs=[...resetTimes,15000,30000].map(time => [snapshot(time-2),snapshot(time+2)]);
-      const mid=snapshot(7500);
+      const pairs=[...resetTimes,cardDuration,cardDuration*2].map(time => [snapshot(time-2),snapshot(time+2)]);
+      // Dense samples cover the reverse-running columns throughout both loops,
+      // not only the shared seam or a favorable opening frame.
+      const sweep=Array.from({length:81},(_,index) => snapshot(index*cardDuration/40));
+      const mid=snapshot(cardDuration/2);
       const start=snapshot(0);
       const early=snapshot(1000);
       const particleMid=snapshot(6000).particles;
       const particleRepeats=[12000,24000].map(time => snapshot(time).particles);
       const now=document.timeline.currentTime;
       for (const animation of animations) { animation.currentTime=0;animation.play();if(typeof now==="number")animation.startTime=now; }
-      return {pairs,mid,start,early,particleMid,particleRepeats,timings,scale,clip:{top:clip.top,bottom:clip.bottom}};
-    },{resetTimes,baseHeight:width === 1440 ? 760 : 680});
+      return {pairs,sweep,mid,start,early,particleMid,particleRepeats,timings,scale,clip:{top:clip.top,bottom:clip.bottom}};
+    },{resetTimes,baseHeight:width === 1440 ? 760 : 680,cardDuration});
     expect(result.timings.filter(timing => timing.kind === "column")).toHaveLength(width === 1440 ? 6 : 3);
     expect(result.timings.filter(timing => timing.kind === "particle")).toHaveLength(40);
     for (const timing of result.timings) {
       expect(timing.kind).not.toBe("other");
-      expect(timing.duration).toBe(timing.kind === "column" ? 15000 : 12000);
+      expect(timing.duration).toBe(timing.kind === "column" ? cardDuration : 12000);
     }
     for (const [index,column] of result.start.transforms.entries()) {
-      expect(column.direction).toBe("up");
+      expect(column.direction).toBe(index % 2 === 0 ? "up" : "down");
       const movement=result.early.transforms[index].y-column.y;
-      expect(-movement).toBeGreaterThan(1);
+      expect(column.direction === "up" ? -movement : movement).toBeGreaterThan(1);
+      const previousTravel=column.cycleHeight/15000*1000;
+      // Browsers round serialized DOMMatrix values; subpixel rounding must
+      // not reject the exact duration ratio already asserted above.
+      expect(Math.abs(Math.abs(movement)/previousTravel-0.7)).toBeLessThan(0.0001);
     }
-    for (const sample of [result.start,result.mid,...result.pairs.flat()]) {
-      expect(sample.photos.length).toBeGreaterThan(5);
+    for (const sample of [result.start,result.mid,...result.pairs.flat(),...result.sweep]) {
+      // Text/chat/notification cards legitimately reduce visible photo count.
+      // Require photos and uniqueness; column coverage below detects gaps.
+      expect(sample.photos.length).toBeGreaterThan(0);
       expect(new Set(sample.photos.map(photo => photo.src)).size).toBe(sample.photos.length);
       // Source particles can fade completely at a sampled frame.
       for (const particle of sample.particles) {
@@ -189,7 +216,7 @@ test("photo streams stay unique and continuous through every source seam and rep
         expect(a.left).toBeCloseTo(b.left,1);
         expect(a.column).toBe(b.column);
         const movement=a.top-b.top;
-        expect(movement).toBeGreaterThan(0);
+        expect(result.start.transforms[a.column].direction === "up" ? movement : -movement).toBeGreaterThan(0);
         const speed=Math.abs(result.early.transforms[a.column].y-result.start.transforms[a.column].y)/1000*result.scale;
         expect(Math.abs(movement)).toBeCloseTo(speed*4,1);
       }
@@ -200,7 +227,7 @@ test("photo streams stay unique and continuous through every source seam and rep
       expect(particleSamples.some(particles => particles.some((p,i) => p.kind===kind && p.transform!==result.start.particles[i].transform))).toBe(true);
     }
     // Both particle tracks repeat at their original12s clock, independently
-    // of the15s photographic column cycle.
+    // of the slower alternating photographic column cycle.
     for (const particles of result.particleRepeats) {
       for (const [index,particle] of particles.entries()) {
         expect(particle.kind).toBe(result.start.particles[index].kind);
@@ -209,7 +236,7 @@ test("photo streams stay unique and continuous through every source seam and rep
       }
     }
     {
-      await expect.poll(() => scene.locator(".card-intro__column").first().evaluate(el => Number(el.getAnimations()[0].currentTime)),{timeout:35_000}).toBeGreaterThan(30100);
+      await expect.poll(() => scene.locator(".card-intro__column").first().evaluate(el => Number(el.getAnimations()[0].currentTime)),{timeout:48_000}).toBeGreaterThan(cardDuration*2+100);
       expect(await scene.evaluate(el => el.getAnimations({subtree:true}).every(animation => animation.playState==="running"))).toBe(true);
     }
     await page.emulateMedia({ reducedMotion:"reduce" });

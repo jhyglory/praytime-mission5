@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- Original Figma SVGs retain intrinsic bounds. */
 // Six decorative Mobile templates from1214:830. Exact source geometry, not desktop scaling.
 import Image from "next/image";
+import { PaperPlaneIcon } from "./paper-plane-icon";
 
 function Card0({ images }: { images:string[] }) {
   return <div className="ambient-card ambient-card--mobile" style={{"height":162.6352996826172,"width":140,"borderRadius":11.529412269592285}}>
@@ -13,7 +14,7 @@ function Card0({ images }: { images:string[] }) {
     </div>
     <div style={{"width":125.17647552490234,"height":9,"opacity":1,"left":7.699999809265137,"top":131.17059326171875,"borderRadius":0}}>
       <div style={{"width":7,"height":7,"opacity":1,"left":0,"top":1,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><img src="/assets/card-intro/97d1a04d-f0d6-4e14-8d2b-91863e137558.svg" alt="" style={{left:0.15983,top:0.82416}} /></span></div>
-      <div style={{"width":7,"height":7,"opacity":1,"left":12.764705657958984,"top":1,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><img src="/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg" alt="" style={{left:1.28333,top:0.36667}} /></span></div>
+      <div style={{"width":7,"height":7,"opacity":1,"left":12.764705657958984,"top":1,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><PaperPlaneIcon /></span></div>
       <p style={{"width":49.411766052246094,"height":9,"opacity":0.5199999809265137,"left":25.5294132232666,"top":0,"color":"rgb(241 241 238 / 1)","fontSize":4.941176414489746,"fontWeight":400,"lineHeight":"8.235294342041016px"}}>{"1,284"}</p>
     </div>
     <p style={{"width":125.17647552490234,"height":9,"opacity":0.699999988079071,"left":7.699999809265137,"top":145.935302734375,"color":"rgb(241 241 238 / 1)","fontSize":4.941176414489746,"fontWeight":400,"lineHeight":"8.235294342041016px"}}>{"daily.archive · 오늘의 작은 기록"}</p>
@@ -39,7 +40,7 @@ function Card1({ images }: { images:string[] }) {
     </div>
     <div style={{"width":125.17647552490234,"height":9,"opacity":1,"left":7.699999809265137,"top":98.64118194580078,"borderRadius":0}}>
       <div style={{"width":7,"height":7,"opacity":1,"left":0,"top":1,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><img src="/assets/card-intro/da127568-2f66-41be-af26-f9753a28ddb5.svg" alt="" style={{left:0.15983,top:0.82416}} /></span></div>
-      <div style={{"width":7,"height":7,"opacity":1,"left":12.764705657958984,"top":1,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><img src="/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg" alt="" style={{left:1.28333,top:0.36667}} /></span></div>
+      <div style={{"width":7,"height":7,"opacity":1,"left":12.764705657958984,"top":1,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><PaperPlaneIcon /></span></div>
       <p style={{"width":49.411766052246094,"height":9,"opacity":0.5199999809265137,"left":25.5294132232666,"top":0,"color":"rgb(241 241 238 / 1)","fontSize":4.941176414489746,"fontWeight":400,"lineHeight":"8.235294342041016px"}}>{"공유"}</p>
     </div>
     <p style={{"width":125.17647552490234,"height":9,"opacity":0.699999988079071,"left":7.699999809265137,"top":113.4058837890625,"color":"rgb(241 241 238 / 1)","fontSize":4.941176414489746,"fontWeight":400,"lineHeight":"8.235294342041016px"}}>{"조용한 하루를 기록하는 방법"}</p>
@@ -56,7 +57,7 @@ function Card2() {
     <p style={{"width":125.17647552490234,"height":22,"opacity":0.8999999761581421,"left":7.699999809265137,"top":37.22941207885742,"color":"rgb(241 241 238 / 1)","fontSize":6.588235378265381,"fontWeight":400,"lineHeight":"10.70588207244873px"}}>{"잠깐 보려고 열었는데,\n어느새 다음 이야기를 읽고 있다."}</p>
     <div style={{"width":125.17647552490234,"height":9,"opacity":1,"left":7.699999809265137,"top":64.9941177368164,"borderRadius":0}}>
       <div style={{"width":7,"height":7,"opacity":1,"left":0,"top":0,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><img src="/assets/card-intro/da127568-2f66-41be-af26-f9753a28ddb5.svg" alt="" style={{left:0.15983,top:0.82416}} /></span></div>
-      <div style={{"width":7,"height":7,"opacity":1,"left":12.7647066116333,"top":0,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><img src="/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg" alt="" style={{left:1.28333,top:0.36667}} /></span></div>
+      <div style={{"width":7,"height":7,"opacity":1,"left":12.7647066116333,"top":0,"borderRadius":0}}><span className="ambient-card__icon-scale" style={{transform:"scale(0.6363636364)"}}><PaperPlaneIcon /></span></div>
       <p style={{"width":70,"height":9,"opacity":0.4000000059604645,"left":25.5294132232666,"top":0,"color":"rgb(241 241 238 / 1)","fontSize":4.941176414489746,"fontWeight":400,"lineHeight":"8.235294342041016px"}}>{"24개의 답글"}</p>
     </div>
   </div>;

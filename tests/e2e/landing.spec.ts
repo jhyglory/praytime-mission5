@@ -109,7 +109,7 @@ for (const width of widths) {
     await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(8, 14, 38)");
     await expect(page.locator(".prayer-section")).toHaveCSS("background-color", "rgb(23, 28, 38)");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
-    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "15000");
+    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", String(15000 / .7));
     const introGeometry = await page.locator("[data-signature-transition]").evaluate(el => {
       const clean = el.querySelector(".card-intro__clean")!.getBoundingClientRect();
       const cards = el.querySelector(".card-intro__cards")!.getBoundingClientRect();
@@ -304,7 +304,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await expect(page).toHaveURL(/#beta-signup$/);
     await expect(page.locator("#signup-heading")).toBeFocused();
   }
-  // The separate card-free intro is followed by the user-slowed 15s
+  // The separate card-free intro is followed by the user-slowed21.43s
   // decorative loop. Its readable copy never waits for an animation phase.
   await page.emulateMedia({ reducedMotion: "no-preference" });
   for (const width of [1440, 393]) {
@@ -319,7 +319,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await expect(clean.locator(".ambient-card")).toHaveCount(0);
     await cards.evaluate(el => el.scrollIntoView({ block:"center", behavior:"instant" }));
     await expect(transition).toHaveAttribute("data-motion-state", "running");
-    await expect(transition).toHaveAttribute("data-motion-duration", "15000");
+    await expect(transition).toHaveAttribute("data-motion-duration", String(15000 / .7));
     expect(await cards.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(width < 768 ? 43 : 46);
     const renderedMotionNodes = await cards.evaluate(el => new Set(el.getAnimations({ subtree: true }).map(a => ((a.effect as KeyframeEffect).target as HTMLElement).dataset.nodeId)).size);
     expect(renderedMotionNodes).toBe(width < 768 ? 23 : 26);
@@ -333,7 +333,8 @@ test("final Hero overlay, statistic count accents and anchors match the approved
       const copySelectors = [".card-intro__headline", ".card-intro__anchor"];
       const textAnimationCounts = copySelectors.map(selector => el.querySelector(selector)!.getAnimations({ subtree:true }).length);
       const onlyArtAnimated = animations.every(animation => art.contains((animation.effect as KeyframeEffect).target));
-      const snapshots = [0, 1000, 7500, 14999, 15000].map(time => {
+      const duration = Number(el.getAttribute("data-motion-duration"));
+      const snapshots = [0, 1000, duration / 2, duration - 1, duration].map(time => {
         for (const animation of animations) { animation.pause(); animation.currentTime = time; }
         return {
           containers:[".card-intro__clean", ".card-intro__cards"].map(selector => Number(getComputedStyle(el.querySelector(selector)!).opacity)),

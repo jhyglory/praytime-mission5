@@ -119,11 +119,11 @@ for (const width of [1440, 393, 360]) {
     await expect(clean.locator(".ambient-card, .card-intro__art, .card-intro__particle")).toHaveCount(0);
     await expect(clean.locator(".card-intro__therefore")).toHaveText("그래서");
     await expect(clean.locator(".card-intro__suffix")).toHaveText("은");
-    expect(await clean.locator("[data-brand-asset]").evaluate(image => (image as HTMLImageElement).currentSrc)).toContain(`/assets/card-intro/praytime-wordmark-${width === 1440 ? "desktop" : "mobile"}.png`);
+    expect(await clean.locator("[data-brand-asset]").evaluate(image => (image as HTMLImageElement).currentSrc)).toContain(`/assets/restored-intro/praytime-wordmark-${width === 1440 ? "desktop" : "mobile"}.svg`);
     await clean.evaluate(element => element.scrollIntoView({ block: "start", behavior: "instant" }));
     const intro = await clean.evaluate(element => {
       const box = element.getBoundingClientRect();
-      const copy = element.querySelector(".card-intro__intro-copy")!.getBoundingClientRect();
+      const copy = element.querySelector(".clean-intro__canvas")!.getBoundingClientRect();
       const cards = document.querySelector(".card-intro__cards")!.getBoundingClientRect();
       return { height: box.height, viewport: innerHeight, nextSceneTop: cards.top, centerDifference: copy.top + copy.height / 2 - box.top - box.height / 2 };
     });

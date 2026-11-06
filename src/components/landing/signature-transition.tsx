@@ -5,12 +5,16 @@ import { useEffect, useRef, useSyncExternalStore } from "react";
 import { CleanIntro } from "./clean-intro";
 import { MobileAmbientCard } from "./mobile-ambient-cards";
 import { AmbientCard } from "./ambient-cards";
+import { PaperPlaneIcon } from "./paper-plane-icon";
 import motion from "./card-intro-motion.json";
 import masonry from "./prototype-columns.json";
 
 // Full Landing1209:514 /1209:1051 has separate clean-intro and card scenes.
 // Prototype1214:651 (mobile1214:830) loops ONLY the decorative card streams.
-const cardPlaybackSpeed = 0.8;
+// Keep the current15s travel distance, at70% of its previous speed.
+// The original12s particle clock remains independent of the card streams.
+const previousCardDuration = 15_000;
+const cardPlaybackSpeed = 0.7;
 const desktopParticles = [
   [53.666668,689,14],[1363.03955,497.033325,16],[123.300003,277.674988,18],[1308,141,20],
   [171,414,14],[1246,323,16],[206.458328,538.19165,18],[1205.693726,315.825012,20],
@@ -45,7 +49,7 @@ export function SignatureTransition() {
   const variant = viewport.startsWith("mobile") ? "mobile" : "desktop";
   const animate = viewport.endsWith(":motion");
   const source = motion[variant];
-  const cardDuration = source.duration / cardPlaybackSpeed;
+  const cardDuration = previousCardDuration / cardPlaybackSpeed;
   const particles = variant === "mobile" ? mobileParticles : desktopParticles;
 
   useEffect(() => {
@@ -70,12 +74,14 @@ export function SignatureTransition() {
     const animations: Animation[] = source.tracks.map(track => {
       const element = scene.querySelector<HTMLElement>('[data-node-id="' + track.nodeId + '"]');
       if (!element) throw new Error("Missing prototype motion node " + track.nodeId);
-      // The final whole-page request restores continuous upward movement
-      // on every column. Slow only the cards; particles retain source timing.
-      const column = masonry[variant].find(column => column.id === track.nodeId);
+      // The two identical tiles span either travel direction. A descending
+      // column starts one complete tile higher so its first frame is filled.
+      const columnIndex = masonry[variant].findIndex(column => column.id === track.nodeId);
+      const column = masonry[variant][columnIndex];
+      const descending = columnIndex % 2 === 1;
       const frames = column ? [
-        { offset:0, transform:"translate(0px, 0px)", easing:"linear" },
-        { offset:1, transform:"translate(0px, " + -column.cycleHeight + "px)", easing:"linear" },
+        { offset:0, transform:"translate(0px, " + (descending ? -column.cycleHeight : 0) + "px)", easing:"linear" },
+        { offset:1, transform:"translate(0px, " + (descending ? 0 : -column.cycleHeight) + "px)", easing:"linear" },
       ] : track.frames;
       const animation = element.animate(frames, { duration:column ? cardDuration : source.duration, iterations:Infinity, fill:"both" });
       animation.pause(); animation.currentTime = 0;
@@ -119,7 +125,7 @@ export function SignatureTransition() {
         {viewport && <div className={"card-intro__art card-intro__art--" + variant}>
           <img className="card-intro__floor" src={variant === "mobile" ? "/assets/card-intro/mobile-floor.svg" : "/assets/card-intro/prototype-floor.svg"} alt="" />
           <div className="card-intro__masonry">
-            {masonry[variant].map(column => <div className="card-intro__column" data-column-direction="up" key={column.id} style={{ left:column.x, top:column.y, width:column.width, height:column.height }} data-node-id={column.id}>
+            {masonry[variant].map((column,index) => <div className="card-intro__column" data-column-direction={index % 2 === 0 ? "up" : "down"} key={column.id} style={{ left:column.x, top:column.y, width:column.width, height:column.height }} data-node-id={column.id}>
               {[0,1].map(repeat => <div className="card-intro__tile" key={repeat} style={{ top:repeat * column.cycleHeight }}>
                 {column.cards.map(card => <div className="card-intro__card-slot" key={card.id} style={{ top:card.y, height:card.height }}>
                   {variant === "mobile" ? <MobileAmbientCard kind={card.kind} images={card.images.map(image => image.src)} /> : <AmbientCard kind={card.kind} images={card.images.map(image => image.src)} scale={1} height={card.height} />}
@@ -131,7 +137,7 @@ export function SignatureTransition() {
           <div className="card-intro__night-edge" />
           {particles.map(([x,y,size],index) => <div className="card-intro__particle-position" key={index} style={{ left:x, top:y }} data-particle-kind={index < 16 ? "heart" : "share"}>
             <div className="card-intro__particle" data-node-id={"1257:" + ((variant === "mobile" ? 3127 : 1615) + index * 62)}>
-              <span style={{ transform:"scale(" + size / (index < 16 ? 14 : 18) + ")" }}><img src={index < 16 ? "/assets/card-intro/71365c2e-0e64-46a7-9834-7512f3867aa5.svg" : "/assets/card-intro/cdbcea2d-4b8c-4e61-97de-c23cf46bc3ee.svg"} alt="" /></span>
+              <span style={{ transform:"scale(" + size / (index < 16 ? 14 : 18) + ")" }}>{index < 16 ? <img src="/assets/card-intro/71365c2e-0e64-46a7-9834-7512f3867aa5.svg" alt="" /> : <PaperPlaneIcon width={18} height={18} />}</span>
             </div>
           </div>)}
           <div className="card-intro__handoff" />

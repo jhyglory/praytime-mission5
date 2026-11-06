@@ -6,20 +6,21 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 현재 기준과 작업 상태
 
-최신 작업은 Header부터 Footer까지 **전체 12구간**을 다시 비교·보정하는 작업입니다. 우선순위는 **최신 사용자 명세 → 최종 Figma Desktop1209:514 / Mobile1209:1051 → 기존 구현·문서**입니다. 이전 문서의 일부 구간만 수정·나머지 고정 조건과 상충하는 모션 사양은 이 작업에 적용하지 않습니다.
+전체12구간 구현을 기준으로, 최신 작업은 **종이비행기 공유 아이콘·SNS 카드0.7배 속도와 열 교차·단계별 빛 중심·흰색→네이비 인트로** 네 항목입니다. 우선순위는 **최신 사용자 명세 → 최종 Figma Desktop1209:514 / Mobile1209:1051 및 복원된 인트로 → 기존 구현·문서**입니다. 네 항목 밖의 문구·레이아웃·기능은 유지합니다.
 
 - [최종 Desktop · 1440](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1209-514)
 - [최종 Mobile · 393](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1209-1051)
 - [Desktop intro entrance](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1265-8215) · [Mobile intro entrance](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1265-11339)
 - 구간별 변경·보존 내역과 검증 상태: [WHOLE_PAGE_FINAL.md](docs/WHOLE_PAGE_FINAL.md)
+- 최신 네 항목의 Figma 레이어·타이밍·검증 상태: [FOUR_INTERACTIONS_PATCH.md](docs/FOUR_INTERACTIONS_PATCH.md)
 
-전체12구간 구현·시각 비교를 완료하고 **lint / typecheck / unit47 / browser40 / Webpack production build**를 최종 통과했습니다.1440/393/360px에서 통계 reload 재생과 SNS25초 playback을 확인했습니다. 이번 변경의 commit과 Production 배포 후 결과는 WHOLE_PAGE_FINAL.md에서 별도 관리합니다.
+이전 전체 페이지 검증에서 **lint / typecheck / unit47 / browser40 / Webpack production build**가 통과했고1440/393/360px 통계 reload와 SNS 재생을 확인했습니다. 이는 과거 기준선입니다. 현재 네 항목 패치의 검사·실제 두 주기 재생·배포 검증은 [별도 기록](docs/FOUR_INTERACTIONS_PATCH.md)을 따르며, 아직 수행하지 않은 항목을 과거 PASS로 대신하지 않습니다.
 
 | 항목 | 현재 연결 |
 | --- | --- |
 | Repository | [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5), public |
 | 작업 branch | `feature/mission-5-landing` |
-| 기존 PR | [[하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1) |
+| 기존 PR | [[정하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1) |
 | 기존 Production | [praytime-mission5.vercel.app](https://praytime-mission5.vercel.app) |
 
 사용자는 검증 후 기존 feature branch / PR #1 / Vercel 프로젝트를 통한 commit/push/deploy를 승인했습니다. main 변경·merge·새 PR·새 DB·DNS 전환은 하지 않습니다.
@@ -33,16 +34,17 @@ Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS 
 - ONE QUESTION은 Hero와 같은 원본 artwork의 연속 crop을 사용합니다. 최종 Figma의 Desktop56/80, Mobile32/48 제목을 적용합니다.
 - WHY NOW는 각 카드가 실제 **40%** 보일 때 독립 시작합니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**이며 회색 track은 표시하지 않습니다. 사용자 요청에 따른 장식용 최종 길이는80% /70%이고, 실제 통계 숫자34.3% /25.3%는 그대로 유지합니다.
 - 통계는 **카드마다 페이지 로드당 한 번** 실행합니다. 새로고침·페이지 재진입에서는 다시 실행하며, 완료 여부를 `sessionStorage`나 `localStorage`에 저장하지 않습니다. reduced-motion/no-JS는 읽을 수 있는 최종값을 표시합니다.
-- clean intro는 카드 없이 **“그래서” 전체 단어 → 실제 Figma 로고 + “은”** 순서로 한 번 등장하고 읽을 수 있는 결과를 유지합니다. 높이는 원본 Desktop760/Mobile680px와 **현재 viewport 높이 이상**을 모두 만족하도록 확보합니다. 다음 SNS scene과 교차 fade하거나 자동 스크롤하지 않습니다.
-- SNS scene은 최종 Figma의 Desktop760/Mobile680px 구간을 따릅니다. 선언·보조 문구는 고정하고 **모든 카드 열이 위로** 현재 원본의0.8배 속도인15초 주기로 계속 흐릅니다. 원본 사진80개를 각 viewport의 base cycle에 한 번씩 배치하고, Desktop6열/Mobile3열과 독립 phase·동일 duplicate tile로 반복을 연결합니다. 하트16개·공유4개는 기존12초 타이밍으로 반복 상승합니다. 각25초 실제 재생과 모든 seam 경계 검사에서 화면 내 중복 사진0을 확인했습니다.
+- clean intro는 **흰색 영역의 검은 “그래서” 전체 단어 → 얇은 빛과 배경 전환 → 네이비의 실제 빨간 Pause Mark·워드마크 + “은”** 순서입니다. 복원된 Figma의4초 타임라인을 구간 진입 시 한 번 실행하고 화면 밖·비활성 탭에서 정지합니다. 점 세 개와 “행동하기 전에, 잠깐의 틈을 만듭니다.” 문구는 없으며, 인트로에 SNS 장식은 넣지 않습니다. reduced-motion/no-JS에서도 읽을 수 있는 정적 상태를 제공합니다.
+- SNS scene은 최종 Figma의 Desktop760/Mobile680px 구간과 고정 선언·보조 문구를 유지합니다. 카드 속도는 직전15초 모션의 **0.7배**이며 같은 이동 거리의 새 주기는 **15000÷0.7=21428.571428571428ms(약21.43초)**입니다. Desktop6열은 **↑↓↑↓↑↓**, Mobile3열은 **↑↓↑**로 열 전체가 교차 이동합니다. 원본 사진80개를 각 viewport의 base cycle에 한 번씩 배치하고 독립 phase·동일 duplicate tile로 양방향 반복을 연결합니다. 하트16개·종이비행기4개는 카드 방향과 무관하게 기존12초 타이밍으로 계속 상승합니다.
+- SNS 카드 안과 주변의 공유 glyph는 선으로 그린 재사용 `PaperPlaneIcon`으로 통일하며 기존 슬롯·색·투명도를 유지합니다. 다음 SNS 화면에는 인트로의그래서/로고를 다시 넣지 않습니다.
 - THE GAP은 건축적 light artwork와 동등한 두 선택을 유지합니다. 조건 문구·light·CTA와 arrow 묶음은 각 panel 중앙축을 공유합니다. 돌아가기 → `#hero`, 시간 선택 → `#how-it-works`입니다. 요청된 문장 “열기 전, 무엇 때문에 열었는지 떠올려 보세요.”는 제거하며 대체 문구를 추가하지 않습니다.
 - TIME SELECT는 실제10분 wheel mockup을 유지하고 swipe/tap/키보드로5/10/15분을 선택할 수 있습니다.
-- PRAYER는 Dark section과 원본 Puzz를 유지합니다. Mobile은 원본128px figure와 해당 크기로 export된 grounding SVG를 사용합니다.
+- PRAYER는 Dark section과 원본 Puzz를 유지합니다. 각 단계의 빛 중심은 **01 PAUSE20% /02 PRAY기존50% /03 CHOOSE80%**입니다. Mobile 세로 배치에서도 단계 내부를 기준으로 적용하며 긴 가로선·숫자·제목·본문·단계 위치는 유지합니다. Mobile은 원본128px figure와 해당 크기로 export된 grounding SVG를 사용합니다.
 - FAQ는 실제 fill인 **Soft Paper #F5F2F7**와 승인된7문항입니다. Mobile layer의 이름이 Dark여도 실제 배경은 Light입니다. 질문·답변 글자와 목록 간격은 사용자 요청으로 이전의85%로 줄였습니다. 첫 문항 기본 펼침, 독립 toggle과 Radix 키보드 동작을 유지합니다.
 - 신청 form은 기존8개 그룹과 validation, 제출 대기·성공·중복·오류·입력 유지·최초 오류 focus를 보존합니다. 실제 server201/status=success/receipt=true일 때만 성공 안내와 alert을 표시합니다.
 - Footer는 원래 정책 URL과 브랜드를 유지하며128×21 wordmark와 최종 간격을 적용합니다.
 
-**이전의3000ms·50% trigger·세션당1회, track 없는100% red/70% lavender, 위·아래 교대 이동, SNS100dvh 고정 명세는 최신 whole-page 명세로 대체되었습니다.** 과거 변경 이력은 관련 문서에 남기되 현재 구현 기준은 이 README와 WHOLE_PAGE_FINAL.md를 따릅니다.
+**과거의3000ms·50% trigger·세션당1회,100% red/70% lavender, SNS100dvh 고정 명세는 현재 기준이 아닙니다.** 또한 모든 카드가 위로 흐르는15초 규칙과 전체 네이비 인트로는 이번 네 항목 명세로 대체했습니다. 과거 변경·PASS·release 이력은 보존하되 현재 동작은 이 README와 FOUR_INTERACTIONS_PATCH.md를 따릅니다.
 
 ## Tech Stack
 
@@ -78,7 +80,7 @@ npm run test:e2e
 
 이 환경에서 기본 Turbopack worker 포트가 EPERM으로 실패한 이력이 있어 production build는 공식 일회성 `--webpack` 옵션으로 확인합니다. build script나 Vercel 설정은 변경하지 않았습니다. 브라우저 테스트는 별도 서버에서 persistence를 강제로 disabled하고 실제 저장 없이 mock/disabled 경로로 검증합니다.
 
-이번 최종 QA는1440/393/360px 전체 실제 화면,24초 이상 SNS loop, 통계 숫자/막대 동기화와 reload 재생, reduced-motion·pause/cleanup, navigation·CTA·wheel·FAQ·form, overflow·overlap·console을 확인합니다. 최종 결과는 [검증 표](docs/WHOLE_PAGE_FINAL.md#최종-통합-검증과-release)에 기록합니다.
+현재 네 항목 QA는1440/393/360px 실제 화면, SNS 두 주기 이상(42.857초 초과)의 양방향 반복·중복 사진·입자,0.7배 실제 속도, 종이비행기, 단계별 빛20/50/80%, 흰색그래서→빛→실제 로고+은 순서를 확인합니다. reduced-motion·진입 시점·pause/cleanup과 기존 navigation·CTA·wheel·FAQ·form, overflow·overlap·console도 회귀 검사합니다. 최신 결과는 [네 항목 검증 기록](docs/FOUR_INTERACTIONS_PATCH.md), 과거 전체 검증은 [기존 검증 표](docs/WHOLE_PAGE_FINAL.md#최종-통합-검증과-release)에 구분해 기록합니다.
 
 ## Backend와 데이터 안전
 
@@ -120,7 +122,7 @@ config/environment.example    값이 없는 환경 템플릿
 
 ## 배포와 보존 항목
 
-기존 Vercel `glorifier1/praytime-mission5` 프로젝트와 `feature/mission-5-landing`을 유지합니다. 전체 비교 release834b5b0은 최초 검증 기준선이며, 이후 Header CTA 제거와 사진 카드0.8배 속도 요청을 반영했습니다. 최신 code commit·deployment·배포 후 결과는 [기존 PR #1](https://github.com/jhyglory/praytime-mission5/pull/1)에서 관리합니다. 전체 비교와 release별 검증 이력은 [WHOLE_PAGE_FINAL.md](docs/WHOLE_PAGE_FINAL.md)에 있습니다.
+기존 Vercel `glorifier1/praytime-mission5` 프로젝트와 `feature/mission-5-landing`을 유지합니다. 전체 비교 release834b5b0과 이후 Header CTA·0.8배 속도 수정은 과거 기준선입니다. 현재 네 항목 패치는 직전15초 속도의0.7배와 열 교차를 사용합니다. 최신 code commit·deployment·배포 후 결과는 [기존 PR #1](https://github.com/jhyglory/praytime-mission5/pull/1)과 [FOUR_INTERACTIONS_PATCH.md](docs/FOUR_INTERACTIONS_PATCH.md)에서 관리합니다. 과거 release별 검증은 [WHOLE_PAGE_FINAL.md](docs/WHOLE_PAGE_FINAL.md)에 보존합니다.
 
 사용자 지정 공유 이미지는 `/og/praytime-share-8b6783f5.png` 원본1711×919를 유지합니다. favicon은 투명 배경의 Signal Red Pause Mark입니다. 기존 noindex, metadata, Privacy URL과 custom-domain DNS는 변경하지 않습니다. Figma 파일 수정, 새 기능·dependency·DB, main 변경과 merge는 이번 작업 범위에 없습니다.
 

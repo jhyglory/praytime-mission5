@@ -5,7 +5,6 @@
 .stat-source { color:#f1f1ee; opacity:.85; }
 .stat-track { max-width:none; }
 .card-intro__clean { min-height:100vh; min-height:100dvh; }
-.card-intro__intro-copy { top:50%; transform:translate(-50%,-50%); }
 .card-intro__cards { height:760px; }
 .card-intro__art { top:50%; transform:translate(-50%,-50%) scale(var(--card-scene-scale,1)); }
 .card-intro__declaration { top:280px; transform:translateX(-50%); }

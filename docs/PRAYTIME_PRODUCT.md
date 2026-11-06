@@ -1,6 +1,10 @@
 # PrayTime · Product Source of Truth
 
-## Whole-page final correction · 2026-11-06 — current authority
+## Latest four-interaction patch authority · 2026-11-06
+
+The latest explicit four-item request overrides conflicting rules below: outline paper-plane shares everywhere in SNS; cards at70% of the prior15s speed (15000÷0.7=21428.571428571428ms), alternating Desktop↑↓↑↓↑↓ / Mobile↑↓↑; unchanged12s upward hearts/planes; Prayer highlights at each stage's20% /existing50% /80%; restored white-area black그래서 → thin light/background transition → actual red Pause Mark/wordmark+은 on navy, using the4s entry timeline. No dots, obsolete bridge sentence or SNS decorations in the intro. Preserve80 unique photos, separate SNS copy, reduced-motion/entry/pause behavior and all unrelated product/legal/backend constraints. Current sources and new verification belong in [FOUR_INTERACTIONS_PATCH.md](FOUR_INTERACTIONS_PATCH.md). Earlier all-UP15s/all-navy or centered-light rules and their PASS/release records are historical, not current authority.
+
+## Historical: Whole-page final correction · 2026-11-06
 
 This task covers every Desktop/Mobile landing section. Latest explicit user requirements override final1209:514/1051 Figma, which overrides older repository restrictions. Remove narrow “other sections unchanged” scope,100%/70% transparent/lavender gauges,3000ms/50% trigger/sessionStorage latch, and alternating-column behavior. Stats now1400ms/40% independent visibility, both red34.3%/25.3% of a gray100% track, once per page load and replay on reload. SNS columns all rise; independent intro gets sufficient viewport height. Audit every section at1440/393/360 and publish real24s+/reload/interaction evidence. Product/security/approved original assets and existing live backend remain unchanged. See AGENTS.md and docs/WHOLE_PAGE_FINAL.md. Earlier stage records below are historical where they conflict.
 

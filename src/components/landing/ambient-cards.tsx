@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element -- Original decorative Figma assets retain intrinsic SVG bounds; below-fold cards are not LCP imagery. */
 // Six reusable decorative card templates from Figma1265:8239–8244.
 // Exact scaled child geometry supplements the design-context component output.
-// No app actions, user data, or generated replacement assets.
+// No app actions or user data; the send mark follows the current user override.
 
 import Image from "next/image";
+import { PaperPlaneIcon } from "./paper-plane-icon";
 
 function PhotoCard({ images = [] }: { images?: string[] }) {
   return <div className="ambient-card" style={{height:252.14116}}>
@@ -21,7 +22,7 @@ function PhotoCard({ images = [] }: { images?: string[] }) {
         <img src="/assets/card-intro/97d1a04d-f0d6-4e14-8d2b-91863e137558.svg" alt="" style={{"left":0.15983,"top":0.82416}} />
       </div>
       <div style={{"left":20.05882,"top":1.0,"width":11.0,"height":11.0}}>
-        <img src="/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg" alt="" style={{"left":1.28333,"top":0.36667}} />
+        <PaperPlaneIcon />
       </div>
       <p style={{"left":40.11765,"top":0,"width":77.64706,"height":13,"opacity":0.52,"fontSize":7.76471,"lineHeight":"12.94118px","fontWeight":400}}>{"1,284"}</p>
     </div>
@@ -55,7 +56,7 @@ function VideoCard({ images = [] }: { images?: string[] }) {
         <img src="/assets/card-intro/da127568-2f66-41be-af26-f9753a28ddb5.svg" alt="" style={{"left":0.15983,"top":0.82416}} />
       </div>
       <div style={{"left":20.05882,"top":1.0,"width":11.0,"height":11.0}}>
-        <img src="/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg" alt="" style={{"left":1.28333,"top":0.36667}} />
+        <PaperPlaneIcon />
       </div>
       <p style={{"left":40.11765,"top":0,"width":77.64706,"height":13,"opacity":0.52,"fontSize":7.76471,"lineHeight":"12.94118px","fontWeight":400}}>{"공유"}</p>
     </div>
@@ -76,7 +77,7 @@ function TextCard() {
         <img src="/assets/card-intro/da127568-2f66-41be-af26-f9753a28ddb5.svg" alt="" style={{"left":0.15983,"top":0.82416}} />
       </div>
       <div style={{"left":20.05882,"top":0,"width":11.0,"height":11.0}}>
-        <img src="/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg" alt="" style={{"left":1.28333,"top":0.36667}} />
+        <PaperPlaneIcon />
       </div>
       <p style={{"left":40.11765,"top":0,"width":109.99999,"height":13,"opacity":0.4,"fontSize":7.76471,"lineHeight":"12.94118px","fontWeight":400}}>{"24개의 답글"}</p>
     </div>

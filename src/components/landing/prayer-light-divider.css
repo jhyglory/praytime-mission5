@@ -29,6 +29,10 @@
   --light-highlight-opacity: .75;
   --light-halo-opacity: .22;
 }
+/* Shift only each step's bright core and glow; keep the full-width line and
+   the middle prayer light, typography and both GAP choice dividers intact. */
+.prayer-section .prayer-light-divider--pause { --light-center: 20%; }
+.prayer-section .prayer-light-divider--choose { --light-center: 80%; }
 .prayer-light-divider__highlight,
 .prayer-light-divider__near-halo {
   position: absolute;

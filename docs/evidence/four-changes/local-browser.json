@@ -1,0 +1,792 @@
+{
+  "baseURL": "http://127.0.0.1:3001",
+  "executedAt": "2026-11-06T14:33:34.581Z",
+  "playbackKind": "real elapsed animation; no timeline seeking",
+  "status": "PASS",
+  "checks": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "unit": "47/47 PASS",
+    "browser": "40/40 PASS (3.3m)",
+    "build": "PASS (webpack)"
+  },
+  "viewports": [
+    {
+      "width": 1440,
+      "status": "PASS",
+      "intro": {
+        "offscreenClockMs": 0,
+        "actualFrames": [
+          {
+            "name": "intro-word",
+            "clock": 516.6999999999999,
+            "opacity": {
+              "paper": 1,
+              "therefore": 0.989335,
+              "slit": 0,
+              "outer": 0,
+              "brand": 0
+            }
+          },
+          {
+            "name": "intro-slit",
+            "clock": 1216.6660000000002,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 1,
+              "outer": 0.108316,
+              "brand": 0
+            }
+          },
+          {
+            "name": "intro-light",
+            "clock": 1683.3000000000002,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 0.113768,
+              "outer": 1,
+              "brand": 0.991033
+            }
+          },
+          {
+            "name": "intro-logo",
+            "clock": 2100.0000000000005,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 0,
+              "outer": 0.832521,
+              "brand": 1
+            }
+          }
+        ],
+        "completeState": "complete"
+      },
+      "sns": {
+        "durationMs": 21428.57142857143,
+        "realElapsedMs": 44447.10000002384,
+        "clockElapsedMs": 44448.2,
+        "directions": [
+          "up",
+          "down",
+          "up",
+          "down",
+          "up",
+          "down"
+        ],
+        "basePhotoCount": 80,
+        "uniqueBasePhotos": 80,
+        "velocityComparisons": 1179,
+        "duplicatePhotos": 0,
+        "gapFailures": 0,
+        "maxVisibleHearts": 9,
+        "maxVisiblePlanes": 3,
+        "cycleParticleMaxima": [
+          {
+            "heart": 9,
+            "share": 3
+          },
+          {
+            "heart": 9,
+            "share": 3
+          }
+        ],
+        "particleDurationMs": 12000
+      },
+      "prayer": [
+        {
+          "step": "PAUSE",
+          "width": 368,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.19998301630434784,
+              "x": 47.59375,
+              "y": 0,
+              "width": 52,
+              "height": 1,
+              "opacity": "0.62",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.19998301630434784,
+              "x": 23.59375,
+              "y": -1,
+              "width": 100,
+              "height": 3,
+              "opacity": "0.18",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.19998301630434784,
+              "x": -47.4140625,
+              "y": -29.5,
+              "width": 242.015625,
+              "height": 59.984375,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.19998301630434784,
+              "x": -101.6015625,
+              "y": -49.5,
+              "width": 350.390625,
+              "height": 100,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 368,
+              "height": 1,
+              "opacity": "0.57",
+              "filter": "none"
+            }
+          }
+        },
+        {
+          "step": "PRAY",
+          "width": 368,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.5,
+              "x": 158,
+              "y": 0,
+              "width": 52,
+              "height": 1,
+              "opacity": "0.96",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.5,
+              "x": 134,
+              "y": -1,
+              "width": 100,
+              "height": 3,
+              "opacity": "0.28",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.5,
+              "x": 62.9921875,
+              "y": -29.5,
+              "width": 242.015625,
+              "height": 59.984375,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.5,
+              "x": 8.8046875,
+              "y": -49.5,
+              "width": 350.390625,
+              "height": 100,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 368,
+              "height": 1,
+              "opacity": "0.88",
+              "filter": "none"
+            }
+          }
+        },
+        {
+          "step": "CHOOSE",
+          "width": 368,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.7999745244565217,
+              "x": 268.390625,
+              "y": 0,
+              "width": 52,
+              "height": 1,
+              "opacity": "0.75",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.7999745244565217,
+              "x": 244.390625,
+              "y": -1,
+              "width": 100,
+              "height": 3,
+              "opacity": "0.22",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.7999745244565217,
+              "x": 173.3828125,
+              "y": -29.5,
+              "width": 242.015625,
+              "height": 59.984375,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.7999745244565217,
+              "x": 119.1953125,
+              "y": -49.5,
+              "width": 350.390625,
+              "height": 100,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 368,
+              "height": 1,
+              "opacity": "0.69",
+              "filter": "none"
+            }
+          }
+        }
+      ],
+      "reducedMotion": {
+        "introState": "reduced",
+        "thereforeOpacity": 1,
+        "brandOpacity": 1,
+        "remainingAnimations": 0
+      },
+      "errors": [],
+      "httpErrors": [],
+      "overflow": 0,
+      "signupPosts": 0,
+      "screenshots": [
+        "../../outputs/four-local-intro-word-1440.png",
+        "../../outputs/four-local-intro-slit-1440.png",
+        "../../outputs/four-local-intro-light-1440.png",
+        "../../outputs/four-local-intro-logo-1440.png",
+        "../../outputs/four-local-sns-start-1440.png",
+        "../../outputs/four-local-sns-second-cycle-1440.png",
+        "../../outputs/four-local-sns-two-cycles-1440.png",
+        "../../outputs/four-local-prayer-1440.png",
+        "../../outputs/four-local-intro-reduced-1440.png"
+      ]
+    },
+    {
+      "width": 393,
+      "status": "PASS",
+      "intro": {
+        "offscreenClockMs": 0,
+        "actualFrames": [
+          {
+            "name": "intro-word",
+            "clock": 500.0279999999999,
+            "opacity": {
+              "paper": 1,
+              "therefore": 0.955639,
+              "slit": 0,
+              "outer": 0,
+              "brand": 0
+            }
+          },
+          {
+            "name": "intro-slit",
+            "clock": 1233.3,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 1,
+              "outer": 0.149081,
+              "brand": 0
+            }
+          },
+          {
+            "name": "intro-light",
+            "clock": 1683.2,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 0.114141,
+              "outer": 1,
+              "brand": 0.990941
+            }
+          },
+          {
+            "name": "intro-logo",
+            "clock": 2066.6339999999996,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 0,
+              "outer": 0.937042,
+              "brand": 1
+            }
+          }
+        ],
+        "completeState": "complete"
+      },
+      "sns": {
+        "durationMs": 21428.57142857143,
+        "realElapsedMs": 44098.60000002384,
+        "clockElapsedMs": 44098.2,
+        "directions": [
+          "up",
+          "down",
+          "up"
+        ],
+        "basePhotoCount": 80,
+        "uniqueBasePhotos": 80,
+        "velocityComparisons": 916,
+        "duplicatePhotos": 0,
+        "gapFailures": 0,
+        "maxVisibleHearts": 9,
+        "maxVisiblePlanes": 3,
+        "cycleParticleMaxima": [
+          {
+            "heart": 9,
+            "share": 3
+          },
+          {
+            "heart": 9,
+            "share": 3
+          }
+        ],
+        "particleDurationMs": 12000
+      },
+      "prayer": [
+        {
+          "step": "PAUSE",
+          "width": 345,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.2,
+              "x": 51,
+              "y": 0,
+              "width": 36,
+              "height": 1,
+              "opacity": "0.62",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.2,
+              "x": 33,
+              "y": -1,
+              "width": 72,
+              "height": 3,
+              "opacity": "0.18",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.2,
+              "x": -21.5,
+              "y": -27.5,
+              "width": 181,
+              "height": 56,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.2,
+              "x": -64,
+              "y": -43.5,
+              "width": 266,
+              "height": 88,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 345,
+              "height": 1,
+              "opacity": "0.57",
+              "filter": "none"
+            }
+          }
+        },
+        {
+          "step": "PRAY",
+          "width": 345,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.5,
+              "x": 154.5,
+              "y": 0,
+              "width": 36,
+              "height": 1,
+              "opacity": "0.96",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.5,
+              "x": 136.5,
+              "y": -1,
+              "width": 72,
+              "height": 3,
+              "opacity": "0.28",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.5,
+              "x": 82,
+              "y": -27.5,
+              "width": 181,
+              "height": 56,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.5,
+              "x": 39.5,
+              "y": -43.5,
+              "width": 266,
+              "height": 88,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 345,
+              "height": 1,
+              "opacity": "0.88",
+              "filter": "none"
+            }
+          }
+        },
+        {
+          "step": "CHOOSE",
+          "width": 345,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.8,
+              "x": 258,
+              "y": 0,
+              "width": 36,
+              "height": 1,
+              "opacity": "0.75",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.8,
+              "x": 240,
+              "y": -1,
+              "width": 72,
+              "height": 3,
+              "opacity": "0.22",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.8,
+              "x": 185.5,
+              "y": -27.5,
+              "width": 181,
+              "height": 56,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.8,
+              "x": 143,
+              "y": -43.5,
+              "width": 266,
+              "height": 88,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 345,
+              "height": 1,
+              "opacity": "0.69",
+              "filter": "none"
+            }
+          }
+        }
+      ],
+      "reducedMotion": {
+        "introState": "reduced",
+        "thereforeOpacity": 1,
+        "brandOpacity": 1,
+        "remainingAnimations": 0
+      },
+      "errors": [],
+      "httpErrors": [],
+      "overflow": 0,
+      "signupPosts": 0,
+      "screenshots": [
+        "../../outputs/four-local-intro-word-393.png",
+        "../../outputs/four-local-intro-slit-393.png",
+        "../../outputs/four-local-intro-light-393.png",
+        "../../outputs/four-local-intro-logo-393.png",
+        "../../outputs/four-local-sns-start-393.png",
+        "../../outputs/four-local-sns-second-cycle-393.png",
+        "../../outputs/four-local-sns-two-cycles-393.png",
+        "../../outputs/four-local-prayer-393.png",
+        "../../outputs/four-local-intro-reduced-393.png"
+      ]
+    },
+    {
+      "width": 360,
+      "status": "PASS",
+      "intro": {
+        "offscreenClockMs": 0,
+        "actualFrames": [
+          {
+            "name": "intro-word",
+            "clock": 516.666,
+            "opacity": {
+              "paper": 1,
+              "therefore": 0.989291,
+              "slit": 0,
+              "outer": 0,
+              "brand": 0
+            }
+          },
+          {
+            "name": "intro-slit",
+            "clock": 1216.6000000000001,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 1,
+              "outer": 0.108167,
+              "brand": 0
+            }
+          },
+          {
+            "name": "intro-light",
+            "clock": 1666.5,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 0.184839,
+              "outer": 1,
+              "brand": 0.968799
+            }
+          },
+          {
+            "name": "intro-logo",
+            "clock": 2083.2999999999997,
+            "opacity": {
+              "paper": 0,
+              "therefore": 0,
+              "slit": 0,
+              "outer": 0.891156,
+              "brand": 1
+            }
+          }
+        ],
+        "completeState": "complete"
+      },
+      "sns": {
+        "durationMs": 21428.57142857143,
+        "realElapsedMs": 44481.30000001192,
+        "clockElapsedMs": 44481.6,
+        "directions": [
+          "up",
+          "down",
+          "up"
+        ],
+        "basePhotoCount": 80,
+        "uniqueBasePhotos": 80,
+        "velocityComparisons": 930,
+        "duplicatePhotos": 0,
+        "gapFailures": 0,
+        "maxVisibleHearts": 9,
+        "maxVisiblePlanes": 3,
+        "cycleParticleMaxima": [
+          {
+            "heart": 9,
+            "share": 3
+          },
+          {
+            "heart": 9,
+            "share": 3
+          }
+        ],
+        "particleDurationMs": 12000
+      },
+      "prayer": [
+        {
+          "step": "PAUSE",
+          "width": 312,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.19996995192307693,
+              "x": 44.390625,
+              "y": 0,
+              "width": 36,
+              "height": 1,
+              "opacity": "0.62",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.19996995192307693,
+              "x": 26.390625,
+              "y": -1,
+              "width": 72,
+              "height": 3,
+              "opacity": "0.18",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.19996995192307693,
+              "x": -28.109375,
+              "y": -27.5,
+              "width": 181,
+              "height": 56,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.19996995192307693,
+              "x": -70.609375,
+              "y": -43.5,
+              "width": 266,
+              "height": 88,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 312,
+              "height": 1,
+              "opacity": "0.57",
+              "filter": "none"
+            }
+          }
+        },
+        {
+          "step": "PRAY",
+          "width": 312,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.5,
+              "x": 138,
+              "y": 0,
+              "width": 36,
+              "height": 1,
+              "opacity": "0.96",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.5,
+              "x": 120,
+              "y": -1,
+              "width": 72,
+              "height": 3,
+              "opacity": "0.28",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.5,
+              "x": 65.5,
+              "y": -27.5,
+              "width": 181,
+              "height": 56,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.5,
+              "x": 23,
+              "y": -43.5,
+              "width": 266,
+              "height": 88,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 312,
+              "height": 1,
+              "opacity": "0.88",
+              "filter": "none"
+            }
+          }
+        },
+        {
+          "step": "CHOOSE",
+          "width": 312,
+          "lights": {
+            "highlight": {
+              "centerRatio": 0.799979967948718,
+              "x": 231.59375,
+              "y": 0,
+              "width": 36,
+              "height": 1,
+              "opacity": "0.75",
+              "filter": "none"
+            },
+            "near-halo": {
+              "centerRatio": 0.799979967948718,
+              "x": 213.59375,
+              "y": -1,
+              "width": 72,
+              "height": 3,
+              "opacity": "0.22",
+              "filter": "blur(2.5px)"
+            },
+            "bloom": {
+              "centerRatio": 0.799979967948718,
+              "x": 159.09375,
+              "y": -27.5,
+              "width": 181,
+              "height": 56,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "haze": {
+              "centerRatio": 0.799979967948718,
+              "x": 116.59375,
+              "y": -43.5,
+              "width": 266,
+              "height": 88,
+              "opacity": "1",
+              "filter": "none"
+            },
+            "line": {
+              "centerRatio": 0.5,
+              "x": 0,
+              "y": 0,
+              "width": 312,
+              "height": 1,
+              "opacity": "0.69",
+              "filter": "none"
+            }
+          }
+        }
+      ],
+      "reducedMotion": {
+        "introState": "reduced",
+        "thereforeOpacity": 1,
+        "brandOpacity": 1,
+        "remainingAnimations": 0
+      },
+      "errors": [],
+      "httpErrors": [],
+      "overflow": 0,
+      "signupPosts": 0,
+      "screenshots": [
+        "../../outputs/four-local-intro-word-360.png",
+        "../../outputs/four-local-intro-slit-360.png",
+        "../../outputs/four-local-intro-light-360.png",
+        "../../outputs/four-local-intro-logo-360.png",
+        "../../outputs/four-local-sns-start-360.png",
+        "../../outputs/four-local-sns-second-cycle-360.png",
+        "../../outputs/four-local-sns-two-cycles-360.png",
+        "../../outputs/four-local-prayer-360.png",
+        "../../outputs/four-local-intro-reduced-360.png"
+      ]
+    }
+  ]
+}
