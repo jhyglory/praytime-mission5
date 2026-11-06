@@ -3,12 +3,11 @@
 import { useEffect, useRef } from "react";
 
 // Opacity values and choreography from Figma 1088:916 / 1088:1251.
-// The user requested a slower reading pace after reviewing the live site.
+// User feedback overrides the dot prelude with a letter-by-letter reveal.
 const opacity = {
   paper: [1, 1, 0, 0],
-  dotFirst: [0, 1, 1, 0, 0],
-  dotNext: [0, 0, 1, 1, 0, 0],
-  word: [0, 0, 1, 1, 0, 0],
+  letterFirst: [0, 1, 1, 0, 0],
+  letterNext: [0, 0, 1, 1, 0, 0],
   slit: [0, 0, 1, 1, 0, 0],
   edge: [0, 0, 1, 0.15, 0.15],
   bridge: [0, 0, 1, 1, 0, 0],
@@ -19,10 +18,9 @@ const timeline = {
   // Milliseconds make the readable holds explicit for both viewports.
   times: {
     paper: [0, 1950, 2700, 6000],
-    dotFirst: [0, 103, 1900, 2450, 6000],
-    dotSecond: [0, 103, 206, 1900, 2450, 6000],
-    dotThird: [0, 206, 310, 1900, 2450, 6000],
-    word: [0, 550, 1000, 2050, 2500, 6000],
+    letterFirst: [0, 300, 2050, 2500, 6000],
+    letterSecond: [0, 350, 650, 2050, 2500, 6000],
+    letterThird: [0, 700, 1000, 2050, 2500, 6000],
     slit: [0, 2600, 3050, 3500, 4000, 6000],
     edge: [0, 4200, 4750, 5250, 6000],
     bridgeFirst: [0, 2850, 3400, 5100, 5650, 6000],
@@ -33,10 +31,9 @@ const timeline = {
 const trackValues = {
   paper: opacity.paper,
   ambient: opacity.paper,
-  dotFirst: opacity.dotFirst,
-  dotSecond: opacity.dotNext,
-  dotThird: opacity.dotNext,
-  word: opacity.word,
+  letterFirst: opacity.letterFirst,
+  letterSecond: opacity.letterNext,
+  letterThird: opacity.letterNext,
   slit: opacity.slit,
   edge: opacity.edge,
   bridgeFirst: opacity.bridge,
@@ -160,16 +157,11 @@ export function SignatureTransition() {
         <picture><source media="(width < 768px)" srcSet="/assets/landing-transition-mobile-ambient.svg" /><img src="/assets/landing-transition-desktop-ambient.svg" alt="" /></picture>
       </div>
       {[
-        { letter: "그", dotTrack: "dotFirst", dotId: "1117:1264", wordId: "1117:1270", mobileDotId: "1088:1300", mobileWordId: "1088:1301" },
-        { letter: "래", dotTrack: "dotSecond", dotId: "1117:1277", wordId: "1117:1284", mobileDotId: "1088:1302", mobileWordId: "1088:1303" },
-        { letter: "서", dotTrack: "dotThird", dotId: "1117:1291", wordId: "1117:1298", mobileDotId: "1088:1304", mobileWordId: "1088:1305" },
-      ].map(({ letter, dotTrack, dotId, wordId, mobileDotId, mobileWordId }, index) => <div key={letter} className={`signature-transition__cue signature-transition__cue--${index + 1}`}>
-        <picture className="signature-transition__dot" data-motion-track={dotTrack} data-node-id={dotId} data-mobile-node-id={mobileDotId}>
-          <source media="(width < 768px)" srcSet={`/assets/transition-dot-mobile-${index + 1}.svg`} />
-          {/* Exact Figma SVGs retain their intrinsic 5.6px desktop / 4px mobile size. */}
-          <img src={`/assets/transition-dot-desktop-${index + 1}.svg`} alt="" />
-        </picture>
-        <p className="signature-transition__letter" data-motion-track="word" data-node-id={wordId} data-mobile-node-id={mobileWordId}>{letter}</p>
+        { letter: "그", track: "letterFirst", wordId: "1117:1270", mobileWordId: "1088:1301" },
+        { letter: "래", track: "letterSecond", wordId: "1117:1284", mobileWordId: "1088:1303" },
+        { letter: "서", track: "letterThird", wordId: "1117:1298", mobileWordId: "1088:1305" },
+      ].map(({ letter, track, wordId, mobileWordId }, index) => <div key={letter} className={`signature-transition__cue signature-transition__cue--${index + 1}`}>
+        <p className="signature-transition__letter" data-motion-track={track} data-node-id={wordId} data-mobile-node-id={mobileWordId}>{letter}</p>
       </div>)}
       <div className="signature-transition__reflection" data-motion-track="slit" data-node-id="1117:1305" data-mobile-node-id="1088:1306" />
       <div className="signature-transition__slit" data-motion-track="slit" data-node-id="1117:1312" data-mobile-node-id="1088:1307" />

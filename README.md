@@ -89,7 +89,7 @@ npm run start
 - THE GAP: 두 선택지를 동일한 hover/pressed/focus 규칙으로 처리. 돌아가기 → Hero, 시간 선택 → Time Select
 - 메뉴: 중앙 viewport의 섹션을 IntersectionObserver로 감지, opacity·aria-current만 갱신. Header의 기존 absolute 위치 유지
 - WHY NOW: 기존 운영 페이지의 실제 StatMetric을 기준으로3000ms cubic ease-out, 회색 track 없는7px 각진 막대, 첫100% 빨강 /둘째70% 연보라를 적용합니다. 각 카드가 보일 때 개별 시작하며 세션당1회 실행합니다. 정확한34.3% /25.3%와 Ink typography·SSR/no-JS/reduced-motion 최종값은 유지합니다.
-- WHY NOW → THE GAP: 실제 Figma opacity-loop timeline을 native Web Animations API로 구현. 사용자 속도 피드백에 따라 두 화면 모두6000ms, “그래서”1050ms·두 연결 문구 동시1550ms 완전 표시. 화면 밖·background에서 pause, reduced-motion/static fallback. sticky·scroll-progress·scroll hijacking·WebGL·motion dependency 없음. [구현 사양](docs/MOTION_PLAN.md).
+- WHY NOW → THE GAP: 실제 Figma opacity-loop timeline을 native Web Animations API로 구현. 사용자 속도 피드백에 따라 두 화면 모두6000ms, 점 대신 그 → 래 → 서를350ms 간격으로 한 글자씩 표시하고, 완성된 “그래서”1050ms·두 연결 문구 동시1550ms 완전 표시. 화면 밖·background에서 pause, reduced-motion/static fallback. sticky·scroll-progress·scroll hijacking·WebGL·motion dependency 없음. [구현 사양](docs/MOTION_PLAN.md).
 - shadcn Accordion FAQ 7개 독립 토글, 첫 항목만 기본 펼침, Enter / Space / 화살표 / Home / End; Light 배경·Ink text·승인 chevron
 - 최종 TIME SELECT 프리뷰: 5 / 10 / 15분 중 10분 selected. 원본 mockup 재사용, swipe·중앙 snap·tap·키보드 선택 지원. Hero 앱 테마 toggle은 최종 Figma에 없어 노출하지 않습니다.
 - 8개 폼 그룹, client·server validation, 최초 오류 focus

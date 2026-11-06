@@ -79,6 +79,8 @@ test("skip link and reduced-motion navigation support the keyboard", async ({ pa
   await expect(transition.locator(".signature-transition__bridge-first")).toBeVisible();
   await expect(transition.locator(".signature-transition__bridge-first")).toHaveCSS("opacity", "1");
   await expect(transition.locator(".signature-transition__bridge-second")).toHaveCSS("opacity", "1");
+  for (const letter of await transition.locator(".signature-transition__letter").all()) await expect(letter).toHaveCSS("opacity", "1");
+  await expect(transition.locator(".signature-transition__dot")).toHaveCount(0);
   await expect(transition.locator(".sr-only")).toHaveText("그래서, 행동하기 전에 잠깐의 틈을 만듭니다.");
   await expect(transition.locator(".signature-transition__scene")).toHaveAttribute("aria-hidden", "true");
 });
@@ -267,9 +269,35 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await transition.scrollIntoViewIfNeeded();
     await expect(transition).toHaveAttribute("data-motion-state", "running");
     await expect(transition).toHaveAttribute("data-motion-duration", "6000");
-    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(17);
+    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(14);
+    await expect(transition.locator(".signature-transition__dot")).toHaveCount(0);
+    await expect(transition.locator(".signature-transition__letter")).toHaveText(["그", "래", "서"]);
+    const reveal = await transition.evaluate(el => {
+      const animations = el.getAnimations({ subtree: true });
+      const samples = [150, 500, 850, 1000, 2000].map(time => {
+        for (const animation of animations) { animation.pause(); animation.currentTime = time; }
+        return [...el.querySelectorAll(".signature-transition__letter")].map(letter => Number(getComputedStyle(letter).opacity));
+      });
+      // Resume the shared clock before observing the complete live cycle below.
+      const now = document.timeline.currentTime;
+      for (const animation of animations) {
+        animation.currentTime = 0;
+        animation.play();
+        if (typeof now === "number") animation.startTime = now;
+      }
+      return samples;
+    });
+    expect(reveal[0][0]).toBeGreaterThan(.4);
+    expect(reveal[0].slice(1)).toEqual([0, 0]);
+    expect(reveal[1][0]).toBe(1);
+    expect(reveal[1][1]).toBeGreaterThan(.4);
+    expect(reveal[1][2]).toBe(0);
+    expect(reveal[2].slice(0, 2)).toEqual([1, 1]);
+    expect(reveal[2][2]).toBeGreaterThan(.4);
+    expect(reveal[3]).toEqual([1, 1, 1]);
+    expect(reveal[4]).toEqual([1, 1, 1]);
     // A full-opacity reading window prevents the text becoming a brief flash.
-    const readingHolds = await transition.evaluate(el => ["word", "bridgeFirst", "bridgeSecond"].map(track => {
+    const readingHolds = await transition.evaluate(el => ["letterThird", "bridgeFirst", "bridgeSecond"].map(track => {
       const effect = el.querySelector(`[data-motion-track="${track}"]`)!.getAnimations()[0].effect as KeyframeEffect;
       const frames = effect.getKeyframes().filter(frame => Number(frame.opacity) === 1);
       return (frames[1].computedOffset - frames[0].computedOffset) * Number(effect.getTiming().duration);
