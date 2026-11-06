@@ -1,5 +1,7 @@
 # Final intro / SNS motion patch · 2026-11-06
 
+> Historical release record. Current whole-page layout, statistics, source-sized all-up SNS motion and viewport-height intro are defined in [WHOLE_PAGE_FINAL.md](WHOLE_PAGE_FINAL.md). Earlier scope, timing, geometry or direction rules below are superseded where they conflict.
+
 This patch implements the user's explicit final specification on the existing Next.js App Router16.4.5 / React19.3.1 / TypeScript / Tailwind4 / shadcn project. It does not create another project or replace functioning forms.
 
 ## Design and choreography

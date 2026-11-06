@@ -6,7 +6,7 @@ declare global {
       started: number;
       completed: number;
       cls: number;
-      samples: { values: number[]; transforms: string[]; widths: string[] }[];
+      samples: { at: number; values: number[]; scales: number[]; widths: string[] }[];
     };
   }
 }
@@ -35,24 +35,23 @@ async function centerSection(page: Page, selector: string) {
   await page.locator(selector).evaluate(el => el.scrollIntoView({ block: "center", behavior: "instant" }));
 }
 
-async function expectReferenceGauges(grid: Locator) {
-  const mobile = await grid.evaluate(() => innerWidth < 768);
-  for (const [index, desktopColor] of ["rgb(255, 68, 56)", "rgb(196, 192, 240)"].entries()) {
+async function expectProportionalGauges(grid: Locator) {
+  for (const [index, rate] of [34.3, 25.3].entries()) {
     const card = grid.locator(".stat-card").nth(index);
     const track = card.locator(".stat-track");
     const fill = card.locator(".stat-fill");
     const available = await card.evaluate(el => {
       const css = getComputedStyle(el);
-      return el.clientWidth - Number.parseFloat(css.paddingLeft) - Number.parseFloat(css.paddingRight);
+      return el.getBoundingClientRect().width - Number.parseFloat(css.paddingLeft) - Number.parseFloat(css.paddingRight) - Number.parseFloat(css.borderLeftWidth) - Number.parseFloat(css.borderRightWidth);
     });
     const box = (await track.boundingBox())!;
-    expect(box.width).toBeCloseTo(mobile ? available : Math.min(available,420)*(index === 0 ? 1 : .7),1);
-    expect((await fill.boundingBox())!.width).toBeCloseTo(box.width*(mobile ? (index === 0 ? .343 : .253) : 1),1);
-    await expect(track).toHaveCSS("height", mobile ? "6px" : "7px");
-    await expect(track).toHaveCSS("border-radius", mobile ? "2px" : "0px");
-    await expect(track).toHaveCSS("background-color", mobile ? "rgb(233, 229, 236)" : "rgba(0, 0, 0, 0)");
-    await expect(fill).toHaveCSS("border-radius", mobile ? "2px" : "0px");
-    await expect(fill).toHaveCSS("background-color", mobile ? "rgb(255, 68, 56)" : desktopColor);
+    expect(box.width).toBeCloseTo(available, 1);
+    expect((await fill.boundingBox())!.width).toBeCloseTo(box.width * rate / 100, 1);
+    await expect(track).toHaveCSS("height", "6px");
+    await expect(track).toHaveCSS("border-radius", "2px");
+    await expect(track).toHaveCSS("background-color", "rgb(233, 229, 236)");
+    await expect(fill).toHaveCSS("border-radius", "2px");
+    await expect(fill).toHaveCSS("background-color", "rgb(255, 68, 56)");
   }
 }
 
@@ -255,7 +254,12 @@ test("active navigation retains native anchor names, URLs and keyboard heading f
   }
 });
 
-test("WHY NOW counts once without overshoot or layout shift and stays final after reentry and reload", async ({ page }) => {
+test("WHY NOW shares 1400ms cubic number/fill progress, runs once per load and replays after both reloads", async ({ page }) => {
+  await page.addInitScript(() => {
+    // Obsolete session flags must not suppress the new per-page animation.
+    for (const rate of [34.3, 25.3]) sessionStorage.setItem(`praytime:why-now-countup:v3:${rate}`, "done");
+    history.scrollRestoration = "manual";
+  });
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
   const grid = page.locator("#why-stats");
@@ -267,13 +271,19 @@ test("WHY NOW counts once without overshoot or layout shift and stays final afte
     const grid = document.getElementById("why-stats")!;
     const numbers = [...grid.querySelectorAll<HTMLElement>("[data-stat-number]")];
     const fills = [...grid.querySelectorAll<HTMLElement>(".stat-fill")];
-    const result = window.microStats = { started: 0, completed: 0, cls: 0, samples: [] as { values: number[]; transforms: string[]; widths: string[] }[] };
+    const result: Window["microStats"] = window.microStats = { started: 0, completed: 0, cls: 0, samples: [] };
     const observer = new MutationObserver(() => {
       const state = grid.dataset.countState;
-      if (state === "running" && !result.started) result.started = performance.now();
-      if (state === "running" || state === "complete") result.samples.push({ values: numbers.map(el => Number.parseFloat(el.textContent!)), transforms: fills.map(el => el.style.transform), widths: fills.map(el => getComputedStyle(el).width) });
+      const now = performance.now();
+      if (state === "running" && !result.started) result.started = now;
+      if (state === "running" || state === "complete") result.samples.push({
+        at: now,
+        values: numbers.map(el => Number.parseFloat(el.textContent!)),
+        scales: fills.map(el => el.style.transform ? Number(el.style.transform.match(/scaleX\(([^)]+)\)/)?.[1]) : 1),
+        widths: fills.map(el => getComputedStyle(el).width),
+      });
       if (state === "complete") {
-        result.completed = performance.now();
+        result.completed = now;
         observer.disconnect();
       }
     });
@@ -285,41 +295,50 @@ test("WHY NOW counts once without overshoot or layout shift and stays final afte
       }
     }).observe({ type: "layout-shift" });
   });
-  await grid.scrollIntoViewIfNeeded();
+  await centerSection(page, "#why-stats");
   await expect(grid).toHaveAttribute("data-count-state", "complete");
   await expect(numbers).toHaveText(["34.3%", "25.3%"]);
   await expect(grid).toHaveAttribute("data-count-runs", "1");
   const observation = await page.evaluate(() => window.microStats);
-  expect(observation.completed - observation.started).toBeGreaterThanOrEqual(2800);
-  expect(observation.completed - observation.started).toBeLessThanOrEqual(3400);
+  expect(observation.completed - observation.started).toBeGreaterThanOrEqual(1350);
+  expect(observation.completed - observation.started).toBeLessThanOrEqual(1550);
   expect(observation.samples.length).toBeGreaterThan(2);
   expect(observation.samples.some(sample => sample.values[0] > 0 && sample.values[0] < 34.3)).toBe(true);
-  expect(observation.samples.some(sample => sample.transforms.some(value => /^scaleX\(0\./.test(value)))).toBe(true);
+  expect(observation.samples.some(sample => sample.scales[0] > 0.25 && sample.scales[0] < 0.8)).toBe(true);
   for (const [index, final] of [34.3, 25.3].entries()) {
     const track = (await grid.locator(".stat-track").nth(index).boundingBox())!;
     let previous = 0;
     for (const sample of observation.samples) {
       expect(sample.values[index]).toBeGreaterThanOrEqual(previous);
       expect(sample.values[index]).toBeLessThanOrEqual(final);
-      expect(Number.parseFloat(sample.widths[index])).toBeCloseTo(track.width, 1);
+      expect(Number.parseFloat(sample.widths[index])).toBeCloseTo(track.width * final / 100, 1);
+      // Both outputs use the same eased scalar, including one-decimal rounding.
+      expect(Math.abs(sample.values[index] - final * sample.scales[index])).toBeLessThanOrEqual(0.051);
+      const progress = Math.min(1, Math.max(0, (sample.at - observation.started) / 1400));
+      expect(Math.abs(sample.scales[index] - (1 - (1 - progress) ** 3))).toBeLessThan(0.025);
       previous = sample.values[index];
     }
-    const fill = (await grid.locator(".stat-fill").nth(index).boundingBox())!;
-    expect(fill.width).toBeCloseTo(track.width, 1);
-    await expect(grid.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
   }
   expect(observation.cls).toBeLessThanOrEqual(0.001);
-  await expectReferenceGauges(grid);
+  await expectProportionalGauges(grid);
 
-  await centerSection(page, "#hero");
-  await grid.scrollIntoViewIfNeeded();
-  await expect(grid).toHaveAttribute("data-count-state", "complete");
-  await expect(grid).toHaveAttribute("data-count-runs", "1");
-  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
-  await page.reload();
-  await expect(grid).toHaveAttribute("data-count-state", "complete");
-  await expect(grid).toHaveAttribute("data-count-runs", "0");
-  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+  for (let reload = 0; reload < 2; reload += 1) {
+    await centerSection(page, "#hero");
+    await centerSection(page, "#why-stats");
+    await expect(grid).toHaveAttribute("data-count-state", "complete");
+    await expect(grid).toHaveAttribute("data-count-runs", "1");
+    await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+    await centerSection(page, "#hero");
+    await page.reload();
+    await expect(grid).toHaveAttribute("data-count-state", "pending");
+    await expect(grid).toHaveAttribute("data-count-runs", "0");
+    await expect(numbers).toHaveText(["0.0%", "0.0%"]);
+    await centerSection(page, "#why-stats");
+    await expect(grid).toHaveAttribute("data-count-state", "running");
+    await expect(grid).toHaveAttribute("data-count-state", "complete");
+    await expect(grid).toHaveAttribute("data-count-runs", "1");
+    await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+  }
 });
 
 test("WHY NOW reduced motion immediately presents final accessible values and gauges", async ({ page }) => {
@@ -332,10 +351,10 @@ test("WHY NOW reduced motion immediately presents final accessible values and ga
   await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
   await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
   for (const fill of await grid.locator(".stat-fill").all()) await expect(fill).toHaveCSS("transform", "none");
-  await expectReferenceGauges(grid);
+  await expectProportionalGauges(grid);
 });
 
-test("without JavaScript, WHY NOW still renders exact statistics and full count accents", async ({ browser, baseURL }) => {
+test("without JavaScript, WHY NOW still renders exact statistics and proportional gauges", async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 1440, height: 900 } });
   try {
     const page = await context.newPage();
@@ -345,13 +364,7 @@ test("without JavaScript, WHY NOW still renders exact statistics and full count 
     await grid.scrollIntoViewIfNeeded();
     await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
     await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
-    for (const index of [0, 1]) {
-      const fill = (await grid.locator(".stat-fill").nth(index).boundingBox())!;
-      const track = (await grid.locator(".stat-track").nth(index).boundingBox())!;
-      expect(fill.width).toBeCloseTo(track.width, 1);
-      await expect(grid.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
-    }
-    await expectReferenceGauges(grid);
+    await expectProportionalGauges(grid);
     const intro = page.locator("[data-signature-transition]");
     await intro.scrollIntoViewIfNeeded();
     await expect(intro.locator(".card-intro__headline")).toBeVisible();
@@ -369,30 +382,70 @@ test("without JavaScript, WHY NOW still renders exact statistics and full count 
   }
 });
 
-test("mobile statistics wait for each visible card before the three-second fill", async ({ page }) => {
+test("mobile statistics trigger individually at 40% of the unmodified viewport and pause offscreen", async ({ page }) => {
   await page.setViewportSize({ width: 393, height: 600 });
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
   const grid = page.locator("#why-stats");
   const first = grid.locator(".stat-card").nth(0);
   const second = grid.locator(".stat-card").nth(1);
-  await first.evaluate(el => {
+  const reveal = (card: Locator, fraction: number) => card.evaluate((el, fraction) => {
     const box = el.getBoundingClientRect();
-    const rootBottom = innerHeight * 0.85;
-    scrollTo({ top: scrollY + box.top - (rootBottom - box.height * 0.65), behavior: "instant" });
-  });
+    scrollTo({ top: scrollY + box.top - (innerHeight - box.height * fraction), behavior: "instant" });
+  }, fraction);
+  await reveal(first, 0.39);
+  await page.waitForTimeout(150);
+  await expect(first).toHaveAttribute("data-count-state", "pending");
+  await expect(first.locator("[data-stat-number]")).toHaveText("0.0%");
+  await reveal(first, 0.41);
   await expect(first).toHaveAttribute("data-count-state", "running");
   await expect(second).toHaveAttribute("data-count-state", "pending");
   await expect(second.locator("[data-stat-number]")).toHaveText("0.0%");
+  await expect.poll(() => first.locator("[data-stat-number]").evaluate(el => Number.parseFloat(el.textContent!))).toBeGreaterThan(0);
+  await centerSection(page, "#hero");
+  await expect(first).toHaveAttribute("data-count-state", "paused");
+  const paused = await first.evaluate(el => ({ number: el.querySelector("[data-stat-number]")!.textContent, fill: el.querySelector<HTMLElement>(".stat-fill")!.style.transform }));
+  await page.waitForTimeout(250);
+  expect(await first.evaluate(el => ({ number: el.querySelector("[data-stat-number]")!.textContent, fill: el.querySelector<HTMLElement>(".stat-fill")!.style.transform }))).toEqual(paused);
+  await reveal(first, 0.41);
+  await expect(first).toHaveAttribute("data-count-state", "running");
   await expect(first).toHaveAttribute("data-count-state", "complete");
+  await expect(second).toHaveAttribute("data-count-state", "pending");
   await expect(second).toHaveAttribute("data-count-runs", "0");
-  await second.evaluate(el => el.scrollIntoView({ block: "center", behavior: "instant" }));
+  await reveal(second, 0.41);
   await expect(second).toHaveAttribute("data-count-state", "running");
   await expect(second).toHaveAttribute("data-count-state", "complete");
   await expect(grid).toHaveAttribute("data-count-state", "complete");
   await expect(first).toHaveAttribute("data-count-runs", "1");
   await expect(second).toHaveAttribute("data-count-runs", "1");
-  await expectReferenceGauges(grid);
+  await expectProportionalGauges(grid);
+});
+
+test("WHY NOW pauses in the background and reduced motion finishes a running animation", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  const grid = page.locator("#why-stats");
+  await centerSection(page, "#why-stats");
+  await expect(grid).toHaveAttribute("data-count-state", "running");
+  await page.evaluate(() => {
+    Object.defineProperty(document, "hidden", { value: true, configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect(grid).toHaveAttribute("data-count-state", "paused");
+  const paused = await grid.evaluate(el => [...el.querySelectorAll<HTMLElement>("[data-stat-number], .stat-fill")].map(node => [node.textContent, node.style.transform]));
+  await page.waitForTimeout(250);
+  expect(await grid.evaluate(el => [...el.querySelectorAll<HTMLElement>("[data-stat-number], .stat-fill")].map(node => [node.textContent, node.style.transform]))).toEqual(paused);
+  await page.evaluate(() => {
+    Reflect.deleteProperty(document, "hidden");
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect(grid).toHaveAttribute("data-count-state", "running");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
+  await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
+  for (const fill of await grid.locator(".stat-fill").all()) await expect(fill).toHaveCSS("transform", "none");
+  await expectProportionalGauges(grid);
 });
 
 test("mobile touch preserves choice, wheel, FAQ and beta CTA flows without saving data", async ({ browser, baseURL }) => {

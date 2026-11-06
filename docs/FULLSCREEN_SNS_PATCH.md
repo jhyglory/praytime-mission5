@@ -1,5 +1,7 @@
 # Fullscreen alternating SNS scene · 2026-11-06
 
+> Historical release record. Current whole-page layout, statistics, source-sized all-up SNS motion and viewport-height intro are defined in [WHOLE_PAGE_FINAL.md](WHOLE_PAGE_FINAL.md). Earlier scope, timing, geometry or direction rules below are superseded where they conflict.
+
 The user's latest instruction overrides only the SNS card scene's fixed frame height and shared upward direction. The previous intro/photo/GAP specification remains in [FINAL_SNS_PATCH.md](FINAL_SNS_PATCH.md).
 
 - Scene height is100dvh with100vh fallback. The original1440×760 Desktop /393×680 Mobile artwork is centered and uniformly cover-scaled to fill both axes. ResizeObserver updates only a CSS variable on resize, with no React state/frame loop.

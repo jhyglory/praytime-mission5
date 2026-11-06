@@ -4,6 +4,9 @@ import { buildSiteMetadata } from "@/lib/site-metadata";
 import "./globals.css";
 import "@/components/landing/prayer-light-divider.css";
 import "@/components/landing/signature-transition.css";
+import "@/components/landing/whole-upper.css";
+import "@/components/landing/whole-page.css";
+import "@/components/landing/whole-lower.css";
 
 const pretendard = localFont({ src: "../../public/fonts/PretendardVariable.woff2", display: "swap", variable: "--font-pretendard", weight: "100 900" });
 const inter = localFont({ src: "../../public/fonts/InterVariable.woff2", display: "swap", variable: "--font-inter", weight: "100 900" });

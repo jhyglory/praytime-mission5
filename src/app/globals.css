@@ -278,10 +278,9 @@ h1 { font-size: 44px; line-height: 60px; }
 .stat-age { display: none; }
 .stat-value { color: #18181b; font-size: 76px; font-weight: 700; line-height: 92px; }
 .stat-caption { margin-top: 8px; font-size: 20px; font-weight: 700; line-height: 30px; }
-.stat-track { width: 100%; max-width: 420px; height: 7px; margin-top: 25px; background: transparent; overflow: hidden; }
-.stat-fill { width: 100%; height: 100%; background: #ff4438; }
-.stat-card:nth-child(2) .stat-track { width: 70%; max-width: 294px; }
-.stat-card:nth-child(2) .stat-fill { background: #c4c0f0; }
+.stat-track { width: 100%; height: 6px; margin-top: 25px; border-radius: 2px; background: #e9e5ec; overflow: hidden; }
+.stat-fill { width: 34.3%; height: 100%; border-radius: 2px; background: #ff4438; }
+.stat-card:nth-child(2) .stat-fill { width: 25.3%; background: #ff4438; }
 .stat-source { color: #696a70; font-size: 12px; line-height: 20px; }
 .mobile-source { display: none; }
 .why-bridge { padding-top: 40px; font-weight: 700; font-size: 34px; line-height: 46px; }

@@ -1,12 +1,12 @@
 /* Prototype1214:651 /1214:830: separate clean intro and continuous12s masonry.
-   Latest user override: viewport-filling SNS scene, alternating up/down columns. */
+   Whole-page request: source-sized SNS scene, continuous upward columns. */
 .card-intro { position:relative; overflow:clip; isolation:isolate; background:#0b1020; color:#f1f1ee; }
 .card-intro__scene { pointer-events:none; }
 .card-intro__clean, .card-intro__cards { isolation:isolate; }
 .card-intro[data-motion-state="reduced"] .card-intro__particle-position { display:none; }
 .card-intro__clean, .card-intro__cards { position:relative; overflow:clip; }
 .card-intro__clean { height:760px; }
-.card-intro__cards { height:100vh; height:100dvh; scroll-margin:0; }
+.card-intro__cards { height:760px; scroll-margin:0; }
 .card-intro__intro-copy { position:absolute; top:263.5px; left:50%; width:min(1120px,calc(100% - 48px)); transform:translateX(-50%); display:flex; flex-direction:column; gap:128px; align-items:center; }
 .card-intro p { margin:0; }
 .card-intro__therefore { width:100%; font-size:44px; line-height:60px; font-weight:500; letter-spacing:-.88px; text-align:center; }
@@ -40,7 +40,7 @@
 .card-intro__anchor { font-size:20px; line-height:32px; letter-spacing:-.4px; color:rgb(241 241 238 / 72%); }
 .card-intro__mobile-break { display:none; }
 @media (width < 768px) {
-  .card-intro__clean { height:680px; }
+  .card-intro__clean, .card-intro__cards { height:680px; }
   .card-intro__intro-copy { top:251px; gap:104px; }
   .card-intro__therefore { font-size:30px; line-height:42px; letter-spacing:-.6px; }
   .card-intro__brand { gap:5px; }
@@ -57,17 +57,4 @@
   .card-intro__anchor { font-size:clamp(14px,4.3257vw,17px); line-height:28px; letter-spacing:-.34px; }
   .card-intro__mobile-break { display:block; }
   .card-intro__desktop-space { display:none; }
-}
-
-/* Mobile WHY NOW1209:1073: exact source spacing and threshold. Desktop keeps
-   its existing statistic presentation; mobile follows the newly supplied frame. */
-@media (width < 768px) {
-  .why-now { position:relative; isolation:isolate; }
-  .why-now::after { content:""; position:absolute; z-index:-1; inset:auto 0 0; height:190px; background:linear-gradient(transparent,rgb(11 16 32 / 75%) 50%,#0b1020); }
-  .why-now h2 { font-size:32px; line-height:48px; min-height:156px; }
-  .why-support { font-size:26px; line-height:44px; min-height:144px; }
-  .stat-source { color:#f1f1ee; opacity:.85; }
-  .stat-track, .stat-card:nth-child(2) .stat-track { width:100%; max-width:none; height:6px; border-radius:2px; background:#e9e5ec; }
-  .stat-fill { width:34.3%; border-radius:2px; }
-  .stat-card:nth-child(2) .stat-fill { width:25.3%; background:#ff4438; }
 }

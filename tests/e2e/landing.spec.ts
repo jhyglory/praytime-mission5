@@ -123,8 +123,8 @@ for (const width of widths) {
       const cards = el.querySelector(".card-intro__cards")!.getBoundingClientRect();
       return { cleanHeight:clean.height, cardsHeight:cards.height, cleanBottom:clean.bottom, cardsTop:cards.top, cleanCards:el.querySelectorAll(".card-intro__clean .ambient-card").length };
     });
-    expect(introGeometry.cleanHeight).toBe(width < 768 ? 680 : 760);
-    expect(introGeometry.cardsHeight).toBe(1600);
+    expect(introGeometry.cleanHeight).toBe(1600);
+    expect(introGeometry.cardsHeight).toBe(width < 768 ? 680 : 760);
     expect(introGeometry.cardsTop).toBeCloseTo(introGeometry.cleanBottom, 1);
     expect(introGeometry.cleanCards).toBe(0);
     const gapArtwork = page.locator(".gap-architecture");
@@ -203,8 +203,8 @@ for (const width of widths) {
       }
       await expect(page.locator(".hero-artwork img")).toHaveAttribute("src", "/assets/landing-continuous-hero.png");
       await expect(page.locator(".question-artwork img")).toHaveAttribute("src", "/assets/landing-continuous-hero.png");
-      await expect(page.locator("#question-heading")).toHaveCSS("font-size", width === 1440 ? "80px" : "44px");
-      await expect(page.locator("#question-heading")).toHaveCSS("line-height", width === 1440 ? "112px" : "66px");
+      await expect(page.locator("#question-heading")).toHaveCSS("font-size", width === 1440 ? "56px" : "32px");
+      await expect(page.locator("#question-heading")).toHaveCSS("line-height", width === 1440 ? "80px" : "48px");
       const gap = await page.locator("#the-gap").boundingBox();
       expect(gap!.height).toBe(width === 1440 ? 1180 : 1024);
     }
@@ -275,8 +275,8 @@ test("final Hero overlay, statistic count accents and anchors match the approved
   for (const index of [0, 1]) {
     const track = await page.locator(".stat-track").nth(index).boundingBox();
     const fill = await page.locator(".stat-fill").nth(index).boundingBox();
-    expect(fill!.width).toBeCloseTo(track!.width, 1);
-    await expect(page.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+    expect(fill!.width).toBeCloseTo(track!.width * [0.343,0.253][index], 1);
+    await expect(page.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgb(233, 229, 236)");
     expect(await page.locator(".stat-value").nth(index).evaluate(el => getComputedStyle(el).color)).toBe("rgb(24, 24, 27)");
   }
   await page.getByRole("link", { name: "작동 방식 보기", exact: true }).focus();

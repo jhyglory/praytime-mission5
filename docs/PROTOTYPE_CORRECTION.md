@@ -1,5 +1,7 @@
 # Actual prototype correction · 2026-11-06
 
+> Historical release record. Current whole-page layout, statistics, source-sized all-up SNS motion and viewport-height intro are defined in [WHOLE_PAGE_FINAL.md](WHOLE_PAGE_FINAL.md). Earlier scope, timing, geometry or direction rules below are superseded where they conflict.
+
 > Historical8bd03ed release. The subsequent explicit intro/ZIP specification is implemented in [FINAL_SNS_PATCH.md](FINAL_SNS_PATCH.md).
 
 The user corrected the preceding16s board implementation with the actual [Desktop prototype](https://www.figma.com/proto/J8iLsfruyMwVCakXsSJPq4/?node-id=1214-651&page-id=1209%3A513&starting-point-node-id=1209%3A514). Chrome playback and fresh Figma design/motion context were read. No Figma document was edited.

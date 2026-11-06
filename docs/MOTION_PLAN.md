@@ -1,16 +1,21 @@
 # WHY NOW → THE GAP · current motion specification
 
-## Fullscreen alternating SNS override · 2026-11-06
+## Whole-page final correction · 2026-11-06 — current authority
+
+This task covers every Desktop/Mobile landing section. Latest explicit user requirements override final1209:514/1051 Figma, which overrides older repository restrictions. Remove narrow “other sections unchanged” scope,100%/70% transparent/lavender gauges,3000ms/50% trigger/sessionStorage latch, and alternating-column behavior. Stats now1400ms/40% independent visibility, both red34.3%/25.3% of a gray100% track, once per page load and replay on reload. SNS columns all rise; independent intro gets sufficient viewport height. Audit every section at1440/393/360 and publish real24s+/reload/interaction evidence. Product/security/approved original assets and existing live backend remain unchanged. See AGENTS.md and docs/WHOLE_PAGE_FINAL.md. Earlier stage records below are historical where they conflict.
+
+
+## Historical: Fullscreen alternating SNS override · superseded
 
 Latest user instruction changes ONLY the “손이 먼저 움직인 순간” card scene: fill the viewport (100vh fallback /100dvh), cover-scale the original artwork, center the static declaration, and alternate columns up/down/up/down. Use the same12s linear cycle, authored phase and two identical tiles; downward columns run−cycleHeight→0. Keep the independent clean intro at760/680px, original80-photo mapping, particles, reduced-motion/offscreen pause and all other interactions/backend. This explicit instruction supersedes fixed SNS scene heights and all-up motion in older Figma notes. No dependency, Figma/DB/DNS/main/merge changes. See docs/FULLSCREEN_SNS_PATCH.md.
 
 
-## Final explicit SNS specification · 2026-11-06 — latest user request
+## Historical: Previous intro/SNS-only specification · superseded
 
 Use full Desktop1209:514 / Mobile1209:1051 for layout and previews1265:8215 /1265:11339 for the clean intro's entrance values. The user explicitly requires two independent sections: animate the WHOLE “그래서” word, then the actual exported Figma wordmark plus “은”, once on intro entry; hold the readable result without scene crossfade or auto-scroll. Entrance milestones are150.4–649.6ms /1350.4–1950.4ms with source easing, within the preview's4s clean window. Do not restore letter-by-letter text or a text/CSS substitute logo. The SNS scene stays separate with fixed copy,12s linear columns,16hearts/4shares and original80 ZIP Photos assigned once per base cycle. The supplied ZIP matches all existing80 photo bytes. Use an equivalent full-cycle translation and duplicate tile rather than interpolate the export's1.2ms internal column teleport. Reduced motion now retains static cards and readable text; no-JS keeps readable copy. Mobile WHY uses32/48 and26/44 even below393px. Center each GAP condition, actual light and CTA/arrow flex group on one panel axis. Preserve all other interactions, live backend/privacy guard, favicon/OG and source photos. No DB operation, Figma mutation, dependency, main/merge or DNS change. Existing authorized feature/PR1/Vercel workflow continues after checks. See docs/FINAL_SNS_PATCH.md. Earlier static-intro notes below are historical.
 
 
-## Prototype correction · 2026-11-06 — current authority
+## Historical: Prototype correction · superseded
 
 The user's latest prototype is Desktop1214:651 on page1209:513, starting at full Landing1209:514. Its companion Mobile preview is1214:830 (full Landing1209:1051). These supersede the previous combined16s board1265:8215 for this intro/card patch. The full Landing has a separate clean text-only intro (Desktop1265:8075, Mobile1265:8099), followed by a separate card-declaration scene. Both clean roots return an empty motion inventory; do not invent an auto-fade between the two scroll sections. Each section is760px Desktop /680px Mobile. Card scenes loop continuously every12000ms while declaration/anchor copy stays visible. Desktop six24-card cycles and Mobile three36-card cycles each duplicate once for seamless stream resets;20 decorative particles per viewport. All80 original photo assets are verified against their Figma image hashes. Use the actual Mobile geometry, not a scaled/cropped Desktop scene. Preserve all other sections and explicit CTA/GAP-label/favicon overrides, shadcn, live backend/privacy guard and success alert. No DB operations, Figma edits, dependency, merge/main or DNS changes. Continue the existing authorized feature/PR1/Vercel workflow after checks. See docs/PROTOTYPE_CORRECTION.md. Historical notes below are superseded where they conflict.
 
@@ -19,7 +24,7 @@ The user's latest prototype is Desktop1214:651 on page1209:513, starting at full
 
 The new requested full-motion1265:8215 replaces the historical6s timeline below. Clean intro1265:8081 defines the card-free start; the full scene coordinates the intro and card motion on a16s loop. See [CARD_INTRO_PATCH.md](CARD_INTRO_PATCH.md). The old three-letter/slit/aperture implementation is retired; other Landing interactions and live backend remain unchanged.
 
-## Current authority · 2026-11-06
+## Historical: Earlier933/1088 authority · superseded
 
 The current visual source is [Figma page933:2](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/PrayTime?node-id=933-2), containing Desktop1088:916 and Mobile1088:1251. Source transition nodes are1088:965 /1088:1297. The user subsequently requested two explicit motion corrections: a slower6000ms reading pace, then sequential **그 → 래 → 서** instead of the dots-first / simultaneous-word reveal. These requests override the corresponding original Figma timing/choreography. Figma itself remains unchanged.
 

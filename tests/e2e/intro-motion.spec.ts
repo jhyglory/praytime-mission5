@@ -44,7 +44,7 @@ test("standalone intro reveals the whole word then the actual logo once, with no
   }
 });
 
-test("SNS scene fills the viewport with covered art and centered copy while the clean intro keeps its authored height", async ({ page }) => {
+test("Final SNS frame follows Figma and the independent intro fills the viewport", async ({ page }) => {
   await page.emulateMedia({ reducedMotion:"reduce" });
   await page.goto("/");
   for (const viewport of [
@@ -60,8 +60,10 @@ test("SNS scene fills the viewport with covered art and centered copy while the 
     const scene=page.locator(".card-intro__cards");
     await scene.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
     const base=viewport.width < 768 ? { width:393,height:680 } : { width:1440,height:760 };
-    const scale=Math.max(viewport.width/base.width,viewport.height/base.height);
-    await expect(scene).toHaveCSS("height",`${viewport.height}px`);
+    const scale=Math.max(1,viewport.width/base.width);
+    await expect(page.locator("[data-clean-intro]")).toHaveCSS("height",`${Math.max(base.height,viewport.height)}px`);
+    await scene.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
+    await expect(scene).toHaveCSS("height",`${base.height}px`);
     await expect.poll(async () => (await scene.locator(".card-intro__art").boundingBox())!.width).toBeCloseTo(base.width*scale,1);
     const geometry=await scene.evaluate(el => {
       const rect=(element:Element) => {
@@ -80,8 +82,8 @@ test("SNS scene fills the viewport with covered art and centered copy while the 
     expect(geometry.scene.left).toBeCloseTo(0,1);
     expect(geometry.scene.top).toBeCloseTo(0,1);
     expect(geometry.scene.width).toBe(viewport.width);
-    expect(geometry.scene.height).toBe(viewport.height);
-    expect(geometry.clean.height).toBe(viewport.width < 768 ? 680 : 760);
+    expect(geometry.scene.height).toBe(base.height);
+    expect(geometry.clean.height).toBe(Math.max(base.height,viewport.height));
     expect(geometry.clean.bottom).toBeCloseTo(geometry.scene.top,1);
     expect(geometry.art.height).toBeCloseTo(base.height*scale,1);
     expect(geometry.art.left).toBeLessThanOrEqual(geometry.scene.left+.1);
@@ -89,15 +91,15 @@ test("SNS scene fills the viewport with covered art and centered copy while the 
     expect(geometry.art.top).toBeLessThanOrEqual(geometry.scene.top+.1);
     expect(geometry.art.bottom).toBeGreaterThanOrEqual(geometry.scene.bottom-.1);
     expect(geometry.declaration.left+geometry.declaration.width/2).toBeCloseTo(viewport.width/2,1);
-    expect(geometry.declaration.top+geometry.declaration.height/2).toBeCloseTo(viewport.height/2,1);
+    expect(geometry.declaration.top+geometry.declaration.height/2).toBeCloseTo(base.height/2,1);
     expect(geometry.copyAnimations).toEqual([0,0]);
     expect(geometry.documentWidth).toBeLessThanOrEqual(viewport.width);
   }
 });
 
 test("photo streams stay unique and continuous through every source seam and repeated 12s loops", async ({ page }) => {
-  test.setTimeout(90_000);
-  for (const width of [1440,393]) {
+  test.setTimeout(150_000);
+  for (const width of [1440,393,360]) {
     const variant=width === 1440 ? "desktop" : "mobile";
     await page.setViewportSize({ width,height:width === 1440 ? 1080 : 932 });
     await page.goto("/");
@@ -140,9 +142,9 @@ test("photo streams stay unique and continuous through every source seam and rep
       return {pairs,mid,start,early,scale,clip:{top:clip.top,bottom:clip.bottom}};
     },{resetTimes,baseHeight:width === 1440 ? 760 : 680});
     for (const [index,column] of result.start.transforms.entries()) {
-      expect(column.direction).toBe(index%2 === 0 ? "up" : "down");
+      expect(column.direction).toBe("up");
       const movement=result.early.transforms[index].y-column.y;
-      expect(index%2 === 0 ? -movement : movement).toBeGreaterThan(1);
+      expect(-movement).toBeGreaterThan(1);
     }
     for (const sample of [result.start,result.mid,...result.pairs.flat()]) {
       expect(sample.photos.length).toBeGreaterThan(5);
@@ -168,14 +170,14 @@ test("photo streams stay unique and continuous through every source seam and rep
         expect(a.left).toBeCloseTo(b.left,1);
         expect(a.column).toBe(b.column);
         const movement=a.top-b.top;
-        expect(a.column%2 === 0 ? movement : -movement).toBeGreaterThan(0);
+        expect(movement).toBeGreaterThan(0);
         const speed=Math.abs(result.early.transforms[a.column].y-result.start.transforms[a.column].y)/1000*result.scale;
         expect(Math.abs(movement)).toBeCloseTo(speed*4,1);
       }
     }
     expect(result.start.particles.some((p,i) => p.transform!==result.mid.particles[i].transform)).toBe(true);
-    if (width === 1440) {
-      await expect.poll(() => scene.evaluate(el => Number(el.getAnimations({subtree:true})[0].currentTime)),{timeout:15_000}).toBeGreaterThan(12100);
+    {
+      await expect.poll(() => scene.evaluate(el => Number(el.getAnimations({subtree:true})[0].currentTime)),{timeout:28_000}).toBeGreaterThan(24100);
       expect(await scene.evaluate(el => el.getAnimations({subtree:true}).every(animation => animation.playState==="running"))).toBe(true);
     }
     await page.emulateMedia({ reducedMotion:"reduce" });

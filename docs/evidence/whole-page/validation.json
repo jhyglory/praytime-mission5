@@ -1,0 +1,26 @@
+{
+  "validatedAt": "2026-11-06T12:54:23.424161+00:00",
+  "lint": "PASS, zero warnings",
+  "typecheck": "PASS",
+  "unit": {
+    "passed": 47,
+    "files": 5
+  },
+  "browser": {
+    "passed": 40,
+    "failed": 0,
+    "duration": "2.3m"
+  },
+  "productionBuild": "PASS: npm run build -- --webpack",
+  "sourceBase": "109de0fb0ac262179da01f444f155590520cbe8a",
+  "backendChanges": false,
+  "productionPosts": 0,
+  "productionInserts": 0,
+  "sourceWidths": [
+    1440,
+    393,
+    360
+  ],
+  "motionCheck": "actual25s per width + source phases and12/24s boundaries \u00b12ms",
+  "notes": "Final browser suite waited for dynamic viewport layout before measurement; final40/40PASS."
+}

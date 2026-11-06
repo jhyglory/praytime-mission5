@@ -1,0 +1,73 @@
+/* Fresh Desktop1209:514 / Mobile1209:1051 lower-section audit.
+   Preserve existing interactions and form behavior; restore source geometry. */
+.time-section,
+.prayer-section,
+#faq,
+#beta-signup,
+.site-footer { word-break: normal; overflow-wrap: anywhere; }
+
+.faq-layout,
+.beta-layout { align-items: start; }
+
+/* The source divider is a separate item with a 16px gap and 24px bottom
+   padding. A bottom border shortened every FAQ row by 16px. */
+#faq .faq-item { border-bottom: 0; }
+#faq .faq-item::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 16px;
+  background: var(--border);
+}
+#faq .faq-item button { gap: 16px; }
+#faq .faq-item button > span { flex: 1; min-width: 0; }
+
+/* The consent label is regular UI body copy, not the 24px field label. */
+#beta-signup .consent-field > .selection-control {
+  font-weight: 400;
+  line-height: 26px;
+}
+#beta-signup .submit-zone .pt-button:disabled {
+  color: rgb(81 86 96 / 70%);
+  box-shadow: none;
+}
+
+.site-footer .wordmark { width: 128px; height: 21px; }
+.site-footer .wordmark > span:last-child { width: 104px; height: 21px; flex-shrink: 0; white-space: nowrap; }
+.site-footer .solid-pause i { border-radius: 1.571px; }
+.site-footer .footer-brand > a:last-child {
+  min-height: 22px;
+  position: relative;
+}
+/* Keep the source's 22px text row with a larger invisible pointer target. */
+.site-footer .footer-brand > a:last-child::after {
+  content: "";
+  position: absolute;
+  inset: -11px 0;
+}
+
+.voluntary-companion {
+  position: relative;
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+}
+.voluntary-companion__art { position: absolute; inset: 0; left: -40px; width: 160px; height: 160px; }
+.voluntary-companion__art > img,
+.voluntary-companion__art > picture { position: absolute; display: block; }
+.voluntary-companion__art picture > img { display: block; width: auto; height: auto; max-width: none; }
+.voluntary-companion__ground { left: 40px; top: 142.5px; }
+.voluntary-companion__shadow { left: 55.3125px; top: 148.4375px; }
+.voluntary-companion__body { inset: 0; width: 160px; height: 160px; object-fit: contain; }
+
+@media (width < 768px) {
+  .voluntary-prayer { gap: 20px; }
+  .voluntary-prayer h3 { font-size: 18px; line-height: 28px; }
+  .voluntary-prayer p { font-size: 15px; line-height: 24px; }
+  .voluntary-companion,
+  .voluntary-companion__art { width: 128px; height: 128px; }
+  .voluntary-companion__art { left: 0; }
+  .voluntary-companion__ground { left: 32px; top: 114px; }
+  .voluntary-companion__shadow { left: 44.25px; top: 118.75px; }
+  .voluntary-companion__body { width: 128px; height: 128px; }
+}

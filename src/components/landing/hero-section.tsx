@@ -5,7 +5,7 @@ import { Header } from "@/components/landing/header";
 import { HeroPointerMotion } from "@/components/landing/hero-pointer-motion";
 
 export function HeroSection() {
-  return <section className="hero" id="hero" aria-labelledby="hero-heading" data-figma-node="1088:916 / 1088:1251">
+  return <section className="hero" id="hero" aria-labelledby="hero-heading" data-figma-node="1209:515 / 1209:1052">
     <HeroPointerMotion />
     <picture className="hero-artwork"><img src="/assets/landing-continuous-hero.png" alt="" width="1562" height="2436" fetchPriority="high" /></picture>
     <div className="hero-legibility" aria-hidden="true" /><div className="hero-top-blend" aria-hidden="true" />

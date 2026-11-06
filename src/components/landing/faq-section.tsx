@@ -65,7 +65,7 @@ const items = [
 export function FaqSection() {
   const [open, setOpen] = useState<string[]>(["faq-0"]);
   return (
-    <section className="landing-section" id="faq" aria-labelledby="faq-heading" data-figma-node="1088:1070 / 1088:1402">
+    <section className="landing-section" id="faq" aria-labelledby="faq-heading" data-figma-node="1209:697 / 1209:1231">
       <div className="container"><div className="section-rule" /><div className="faq-layout"><div className="content-stack faq-heading"><p className="eyebrow">QUESTIONS, ANSWERED</p><h2 id="faq-heading" tabIndex={-1}>궁금한 점을<br />먼저 확인하세요.</h2></div>
         <Accordion className="faq-list" type="multiple" value={open} onValueChange={setOpen}>
           {items.map(({ question, answer }, index) => (
