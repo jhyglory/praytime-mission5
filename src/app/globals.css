@@ -518,7 +518,7 @@ h1 { font-size: 44px; line-height: 60px; }
 .why-now h2 { font-size: 44px; line-height: 68px; }
 .why-support { width: min(1000px, 100%); font-size: clamp(24px, 2.5vw, 36px); line-height: 56px; }
 .stats-grid { margin-top: 49px; }
-.gap-section { padding: 64px 0 84px; background: var(--stage); }
+.gap-section { padding: 64px 0 84px; background: #080e26; }
 .gap-section .section-stack { gap: 0; align-items: center; }
 /* Preserve title placement after removing the section's introductory label. */
 .gap-section h2 { margin-top: 72px; font-size: 40px; line-height: 64px; }

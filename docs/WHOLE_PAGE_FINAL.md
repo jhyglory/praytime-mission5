@@ -250,3 +250,11 @@ SNS 사진 카드 열의 이동 속도를 기존의0.8배로 낮춥니다. 같�
 -1440/393/360/320px 실제 화면, 원본HTTP byte hash 일치, 비율, glass/slit 위치, CTA·텍스트와 section 높이, 가로 넘침0·오류0·실제POST0을 확인했습니다. [로컬 확인](evidence/high-resolution-assets/local-browser.json).
 
 이번 교체의 lint·typecheck·unit47/47·관련browser37/37·Webpack production build가 통과했습니다. 원본사진80장·카드0.8배 속도와15초 cycle·입자12초·Header CTA삭제·신청API·privacy/backend/env·OG/favicon·다른섹션·main/merge/DNS는 변경하지 않았습니다. 별도30초SNS검사는 motion 코드가 같은 d78bbe0 검증과 구분합니다.
+
+## 후속 사용자 수정 · THE GAP 배경 #080E26
+
+첨부 화면의 THE GAP 구간 배경만 사용자 지정 `#080E26`으로 변경했다. `.gap-section`의 background 한 값만 바꾸고 전역 `--stage`·인트로/SNS fade·고화질 PNG 원본·빛·문구·레이아웃·CTA 동작은 유지했다. 기존 화면 검사의 GAP 기대색만 `rgb(8,14,38)`로 갱신했다.
+
+1440/393/360/320px 실제 Chrome 화면에서 네 모서리의 RGB(8,14,38), section 높이, 이미지·제목·설명·선택 패널의 모든 좌표/크기/문구가 변경 전 Production `df0cd1c`와 일치함을 확인했다. 두 anchor 동작, 가로 넘침0·page error0·실제 signup POST0을 확인했다. [실측](evidence/gap-background/local-browser.json). 실제 캡처는 outputs의 `gap-background-local-{width}.png`에 저장했다.
+
+이번 변경의 lint·typecheck·unit47/47·관련browser22/22 (35.4s)·Webpack production build가 통과했다. 전체40개는 직전 개인정보처리방침 release에서 통과한 기록이며, 이번 배경색 변경에 대해 전체를 다시 실행했다고 표시하지 않는다. 기존 feature/PR #1·Vercel 프로젝트로 배포하고 실제 배포 식별자와 공개 확인은 PR #1에 기록한다. 개인정보처리방침의 최신 게시 버전과 backend/env/schema/RLS 및 신청자 데이터는 이번 변경 대상이 아니다. merge·main·DNS 변경과 실제 INSERT는 없다.

@@ -36,6 +36,8 @@ Latest user correction: remove the signup CTA from the header on Desktop and Mob
 
 Latest user artwork override: use the two supplied high-resolution PNG originals in public/assets/high-resolution for the Hero/Question plane and GAP slit. Preserve original PNG bytes, aspect ratio, existing glass/slit placement and all interactions. Do not restore the older Hero raster or GAP SVGs as active artwork.
 
+Latest GAP background override: THE GAP alone uses #080E26 on Desktop/Mobile. Keep the shared stage, intro/SNS fades, artwork and geometry unchanged.
+
 Latest FAQ override: question/answer text and list spacing are85% of the previous size: questions17/25.5px, answers15.3/25.5px, row padding20.4px, region/divider gap13.6px, paragraph gap25.5px. Keep the original24px chevron. Keep the section heading, outer grid/padding, seven answers and Accordion behavior unchanged.
 
 Latest form spacing override: remove the empty nickname helper reservation. The default nickname input-to-email-label gap is32px instead of62px; keep all other32px form-group gaps and real validation errors.

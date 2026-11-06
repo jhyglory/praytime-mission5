@@ -106,7 +106,7 @@ for (const width of widths) {
     }
     await expect(page.locator(".one-question")).toHaveCSS("background-color", "rgb(23, 28, 38)");
     await expect(page.locator("#question-heading")).toHaveCSS("color", "rgb(241, 241, 238)");
-    await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(11, 16, 32)");
+    await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(8, 14, 38)");
     await expect(page.locator(".prayer-section")).toHaveCSS("background-color", "rgb(23, 28, 38)");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "15000");

@@ -79,9 +79,8 @@ for (const width of [1440, 393, 360]) {
     for (const selector of [".why-now", ".time-section", "#faq", ".beta-section", ".site-footer"]) {
       await expect(page.locator(selector)).toHaveCSS("background-color", "rgb(245, 242, 247)");
     }
-    for (const selector of ["[data-signature-transition]", "#the-gap"]) {
-      await expect(page.locator(selector)).toHaveCSS("background-color", "rgb(11, 16, 32)");
-    }
+    await expect(page.locator("[data-signature-transition]")).toHaveCSS("background-color", "rgb(11, 16, 32)");
+    await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(8, 14, 38)");
     await expect(page.locator(".landing-header")).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
 
     const why = await page.locator(".why-now").evaluate(element => {
