@@ -187,16 +187,17 @@ test("FAQ defaults readable, toggles independently, and supports keyboard", asyn
   await expect(questions.nth(6)).toHaveCSS("outline-width", "3px");
 });
 
-test("final Hero overlay, percentage gauges and anchors match the approved behavior", async ({ page }) => {
+test("final Hero overlay, statistic count accents and anchors match the approved behavior", async ({ page }) => {
   const runtimeProblems: string[] = [];
   page.on("pageerror", error => runtimeProblems.push(error.message));
   page.on("console", message => { if (["warning", "error"].includes(message.type())) runtimeProblems.push(message.text()); });
   await page.goto("/");
   expect(await page.locator(".landing-header").evaluate(el => getComputedStyle(el).backgroundColor)).toBe("rgba(0, 0, 0, 0)");
-  for (const [index, percent] of [34.3, 25.3].entries()) {
+  for (const index of [0, 1]) {
     const track = await page.locator(".stat-track").nth(index).boundingBox();
     const fill = await page.locator(".stat-fill").nth(index).boundingBox();
-    expect(fill!.width / track!.width * 100).toBeCloseTo(percent, 1);
+    expect(fill!.width).toBeCloseTo(track!.width, 1);
+    await expect(page.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
     expect(await page.locator(".stat-value").nth(index).evaluate(el => getComputedStyle(el).color)).toBe("rgb(24, 24, 27)");
   }
   await page.getByRole("link", { name: "작동 방식 보기", exact: true }).focus();

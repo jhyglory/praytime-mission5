@@ -250,7 +250,7 @@ test("WHY NOW counts once without overshoot or layout shift and stays final afte
     const observer = new MutationObserver(() => {
       const state = grid.dataset.countState;
       if (state === "running" && !result.started) result.started = performance.now();
-      if (state === "running" || state === "complete") result.samples.push({ values: numbers.map(el => Number.parseFloat(el.textContent!)), transforms: fills.map(el => el.style.transform), widths: fills.map(el => el.style.width) });
+      if (state === "running" || state === "complete") result.samples.push({ values: numbers.map(el => Number.parseFloat(el.textContent!)), transforms: fills.map(el => el.style.transform), widths: fills.map(el => getComputedStyle(el).width) });
       if (state === "complete") {
         result.completed = performance.now();
         observer.disconnect();
@@ -275,16 +275,17 @@ test("WHY NOW counts once without overshoot or layout shift and stays final afte
   expect(observation.samples.some(sample => sample.values[0] > 0 && sample.values[0] < 34.3)).toBe(true);
   expect(observation.samples.some(sample => sample.transforms.some(value => /^scaleX\(0\./.test(value)))).toBe(true);
   for (const [index, final] of [34.3, 25.3].entries()) {
+    const track = (await grid.locator(".stat-track").nth(index).boundingBox())!;
     let previous = 0;
     for (const sample of observation.samples) {
       expect(sample.values[index]).toBeGreaterThanOrEqual(previous);
       expect(sample.values[index]).toBeLessThanOrEqual(final);
-      expect(sample.widths[index]).toBe(`${final}%`);
+      expect(Number.parseFloat(sample.widths[index])).toBeCloseTo(track.width, 1);
       previous = sample.values[index];
     }
-    const track = (await grid.locator(".stat-track").nth(index).boundingBox())!;
     const fill = (await grid.locator(".stat-fill").nth(index).boundingBox())!;
-    expect(fill.width / track.width * 100).toBeCloseTo(final, 1);
+    expect(fill.width).toBeCloseTo(track.width, 1);
+    await expect(grid.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
   }
   expect(observation.cls).toBeLessThanOrEqual(0.001);
 
@@ -311,7 +312,7 @@ test("WHY NOW reduced motion immediately presents final accessible values and ga
   for (const fill of await grid.locator(".stat-fill").all()) await expect(fill).toHaveCSS("transform", "none");
 });
 
-test("without JavaScript, WHY NOW still renders both final statistics and real ratio gauges", async ({ browser, baseURL }) => {
+test("without JavaScript, WHY NOW still renders exact statistics and full count accents", async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 1440, height: 900 } });
   try {
     const page = await context.newPage();
@@ -321,10 +322,11 @@ test("without JavaScript, WHY NOW still renders both final statistics and real r
     await grid.scrollIntoViewIfNeeded();
     await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
     await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
-    for (const [index, final] of [34.3, 25.3].entries()) {
+    for (const index of [0, 1]) {
       const fill = (await grid.locator(".stat-fill").nth(index).boundingBox())!;
       const track = (await grid.locator(".stat-track").nth(index).boundingBox())!;
-      expect(fill.width / track.width * 100).toBeCloseTo(final, 1);
+      expect(fill.width).toBeCloseTo(track.width, 1);
+      await expect(grid.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
     }
     expect(problems).toEqual([]);
   } finally {

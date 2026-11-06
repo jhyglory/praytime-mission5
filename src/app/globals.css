@@ -278,8 +278,8 @@ h1 { font-size: 44px; line-height: 60px; }
 .stat-age { display: none; }
 .stat-value { color: #18181b; font-size: 76px; font-weight: 700; line-height: 92px; }
 .stat-caption { margin-top: 8px; font-size: 20px; font-weight: 700; line-height: 30px; }
-.stat-track { height: 6px; margin-top: 25px; border-radius: 2px; background: #e9e5ec; overflow: hidden; }
-.stat-fill { height: 100%; border-radius: 2px; background: #ff4438; }
+.stat-track { height: 6px; margin-top: 25px; border-radius: 2px; background: transparent; overflow: hidden; }
+.stat-fill { width: 100%; height: 100%; border-radius: 2px; background: #ff4438; }
 .stat-source { color: #696a70; font-size: 12px; line-height: 20px; }
 .mobile-source { display: none; }
 .why-bridge { padding-top: 40px; font-weight: 700; font-size: 34px; line-height: 46px; }
@@ -634,7 +634,7 @@ h1 { font-size: 44px; line-height: 60px; }
 .landing-header .section-navigation a:hover,
 .landing-header .section-navigation a:focus-visible { opacity: 1; }
 
-/* Width stays at the final server-rendered ratio; only the fill is scaled. */
+/* Each decorative fill reaches its own displayed maximum, not a shared 100% scale. */
 .stats-grid .stat-fill { transform-origin: left center; }
 .stats-grid[data-count-state="running"] .stat-fill { will-change: transform; }
 @media (prefers-reduced-motion: reduce) {

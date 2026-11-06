@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-const sessionKey = "praytime:why-now-countup:v1";
+// Give existing visitors one first run of the newly approved fill presentation.
+const sessionKey = "praytime:why-now-countup:v2";
 const duration = 750;
 
 // Final values are rendered by the Server Component. This only enhances the
