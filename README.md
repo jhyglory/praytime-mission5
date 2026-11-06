@@ -17,7 +17,7 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 | 항목 | 현재 연결 |
 | --- | --- |
-| Repository | [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5), private |
+| Repository | [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5), public |
 | 작업 branch | `feature/mission-5-landing` |
 | 기존 PR | [[하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1) |
 | 기존 Production | [praytime-mission5.vercel.app](https://praytime-mission5.vercel.app) |
@@ -131,4 +131,4 @@ config/environment.example    값이 없는 환경 템플릿
 - Chromium의 실제 responsive rendering으로1440/393/360px를 검증합니다. 물리 iPhone/Android와 Safari의 별도 수동 검수는 수행 범위와 구분해 기록합니다.
 - 앱 사용 제한과 실제 기도 기능은 Mission6 MVP 범위입니다. Landing의 시간 선택 mockup은 제품 설명용 preview입니다.
 - 이번 시각 작업은 실제 신청을 추가하지 않습니다. form 성공/중복/실패 회귀는 mock/disabled 저장소로 확인하며, 과거 실제 저장 검증은 backend 문서를 참고합니다.
-- 저장소는 private입니다. 평가자에게 저장소 접근 권한이 있어야 PR과 소스를 검토할 수 있습니다. 멘토 리뷰 전 merge하지 않습니다.
+- 저장소는 public입니다. 평가자는 로그인이나 별도 초대 없이 PR과 소스를 확인할 수 있습니다. 멘토 리뷰 전 merge하지 않습니다.
