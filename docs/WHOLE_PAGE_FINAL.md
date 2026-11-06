@@ -1,5 +1,24 @@
 # PrayTime · Whole Landing 최종 비교와 구현
 
+## Latest form spacing override: nickname and email
+
+Removed only the empty nickname helper span and its unused CSS. Its 22px
+height plus an 8px internal gap reserved 30px of blank space. The nickname
+input bottom to email label gap is now 32px instead of 62px; input-to-input
+gap is 64px instead of 94px. All other form-group gaps remain 32px.
+
+The existing real nickname error still renders with role=alert and the same
+ARIA association/focus behavior. It adds space naturally when required;
+clearing it restores the compact default spacing. No input/validation/API
+logic changed. Default form/section heights are reduced by 30px, so earlier
+118px nickname and 150px email-top reference measurements are historical.
+
+Latest checks: lint/typecheck/unit47/47/browser22/22/Webpack build PASS.
+Actual 1440/393/360/320px checks confirm the 32px gap, unchanged remaining
+gaps, invalid nickname focus/ARIA/error display, restoration after input,
+no overflow/errors and no POSTs. See [measurements](evidence/name-email-spacing/local-browser.json)
+and [validation](evidence/name-email-spacing/validation.json).
+
 ## Latest WHY visual override: red accents at 80% / 70%
 
 The numeric statistics remain 34.3% and 25.3%. The user requested invisible

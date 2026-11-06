@@ -1,0 +1,126 @@
+[
+  {
+    "width": 1440,
+    "initial": {
+      "gap": 32,
+      "inputGap": 64,
+      "gaps": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "formHeight": 1468,
+      "sectionHeight": 1709,
+      "crop": {
+        "x": 576,
+        "y": 7631.125,
+        "width": 744,
+        "height": 238
+      },
+      "hasBlankHelper": false
+    },
+    "errorGap": 62,
+    "clearedGap": 32,
+    "validationFocus": "PASS",
+    "errors": [],
+    "posts": 0,
+    "overflow": 0
+  },
+  {
+    "width": 393,
+    "initial": {
+      "gap": 32,
+      "inputGap": 64,
+      "gaps": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "formHeight": 1968,
+      "sectionHeight": 2483,
+      "crop": {
+        "x": 24,
+        "y": 8717.453125,
+        "width": 345,
+        "height": 238
+      },
+      "hasBlankHelper": false
+    },
+    "errorGap": 62,
+    "clearedGap": 32,
+    "validationFocus": "PASS",
+    "errors": [],
+    "posts": 0,
+    "overflow": 0
+  },
+  {
+    "width": 360,
+    "initial": {
+      "gap": 32,
+      "inputGap": 64,
+      "gaps": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "formHeight": 1994,
+      "sectionHeight": 2509,
+      "crop": {
+        "x": 24,
+        "y": 8777.609375,
+        "width": 312,
+        "height": 238
+      },
+      "hasBlankHelper": false
+    },
+    "errorGap": 62,
+    "clearedGap": 32,
+    "validationFocus": "PASS",
+    "errors": [],
+    "posts": 0,
+    "overflow": 0
+  },
+  {
+    "width": 320,
+    "initial": {
+      "gap": 32,
+      "inputGap": 64,
+      "gaps": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "formHeight": 2148,
+      "sectionHeight": 2663,
+      "crop": {
+        "x": 24,
+        "y": 8891.890625,
+        "width": 272,
+        "height": 238
+      },
+      "hasBlankHelper": false
+    },
+    "errorGap": 62,
+    "clearedGap": 32,
+    "validationFocus": "PASS",
+    "errors": [],
+    "posts": 0,
+    "overflow": 0
+  }
+]

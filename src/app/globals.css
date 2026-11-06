@@ -458,7 +458,6 @@ h1 { font-size: 44px; line-height: 60px; }
 .wheel-number--2 { left: 66.666667%; transform: rotate(-12deg) scale(.7); opacity: .45; }
 .wheel-indicator { position: absolute; left: calc(50% - 3px); bottom: 3%; width: 6px; height: 6px; border-radius: 50%; background: #ff4438; }
 .wheel-indicator::before { content: ""; position: absolute; bottom: 10px; left: 2px; width: 2px; height: 12px; background: rgb(241 241 238 / 18%); }
-.nickname-helper-space { display: block; height: 22px; flex-shrink: 0; }
 
 /* Final approved visual patch · Desktop1088:916 / Mobile1088:1251. */
 /* Final static differences from Desktop1088:916 / Mobile1088:1251.
