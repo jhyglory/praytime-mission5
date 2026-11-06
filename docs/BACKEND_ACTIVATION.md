@@ -33,4 +33,16 @@ Production 서버 환경만 SUPABASE_URL / SUPABASE_PUBLISHABLE_KEY / BETA_SIGNU
 
 ## Release 결과
 
-배포 및 실제 POST 검증 진행 전. 결과를 확인한 후 갱신한다. 실제 QA는 합성 데이터 1건 및 같은 이메일 중복/동의 누락 요청만 수행하며 기존 신청자는 조회·수정하지 않는다.
+- Release code commit: `9fc4d3b3ed84c2846d374ab23c3dc862cdb452a3`
+- Vercel Ready: `dpl_3Wbni7v57MnjaxzZjZZGQNYJzZ13`
+- https://praytime-mission5.vercel.app/ (immutable: https://praytime-mission5-rdjv0lwqx-glorifier1.vercel.app)
+- 실제 브라우저 form POST201 / receipt=true 및 이후 success UI 확인.
+- QA 이메일: `mission5-qa-1793959730461@example.com` (합성 데이터, 실제 수신자 아님).
+- 기존 사용자 행은 조회·수정하지 않았고, 이 QA 이메일+닉네임+출처로 제한한 SELECT만 수행했다.
+- 해당 QA row consent timestamp: `2026-11-06T10:08:54.055Z` (서버 시각).
+- 해당 QA row policy version: `privacy-sha256:61b237b3a2c926f95e6e445d7ba478dd4fb58eefae336009791785652b65207b`.
+- 해당 QA row signup_source: `mission5_landing`.
+- 같은 QA 이메일의 두 번째 폼 요청409 및 “이미 신청된 이메일입니다.” UI 확인. 추가 저장 없음.
+- consent=false 요청422 및 consent 오류 확인. INSERT 없음.
+- 합성 QA row는 검증 이력으로 유지한다. 기존 신청자 변경/일괄 정리 없음.
+- 기존 PR #1 유지, merge하지 않았다. DNS 변경하지 않았다. Vercel에 이미 등록돼 있는 custom-domain alias와 실제 DNS 전환은 별개다.

@@ -2,7 +2,7 @@
 
 ## 실제 접수 활성화 승인 · 2026-11-06
 
-사용자가 실제 저장을 요청했고, 수집 항목 정정안 게시를 승인했다. 기존 Privacy URL에 정정안을 게시한 뒤 HTTP 200 및 본문을 확인했다. 새 snapshot/version과 `PRIVACY_COLLECTION_APPROVED=true`를 사용한다. Production에서 기존 Supabase 연결과 `BETA_SIGNUP_PERSISTENCE=supabase`를 설정하는 release를 진행한다. Preview·자동 테스트·기본 로컬 설정은 disabled다. 기존 beta_signups/UNIQUE(email)/INSERT 전용 RLS를 유지하며, 새 DB·migration·공개 SELECT/UPDATE/DELETE·service-role key는 없다. 사용자가 승인한 QA 신청 1건만 생성·검증하고 기존 신청자 행은 조회·수정하지 않는다. merge·main 변경·DNS 전환은 계속 금지다. 아래 이전 저장 OFF/법률 문구 작성 금지 기록은 이 승인 이전의 이력이다. 실제 배포/QA 결과는 docs/BACKEND_ACTIVATION.md에 기록한다.
+사용자가 실제 저장을 요청했고, 수집 항목 정정안 게시를 승인했다. 기존 Privacy URL에 정정안을 게시한 뒤 HTTP 200 및 본문을 확인했다. 새 snapshot/version과 `PRIVACY_COLLECTION_APPROVED=true`를 사용한다. Production에서 기존 Supabase 연결과 `BETA_SIGNUP_PERSISTENCE=supabase`를 설정하는 release를 진행한다. Preview·자동 테스트·기본 로컬 설정은 disabled다. 기존 beta_signups/UNIQUE(email)/INSERT 전용 RLS를 유지하며, 새 DB·migration·공개 SELECT/UPDATE/DELETE·service-role key는 없다. 사용자가 승인한 QA 신청 1건만 생성·검증하고 기존 신청자 행은 조회·수정하지 않는다. merge·main 변경·DNS 전환은 계속 금지다. 아래 이전 저장 OFF/법률 문구 작성 금지 기록은 이 승인 이전의 이력이다. 기존 감사표의 누락/불일치는 이번 승인된 게시본에서 정정됐다. 법률 검토 메모는 정합성 확인과 별개로 유지한다. 실제 배포/QA 결과는 docs/BACKEND_ACTIVATION.md에 기록한다.
 
 **LEGAL REVIEW REQUIRED** — 현재 운영 Privacy URL을 유지합니다. Terms와 법률 문구를 임의로 만들지 않습니다. 고지 정합성이 해결되기 전에는 실제 INSERT와 production submission을 비활성화합니다.
 
