@@ -138,13 +138,13 @@ Desktop shadow의 render 위치는55.3125/148.4375이며, PNG는 Desktop160×160
 | navigation·CTA·wheel·FAQ·form의 실제 동작 | **PASS** — keyboard/tap/swipe/focus와 success receipt·duplicate/error mock/disabled 경로 |
 | repeated navigation/reload·reduced-motion·pause/cleanup | **PASS** — normal journey3회, reduced/no-JS, offscreen/background pause와 listener/RAF/observer 정리 검토 |
 | overflow·overlap·console/hydration error | **PASS** —1440/393/360과 추가responsive폭, 가로 넘침0·runtime/HTTP/console 오류0 |
-| 최종 code commit / push | **pending** |
-| 기존 PR #1 갱신 | **pending** |
-| 이번 변경의 Vercel deployment ID / immutable URL | **pending** |
-| Production GET-only 재검증 | **pending** |
+| 최종 code commit / push | **834b5b0 / PUSHED** — feature/mission-5-landing |
+| 기존 PR #1 갱신 | **동일 feature head 반영** — title [하영]-미션5, open/unmerged |
+| 이번 변경의 Vercel deployment ID / immutable URL | **READY** — dpl_CJ3sXTGH6dmLjKxj4Rqry2vzZyyg · [immutable deployment](https://praytime-mission5-ozzrxl4s2-glorifier1.vercel.app) |
+| Production GET-only 재검증 | **PASS** — canonical praytime-mission5.vercel.app,1440/393/360px, 각약25초, 오류/overflow/POST0 |
 | 실제 Production POST / INSERT | **0 /0 — 추가 수행 금지** |
 
-작업 branch는 `feature/mission-5-landing`, 기존 PR은 [[하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1), 기존 Production은 [praytime-mission5.vercel.app](https://praytime-mission5.vercel.app)입니다. 기존 URL·과거 commit·과거 PASS를 이번 release 완료 근거로 사용하지 않습니다. final commit과 deployment가 확인된 후 같은 URL의 GET 결과를 해당 배포와 연결해 기록합니다.
+작업 branch는 `feature/mission-5-landing`, 기존 PR은 [[하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1), 기존 Production은 [praytime-mission5.vercel.app](https://praytime-mission5.vercel.app)입니다. 기존 URL·과거 commit·과거 PASS를 이번 release 완료 근거로 사용하지 않습니다. [deployment manifest](evidence/whole-page/deployment.json)의 source commit834b5b0과 실제 canonical alias를 연결해 확인했습니다. 이후 검증 기록 commit은 문서/증거만 변경하며, 배포된 UI source와 구분합니다.
 
 ## 의도된 차이와 확인 범위
 
@@ -153,3 +153,13 @@ Desktop shadow의 render 위치는55.3125/148.4375이며, PNG는 Desktop160×160
 - 이전에 승인된 “무료로 신청하기”, GAP의04label 제거, 필수 이유 legend의별표, 지정favicon/OG는 source보다 사용자 지시를 우선해 보존했습니다.
 - 전체 still screenshot은 reduced-motion의 최종 정적 상태이며, SNS 실제 모션 screenshot/25초 측정은 no-preference에서 따로 수집했습니다.
 - 물리 iPhone/Android와 Safari 수동 검수는 미실시입니다. 실제 Production POST·INSERT는 이번 시각 작업에서 수행하지 않습니다.
+
+## 배포 후 실제 재생 결과
+
+[Production playback evidence](evidence/whole-page/production-playback.json)에서 실제 Chrome 전체 검증을 확인할 수 있습니다.1440px24998.864ms /393px25098.906ms /360px25065.668ms 재생을 측정했고, 사진 동시 중복0·역방향 이동0·정해진20/14px 카드 간격 외 빈 구간0입니다. 하트는 동시에6–9개, 공유는 fade 시0개에서 최대3개까지 보였으며 두 cycle 모두 반복 등장했습니다. 중앙 선언은 고정입니다.
+
+숫자/게이지 동기화와 동일 탭 reload 후 재시작은 각 폭에서2회 확인했고 실제 진행 구간은1399.1–1400.4ms였습니다. 최종값34.3/25.3%와 track 길이 비율도 일치합니다. 공개 화면의 CTA·wheel·FAQ 키보드·client validation·입력 focus를 확인했습니다. form의 실제 API 호출은 차단하여 Production POST/INSERT0을 유지했습니다.
+
+[Production intro evidence](evidence/whole-page/production-intro.json)는 타임라인을 조작하지 않은 실제 재생입니다. 세 폭에서 초기[0,0] → 단어 표시[1,0] → 실제 logo와은[1,1] 순서를 확인했습니다. intro 내부 카드/입자0, 다음 SNS scene의 top은 viewport 밖924px이었습니다(기존 anchor scroll margin24px 포함).
+
+전체 screenshot은 production-whole-1440.png /production-whole-393.png /production-whole-360.png이며, actual motion still은 production-sns-{width}.png, production-stats-{width}.png, production-intro-word/logo-{width}.png입니다. 사용자 전달 outputs에 저장했고 고해상도 원본으로 확인했습니다. 전체 still은 reduced-motion 상태이고 실제 motion still/측정과 구분합니다. 실제 Safari/물리 기기와 추가 DB INSERT만 검수하지 않았습니다.

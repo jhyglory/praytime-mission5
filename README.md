@@ -119,7 +119,7 @@ config/environment.example    값이 없는 환경 템플릿
 
 ## 배포와 보존 항목
 
-기존 Vercel `glorifier1/praytime-mission5` 프로젝트와 `feature/mission-5-landing`을 유지합니다. 이번 변경의 최종 commit/deployment ID와 배포 후 GET 결과는 아직 pending이며 WHOLE_PAGE_FINAL.md에 채웁니다. 기존 URL이 응답한다는 사실만으로 새 변경이 배포되었다고 판단하지 않습니다.
+기존 Vercel `glorifier1/praytime-mission5` 프로젝트와 `feature/mission-5-landing`을 유지합니다. 화면 source834b5b0을 Production에 배포하고 canonical URL을1440/393/360px에서 재검증했습니다. 각약25초 SNS playback·통계 reload·주요 interaction·전체 화면에서 오류/overflow/실제 POST0을 확인했습니다. deployment ID와 실제 측정값은 [WHOLE_PAGE_FINAL.md](docs/WHOLE_PAGE_FINAL.md)에 있습니다. 이후 문서 검증 기록 commit은 배포된 UI source와 구분합니다.
 
 사용자 지정 공유 이미지는 `/og/praytime-share-8b6783f5.png` 원본1711×919를 유지합니다. favicon은 투명 배경의 Signal Red Pause Mark입니다. 기존 noindex, metadata, Privacy URL과 custom-domain DNS는 변경하지 않습니다. Figma 파일 수정, 새 기능·dependency·DB, main 변경과 merge는 이번 작업 범위에 없습니다.
 
