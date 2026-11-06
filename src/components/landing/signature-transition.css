@@ -1,29 +1,30 @@
-/* Full motion1265:8215; clean intro1265:8081. Each stage shares one16s clock.
-   The mobile link1209:1073 is WHY NOW, so intro typography adapts the supplied
-   desktop composition to the existing560px mobile transition slot. */
-.card-intro { position:relative; overflow:clip; isolation:isolate; height:760px; background:#0b1020; color:#f1f1ee; }
-.card-intro__scene, .card-intro__clean, .card-intro__cards { position:absolute; inset:0; pointer-events:none; }
-.card-intro__clean { background:#0b1020; }
+/* Prototype1214:651 /1214:830: separate clean intro and continuous12s masonry.
+   Full Landing1209:514 /1209:1051 sets the two independent scroll sections. */
+.card-intro { position:relative; overflow:clip; isolation:isolate; background:#0b1020; color:#f1f1ee; }
+.card-intro__scene { pointer-events:none; }
+.card-intro__clean, .card-intro__cards { position:relative; height:760px; overflow:clip; }
 .card-intro__intro-copy { position:absolute; top:263.5px; left:50%; width:min(1120px,calc(100% - 48px)); transform:translateX(-50%); display:flex; flex-direction:column; gap:128px; align-items:center; }
 .card-intro p { margin:0; }
 .card-intro__therefore { width:100%; font-size:44px; line-height:60px; font-weight:500; letter-spacing:-.88px; text-align:center; }
-.card-intro__brand { display:flex; align-items:center; justify-content:center; gap:8px; transform-origin:0 0; }
+.card-intro__brand { display:flex; align-items:center; justify-content:center; gap:8px; }
 .card-intro__wordmark { display:flex; align-items:flex-start; gap:22.275px; }
 .card-intro__wordmark > span:last-child { width:225px; height:45px; flex-shrink:0; font-family:var(--font-inter),sans-serif; font-size:34.65px; line-height:44.55px; font-weight:400; letter-spacing:6px; white-space:nowrap; }
 .card-intro__pause { position:relative; width:29.7px; height:44.55px; }
 .card-intro__pause i { position:absolute; left:0; top:8.66px; width:6.806px; height:27.225px; border-radius:3.403px; background:#ff4438; }
 .card-intro__pause i + i { left:18.56px; }
 .card-intro__suffix { width:32px; font-size:30px; line-height:44px; letter-spacing:-.6px; text-align:center; }
-.card-intro__cards { opacity:0; }
 .card-intro__art { position:absolute; top:0; left:50%; width:1440px; height:760px; transform:translateX(-50%); }
 .card-intro__floor { position:absolute; top:450px; left:-50px; display:block; max-width:none; }
 .card-intro__masonry { position:absolute; inset:0; overflow:hidden; }
-.card-intro__column { position:absolute; width:220px; height:2403.223388px; transform-origin:0 0; }
-.card-intro__tile { display:flex; flex-direction:column; gap:20px; height:1201.611694px; }
-.ambient-card { position:relative; flex:none; width:220px; border-radius:18.11765px; background:#171c26; box-shadow:inset 0 0 0 .45294px rgb(241 241 238 / 12%); }
+.card-intro__column { position:absolute; opacity:.64; transform-origin:0 0; }
+.card-intro__tile, .card-intro__card-slot { position:absolute; left:0; width:100%; }
+.ambient-card-scale { position:relative; width:220px; transform-origin:0 0; }
+.ambient-card { position:relative; width:220px; border-radius:18.11765px; background:#171c26; box-shadow:inset 0 0 0 .45294px rgb(241 241 238 / 12%); }
 .ambient-card div, .ambient-card p, .ambient-card img { position:absolute; }
 .ambient-card p { white-space:pre-wrap; color:#f1f1ee; }
 .ambient-card img { display:block; max-width:none; }
+.ambient-card__icon-scale { position:absolute; display:block; transform-origin:0 0; }
+.ambient-card--mobile { box-shadow:inset 0 0 0 .288235px rgb(241 241 238 / 12%); }
 .ambient-card__photo { object-fit:cover; }
 .card-intro__quiet { position:absolute; left:160px; top:208px; width:1120px; height:344px; filter:blur(26px); background:linear-gradient(90deg,transparent 0%,rgb(11 16 32 / 86%) 18%,#0b1020 33%,#0b1020 67%,rgb(11 16 32 / 86%) 82%,transparent 100%); }
 .card-intro__night-edge { position:absolute; inset:0 0 auto; height:240px; background:linear-gradient(rgb(11 16 32 / 65%),transparent); }
@@ -34,31 +35,31 @@
 [data-particle-kind="share"] .card-intro__particle img { left:2.1px; top:.6px; }
 .card-intro__handoff { position:absolute; top:688px; left:0; width:1440px; height:72px; background:linear-gradient(transparent,#0b1020); }
 .card-intro__declaration { position:absolute; left:50%; top:280px; width:min(1120px,calc(100% - 48px)); transform:translateX(-50%); display:flex; flex-direction:column; gap:32px; text-align:center; }
-.card-intro__headline { font-size:46px; line-height:68px; font-weight:500; letter-spacing:-.92px; transform-origin:0 0; }
+.card-intro__headline { font-size:46px; line-height:68px; font-weight:500; letter-spacing:-.92px; }
 .card-intro__anchor { font-size:20px; line-height:32px; letter-spacing:-.4px; color:rgb(241 241 238 / 72%); }
-/* Stable readable fallback; decorative streams are not product controls. */
-.card-intro:is([data-motion-state="static"],[data-motion-state="reduced"]) .card-intro__cards { opacity:1; }
-.card-intro:is([data-motion-state="static"],[data-motion-state="reduced"]) .card-intro__art { display:none; }
-.card-intro:is([data-motion-state="static"],[data-motion-state="reduced"]) .card-intro__intro-copy { top:100px; gap:56px; }
-.card-intro:is([data-motion-state="static"],[data-motion-state="reduced"]) .card-intro__declaration { top:380px; }
+.card-intro__mobile-break { display:none; }
 @media (width < 768px) {
-  .card-intro { height:560px; }
-  .card-intro__intro-copy { top:170px; gap:88px; }
-  .card-intro__therefore { font-size:30px; line-height:44px; letter-spacing:-.6px; }
-  .card-intro__brand { gap:6px; }
-  .card-intro__wordmark { gap:14px; }
-  .card-intro__wordmark > span:last-child { width:155.844px; height:36px; font-size:24px; line-height:36px; letter-spacing:4px; }
-  .card-intro__pause { width:22px; height:36px; }
-  .card-intro__pause i { top:7px; width:5px; height:22px; border-radius:2.5px; }
-  .card-intro__pause i + i { left:14px; }
-  .card-intro__suffix { width:22px; font-size:22px; line-height:36px; }
-  .card-intro__art { transform:translateX(-50%) scale(.737); transform-origin:50% 0; }
-  .card-intro__quiet { left:420px; width:600px; }
-  .card-intro__declaration { top:190px; gap:28px; }
-  .card-intro__headline { font-size:clamp(22px,6.1vw,28px); line-height:44px; letter-spacing:-.5px; word-break:keep-all; }
-  .card-intro__anchor { font-size:16px; line-height:28px; word-break:keep-all; }
-  .card-intro:is([data-motion-state="static"],[data-motion-state="reduced"]) .card-intro__intro-copy { top:75px; gap:40px; }
-  .card-intro:is([data-motion-state="static"],[data-motion-state="reduced"]) .card-intro__declaration { top:300px; }
+  .card-intro__clean, .card-intro__cards { height:680px; }
+  .card-intro__intro-copy { top:251px; gap:104px; }
+  .card-intro__therefore { font-size:30px; line-height:42px; letter-spacing:-.6px; }
+  .card-intro__brand { gap:5px; }
+  .card-intro__wordmark { gap:14.175px; }
+  .card-intro__wordmark > span:last-child { width:143px; height:29px; font-size:22.05px; line-height:28.35px; letter-spacing:6px; }
+  .card-intro__pause { width:18.9px; height:28.35px; }
+  .card-intro__pause i { top:5.51px; width:4.331px; height:17.325px; border-radius:2.166px; }
+  .card-intro__pause i + i { left:11.81px; }
+  .card-intro__suffix { width:22px; font-size:22px; line-height:32px; letter-spacing:-.44px; }
+  .card-intro__art { width:393px; height:680px; }
+  .card-intro__column { opacity:.52; }
+  .card-intro__floor { left:-133.5px; top:370px; }
+  .card-intro__quiet { left:0; top:163px; width:393px; height:354px; filter:blur(14px); background:linear-gradient(90deg,transparent 0%,rgb(11 16 32 / 86%) 19%,#0b1020 33%,#0b1020 67%,rgb(11 16 32 / 86%) 81%,transparent 100%); }
+  .card-intro__night-edge { height:170px; }
+  .card-intro__handoff { top:608px; width:393px; }
+  .card-intro__declaration { top:235px; gap:28px; }
+  .card-intro__headline { font-size:clamp(21px,6.87023vw,27px); line-height:42px; letter-spacing:-.54px; }
+  .card-intro__anchor { font-size:clamp(14px,4.3257vw,17px); line-height:28px; letter-spacing:-.34px; }
+  .card-intro__mobile-break { display:block; }
+  .card-intro__desktop-space { display:none; }
 }
 
 /* Mobile WHY NOW1209:1073: exact source spacing and threshold. Desktop keeps

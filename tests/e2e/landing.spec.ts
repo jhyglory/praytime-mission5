@@ -81,12 +81,15 @@ test("skip link and reduced-motion navigation support the keyboard", async ({ pa
   await expect(transition.locator(".card-intro__headline")).toBeVisible();
   await expect(transition.locator(".card-intro__anchor")).toBeVisible();
   await expect(transition.locator(".card-intro__art")).toBeHidden();
+  await expect(transition.locator(".card-intro__art")).toHaveCount(0);
   await expect(transition.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.");
   await expect(transition.locator(".card-intro__scene")).toHaveAttribute("aria-hidden", "true");
 });
 
 for (const width of widths) {
   test(`responsive layout and assets at ${width}px`, async ({ page }) => {
+    // Allow a cold local Next image optimizer to process all original photos.
+    test.setTimeout(60_000);
     await page.setViewportSize({ width, height: 1600 });
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
@@ -113,7 +116,16 @@ for (const width of widths) {
     await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(11, 16, 32)");
     await expect(page.locator(".prayer-section")).toHaveCSS("background-color", "rgb(23, 28, 38)");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
-    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "16000");
+    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "12000");
+    const introGeometry = await page.locator("[data-signature-transition]").evaluate(el => {
+      const clean = el.querySelector(".card-intro__clean")!.getBoundingClientRect();
+      const cards = el.querySelector(".card-intro__cards")!.getBoundingClientRect();
+      return { cleanHeight:clean.height, cardsHeight:cards.height, cleanBottom:clean.bottom, cardsTop:cards.top, cleanCards:el.querySelectorAll(".card-intro__clean .ambient-card").length };
+    });
+    expect(introGeometry.cleanHeight).toBe(width < 768 ? 680 : 760);
+    expect(introGeometry.cardsHeight).toBe(width < 768 ? 680 : 760);
+    expect(introGeometry.cardsTop).toBeCloseTo(introGeometry.cleanBottom, 1);
+    expect(introGeometry.cleanCards).toBe(0);
     const gapArtwork = page.locator(".gap-architecture");
     await expect(gapArtwork.locator("img")).toHaveAttribute("alt", "");
     const architecture = await gapArtwork.locator("img").evaluate(element => {
@@ -143,6 +155,15 @@ for (const width of widths) {
       expect(choices[0].y).toBeCloseTo(choices[1].y, 2);
       expect(choices[1].x).toBeGreaterThan(choices[0].x + choices[0].width);
     }
+    // Production keeps the below-fold photo cards lazy. This asset QA alone
+    // forces every rendered image to load, including offscreen cards, so a
+    // broken original/optimizer response cannot hide behind lazy loading.
+    await page.evaluate(() => {
+      for (const image of document.images) image.loading = "eager";
+    });
+    await expect.poll(() => page.evaluate(() => [...document.images]
+      .filter(img => !img.complete || !img.naturalWidth)
+      .map(img => img.getAttribute("src"))), { timeout:30_000 }).toEqual([]);
     const geometry = await page.evaluate(() => ({
       viewport: window.innerWidth,
       document: document.documentElement.scrollWidth,
@@ -261,49 +282,80 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await expect(page).toHaveURL(/#beta-signup$/);
     await expect(page.locator("#signup-heading")).toBeFocused();
   }
-  // Exercise the actual viewport-specific timeline, including normal scrolling
-  // away from it. Opacity polling observes rendering rather than a fixed sleep.
+  // The actual prototype has a separate card-free intro followed by a 12s
+  // decorative loop. Its readable copy never waits for an animation phase.
   await page.emulateMedia({ reducedMotion: "no-preference" });
   for (const width of [1440, 393]) {
-    await page.setViewportSize({ width, height: 900 });
+    await page.setViewportSize({ width, height: 600 });
     const transition = page.locator("[data-signature-transition]");
-    await transition.scrollIntoViewIfNeeded();
+    const clean = transition.locator(".card-intro__clean");
+    const cards = transition.locator(".card-intro__cards");
+    await expect(transition).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
+    await clean.evaluate(el => el.scrollIntoView({ block:"start", behavior:"instant" }));
+    await expect(transition).toHaveAttribute("data-motion-state", "paused");
+    expect(await cards.evaluate(el => el.getBoundingClientRect().top >= innerHeight)).toBe(true);
+    await expect(clean.locator(".ambient-card")).toHaveCount(0);
+    await cards.evaluate(el => el.scrollIntoView({ block:"center", behavior:"instant" }));
     await expect(transition).toHaveAttribute("data-motion-state", "running");
-    await expect(transition).toHaveAttribute("data-motion-duration", "16000");
-    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(55);
+    await expect(transition).toHaveAttribute("data-motion-duration", "12000");
+    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(width < 768 ? 43 : 46);
     const renderedMotionNodes = await transition.evaluate(el => new Set(el.getAnimations({ subtree: true }).map(a => ((a.effect as KeyframeEffect).target as HTMLElement).dataset.nodeId)).size);
-    expect(renderedMotionNodes).toBe(32);
-    await expect(transition.locator(".card-intro__column")).toHaveCount(6);
-    await expect(transition.locator(".ambient-card")).toHaveCount(72);
+    expect(renderedMotionNodes).toBe(width < 768 ? 23 : 26);
+    await expect(transition.locator(".card-intro__column")).toHaveCount(width < 768 ? 3 : 6);
+    for (const column of await transition.locator(".card-intro__column").all()) await expect(column).toHaveCSS("opacity", width < 768 ? "0.52" : "0.64");
+    await expect(transition.locator(".ambient-card")).toHaveCount(width < 768 ? 216 : 288);
     await expect(transition.locator(".card-intro__particle")).toHaveCount(20);
     const samples = await transition.evaluate(el => {
       const animations = el.getAnimations({ subtree: true });
-      const at = (selector: string) => Number(getComputedStyle(el.querySelector(selector)!).opacity);
-      const snapshots = [0, 650, 1951, 3999, 6000, 12000].map(time => {
+      const art = el.querySelector(".card-intro__art")!;
+      const copySelectors = [".card-intro__therefore", ".card-intro__brand", ".card-intro__headline", ".card-intro__anchor"];
+      const textAnimationCounts = copySelectors.map(selector => el.querySelector(selector)!.getAnimations({ subtree:true }).length);
+      const onlyArtAnimated = animations.every(animation => art.contains((animation.effect as KeyframeEffect).target));
+      const snapshots = [0, 1000, 6000, 11999, 12000].map(time => {
         for (const animation of animations) { animation.pause(); animation.currentTime = time; }
-        return { clean: at(".card-intro__clean"), cards: at(".card-intro__cards"), therefore: at(".card-intro__therefore"), brand: at(".card-intro__brand"), headline: at(".card-intro__headline"), anchor: at(".card-intro__anchor"), column: getComputedStyle(el.querySelector(".card-intro__column")!).transform };
+        return {
+          containers:[".card-intro__clean", ".card-intro__cards"].map(selector => Number(getComputedStyle(el.querySelector(selector)!).opacity)),
+          copy:copySelectors.map(selector => {
+            const target = el.querySelector(selector)!;
+            const css = getComputedStyle(target);
+            const box = target.getBoundingClientRect();
+            return { opacity:Number(css.opacity), visibility:css.visibility, transform:css.transform, top:box.top, height:box.height };
+          }),
+          columns:[...el.querySelectorAll(".card-intro__column")].map(column => getComputedStyle(column).transform),
+        };
       });
       const now = document.timeline.currentTime;
       for (const animation of animations) { animation.currentTime = 0; animation.play(); if (typeof now === "number") animation.startTime = now; }
-      return snapshots;
+      return { snapshots, textAnimationCounts, onlyArtAnimated };
     });
-    expect(samples[0]).toMatchObject({ clean:1, cards:0, therefore:0, brand:0 });
-    expect(samples[1]).toMatchObject({ clean:1, cards:0, therefore:1, brand:0 });
-    expect(samples[2]).toMatchObject({ clean:1, cards:0, therefore:1, brand:1 });
-    expect(samples[3].cards).toBe(0);
-    expect(samples[4]).toMatchObject({ clean:0, cards:1, headline:1, anchor:1 });
-    expect(samples[4].column).not.toBe(samples[5].column);
-    if (width === 1440) {
-      await expect.poll(() => transition.locator(".card-intro__cards").evaluate(el => Number(getComputedStyle(el).opacity)), { timeout:6_000 }).toBe(1);
-      await expect.poll(() => transition.locator(".card-intro__clean").evaluate(el => Number(getComputedStyle(el).opacity)), { timeout:13_000 }).toBe(1);
-      await expect(transition.locator(".card-intro__cards")).toHaveCSS("opacity", "0");
+    expect(samples.onlyArtAnimated).toBe(true);
+    expect(samples.textAnimationCounts).toEqual([0,0,0,0]);
+    for (const sample of samples.snapshots) {
+      expect(sample.containers).toEqual([1,1]);
+      expect(sample.copy).toEqual(samples.snapshots[0].copy);
+      for (const text of sample.copy) {
+        expect(text).toMatchObject({ opacity:1, visibility:"visible", transform:"none" });
+        expect(text.height).toBeGreaterThan(0);
+      }
     }
+    for (const index of samples.snapshots[0].columns.keys()) {
+      expect(samples.snapshots[1].columns[index]).not.toBe(samples.snapshots[0].columns[index]);
+      expect(samples.snapshots[2].columns[index]).not.toBe(samples.snapshots[0].columns[index]);
+    }
+    expect(samples.snapshots[4].columns).toEqual(samples.snapshots[0].columns);
     const scrollBefore = await page.evaluate(() => window.scrollY);
     await page.mouse.wheel(0, 1400);
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(scrollBefore + 500);
     await page.locator("#faq").scrollIntoViewIfNeeded();
     await expect(transition).toHaveAttribute("data-motion-state", "paused");
     expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).every(animation => animation.playState === "paused"))).toBe(true);
+    const pausedClock = await transition.evaluate(async el => {
+      const animations = el.getAnimations({ subtree:true });
+      const before = animations.map(animation => animation.currentTime);
+      await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      return { before, after:animations.map(animation => animation.currentTime) };
+    });
+    expect(pausedClock.after).toEqual(pausedClock.before);
   }
   expect(runtimeProblems).toEqual([]);
 });

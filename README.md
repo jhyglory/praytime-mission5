@@ -8,11 +8,11 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 핵심 흐름은 **PAUSE → PRAY → CHOOSE → USE → RETURN**입니다. 기도 완료가 SNS 자동 해제를 뜻하지 않습니다. 돌아가거나, 필요하면 **5 / 10 / 15분**을 정해 사용합니다. 시간이 끝나면 다시 제한되고 추가 사용에는 Prayer / Choice가 필요합니다. 이 프로젝트는 제품 자체의 OS 차단 기능이 아닌 소개·베타 신청 Landing입니다.
 
-최신 디자인 반영: [Figma page933:2](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/PrayTime?node-id=933-2)의 현재 Desktop/Mobile을 기준으로 Hero 연속 배경과 조명 레이어를 갱신했습니다. [변경 범위와 검증](docs/LATEST_DESIGN_REFRESH.md).
+최신 인트로/카드 기준: [실제 Figma prototype1214:651](https://www.figma.com/proto/J8iLsfruyMwVCakXsSJPq4/?node-id=1214-651&page-id=1209%3A513&starting-point-node-id=1209%3A514). 다른 섹션의 기존 구현 기준과 명시적인 CTA/파비콘 수정은 유지합니다.
 
 ## 현재 단계
 
-최종 Figma1088 visual patch·shadcn/ui·FAQ7·transition·Pause Mark 파비콘은 `7c77356`으로 배포되었습니다. **현재는 그 기준점 위에 micro-interaction을 추가하고 검증한 상태**입니다. Hero 미세 pointer 반응, 동등한 GAP 링크, 메뉴 활성 상태, 세션당 한 번의 통계 count-up을 구현하며 승인된 IA·copy·반응형·transition·폼·API를 유지합니다. 사용자가 diff·검사 결과 확인 후 **이번 patch의 재배포를 승인했습니다.** 같은 feature branch에 commit·push하고 기존 PR #1과 Vercel을 업데이트합니다. Production 저장은 계속 OFF이며 merge·DB INSERT·DNS 전환도 하지 않습니다. 현재 사양·검증은 [MICRO_INTERACTIONS.md](docs/MICRO_INTERACTIONS.md), 이전 visual release는 [FINAL_VISUAL_PATCH.md](docs/FINAL_VISUAL_PATCH.md)를 확인하세요.
+현재 최신 수정은 실제 프로토타입 Desktop1214:651 / Mobile1214:830을 기준으로 한 인트로·카드 모션 정정입니다. 카드 없는 인트로와 선언 화면을 독립 구간으로 분리하고, 원본 사진80개·Desktop6열/Mobile3열·12초 카드 스트림을 적용했습니다. 나머지 랜딩·shadcn·폼 동작은 유지합니다. Production은 승인된 기존 Supabase 접수를 사용하고 Preview·테스트·기본 로컬은 disabled입니다. 기존 feature branch / PR #1 / Vercel을 유지하며 merge·새 DB·DNS 전환은 하지 않습니다. [최신 변경과 검증](docs/PROTOTYPE_CORRECTION.md), [접수 활성화 이력](docs/BACKEND_ACTIVATION.md).
 
 - Repository: [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5) (private)
 - 작업 branch: `feature/mission-5-landing`
@@ -57,7 +57,7 @@ npm run start
 
 브라우저 테스트는 설치된 Google Chrome을 사용합니다. production build 후 실행하며 3000번 포트의 기존 서버를 종료해야 합니다. 기존 서버를 재사용하지 않고 persistence를 강제로 disabled합니다. fetch mock과 UI response interception은 실제 저장 증거와 구분합니다.
 
-현재 Codex 실행 환경에서는 기본 Turbopack의 PostCSS 내부 worker 포트 연결이 `EPERM`으로 실패한 이력이 있습니다. 이 환경에서는 Next.js 공식 일회성 옵션 `npm run build -- --webpack`으로 production build한 뒤 `npm run test:e2e`를 실행합니다. 기본 build script와 Vercel 설정은 변경하지 않았습니다. 최종 visual patch 이전 기준선은 lint / typecheck / unit40 / Webpack build / browser18 모두 PASS였으며 [BUILD_BROWSER_QA.md](docs/BUILD_BROWSER_QA.md)는 그 이전 단계의 기록입니다. 이번 최종 patch의 최신 결과는 별도 [FINAL_VISUAL_PATCH.md](docs/FINAL_VISUAL_PATCH.md)를 확인하세요.
+현재 Codex 실행 환경에서는 기본 Turbopack의 PostCSS 내부 worker 포트 연결이 `EPERM`으로 실패한 이력이 있습니다. 이 환경에서는 Next.js 공식 일회성 옵션 `npm run build -- --webpack`으로 production build한 뒤 `npm run test:e2e`를 실행합니다. 기본 build script와 Vercel 설정은 변경하지 않았습니다. 최종 visual patch 이전 기준선은 lint / typecheck / unit40 / Webpack build / browser18 모두 PASS였으며 [BUILD_BROWSER_QA.md](docs/BUILD_BROWSER_QA.md)는 그 이전 단계의 기록입니다. 최신 프로토타입 정정 결과는 [PROTOTYPE_CORRECTION.md](docs/PROTOTYPE_CORRECTION.md)를 확인하세요.
 
 ## 환경변수
 
@@ -93,7 +93,7 @@ npm run start
 - THE GAP: 두 선택지를 동일한 hover/pressed/focus 규칙으로 처리. 돌아가기 → Hero, 시간 선택 → Time Select
 - 메뉴: 중앙 viewport의 섹션을 IntersectionObserver로 감지, opacity·aria-current만 갱신. Header의 기존 absolute 위치 유지
 - WHY NOW: 기존 운영 페이지의 실제 StatMetric을 기준으로3000ms cubic ease-out, 회색 track 없는7px 각진 막대, 첫100% 빨강 /둘째70% 연보라를 적용합니다. 각 카드가 보일 때 개별 시작하며 세션당1회 실행합니다. 정확한34.3% /25.3%와 Ink typography·SSR/no-JS/reduced-motion 최종값은 유지합니다.
-- WHY NOW → THE GAP: 실제 Figma opacity-loop timeline을 native Web Animations API로 구현. 사용자 속도 피드백에 따라 두 화면 모두6000ms, 점 대신 그 → 래 → 서를350ms 간격으로 한 글자씩 표시하고, 완성된 “그래서”1050ms·두 연결 문구 동시1550ms 완전 표시. 화면 밖·background에서 pause, reduced-motion/static fallback. sticky·scroll-progress·scroll hijacking·WebGL·motion dependency 없음. [구현 사양](docs/MOTION_PLAN.md).
+- WHY NOW → THE GAP: 별도의 카드 없는 “그래서 / PRAYTIME은” 인트로 뒤에 고정 선언 문구와12초 연속 카드 스트림. Desktop6열/Mobile3열과20개 하트·공유 장식에 원본 timing/opacity 적용. Native WAAPI, offscreen/background pause, reduced-motion/no-JS 읽기 fallback. [정정 사양](docs/PROTOTYPE_CORRECTION.md).
 - shadcn Accordion FAQ 7개 독립 토글, 첫 항목만 기본 펼침, Enter / Space / 화살표 / Home / End; Light 배경·Ink text·승인 chevron
 - 최종 TIME SELECT 프리뷰: 5 / 10 / 15분 중 10분 selected. 원본 mockup 재사용, swipe·중앙 snap·tap·키보드 선택 지원. Hero 앱 테마 toggle은 최종 Figma에 없어 노출하지 않습니다.
 - 8개 폼 그룹, client·server validation, 최초 오류 focus
@@ -101,7 +101,7 @@ npm run start
 - 실제 HTTP 201 + receipt 이후에만 success와 전환 이벤트
 - reduced motion, live result announcement, native form controls
 
-1440 / 1280 / 1024 / 768 / 430 / 393 / 375 / 320px에서 overflow·asset·구조를 검증합니다. 최종 visual release 기록은 FINAL_VISUAL_PATCH.md, 현재 micro-interaction의 로컬 검증은 MICRO_INTERACTIONS.md를 확인하세요.
+1440 / 1280 / 1024 / 768 / 430 / 393 / 375 / 320px에서 overflow·asset·구조를 검증합니다. 최신 프로토타입 검증은 PROTOTYPE_CORRECTION.md, 이전 visual/micro-interaction 기록은 FINAL_VISUAL_PATCH.md / MICRO_INTERACTIONS.md를 확인하세요.
 
 ## Backend 구조
 
@@ -136,19 +136,19 @@ config/environment.example    값이 없는 환경 템플릿
 
 Vercel에서 GitHub repo를 import하고 Framework **Next.js**, Root Directory **.**, Install Command `npm ci`, Build Command `npm run build`, Node **24.x**를 사용합니다. Preview는 `BETA_SIGNUP_PERSISTENCE=disabled`로 유지하세요. Production은 승인된 기존 Supabase 연결을 서버 환경에 등록하고 persistence=supabase로 설정합니다. Preview는 disabled를 유지합니다. SITE_URL은 실제 배포 origin으로 설정합니다. env 변경 후 재배포가 필요합니다. 상세 [배포 체크리스트](VERCEL_DEPLOYMENT_CHECKLIST.md).
 
-Vercel `glorifier1/praytime-mission5`에 배포했습니다. Production source는 `feature/mission-5-landing`이며 mentor merge 후 `main`으로 전환할 수 있습니다. Production/Preview에 Supabase credentials는 등록하지 않았습니다. 운영 검증은 [최종 상태](docs/FINAL_DELIVERY.md)와 [HTTP 증거](docs/evidence/production-blocked-http-qa.json), [브라우저 증거](docs/evidence/production-browser-qa.json)에 기록했습니다.
+Vercel `glorifier1/praytime-mission5`에 배포했습니다. Production source는 `feature/mission-5-landing`이며 mentor merge 후 `main`으로 전환할 수 있습니다. Production의 기존 Supabase 서버 환경변수는 유지하고 Preview는 disabled입니다. 운영 검증은 [최종 상태](docs/FINAL_DELIVERY.md)와 [HTTP 증거](docs/evidence/production-blocked-http-qa.json), [브라우저 증거](docs/evidence/production-browser-qa.json)에 기록했습니다.
 
 ## Known limitations
 
 - 최종 Figma에 없는 제품 기능이나 site-wide theme toggle은 추가하지 않았습니다.
-- 개인정보 고지의 누락·필수 여부·표현 범위 보완 승인이 필요합니다. 법률 문구는 임의 작성하지 않았습니다.
+- 개인정보 고지는 사용자 승인 정정본 게시·접수 활성화가 완료됐습니다. 이전 불일치 감사와 실제 검증 이력은 BACKEND_ACTIVATION.md에 보존합니다.
 - OG/Twitter 공유 이미지는 사용자가 지정한 「기도의 문, PrayTime」 원본 PNG(1711×919)를 사용합니다. 버전 경로는 `/og/praytime-share-8b6783f5.png`이며 Landing Hero와 별개입니다. favicon은 배경 없이 기존 Signal Red Pause Mark만 남긴 투명 SVG·16/32/48px ICO와180px Apple Touch icon을 사용합니다.
 - `SITE_URL` 미설정 시 Vercel system production URL을 metadata origin으로 사용합니다. 검색 indexing은 기존 noindex 유지, 공개 시 검토 필요.
 - 베타 신청 API의 기본 로컬·Preview 설정은 disabled입니다. 승인된 Production은 실제 Supabase 접수를 사용하며 일반 자동 테스트는 항상 mock / disabled입니다.
 - OS 접근 제한·기도 실행 등 제품 기능은 Landing의 설명·프리뷰입니다.
 - 자동 a11y 검증이 screen reader 전체 사용성·최종 색상 contrast 감사를 대체하지 않습니다.
-- 최종 visual/motion·favicon release는 완료됐고, 현재 micro-interaction patch도 로컬 검증 후 사용자 배포 승인을 받았습니다. merge와 실제 DB 저장은 계속 보류합니다. [MOTION_PLAN.md](docs/MOTION_PLAN.md)의 기존 transition은 이번 patch에서 변경하지 않았습니다.
-- 커스텀 도메인의 DNS 전환은 별도 보류 상태입니다. 기존 Lovable 서비스 연결을 유지하며 현재 Vercel URL로 로컬 patch 이전 배포를 확인할 수 있습니다.
+- 최신 프로토타입 카드 모션은 PROTOTYPE_CORRECTION.md가 우선합니다. 이번 visual patch에서 backend/env와 운영 데이터는 변경하지 않았습니다. merge는 멘토 리뷰 전까지 하지 않습니다.
+- 커스텀 도메인의 DNS 전환은 별도 보류 상태입니다. 기존 Lovable 서비스 연결을 유지하며 현재 배포는 Vercel URL로 확인합니다.
 
 Full-page QA PNG export (optional): `CAPTURE_QA_SCREENSHOTS=1 npm run test:e2e`. Required browser assertions always run.
 

@@ -1,3 +1,5 @@
+> Historical16s implementation. Superseded by [PROTOTYPE_CORRECTION.md](PROTOTYPE_CORRECTION.md) after the user supplied actual prototype1214:651.
+
 # Clean intro → Card motion patch
 
 User source: [full scene1265:8215](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1265-8215), [clean intro1265:8081](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1265-8081). Mobile follow-up: [WHY NOW1209:1073](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1209-1073).

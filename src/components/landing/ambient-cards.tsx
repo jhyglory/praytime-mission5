@@ -3,7 +3,9 @@
 // Exact scaled child geometry supplements the design-context component output.
 // No app actions, user data, or generated replacement assets.
 
-function PhotoCard() {
+import Image from "next/image";
+
+function PhotoCard({ images = [] }: { images?: string[] }) {
   return <div className="ambient-card" style={{height:252.14116}}>
     <div style={{"left":12.1,"top":12.1,"width":196.70587,"height":13}}>
       <div style={{"left":0,"top":0.67647,"width":11.64706,"height":11.64706}}>
@@ -12,7 +14,7 @@ function PhotoCard() {
       <p style={{"left":17.47059,"top":0,"width":155.29411,"height":13,"opacity":0.92,"fontSize":9.05882,"lineHeight":"12.94118px","fontWeight":500}}>{"Instagram"}</p>
     </div>
     <div style={{"left":12.1,"top":34.15882,"width":196.70587,"height":161.76469,"borderRadius":9.05882}}>
-      <img src="/assets/card-intro/8b7f22c3-e82d-4b7c-b363-071c884e5b13.png" alt="" className="ambient-card__photo" style={{"width":196.70587,"height":161.76469,"borderRadius":9.05882}} />
+      <Image src={images[0] ?? "/assets/card-intro/8b7f22c3-e82d-4b7c-b363-071c884e5b13.png"} alt="" className="ambient-card__photo" width={197} height={208} sizes="197px" style={{"width":196.70587,"height":161.76469,"borderRadius":9.05882}} />
     </div>
     <div style={{"left":12.1,"top":204.98233,"width":196.70587,"height":13}}>
       <div style={{"left":0,"top":1.0,"width":11.0,"height":11.0}}>
@@ -27,7 +29,7 @@ function PhotoCard() {
   </div>;
 }
 
-function VideoCard() {
+function VideoCard({ images = [] }: { images?: string[] }) {
   return <div className="ambient-card" style={{height:201.61176}}>
     <div style={{"left":12.1,"top":12.1,"width":196.70587,"height":13.58823}}>
       <div style={{"left":0,"top":0,"width":13.58823,"height":13.58823}}>
@@ -36,7 +38,7 @@ function VideoCard() {
       <p style={{"left":19.41176,"top":0.29412,"width":155.29411,"height":13,"opacity":0.92,"fontSize":9.05882,"lineHeight":"12.94118px","fontWeight":500}}>{"YouTube"}</p>
     </div>
     <div style={{"left":12.1,"top":34.74706,"width":196.70587,"height":110.64705,"borderRadius":9.05882}}>
-      <img src="/assets/card-intro/757c185d-bdaa-48f9-83dd-767276756001.png" alt="" className="ambient-card__photo" style={{"width":196.70587,"height":110.64705,"borderRadius":9.05882}} />
+      <Image src={images[0] ?? "/assets/card-intro/757c185d-bdaa-48f9-83dd-767276756001.png"} alt="" className="ambient-card__photo" width={197} height={208} sizes="197px" style={{"width":196.70587,"height":110.64705,"borderRadius":9.05882}} />
       <div style={{"left":88.64706,"top":45.29411,"width":19.41176,"height":19.41176}}>
         <img src="/assets/card-intro/66d8d4ec-5256-424c-a56b-8079b3096e0f.svg" alt="" style={{}} />
       </div>
@@ -107,7 +109,7 @@ function ChatCard() {
   </div>;
 }
 
-function CollectionCard() {
+function CollectionCard({ images = [] }: { images?: string[] }) {
   return <div className="ambient-card" style={{height:284.55292}}>
     <div style={{"left":12.1,"top":13.39412,"width":196.70587,"height":13}}>
       <div style={{"left":0,"top":0.67647,"width":11.64706,"height":11.64706}}>
@@ -119,15 +121,15 @@ function CollectionCard() {
     <div style={{"left":12.1,"top":64.09999,"width":196.70587,"height":207.05881}}>
       <div style={{"left":0,"top":0,"width":94.47058,"height":207.05881}}>
         <div style={{"left":0,"top":0,"width":94.47058,"height":81.5294,"borderRadius":9.05882}}>
-          <img src="/assets/card-intro/e34cd715-4b0f-48aa-8bb5-7fdb31f3947b.png" alt="" className="ambient-card__photo" style={{"width":94.47058,"height":81.5294,"borderRadius":9.05882}} />
+          <Image src={images[0] ?? "/assets/card-intro/e34cd715-4b0f-48aa-8bb5-7fdb31f3947b.png"} alt="" className="ambient-card__photo" width={197} height={208} sizes="197px" style={{"width":94.47058,"height":81.5294,"borderRadius":9.05882}} />
         </div>
         <div style={{"left":0,"top":89.29411,"width":94.47058,"height":117.7647,"borderRadius":9.05882}}>
-          <img src="/assets/card-intro/da485400-59bb-4b95-9046-793cfca2721b.png" alt="" className="ambient-card__photo" style={{"width":94.47058,"height":117.7647,"borderRadius":9.05882}} />
+          <Image src={images[2] ?? "/assets/card-intro/da485400-59bb-4b95-9046-793cfca2721b.png"} alt="" className="ambient-card__photo" width={197} height={208} sizes="197px" style={{"width":94.47058,"height":117.7647,"borderRadius":9.05882}} />
         </div>
       </div>
       <div style={{"left":102.23529,"top":0,"width":94.47058,"height":152.76469}}>
         <div style={{"left":0,"top":0,"width":94.47058,"height":131.99998,"borderRadius":9.05882}}>
-          <img src="/assets/card-intro/5d584a66-37b7-4294-85a6-64760bd4fd58.png" alt="" className="ambient-card__photo" style={{"width":94.47058,"height":131.99998,"borderRadius":9.05882}} />
+          <Image src={images[1] ?? "/assets/card-intro/5d584a66-37b7-4294-85a6-64760bd4fd58.png"} alt="" className="ambient-card__photo" width={197} height={208} sizes="197px" style={{"width":94.47058,"height":131.99998,"borderRadius":9.05882}} />
         </div>
         <p style={{"left":0,"top":139.76469,"width":94.47058,"height":13,"opacity":0.55,"fontSize":7.76471,"lineHeight":"12.94118px","fontWeight":400}}>{"+16개의 저장된 순간"}</p>
       </div>
@@ -150,7 +152,7 @@ function NotificationCard() {
 
 const cardTypes = [PhotoCard, VideoCard, TextCard, ChatCard, CollectionCard, NotificationCard];
 
-export function AmbientCard({ kind }: { kind: number }) {
+export function AmbientCard({ kind, images, scale = 1, height }: { kind: number; images: string[]; scale?: number; height: number }) {
   const Card = cardTypes[kind];
-  return <Card />;
+  return <div className="ambient-card-scale" style={{ transform:"scale(" + scale + ")", height:height / scale }}><Card images={images} /></div>;
 }

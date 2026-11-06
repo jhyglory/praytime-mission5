@@ -356,7 +356,13 @@ test("without JavaScript, WHY NOW still renders exact statistics and full count 
     await intro.scrollIntoViewIfNeeded();
     await expect(intro.locator(".card-intro__headline")).toBeVisible();
     await expect(intro.locator(".card-intro__brand")).toBeVisible();
+    await expect(intro.locator(".card-intro__therefore")).toBeVisible();
+    await expect(intro.locator(".card-intro__anchor")).toBeVisible();
     await expect(intro.locator(".card-intro__art")).toBeHidden();
+    await expect(intro.locator(".card-intro__art")).toHaveCount(0);
+    expect(await intro.evaluate(el => el.getAnimations({ subtree:true }).length)).toBe(0);
+    await expect(intro.locator(".card-intro__scene")).toHaveAttribute("aria-hidden", "true");
+    await expect(intro.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.");
     expect(problems).toEqual([]);
   } finally {
     await context.close();

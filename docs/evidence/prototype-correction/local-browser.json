@@ -1,0 +1,58 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "photos": 160,
+    "columns": 6,
+    "brand": {
+      "x": 561.515625,
+      "y": 451.5,
+      "width": 316.953125,
+      "height": 45,
+      "top": 451.5,
+      "right": 878.46875,
+      "bottom": 496.5,
+      "left": 561.515625
+    },
+    "wordmark": {
+      "x": 561.515625,
+      "y": 451.5,
+      "width": 276.953125,
+      "height": 45,
+      "top": 451.5,
+      "right": 838.46875,
+      "bottom": 496.5,
+      "left": 561.515625
+    }
+  },
+  {
+    "width": 393,
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "photos": 160,
+    "columns": 3,
+    "brand": {
+      "x": 94.96875,
+      "y": 397,
+      "width": 203.0625,
+      "height": 32,
+      "top": 397,
+      "right": 298.03125,
+      "bottom": 429,
+      "left": 94.96875
+    },
+    "wordmark": {
+      "x": 94.96875,
+      "y": 398.5,
+      "width": 176.0625,
+      "height": 29,
+      "top": 398.5,
+      "right": 271.03125,
+      "bottom": 427.5,
+      "left": 94.96875
+    }
+  }
+]

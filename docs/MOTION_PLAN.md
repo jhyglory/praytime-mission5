@@ -1,5 +1,10 @@
 # WHY NOW → THE GAP · current motion specification
 
+## Prototype correction · 2026-11-06 — current authority
+
+The user's latest prototype is Desktop1214:651 on page1209:513, starting at full Landing1209:514. Its companion Mobile preview is1214:830 (full Landing1209:1051). These supersede the previous combined16s board1265:8215 for this intro/card patch. The full Landing has a separate clean text-only intro (Desktop1265:8075, Mobile1265:8099), followed by a separate card-declaration scene. Both clean roots return an empty motion inventory; do not invent an auto-fade between the two scroll sections. Each section is760px Desktop /680px Mobile. Card scenes loop continuously every12000ms while declaration/anchor copy stays visible. Desktop six24-card cycles and Mobile three36-card cycles each duplicate once for seamless stream resets;20 decorative particles per viewport. All80 original photo assets are verified against their Figma image hashes. Use the actual Mobile geometry, not a scaled/cropped Desktop scene. Preserve all other sections and explicit CTA/GAP-label/favicon overrides, shadcn, live backend/privacy guard and success alert. No DB operations, Figma edits, dependency, merge/main or DNS changes. Continue the existing authorized feature/PR1/Vercel workflow after checks. See docs/PROTOTYPE_CORRECTION.md. Historical notes below are superseded where they conflict.
+
+
 ## Superseding source1265 · 2026-11-06
 
 The new requested full-motion1265:8215 replaces the historical6s timeline below. Clean intro1265:8081 defines the card-free start; the full scene coordinates the intro and card motion on a16s loop. See [CARD_INTRO_PATCH.md](CARD_INTRO_PATCH.md). The old three-letter/slit/aperture implementation is retired; other Landing interactions and live backend remain unchanged.
