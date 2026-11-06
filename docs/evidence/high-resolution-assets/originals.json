@@ -1,0 +1,18 @@
+{
+  "hero": {
+    "source": "오른편 유리 바와 보랏빛 수평선-1.png",
+    "path": "/assets/high-resolution/hero-hq-fcbad7e4f361.png",
+    "sha256": "fcbad7e4f3619a3b56522475d9f1251557e43a1f8e8845227ae90b8e8b416a2d",
+    "bytes": 1510384,
+    "width": 1672,
+    "height": 941
+  },
+  "gap": {
+    "source": "정중앙에 선 따뜻한 빛-2.png",
+    "path": "/assets/high-resolution/gap-hq-8f930896b76a.png",
+    "sha256": "8f930896b76af5f363d13aa1abb2a9648d7af94657b4be3e1e2dbd8f563f6ad9",
+    "bytes": 1474002,
+    "width": 1112,
+    "height": 1415
+  }
+}

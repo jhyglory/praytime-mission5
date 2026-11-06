@@ -29,6 +29,7 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS declaration → THE GAP → TIME SELECT → PRAYER BEFORE CHOICE → FAQ → BETA SIGNUP → Footer 순서입니다. Header는 Hero 위 overlay이며, clean intro와 SNS scene은 서로 다른 스크롤 구간입니다.
 
 - 상단 Header의 신청 CTA는 Desktop·Mobile 모두 제거했습니다. Hero CTA와 form submit의 **“무료로 신청하기”**는 유지합니다. 로고·기존 navigation 위치·원본 artwork는 보존합니다.
+- Hero/Question과 THE GAP은 사용자가 제공한 고화질 PNG 원본으로 교체했습니다. 원본 비율·기존 glass/slit 위치를 유지하고, GAP은 화면 진입 시 지연 로드합니다. [원본 해시](docs/evidence/high-resolution-assets/originals.json).
 - ONE QUESTION은 Hero와 같은 원본 artwork의 연속 crop을 사용합니다. 최종 Figma의 Desktop56/80, Mobile32/48 제목을 적용합니다.
 - WHY NOW는 각 카드가 실제 **40%** 보일 때 독립 시작합니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**, 전체100% 길이는 연한 회색 track, 최종 red fill은 정확히34.3% /25.3%입니다.
 - 통계는 **카드마다 페이지 로드당 한 번** 실행합니다. 새로고침·페이지 재진입에서는 다시 실행하며, 완료 여부를 `sessionStorage`나 `localStorage`에 저장하지 않습니다. reduced-motion/no-JS는 읽을 수 있는 최종값을 표시합니다.

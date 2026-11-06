@@ -120,14 +120,26 @@ for (const width of widths) {
     expect(introGeometry.cardsTop).toBeCloseTo(introGeometry.cleanBottom, 1);
     expect(introGeometry.cleanCards).toBe(0);
     const gapArtwork = page.locator(".gap-architecture");
+    await gapArtwork.scrollIntoViewIfNeeded();
+    await expect.poll(() => gapArtwork.locator("img").evaluate(el => (el as HTMLImageElement).naturalWidth)).toBe(1112);
     await expect(gapArtwork.locator("img")).toHaveAttribute("alt", "");
     const architecture = await gapArtwork.locator("img").evaluate(element => {
       const image = element as HTMLImageElement;
       return { src: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight };
     });
-    expect(architecture.src).toMatch(new RegExp(`/assets/landing-gap-${width < 768 ? "mobile" : "desktop"}\\.svg$`));
-    expect(architecture.width).toBe(width < 768 ? 393 : 1440);
-    expect(architecture.height).toBe(width < 768 ? 1024 : 1180);
+    expect(architecture.src).toContain("/assets/high-resolution/gap-hq-8f930896b76a.png");
+    expect(architecture.width).toBe(1112);
+    expect(architecture.height).toBe(1415);
+    const lightPlacement = await gapArtwork.locator("img").evaluate(el => {
+      const image = el.getBoundingClientRect();
+      const section = el.closest("section")!.getBoundingClientRect();
+      const scale = image.width / 1112;
+      return { center: image.left + image.width / 2, top: image.top - section.top + 148 * scale, bottom: image.top - section.top + 1246 * scale, ratio: image.width / image.height };
+    });
+    expect(lightPlacement.center).toBeCloseTo(width / 2, 1);
+    expect(lightPlacement.top).toBeCloseTo(width < 768 ? 461 : 528, 1);
+    expect(lightPlacement.bottom).toBeCloseTo(width < 768 ? 691 : 868, 1);
+    expect(lightPlacement.ratio).toBeCloseTo(1112 / 1415, 3);
     await expect(page.locator(".gap-choice--return .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
     await expect(page.locator(".gap-choice--time .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
     await expect(page.locator(".equal-outcomes .prayer-light-divider")).toHaveCount(2);
@@ -193,8 +205,8 @@ for (const width of widths) {
       for (const property of ["x", "y", "width", "height"] as const) {
         expect(questionArtwork![property]).toBeCloseTo(artwork![property], 1);
       }
-      await expect(page.locator(".hero-artwork img")).toHaveAttribute("src", "/assets/landing-continuous-hero.png");
-      await expect(page.locator(".question-artwork img")).toHaveAttribute("src", "/assets/landing-continuous-hero.png");
+      await expect(page.locator(".hero-artwork img")).toHaveAttribute("src", "/assets/high-resolution/hero-hq-fcbad7e4f361.png");
+      await expect(page.locator(".question-artwork img")).toHaveAttribute("src", "/assets/high-resolution/hero-hq-fcbad7e4f361.png");
       await expect(page.locator("#question-heading")).toHaveCSS("font-size", width === 1440 ? "56px" : "32px");
       await expect(page.locator("#question-heading")).toHaveCSS("line-height", width === 1440 ? "80px" : "48px");
       const gap = await page.locator("#the-gap").boundingBox();

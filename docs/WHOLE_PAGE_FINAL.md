@@ -175,3 +175,14 @@ Desktop·Mobile 상단 Header의 “무료로 신청하기” 링크만 제거�
 SNS 사진 카드 열의 이동 속도를 기존의0.8배로 낮춥니다. 같은 이동 거리의 cycle은12000/0.8=15000ms입니다. 하트/공유 transform·opacity는 기존12000ms를 유지합니다. 공통 누적 animation clock은 그대로 사용하고 column effect duration만 나누므로 offscreen/background pause와 phase 복원도 유지됩니다. 원본 Figma motion JSON·80사진 배정·카드 구조·이미지·다른 인터랙션은 바꾸지 않습니다. 위12초 카드 loop 검증은 이전 release 기록이며 이번15초 경계/반복 검증과 구분합니다.
 
 이번 속도 변경의 lint·typecheck·unit47/47·browser40/40·Webpack production build가 모두 통과했습니다. 실제1440/393/360px에서 각30.1초 이상 재생,15/30초 경계±2ms, 사진 중복/coverage, 원래12초 particle transform/opacity 반복, reduced-motion·offscreen pause를 확인했습니다. 실제 DB POST/INSERT는0건입니다.
+
+## 후속 사용자 수정 · 고화질 원본 Hero/GAP 교체
+
+사용자가 제공한 PNG 두 장을 원본 byte 그대로 `public/assets/high-resolution/`에 추가했습니다. 파일 이름에 SHA-256 일부를 포함해 이전 이미지 캐시와 구분합니다. [원본 manifest](evidence/high-resolution-assets/originals.json)에 파일 크기·natural dimensions·전체 hash가 있습니다.
+
+- Hero/Question:1672×941 landscape PNG. 기존1004×1566 long canvas raster 대신 원본 비율을 보존하고 공통 plane 안에서 width91%/left6.55%/top0.1%로 기존 glass-bar 크기·위치에 맞췄습니다. CSS edge mask로 section 배경과 연결하며 PNG pixel을 재압축·편집하지 않았습니다.
+- GAP:1112×1415 PNG 하나로 기존 Desktop/Mobile SVG 전체를 대체했습니다. 비율 유지 크기는 Desktop약344.335×438.160, Mobile약232.933×296.403px입니다. 밝은 core는 Desktop y528–868 / Mobile y461–691과 중앙축을 유지합니다. 별도의 이전 slit/reflection layer는 겹치지 않습니다. 두 선택의 가로 divider·문구·anchor는 그대로입니다.
+- GAP은native lazy/async decode를 사용해 최초Hero 요청과 분리합니다. 실제 스크롤로viewport 진입·decode·paint 후 캡처했으며, 밝은core의 실제 pixel red 최대값244/230/217로 표시를 확인했습니다. 화면 밖 full-page capture만으로 로드·paint 완료를 단정하지 않았습니다.
+-1440/393/360/320px 실제 화면, 원본HTTP byte hash 일치, 비율, glass/slit 위치, CTA·텍스트와 section 높이, 가로 넘침0·오류0·실제POST0을 확인했습니다. [로컬 확인](evidence/high-resolution-assets/local-browser.json).
+
+이번 교체의 lint·typecheck·unit47/47·관련browser37/37·Webpack production build가 통과했습니다. 원본사진80장·카드0.8배 속도와15초 cycle·입자12초·Header CTA삭제·신청API·privacy/backend/env·OG/favicon·다른섹션·main/merge/DNS는 변경하지 않았습니다. 별도30초SNS검사는 motion 코드가 같은 d78bbe0 검증과 구분합니다.

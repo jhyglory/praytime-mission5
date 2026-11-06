@@ -34,6 +34,8 @@ Use the existing Next.js App Router / React / TypeScript / Tailwind / shadcn/ui 
 
 Latest user correction: remove the signup CTA from the header on Desktop and Mobile. Keep the Hero CTA and form submit; preserve the existing logo/navigation positions.
 
+Latest user artwork override: use the two supplied high-resolution PNG originals in public/assets/high-resolution for the Hero/Question plane and GAP slit. Preserve original PNG bytes, aspect ratio, existing glass/slit placement and all interactions. Do not restore the older Hero raster or GAP SVGs as active artwork.
+
 Recent user copy CTA무료로 신청하기 and transparent red Pause Mark favicon / selected sharing image remain approved corrections. Keep the FAQ's approved seven product-compatible answers. Do not restore obsolete product logic.
 
 ## Backend/security and release

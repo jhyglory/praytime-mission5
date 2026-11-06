@@ -1,0 +1,210 @@
+[
+  {
+    "width": 1440,
+    "geometry": [
+      {
+        "selector": ".hero",
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 684
+      },
+      {
+        "selector": ".one-question",
+        "x": 0,
+        "y": 684,
+        "width": 1440,
+        "height": 484
+      },
+      {
+        "selector": "#the-gap",
+        "x": 0,
+        "y": 3791,
+        "width": 1440,
+        "height": 1180
+      },
+      {
+        "selector": ".hero-artwork img",
+        "x": 41.453125,
+        "y": 2.421875,
+        "width": 1421.09375,
+        "height": 799.78125
+      },
+      {
+        "selector": ".question-artwork img",
+        "x": 41.453125,
+        "y": 2.421875,
+        "width": 1421.09375,
+        "height": 799.78125
+      },
+      {
+        "selector": ".gap-architecture img",
+        "x": 547.8359375,
+        "y": 4273.15625,
+        "width": 344.328125,
+        "height": 438.140625
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "originalBytesMatch": true,
+    "slitPaintMaxRed": 244,
+    "overflow": 0
+  },
+  {
+    "width": 393,
+    "geometry": [
+      {
+        "selector": ".hero",
+        "x": 0,
+        "y": 0,
+        "width": 393,
+        "height": 932
+      },
+      {
+        "selector": ".one-question",
+        "x": 0,
+        "y": 932,
+        "width": 393,
+        "height": 380
+      },
+      {
+        "selector": "#the-gap",
+        "x": 0,
+        "y": 3990,
+        "width": 393,
+        "height": 1024
+      },
+      {
+        "selector": ".hero-artwork img",
+        "x": -152.09375,
+        "y": 430.984375,
+        "width": 582.390625,
+        "height": 327.765625
+      },
+      {
+        "selector": ".question-artwork img",
+        "x": -152.09375,
+        "y": 430.984375,
+        "width": 582.390625,
+        "height": 327.765625
+      },
+      {
+        "selector": ".gap-architecture img",
+        "x": 80.0390625,
+        "y": 4419.984375,
+        "width": 232.921875,
+        "height": 296.375
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "originalBytesMatch": true,
+    "slitPaintMaxRed": 230,
+    "overflow": 0
+  },
+  {
+    "width": 360,
+    "geometry": [
+      {
+        "selector": ".hero",
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 932
+      },
+      {
+        "selector": ".one-question",
+        "x": 0,
+        "y": 932,
+        "width": 360,
+        "height": 380
+      },
+      {
+        "selector": "#the-gap",
+        "x": 0,
+        "y": 3990,
+        "width": 360,
+        "height": 1024
+      },
+      {
+        "selector": ".hero-artwork img",
+        "x": -168.59375,
+        "y": 430.984375,
+        "width": 582.390625,
+        "height": 327.765625
+      },
+      {
+        "selector": ".question-artwork img",
+        "x": -168.59375,
+        "y": 430.984375,
+        "width": 582.390625,
+        "height": 327.765625
+      },
+      {
+        "selector": ".gap-architecture img",
+        "x": 63.5390625,
+        "y": 4419.984375,
+        "width": 232.921875,
+        "height": 296.375
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "originalBytesMatch": true,
+    "slitPaintMaxRed": 217,
+    "overflow": 0
+  },
+  {
+    "width": 320,
+    "geometry": [
+      {
+        "selector": ".hero",
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 956
+      },
+      {
+        "selector": ".one-question",
+        "x": 0,
+        "y": 956,
+        "width": 320,
+        "height": 428
+      },
+      {
+        "selector": "#the-gap",
+        "x": 0,
+        "y": 4062,
+        "width": 320,
+        "height": 1024
+      },
+      {
+        "selector": ".hero-artwork img",
+        "x": -188.59375,
+        "y": 430.984375,
+        "width": 582.390625,
+        "height": 327.765625
+      },
+      {
+        "selector": ".question-artwork img",
+        "x": -188.59375,
+        "y": 454.984375,
+        "width": 582.390625,
+        "height": 327.765625
+      },
+      {
+        "selector": ".gap-architecture img",
+        "x": 43.5390625,
+        "y": 4491.984375,
+        "width": 232.921875,
+        "height": 296.375
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "originalBytesMatch": true,
+    "slitPaintMaxRed": 217,
+    "overflow": 0
+  }
+]
