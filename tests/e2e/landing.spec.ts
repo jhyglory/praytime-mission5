@@ -124,7 +124,7 @@ for (const width of widths) {
       return { cleanHeight:clean.height, cardsHeight:cards.height, cleanBottom:clean.bottom, cardsTop:cards.top, cleanCards:el.querySelectorAll(".card-intro__clean .ambient-card").length };
     });
     expect(introGeometry.cleanHeight).toBe(width < 768 ? 680 : 760);
-    expect(introGeometry.cardsHeight).toBe(width < 768 ? 680 : 760);
+    expect(introGeometry.cardsHeight).toBe(1600);
     expect(introGeometry.cardsTop).toBeCloseTo(introGeometry.cleanBottom, 1);
     expect(introGeometry.cleanCards).toBe(0);
     const gapArtwork = page.locator(".gap-architecture");

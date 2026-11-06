@@ -47,6 +47,21 @@ export function SignatureTransition() {
   const particles = variant === "mobile" ? mobileParticles : desktopParticles;
 
   useEffect(() => {
+    const scene = cardScene.current;
+    if (!scene) return;
+    const baseWidth = variant === "mobile" ? 393 : 1440;
+    const baseHeight = variant === "mobile" ? 680 : 760;
+    const cover = () => {
+      const bounds = scene.getBoundingClientRect();
+      scene.style.setProperty("--card-scene-scale", String(Math.max(bounds.width / baseWidth, bounds.height / baseHeight)));
+    };
+    cover();
+    const observer = new ResizeObserver(cover);
+    observer.observe(scene);
+    return () => observer.disconnect();
+  }, [variant]);
+
+  useEffect(() => {
     const root = container.current;
     const scene = cardScene.current;
     if (!root || !scene) return;
@@ -57,13 +72,15 @@ export function SignatureTransition() {
     const animations: Animation[] = source.tracks.map(track => {
       const element = scene.querySelector<HTMLElement>('[data-node-id="' + track.nodeId + '"]');
       if (!element) throw new Error("Missing prototype motion node " + track.nodeId);
-      // Preserve the source speed/initial phase while letting the identical
-      // second tile carry the seam. A single linear cycle avoids interpolating
-      // the export's 1.2ms internal position reset through unrelated cards.
-      const column = masonry[variant].find(column => column.id === track.nodeId);
+      // Adjacent columns run in opposite directions. Starting a downward
+      // column on its identical second tile preserves the authored phase and
+      // gives both directions a seamless, fully covered twelve-second loop.
+      const columnIndex = masonry[variant].findIndex(column => column.id === track.nodeId);
+      const column = masonry[variant][columnIndex];
+      const downward = columnIndex % 2 === 1;
       const frames = column ? [
-        { offset:0, transform:"translate(0px, 0px)", easing:"linear" },
-        { offset:1, transform:"translate(0px, " + -column.cycleHeight + "px)", easing:"linear" },
+        { offset:0, transform:"translate(0px, " + (downward ? -column.cycleHeight : 0) + "px)", easing:"linear" },
+        { offset:1, transform:"translate(0px, " + (downward ? 0 : -column.cycleHeight) + "px)", easing:"linear" },
       ] : track.frames;
       const animation = element.animate(frames, { duration:source.duration, iterations:Infinity, fill:"both" });
       animation.pause(); animation.currentTime = 0;
@@ -107,7 +124,7 @@ export function SignatureTransition() {
         {viewport && <div className={"card-intro__art card-intro__art--" + variant}>
           <img className="card-intro__floor" src={variant === "mobile" ? "/assets/card-intro/mobile-floor.svg" : "/assets/card-intro/prototype-floor.svg"} alt="" />
           <div className="card-intro__masonry">
-            {masonry[variant].map(column => <div className="card-intro__column" key={column.id} style={{ left:column.x, top:column.y, width:column.width, height:column.height }} data-node-id={column.id}>
+            {masonry[variant].map((column, index) => <div className="card-intro__column" data-column-direction={index % 2 === 0 ? "up" : "down"} key={column.id} style={{ left:column.x, top:column.y, width:column.width, height:column.height }} data-node-id={column.id}>
               {[0,1].map(repeat => <div className="card-intro__tile" key={repeat} style={{ top:repeat * column.cycleHeight }}>
                 {column.cards.map(card => <div className="card-intro__card-slot" key={card.id} style={{ top:card.y, height:card.height }}>
                   {variant === "mobile" ? <MobileAmbientCard kind={card.kind} images={card.images.map(image => image.src)} /> : <AmbientCard kind={card.kind} images={card.images.map(image => image.src)} scale={1} height={card.height} />}

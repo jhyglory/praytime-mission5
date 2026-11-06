@@ -1,10 +1,12 @@
 /* Prototype1214:651 /1214:830: separate clean intro and continuous12s masonry.
-   Full Landing1209:514 /1209:1051 sets the two independent scroll sections. */
+   Latest user override: viewport-filling SNS scene, alternating up/down columns. */
 .card-intro { position:relative; overflow:clip; isolation:isolate; background:#0b1020; color:#f1f1ee; }
 .card-intro__scene { pointer-events:none; }
 .card-intro__clean, .card-intro__cards { isolation:isolate; }
 .card-intro[data-motion-state="reduced"] .card-intro__particle-position { display:none; }
-.card-intro__clean, .card-intro__cards { position:relative; height:760px; overflow:clip; }
+.card-intro__clean, .card-intro__cards { position:relative; overflow:clip; }
+.card-intro__clean { height:760px; }
+.card-intro__cards { height:100vh; height:100dvh; scroll-margin:0; }
 .card-intro__intro-copy { position:absolute; top:263.5px; left:50%; width:min(1120px,calc(100% - 48px)); transform:translateX(-50%); display:flex; flex-direction:column; gap:128px; align-items:center; }
 .card-intro p { margin:0; }
 .card-intro__therefore { width:100%; font-size:44px; line-height:60px; font-weight:500; letter-spacing:-.88px; text-align:center; }
@@ -12,7 +14,7 @@
 .card-intro__wordmark { display:block; width:276.975px; height:45px; flex-shrink:0; }
 .card-intro__wordmark img { display:block; width:276.975px; height:45px; max-width:none; }
 .card-intro__suffix { width:32px; font-size:30px; line-height:44px; letter-spacing:-.6px; text-align:center; }
-.card-intro__art { position:absolute; top:0; left:50%; width:1440px; height:760px; transform:translateX(-50%); }
+.card-intro__art { position:absolute; top:50%; left:50%; width:1440px; height:760px; transform:translate(-50%,-50%) scale(var(--card-scene-scale,1)); }
 .card-intro__floor { position:absolute; top:450px; left:-50px; display:block; max-width:none; }
 .card-intro__masonry { position:absolute; inset:0; overflow:hidden; }
 .card-intro__column { position:absolute; opacity:.64; transform-origin:0 0; }
@@ -33,12 +35,12 @@
 .card-intro__particle img { position:absolute; display:block; left:.203414px; top:1.048935px; max-width:none; }
 [data-particle-kind="share"] .card-intro__particle img { left:2.1px; top:.6px; }
 .card-intro__handoff { position:absolute; top:688px; left:0; width:1440px; height:72px; background:linear-gradient(transparent,#0b1020); }
-.card-intro__declaration { position:absolute; left:50%; top:280px; width:min(1120px,calc(100% - 48px)); transform:translateX(-50%); display:flex; flex-direction:column; gap:32px; text-align:center; }
+.card-intro__declaration { position:absolute; left:50%; top:50%; width:min(1120px,calc(100% - 48px)); transform:translate(-50%,-50%); display:flex; flex-direction:column; gap:32px; text-align:center; }
 .card-intro__headline { font-size:46px; line-height:68px; font-weight:500; letter-spacing:-.92px; }
 .card-intro__anchor { font-size:20px; line-height:32px; letter-spacing:-.4px; color:rgb(241 241 238 / 72%); }
 .card-intro__mobile-break { display:none; }
 @media (width < 768px) {
-  .card-intro__clean, .card-intro__cards { height:680px; }
+  .card-intro__clean { height:680px; }
   .card-intro__intro-copy { top:251px; gap:104px; }
   .card-intro__therefore { font-size:30px; line-height:42px; letter-spacing:-.6px; }
   .card-intro__brand { gap:5px; }
@@ -50,7 +52,7 @@
   .card-intro__quiet { left:0; top:163px; width:393px; height:354px; filter:blur(14px); background:linear-gradient(90deg,transparent 0%,rgb(11 16 32 / 86%) 19%,#0b1020 33%,#0b1020 67%,rgb(11 16 32 / 86%) 81%,transparent 100%); }
   .card-intro__night-edge { height:170px; }
   .card-intro__handoff { top:608px; width:393px; }
-  .card-intro__declaration { top:235px; gap:28px; }
+  .card-intro__declaration { gap:28px; }
   .card-intro__headline { font-size:clamp(21px,6.87023vw,27px); line-height:42px; letter-spacing:-.54px; }
   .card-intro__anchor { font-size:clamp(14px,4.3257vw,17px); line-height:28px; letter-spacing:-.34px; }
   .card-intro__mobile-break { display:block; }

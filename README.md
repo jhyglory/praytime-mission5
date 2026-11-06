@@ -12,7 +12,7 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 현재 단계
 
-현재 최신 수정은 full Desktop1209:514 / Mobile1209:1051과 intro previews1265:8215 /1265:11339에 대한 최종 명세를 반영합니다. 실제 Figma 로고로 “그래서 → 로고와 은”이 순차 등장하고, 다음 독립 섹션에서12초 카드 스트림이 계속 이동합니다. 카드 없는 인트로와 선언 화면을 독립 구간으로 분리하고, 원본 사진80개·Desktop6열/Mobile3열·12초 카드 스트림을 적용했습니다. 나머지 랜딩·shadcn·폼 동작은 유지합니다. Production은 승인된 기존 Supabase 접수를 사용하고 Preview·테스트·기본 로컬은 disabled입니다. 기존 feature branch / PR #1 / Vercel을 유지하며 merge·새 DB·DNS 전환은 하지 않습니다. [최신 변경과 검증](docs/FINAL_SNS_PATCH.md), [접수 활성화 이력](docs/BACKEND_ACTIVATION.md).
+현재 최신 수정은 full Desktop1209:514 / Mobile1209:1051과 intro previews1265:8215 /1265:11339에 대한 최종 명세를 반영합니다. 실제 Figma 로고로 “그래서 → 로고와 은”이 순차 등장하고, 다음 독립 섹션은 화면을 가득 채우며 카드 열이12초 주기로 위·아래 번갈아 이동합니다. 카드 없는 인트로와 선언 화면을 독립 구간으로 분리하고, 원본 사진80개·Desktop6열/Mobile3열·12초 카드 스트림을 적용했습니다. 나머지 랜딩·shadcn·폼 동작은 유지합니다. Production은 승인된 기존 Supabase 접수를 사용하고 Preview·테스트·기본 로컬은 disabled입니다. 기존 feature branch / PR #1 / Vercel을 유지하며 merge·새 DB·DNS 전환은 하지 않습니다. [최신 변경과 검증](docs/FULLSCREEN_SNS_PATCH.md), [접수 활성화 이력](docs/BACKEND_ACTIVATION.md).
 
 - Repository: [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5) (private)
 - 작업 branch: `feature/mission-5-landing`
