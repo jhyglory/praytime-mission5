@@ -1,5 +1,9 @@
 # PrayTime · Mission 5 Landing Implementation Specification
 
+## Latest design authority · 2026-11-06
+
+The user selected the current Figma page933:2. MCP verified the visible Desktop1088:916 / Mobile1088:1251 and reread their updated contents. The continuous Dark Hero/ONE QUESTION, architectural GAP and full choice/prayer/transition light layers now supersede the earlier slit-only/omitted-light instructions in historical notes below. Keep the user-approved6s reading pace, the later Lovable-reference3s/no-gray100%red/70%lavender statistics, existing interactions/shadcn, selected sharing image/favicon and disabled backend/privacy guard. See [LATEST_DESIGN_REFRESH.md](LATEST_DESIGN_REFRESH.md) for exact scope and current checks. The previously authorized existing feature/PR/Vercel workflow continues; no merge/main/DB/DNS change.
+
 ## 1. Figma Authority
 
 File key:

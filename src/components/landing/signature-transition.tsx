@@ -32,6 +32,7 @@ const timeline = {
 
 const trackValues = {
   paper: opacity.paper,
+  ambient: opacity.paper,
   dotFirst: opacity.dotFirst,
   dotSecond: opacity.dotNext,
   dotThird: opacity.dotNext,
@@ -40,9 +41,34 @@ const trackValues = {
   edge: opacity.edge,
   bridgeFirst: opacity.bridge,
   bridgeSecond: opacity.bridge,
+  apertureOuter: opacity.bridge,
+  apertureMiddle: opacity.bridge,
+  apertureInner: opacity.bridge,
 } as const;
 
 type Track = keyof typeof trackValues;
+
+// Newly restored light tracks use the exact Figma snippet values/easing and
+// viewport offsets. The shared six-second reading pace remains user-approved.
+const lightTiming = {
+  desktop: {
+    ambient: [0, .2211, .3993, 1],
+    apertureOuter: [0, .3993, .5529, .7186, .8293, 1],
+    apertureMiddle: [0, .4332, .5775, .7186, .82, 1],
+    apertureInner: [0, .47, .5989, .7186, .8079, 1],
+  },
+  mobile: {
+    ambient: [0, .2568, .4639, 1],
+    apertureOuter: [0, .4639, .6423, .8349, .9635, 1],
+    apertureMiddle: [0, .5033, .671, .8349, .9527, 1],
+    apertureInner: [0, .5461, .6959, .8349, .9386, 1],
+  },
+} as const;
+const apertureScale = {
+  apertureOuter: [.06, .06, 1, 1, .08, .08],
+  apertureMiddle: [.03, .03, 1, 1, .08, .08],
+  apertureInner: [.03, .03, 1, 1, .07, .07],
+} as const;
 
 export function SignatureTransition() {
   const container = useRef<HTMLDivElement>(null);
@@ -87,9 +113,14 @@ export function SignatureTransition() {
       }
       for (const track of Object.keys(trackValues) as Track[]) {
         const values = trackValues[track];
+        const offsets = track in lightTiming[variant]
+          ? lightTiming[variant][track as keyof typeof lightTiming.desktop]
+          : timeline.times[track as keyof typeof timeline.times].map(time => time / timeline.duration);
+        const scale = track in apertureScale ? apertureScale[track as keyof typeof apertureScale] : undefined;
         const frames = values.map((value, index) => ({
           opacity: value,
-          offset: timeline.times[track][index] / timeline.duration,
+          offset: offsets[index],
+          ...(scale ? { transform: `scaleX(${scale[index]})` } : {}),
           // Motion's easeInOut has the same cubic-bezier as CSS ease-in-out.
           easing: index < values.length - 2 ? "cubic-bezier(0.42, 0, 0.58, 1)" : "linear",
         }));
@@ -125,6 +156,9 @@ export function SignatureTransition() {
     <p className="sr-only">그래서, 행동하기 전에 잠깐의 틈을 만듭니다.</p>
     <div className="signature-transition__scene" aria-hidden="true">
       <div className="signature-transition__paper" data-motion-track="paper" data-node-id="1117:1254" data-mobile-node-id="1088:1298" />
+      <div className="signature-transition__ambient" data-motion-track="ambient" data-node-id="1117:1259" data-mobile-node-id="1088:1299">
+        <picture><source media="(width < 768px)" srcSet="/assets/landing-transition-mobile-ambient.svg" /><img src="/assets/landing-transition-desktop-ambient.svg" alt="" /></picture>
+      </div>
       {[
         { letter: "그", dotTrack: "dotFirst", dotId: "1117:1264", wordId: "1117:1270", mobileDotId: "1088:1300", mobileWordId: "1088:1301" },
         { letter: "래", dotTrack: "dotSecond", dotId: "1117:1277", wordId: "1117:1284", mobileDotId: "1088:1302", mobileWordId: "1088:1303" },
@@ -137,7 +171,15 @@ export function SignatureTransition() {
         </picture>
         <p className="signature-transition__letter" data-motion-track="word" data-node-id={wordId} data-mobile-node-id={mobileWordId}>{letter}</p>
       </div>)}
+      <div className="signature-transition__reflection" data-motion-track="slit" data-node-id="1117:1305" data-mobile-node-id="1088:1306" />
       <div className="signature-transition__slit" data-motion-track="slit" data-node-id="1117:1312" data-mobile-node-id="1088:1307" />
+      {[
+        { layer: "outer", track: "apertureOuter", node: "1117:1319", mobileNode: "1088:1308" },
+        { layer: "middle", track: "apertureMiddle", node: "1117:1334", mobileNode: "1088:1311" },
+        { layer: "inner", track: "apertureInner", node: "1117:1347", mobileNode: "1088:1312" },
+      ].map(({ layer, track, node, mobileNode }) => <div key={layer} className={`signature-transition__aperture signature-transition__aperture--${layer}`} data-motion-track={track} data-node-id={node} data-mobile-node-id={mobileNode}>
+        <picture><source media="(width < 768px)" srcSet={`/assets/landing-transition-mobile-aperture-${layer}.svg`} /><img src={`/assets/landing-transition-desktop-aperture-${layer}.svg`} alt="" /></picture>
+      </div>)}
       <div className="signature-transition__edge signature-transition__edge--left" data-motion-track="edge" data-node-id="1117:1360" data-mobile-node-id="1088:1313" />
       <div className="signature-transition__edge signature-transition__edge--right" data-motion-track="edge" data-node-id="1117:1366" data-mobile-node-id="1088:1314" />
       <p className="signature-transition__bridge-first" data-motion-track="bridgeFirst" data-node-id="1117:1372" data-mobile-node-id="1088:1315">행동하기 전에,</p>

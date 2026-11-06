@@ -4,6 +4,8 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 핵심 흐름은 **PAUSE → PRAY → CHOOSE → USE → RETURN**입니다. 기도 완료가 SNS 자동 해제를 뜻하지 않습니다. 돌아가거나, 필요하면 **5 / 10 / 15분**을 정해 사용합니다. 시간이 끝나면 다시 제한되고 추가 사용에는 Prayer / Choice가 필요합니다. 이 프로젝트는 제품 자체의 OS 차단 기능이 아닌 소개·베타 신청 Landing입니다.
 
+최신 디자인 반영: [Figma page933:2](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/PrayTime?node-id=933-2)의 현재 Desktop/Mobile을 기준으로 Hero 연속 배경과 조명 레이어를 갱신했습니다. [변경 범위와 검증](docs/LATEST_DESIGN_REFRESH.md).
+
 ## 현재 단계
 
 최종 Figma1088 visual patch·shadcn/ui·FAQ7·transition·Pause Mark 파비콘은 `7c77356`으로 배포되었습니다. **현재는 그 기준점 위에 micro-interaction을 추가하고 검증한 상태**입니다. Hero 미세 pointer 반응, 동등한 GAP 링크, 메뉴 활성 상태, 세션당 한 번의 통계 count-up을 구현하며 승인된 IA·copy·반응형·transition·폼·API를 유지합니다. 사용자가 diff·검사 결과 확인 후 **이번 patch의 재배포를 승인했습니다.** 같은 feature branch에 commit·push하고 기존 PR #1과 Vercel을 업데이트합니다. Production 저장은 계속 OFF이며 merge·DB INSERT·DNS 전환도 하지 않습니다. 현재 사양·검증은 [MICRO_INTERACTIONS.md](docs/MICRO_INTERACTIONS.md), 이전 visual release는 [FINAL_VISUAL_PATCH.md](docs/FINAL_VISUAL_PATCH.md)를 확인하세요.

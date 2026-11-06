@@ -89,22 +89,27 @@ for (const width of widths) {
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("main > section")).toHaveCount(8);
     await expect(page.locator("[data-form-group]")).toHaveCount(8);
-    for (const selector of [".one-question", ".why-now", ".time-section", "#faq", ".beta-section", ".site-footer"]) {
+    for (const selector of [".why-now", ".time-section", "#faq", ".beta-section", ".site-footer"]) {
       await expect(page.locator(selector)).toHaveCSS("background-color", "rgb(245, 242, 247)");
     }
+    await expect(page.locator(".one-question")).toHaveCSS("background-color", "rgb(23, 28, 38)");
+    await expect(page.locator("#question-heading")).toHaveCSS("color", "rgb(241, 241, 238)");
     await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(11, 16, 32)");
     await expect(page.locator(".prayer-section")).toHaveCSS("background-color", "rgb(23, 28, 38)");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "6000");
-    const slit = await page.locator(".gap-slit").boundingBox();
-    expect(slit!.width).toBe(width < 768 ? 6 : 9);
-    expect(slit!.height).toBe(width < 768 ? 230 : 340);
-    await expect(page.locator("#the-gap")).toHaveCSS("background-image", "none");
-    await expect(page.locator("#the-gap")).toHaveCSS("box-shadow", "none");
-    await expect(page.locator(".gap-slit")).toHaveCSS("box-shadow", "none");
-    await expect(page.locator("#the-gap img")).toHaveCount(2);
-    await expect(page.locator("#the-gap img").nth(0)).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
-    await expect(page.locator("#the-gap img").nth(1)).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
+    const gapArtwork = page.locator(".gap-architecture");
+    await expect(gapArtwork.locator("img")).toHaveAttribute("alt", "");
+    const architecture = await gapArtwork.locator("img").evaluate(element => {
+      const image = element as HTMLImageElement;
+      return { src: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight };
+    });
+    expect(architecture.src).toMatch(new RegExp(`/assets/landing-gap-${width < 768 ? "mobile" : "desktop"}\\.svg$`));
+    expect(architecture.width).toBe(width < 768 ? 393 : 1440);
+    expect(architecture.height).toBe(width < 768 ? 1024 : 1180);
+    await expect(page.locator(".gap-choice--return > img")).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
+    await expect(page.locator(".gap-choice--time > img")).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
+    await expect(page.locator(".equal-outcomes .prayer-light-divider")).toHaveCount(2);
     const choices = await page.locator(".equal-outcomes > div").evaluateAll(elements => elements.map(el => {
       const box = el.getBoundingClientRect();
       const text = getComputedStyle(el.querySelector("h3")!);
@@ -136,8 +141,21 @@ for (const width of widths) {
       expect(preview!.width).toBe(width === 1440 ? 330 : 320);
       expect(preview!.height / preview!.width).toBeCloseTo(715.42 / 330, 2);
       const artwork = await page.locator(".hero-artwork").boundingBox();
-      expect(artwork!.width).toBe(width === 1440 ? 1440 : 640);
-      expect(artwork!.height).toBeCloseTo(width === 1440 ? 684 : 280.316, 1);
+      expect(artwork!.width).toBeCloseTo(width === 1440 ? 1561.663 : 640, 1);
+      expect(artwork!.height).toBeCloseTo(width === 1440 ? 2435.82 : 998.247, 1);
+      const hero = await page.locator("#hero").boundingBox();
+      expect(hero!.height).toBe(width === 1440 ? 684 : 932);
+      const questionArtwork = await page.locator(".question-artwork").boundingBox();
+      // Both sections crop the same plane; its page coordinates meet exactly.
+      for (const property of ["x", "y", "width", "height"] as const) {
+        expect(questionArtwork![property]).toBeCloseTo(artwork![property], 1);
+      }
+      await expect(page.locator(".hero-artwork img")).toHaveAttribute("src", "/assets/landing-continuous-hero.png");
+      await expect(page.locator(".question-artwork img")).toHaveAttribute("src", "/assets/landing-continuous-hero.png");
+      await expect(page.locator("#question-heading")).toHaveCSS("font-size", width === 1440 ? "80px" : "44px");
+      await expect(page.locator("#question-heading")).toHaveCSS("line-height", width === 1440 ? "112px" : "66px");
+      const gap = await page.locator("#the-gap").boundingBox();
+      expect(gap!.height).toBe(width === 1440 ? 1180 : 1024);
     }
     if (process.env.CAPTURE_QA_SCREENSHOTS === "1" && (width === 1440 || width === 393)) {
       const hero = await page.locator("#hero").boundingBox();
@@ -236,7 +254,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await transition.scrollIntoViewIfNeeded();
     await expect(transition).toHaveAttribute("data-motion-state", "running");
     await expect(transition).toHaveAttribute("data-motion-duration", "6000");
-    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(12);
+    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(17);
     // A full-opacity reading window prevents the text becoming a brief flash.
     const readingHolds = await transition.evaluate(el => ["word", "bridgeFirst", "bridgeSecond"].map(track => {
       const effect = el.querySelector(`[data-motion-track="${track}"]`)!.getAnimations()[0].effect as KeyframeEffect;
@@ -246,9 +264,14 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     expect(readingHolds[0]).toBeGreaterThanOrEqual(1000);
     expect(readingHolds[1]).toBeGreaterThanOrEqual(1500);
     expect(readingHolds[2]).toBeGreaterThanOrEqual(1500);
-    const slit = transition.locator('[data-motion-track="slit"]');
+    const slit = transition.locator(".signature-transition__slit");
     await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 8_000, intervals: [50] }).toBeGreaterThan(0.5);
     await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 8_000, intervals: [50] }).toBeLessThan(0.1);
+    const aperture = transition.locator(".signature-transition__aperture--outer");
+    await expect.poll(() => aperture.evaluate(el => {
+      const style = getComputedStyle(el);
+      return Math.min(Number(style.opacity), new DOMMatrixReadOnly(style.transform).a);
+    }), { timeout: 8_000, intervals: [50] }).toBeGreaterThan(.95);
     const scrollBefore = await page.evaluate(() => window.scrollY);
     await page.mouse.wheel(0, 1400);
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(scrollBefore + 500);

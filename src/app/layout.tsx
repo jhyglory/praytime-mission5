@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { buildSiteMetadata } from "@/lib/site-metadata";
 import "./globals.css";
+import "@/components/landing/prayer-light-divider.css";
+import "@/components/landing/signature-transition.css";
 
 const pretendard = localFont({ src: "../../public/fonts/PretendardVariable.woff2", display: "swap", variable: "--font-pretendard", weight: "100 900" });
 const inter = localFont({ src: "../../public/fonts/InterVariable.woff2", display: "swap", variable: "--font-inter", weight: "100 900" });

@@ -496,10 +496,7 @@ h1 { font-size: 44px; line-height: 60px; }
 .prayer-section { color-scheme: dark; --canvas: #171c26; --text: #f1f1ee; --secondary: #bdc3ca; --border: rgb(241 241 238 / 12%); --line: rgb(241 241 238 / 24%); --accent: #a79cb6; color: var(--text); background: var(--canvas); }
 .prayer-section .eyebrow { color: #a6b8af; }
 .prayer-statement { color: var(--secondary); }
-.prayer-steps li { position: relative; border-top: 0; padding-top: 13px; --prayer-divider-core: .48; --prayer-divider-shoulder: .25; --prayer-divider-glow: .1; --prayer-divider-blur: 10px; }
-.prayer-steps li:nth-child(2) { --prayer-divider-core: .64; --prayer-divider-shoulder: .333; --prayer-divider-glow: .17; --prayer-divider-blur: 14px; }
-.prayer-steps li:nth-child(3) { --prayer-divider-core: .55; --prayer-divider-shoulder: .286; --prayer-divider-glow: .13; --prayer-divider-blur: 12px; }
-.prayer-steps li::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, rgb(200 188 211 / 0%) 0%, rgb(200 188 211 / var(--prayer-divider-shoulder)) 14%, rgb(200 188 211 / var(--prayer-divider-core)) 50%, rgb(200 188 211 / var(--prayer-divider-shoulder)) 86%, rgb(200 188 211 / 0%) 100%); box-shadow: 0 0 var(--prayer-divider-blur) rgb(200 188 211 / var(--prayer-divider-glow)); }
+.prayer-steps li { position: relative; border-top: 0; padding-top: 13px; }
 .prayer-section .puzz-final-art { left: -40px; }
 
 @media (width < 768px) {
@@ -644,4 +641,58 @@ h1 { font-size: 44px; line-height: 60px; }
   .landing-header .section-navigation a { transition: none; }
   .equal-outcomes > div:has(> .gap-choice:hover:not(:active)), .equal-outcomes > div:has(> .gap-choice:active), .gap-choice:hover img { transform: none; }
   .stats-grid .stat-fill { transform: none !important; }
+}
+
+/* Latest page933:2 intro · Desktop1088:916 / Mobile1088:1251.
+   The Hero and ONE QUESTION crop the same supplied artwork continuously. */
+.hero-artwork, .question-artwork {
+  position: absolute;
+  inset: auto;
+  top: 0;
+  left: -4.2243%;
+  width: 108.4488%;
+  height: auto;
+  aspect-ratio: 1561.663 / 2435.82;
+  pointer-events: none;
+}
+.hero-editorial { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.hero-artwork-interval { display: none; }
+.one-question {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: 128px;
+  color: #f1f1ee;
+  background: #171c26;
+}
+.question-artwork { top: -684px; }
+.question-artwork img { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+.question-legibility { position: absolute; inset: 0; background: rgb(8 13 29 / 12%); pointer-events: none; }
+.one-question .content-stack { position: relative; gap: 48px; }
+.one-question .eyebrow { color: #9da3af; }
+.one-question h2 { color: #f1f1ee; font-size: 80px; line-height: 112px; }
+.one-question .body-copy { color: #b9bdc6; font-size: 20px; line-height: 36px; }
+
+@media (width < 768px) {
+  .hero { height: auto; min-height: 932px; }
+  .hero-artwork, .question-artwork {
+    left: calc(50% - 390.5px);
+    width: 640px;
+    height: 998.247px;
+    aspect-ratio: auto;
+  }
+  .hero-artwork { top: 430px; }
+  .hero-top-blend { top: 430px; }
+  .hero-content { gap: 24px; padding-block: 104px 48px; }
+  .hero-editorial { gap: 24px; }
+  .hero h1 { font-size: clamp(30px, 8.66vw, 34px); line-height: 56px; }
+  .hero-content .body-copy { font-size: 17px; line-height: 30px; }
+  .hero-artwork-interval { display: block; width: 100%; height: 220px; flex-shrink: 0; }
+  .hero-content .small-copy { line-height: 24px; }
+  .question-artwork { top: -502px; }
+  .question-legibility { display: none; }
+  .one-question { padding-block: 88px; }
+  .one-question .content-stack { gap: 40px; }
+  .one-question h2 { font-size: clamp(36px, 11.2vw, 44px); line-height: 66px; }
+  .one-question .body-copy { font-size: 17px; line-height: 30px; }
 }

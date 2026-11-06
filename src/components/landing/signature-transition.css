@@ -1,0 +1,29 @@
+/* Current Figma page933:2 restores the complete architectural light layers.
+   SVG images retain their natural exported bounds; only their slot is placed. */
+.signature-transition__ambient,
+.signature-transition__aperture { position: absolute; }
+.signature-transition__ambient picture,
+.signature-transition__aperture picture { position: absolute; inset: 0; display: block; }
+.signature-transition__ambient img,
+.signature-transition__aperture img { position: absolute; display: block; max-width: none; }
+.signature-transition__ambient { left: calc(50% - 1049.771px); top: 67.86px; width: 2099.542px; height: 318.929px; }
+.signature-transition__ambient img { left: -135.714px; top: -135.714px; }
+.signature-transition__reflection { position: absolute; left: calc(50% - 6.3px); top: 305.36px; width: 12.6px; height: 103.143px; background: rgb(200 188 211 / 16%); filter: blur(7.464px); }
+.signature-transition__aperture { transform-origin: 50% 50%; }
+.signature-transition__aperture--outer { left: calc(50% - 720px); top: 422.07px; width: 1440px; height: 257.857px; }
+.signature-transition__aperture--outer img { left: -111.285px; top: -111.286px; }
+.signature-transition__aperture--middle { left: calc(50% - 555.1145px); top: 481.79px; width: 1110.229px; height: 176.429px; }
+.signature-transition__aperture--middle img { left: -84.1405px; top: -84.1425px; }
+.signature-transition__aperture--inner { left: calc(50% - 445.191px); top: 548.29px; width: 890.382px; height: 95px; }
+.signature-transition__aperture--inner img { left: -66.499px; top: -66.5px; }
+@media (width < 768px) {
+  .signature-transition__ambient { left: calc(50% - 286.5px); top: 50px; width: 573px; height: 235px; }
+  .signature-transition__ambient img { left: -100px; top: -100px; }
+  .signature-transition__reflection { left: calc(50% - 4.5px); top: 225px; width: 9px; height: 76px; filter: blur(5.5px); }
+  .signature-transition__aperture--outer { left: calc(50% - 196.5px); top: 311px; width: 393px; height: 190px; }
+  .signature-transition__aperture--outer img { left: -82px; top: -82px; }
+  .signature-transition__aperture--middle { left: calc(50% - 151.5px); top: 355px; width: 303px; height: 130px; }
+  .signature-transition__aperture--middle img { left: -62px; top: -62px; }
+  .signature-transition__aperture--inner { left: calc(50% - 121.5px); top: 404px; width: 243px; height: 70px; }
+  .signature-transition__aperture--inner img { left: -49px; top: -49px; }
+}

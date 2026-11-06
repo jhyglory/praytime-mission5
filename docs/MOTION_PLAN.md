@@ -1,5 +1,11 @@
 # WHY NOW → THE GAP · final implementation specification
 
+## Latest design authority · 2026-11-06
+
+The user selected the current Figma page933:2. MCP verified the visible Desktop1088:916 / Mobile1088:1251 and reread their updated contents. The continuous Dark Hero/ONE QUESTION, architectural GAP and full choice/prayer/transition light layers now supersede the earlier slit-only/omitted-light instructions in historical notes below. Keep the user-approved6s reading pace, the later Lovable-reference3s/no-gray100%red/70%lavender statistics, existing interactions/shadcn, selected sharing image/favicon and disabled backend/privacy guard. See [LATEST_DESIGN_REFRESH.md](LATEST_DESIGN_REFRESH.md) for exact scope and current checks. The previously authorized existing feature/PR/Vercel workflow continues; no merge/main/DB/DNS change.
+
+The current transition renders17 animated elements. The three aperture elements animate both opacity and scaleX about their50%/50% center; the fresh Figma snippet values are adapted to the existing WAAPI lifecycle. New light tracks retain their viewport-specific normalized Figma offsets across the six-second clock; existing explicit reading holds are unchanged.
+
 Status: final design and release are approved; **PENDING DESIGN has ended**. After reviewing the deployed page on2026-11-06, the user reported that “그래서” is too fast. The current correction changes timing only: a6000ms loop with longer readable holds for both viewports. The existing feature branch / PR #1 / Vercel workflow is retained. Figma remains read-only; merge, real DB storage and DNS cutover remain forbidden.
 
 ## Authoritative sources
