@@ -7,5 +7,5 @@ export function Wordmark() {
 }
 
 export function Header() {
-  return <header className="landing-header"><Wordmark /><ActiveSectionNav /><Button asChild><AnchorLink href="#beta-signup">베타 사전신청</AnchorLink></Button></header>;
+  return <header className="landing-header"><Wordmark /><ActiveSectionNav /><Button asChild><AnchorLink href="#beta-signup">무료로 신청하기</AnchorLink></Button></header>;
 }

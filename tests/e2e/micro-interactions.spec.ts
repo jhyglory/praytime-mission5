@@ -423,9 +423,9 @@ test("mobile touch preserves choice, wheel, FAQ and beta CTA flows without savin
     await expect(questions.nth(1)).toHaveAttribute("aria-expanded", "false");
     await expect(page.locator("#faq-answer-1")).toBeHidden();
 
-    await page.locator(".hero-actions").getByRole("link", { name: "베타 사전신청", exact: true }).tap();
+    await page.locator(".hero-actions").getByRole("link", { name: "무료로 신청하기", exact: true }).tap();
     await expect(page).toHaveURL(/#beta-signup$/);
-    await expect(page.getByRole("button", { name: "베타 사전신청", exact: true })).toBeDisabled();
+    await expect(page.getByRole("button", { name: "무료로 신청하기", exact: true })).toBeDisabled();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     expect(submissionRequests).toBe(0);
     expect(problems).toEqual([]);

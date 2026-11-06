@@ -12,7 +12,7 @@ describe("shadcn Button integration", () => {
         disabled: true,
         state,
         "aria-describedby": "signup-help",
-      }, "베타 사전신청"));
+      }, "무료로 신청하기"));
 
       expect(html).toMatch(/^<button\b/);
       expect(html).toContain('type="submit"');
@@ -21,19 +21,19 @@ describe("shadcn Button integration", () => {
       expect(html).not.toContain("aria-busy");
       expect(html).toContain('aria-describedby="signup-help"');
       expect(html).toContain('class="pt-button pt-button--primary pt-button--disabled"');
-      expect(html).toContain("베타 사전신청</button>");
+      expect(html).toContain("무료로 신청하기</button>");
     }
   });
 
   it("composes real AnchorLink CTAs as a single native link without a button wrapper", () => {
     for (const variant of ["primary", "secondary"] as const) {
       const html = renderToStaticMarkup(createElement(Button, { asChild: true, variant },
-        createElement(AnchorLink, { href: "#beta-signup", "aria-label": "베타 사전신청" }, "베타 사전신청"),
+        createElement(AnchorLink, { href: "#beta-signup", "aria-label": "무료로 신청하기" }, "무료로 신청하기"),
       ));
 
       expect(html).toMatch(/^<a\b/);
       expect(html).toContain('href="#beta-signup"');
-      expect(html).toContain('aria-label="베타 사전신청"');
+      expect(html).toContain('aria-label="무료로 신청하기"');
       expect(html).toContain(`class="pt-button pt-button--${variant}"`);
       expect(html).toContain('data-state="default"');
       expect(html.match(/<a\b/g)).toHaveLength(1);
@@ -49,7 +49,7 @@ describe("shadcn Button integration", () => {
       variant: "secondary",
       state,
       disabled: false,
-    }, state === "submitting" ? "접수 중…" : "베타 사전신청"));
+    }, state === "submitting" ? "접수 중…" : "무료로 신청하기"));
 
     expect(html).toMatch(/^<button\b/);
     expect(html).toContain('type="submit"');

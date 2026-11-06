@@ -17,7 +17,7 @@ export function HeroSection() {
         <p className="body-copy">SNS를 열기 전 잠깐 기도하고,<br />지금도 필요한지 돌아보세요.</p>
       </div>
       <div className="hero-artwork-interval" aria-hidden="true" />
-      <div className="hero-actions"><Button asChild><AnchorLink href="#beta-signup">베타 사전신청</AnchorLink></Button><Button asChild variant="secondary"><AnchorLink href="#the-gap">작동 방식 보기</AnchorLink></Button></div>
+      <div className="hero-actions"><Button asChild><AnchorLink href="#beta-signup">무료로 신청하기</AnchorLink></Button><Button asChild variant="secondary"><AnchorLink href="#the-gap">작동 방식 보기</AnchorLink></Button></div>
       <p className="small-copy">기도를 마쳐도 SNS가 자동으로 열리지는 않습니다.</p>
     </div>
   </section>;

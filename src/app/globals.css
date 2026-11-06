@@ -260,7 +260,7 @@ h1 { font-size: 44px; line-height: 60px; }
 .landing-header .solid-pause i { box-shadow: 0 0 7px rgb(255 68 56 / 24%); }
 .landing-header nav { width: auto; gap: 32px; }
 .landing-header nav a, .landing-header nav a:first-child, .landing-header nav a:last-child { width: 110px; color: rgb(255 255 255 / 82%); font-weight: 500; }
-.landing-header > .pt-button { height: 48px; min-height: 48px; width: 196px; }
+.landing-header > .pt-button { height: 48px; min-height: 48px; width: 196px; white-space: nowrap; }
 .hero-content { position: relative; width: min(620px, calc(100% - 48px)); padding: 150px 0 0; margin-left: max(5vw, calc((100vw - 1440px) / 2 + 72px)); }
 .hero-content .eyebrow { color: rgb(241 241 238 / 72%); }
 .hero-content .body-copy { color: rgb(241 241 238 / 82%); }
@@ -373,7 +373,7 @@ h1 { font-size: 44px; line-height: 60px; }
   .landing-header .solid-pause i { width: 3.19px; height: 12.76px; top: 4.06px; }
   .landing-header .solid-pause i + i { left: 8.7px; }
   .landing-header nav { display: none; }
-  .landing-header > .pt-button { width: 152px; min-height: 44px; height: 44px; font-size: 16px; }
+  .landing-header > .pt-button { width: 172px; min-height: 44px; height: 44px; font-size: 16px; }
   .hero-content { padding-top: 104px; margin-left: 24px; width: calc(100% - 48px); gap: 20px; }
   .hero-content .body-copy { font-size: 16px; line-height: 26px; }
   .hero-actions { gap: 12px; }
@@ -518,7 +518,7 @@ h1 { font-size: 44px; line-height: 60px; }
 
 @media (width < 375px) {
   /* Keep current narrow-width protection below the 393px design frame. */
-  .landing-header > .pt-button { font-size: 16px; }
+  .landing-header > .pt-button { font-size: 16px; padding-inline: 8px; }
 }
 
 /* Final WHY NOW and THE GAP: 1088:942 / 1088:1270 / 1088:986 / 1088:1319.

@@ -1,5 +1,7 @@
 # PrayTime · Codex Project Instructions
 
+The latest user copy correction replaces the Header, Hero and form-submit CTA label with “무료로 신청하기”. Keep beta context/headings, existing link/button semantics, submitting copy and all form/API behavior. This explicit copy request overrides the CTA label in older Figma exports.
+
 ## Latest design refresh · 2026-11-06
 
 The user requested the current design on canvas `933:2` in the same Figma file. This is a page, not an older Landing frame: MCP confirmed its visible children remain Desktop `1088:916` and Mobile `1088:1251`, now with updated contents. Use the freshly read design/motion context. Hero and ONE QUESTION share the new continuous dark artwork, mobile Hero is932px, ONE QUESTION uses80/112 desktop and44/66 mobile type. Restore the exact architectural GAP SVG and the new choice/prayer light-divider layers. The current design also restores five transition light layers, including the source scaleX aperture tracks; this supersedes the earlier slit-only/omitted-light instructions below. Preserve the user's subsequent explicit6s reading pace and Lovable-reference3s/no-gray100%red/70%lavender statistic presentation, the existing functioning interactions/shadcn, selected OG image/favicon, API/privacy guard and disabled persistence. Continue the already authorized feature/PR #1/Vercel workflow after checks; no merge/main/DB/DNS changes. See docs/LATEST_DESIGN_REFRESH.md. Older stage notes below are historical where this update differs.

@@ -89,6 +89,17 @@ for (const width of widths) {
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("main > section")).toHaveCount(8);
     await expect(page.locator("[data-form-group]")).toHaveCount(8);
+    const headerCta = page.locator(".landing-header > .pt-button");
+    await expect(headerCta).toHaveText("무료로 신청하기");
+    const ctaText = await headerCta.evaluate(element => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      const bounds = range.getBoundingClientRect();
+      const button = element.getBoundingClientRect();
+      return { textWidth: bounds.width, textHeight: bounds.height, buttonWidth: button.width, lineHeight: parseFloat(getComputedStyle(element).lineHeight) };
+    });
+    expect(ctaText.textWidth).toBeLessThanOrEqual(ctaText.buttonWidth);
+    expect(ctaText.textHeight).toBeLessThanOrEqual(ctaText.lineHeight);
     for (const selector of [".why-now", ".time-section", "#faq", ".beta-section", ".site-footer"]) {
       await expect(page.locator(selector)).toHaveCSS("background-color", "rgb(245, 242, 247)");
     }
@@ -235,9 +246,9 @@ test("final Hero overlay, statistic count accents and anchors match the approved
   await page.getByRole("link", { name: "기도와 선택", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.locator("#prayer-heading")).toBeFocused();
-  await page.getByRole("link", { name: "베타 사전신청", exact: true }).first().click();
+  await page.getByRole("link", { name: "무료로 신청하기", exact: true }).first().click();
   await expect(page).toHaveURL(/#beta-signup$/);
-  const betaLinks = page.getByRole("link", { name: "베타 사전신청", exact: true });
+  const betaLinks = page.getByRole("link", { name: "무료로 신청하기", exact: true });
   await expect(betaLinks).toHaveCount(2);
   for (const link of await betaLinks.all()) {
     await link.focus();
@@ -284,7 +295,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
 
 test("validation focuses first error; real unconfigured route returns 503 and retains input", async ({ page }) => {
   await page.goto("/?utm_source=qa&utm_campaign=mission5");
-  const submit = page.getByRole("button", { name: "베타 사전신청", exact: true });
+  const submit = page.getByRole("button", { name: "무료로 신청하기", exact: true });
   await expect(submit).toBeDisabled();
   await page.locator("#consent").check();
   await submit.click();
@@ -325,7 +336,7 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
     await page.getByLabel("iPhone", { exact: true }).check();
     await page.getByLabel("SNS·숏폼 사용을 줄이고 싶어서", { exact: true }).check();
     await page.locator("#consent").check();
-    await page.getByRole("button", { name: "베타 사전신청", exact: true }).click();
+    await page.getByRole("button", { name: "무료로 신청하기", exact: true }).click();
     try {
       const submitting = page.getByRole("button", { name: "접수 중…" });
       await expect(submitting).toBeDisabled();

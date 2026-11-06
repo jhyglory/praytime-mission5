@@ -52,7 +52,7 @@ All Light section backgrounds use Soft Paper #F5F2F7. THE GAP is Dark, Time Sele
 
 Hero primary CTA:
 
-**베타 사전신청** → `#beta-signup`
+**무료로 신청하기** → `#beta-signup`
 
 Hero secondary CTA:
 
