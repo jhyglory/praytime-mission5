@@ -28,7 +28,7 @@ describe("Beta signup boundary", () => {
     vi.stubEnv("VERCEL_ENV", "production");
     vi.stubEnv("BETA_SIGNUP_PERSISTENCE", "supabase");
     const getStore = vi.fn();
-    const response = await createSignupHandler(getStore)(request());
+    const response = await createSignupHandler(getStore, () => new Date(), false)(request());
     expect(response.status).toBe(503);
     expect(await response.json()).toMatchObject({ status: "error", code: "PRIVACY_REVIEW_REQUIRED" });
     expect(getStore).not.toHaveBeenCalled();
@@ -120,7 +120,8 @@ describe("Beta signup boundary", () => {
     expect((await response.json()).errors.consent).toBeDefined();
     expect(insert).not.toHaveBeenCalled();
   });
-  it("records server time and policy version, ignoring spoofed client metadata", async () => {
+  it("records approved production consent, ignoring spoofed client metadata", async () => {
+    vi.stubEnv("VERCEL_ENV", "production");
     const insert = vi.fn().mockResolvedValue({ status: "created" });
     const time = new Date("2026-11-06T01:02:03.456Z");
     const handler = createSignupHandler(() => ({ insert }), () => time);

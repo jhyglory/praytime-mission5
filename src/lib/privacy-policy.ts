@@ -2,7 +2,8 @@
 // Snapshot and canonicalization: docs/privacy/snapshot.json.
 // This is an observed-content identifier, not a claimed legal effective date.
 export const PRIVACY_POLICY_URL = "https://praytime.glorifier.kr/privacy";
-// LEGAL REVIEW REQUIRED: keep production writes off until the published notice
-// matches collection and the user explicitly approves release of submissions.
-export const PRIVACY_COLLECTION_APPROVED = false;
-export const PRIVACY_POLICY_VERSION = "privacy-sha256:e3cac7e88efaa05063c27bf85c12ddbd25250962be6ce70ccc003f9fb8ef8f83";
+// User approved the corrected notice and requested real submissions.
+// Published content verified at the existing URL on 2026-11-06.
+// Persistence still requires explicit server environment configuration.
+export const PRIVACY_COLLECTION_APPROVED = true;
+export const PRIVACY_POLICY_VERSION = "privacy-sha256:61b237b3a2c926f95e6e445d7ba478dd4fb58eefae336009791785652b65207b";

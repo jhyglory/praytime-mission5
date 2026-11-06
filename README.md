@@ -1,5 +1,9 @@
 # PrayTime · Mission 5
 
+## 실제 접수 활성화 승인 · 2026-11-06
+
+사용자가 실제 저장을 요청했고, 수집 항목 정정안 게시를 승인했다. 기존 Privacy URL에 정정안을 게시한 뒤 HTTP 200 및 본문을 확인했다. 새 snapshot/version과 `PRIVACY_COLLECTION_APPROVED=true`를 사용한다. Production에서 기존 Supabase 연결과 `BETA_SIGNUP_PERSISTENCE=supabase`를 설정하는 release를 진행한다. Preview·자동 테스트·기본 로컬 설정은 disabled다. 기존 beta_signups/UNIQUE(email)/INSERT 전용 RLS를 유지하며, 새 DB·migration·공개 SELECT/UPDATE/DELETE·service-role key는 없다. 사용자가 승인한 QA 신청 1건만 생성·검증하고 기존 신청자 행은 조회·수정하지 않는다. merge·main 변경·DNS 전환은 계속 금지다. 아래 이전 저장 OFF/법률 문구 작성 금지 기록은 이 승인 이전의 이력이다. 실제 배포/QA 결과는 docs/BACKEND_ACTIVATION.md에 기록한다.
+
 PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도한 뒤, 지금 필요한 사용인지 다시 선택하도록 돕는 기독교 기반 디지털 웰니스 서비스입니다. 앱 삭제·시간 제한을 시도해도 반복되는 자동 사용 습관에 개입합니다.
 
 핵심 흐름은 **PAUSE → PRAY → CHOOSE → USE → RETURN**입니다. 기도 완료가 SNS 자동 해제를 뜻하지 않습니다. 돌아가거나, 필요하면 **5 / 10 / 15분**을 정해 사용합니다. 시간이 끝나면 다시 제한되고 추가 사용에는 Prayer / Choice가 필요합니다. 이 프로젝트는 제품 자체의 OS 차단 기능이 아닌 소개·베타 신청 Landing입니다.
@@ -130,7 +134,7 @@ config/environment.example    값이 없는 환경 템플릿
 
 ## 배포
 
-Vercel에서 GitHub repo를 import하고 Framework **Next.js**, Root Directory **.**, Install Command `npm ci`, Build Command `npm run build`, Node **24.x**를 사용합니다. Preview는 `BETA_SIGNUP_PERSISTENCE=disabled`로 유지하세요. Production / Preview persistence는 disabled로 유지하고 Supabase key를 등록하지 않습니다. 고지 정합성 승인 후에만 release gate와 기존 connection을 검토합니다. SITE_URL은 실제 배포 origin으로 설정합니다. env 변경 후 재배포가 필요합니다. 상세 [배포 체크리스트](VERCEL_DEPLOYMENT_CHECKLIST.md).
+Vercel에서 GitHub repo를 import하고 Framework **Next.js**, Root Directory **.**, Install Command `npm ci`, Build Command `npm run build`, Node **24.x**를 사용합니다. Preview는 `BETA_SIGNUP_PERSISTENCE=disabled`로 유지하세요. Production은 승인된 기존 Supabase 연결을 서버 환경에 등록하고 persistence=supabase로 설정합니다. Preview는 disabled를 유지합니다. SITE_URL은 실제 배포 origin으로 설정합니다. env 변경 후 재배포가 필요합니다. 상세 [배포 체크리스트](VERCEL_DEPLOYMENT_CHECKLIST.md).
 
 Vercel `glorifier1/praytime-mission5`에 배포했습니다. Production source는 `feature/mission-5-landing`이며 mentor merge 후 `main`으로 전환할 수 있습니다. Production/Preview에 Supabase credentials는 등록하지 않았습니다. 운영 검증은 [최종 상태](docs/FINAL_DELIVERY.md)와 [HTTP 증거](docs/evidence/production-blocked-http-qa.json), [브라우저 증거](docs/evidence/production-browser-qa.json)에 기록했습니다.
 
@@ -140,7 +144,7 @@ Vercel `glorifier1/praytime-mission5`에 배포했습니다. Production source�
 - 개인정보 고지의 누락·필수 여부·표현 범위 보완 승인이 필요합니다. 법률 문구는 임의 작성하지 않았습니다.
 - OG/Twitter 공유 이미지는 사용자가 지정한 「기도의 문, PrayTime」 원본 PNG(1711×919)를 사용합니다. 버전 경로는 `/og/praytime-share-8b6783f5.png`이며 Landing Hero와 별개입니다. favicon은 배경 없이 기존 Signal Red Pause Mark만 남긴 투명 SVG·16/32/48px ICO와180px Apple Touch icon을 사용합니다.
 - `SITE_URL` 미설정 시 Vercel system production URL을 metadata origin으로 사용합니다. 검색 indexing은 기존 noindex 유지, 공개 시 검토 필요.
-- 베타 신청 API는 기본 disabled. 실제 INSERT QA는 개인정보 고지 정합성 승인 후로 보류합니다. Production handler도503 PRIVACY_REVIEW_REQUIRED로 저장을 차단합니다. 일반 자동 테스트는 항상 mock / disabled입니다.
+- 베타 신청 API의 기본 로컬·Preview 설정은 disabled입니다. 승인된 Production은 실제 Supabase 접수를 사용하며 일반 자동 테스트는 항상 mock / disabled입니다.
 - OS 접근 제한·기도 실행 등 제품 기능은 Landing의 설명·프리뷰입니다.
 - 자동 a11y 검증이 screen reader 전체 사용성·최종 색상 contrast 감사를 대체하지 않습니다.
 - 최종 visual/motion·favicon release는 완료됐고, 현재 micro-interaction patch도 로컬 검증 후 사용자 배포 승인을 받았습니다. merge와 실제 DB 저장은 계속 보류합니다. [MOTION_PLAN.md](docs/MOTION_PLAN.md)의 기존 transition은 이번 patch에서 변경하지 않았습니다.

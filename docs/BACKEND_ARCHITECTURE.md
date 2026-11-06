@@ -1,5 +1,9 @@
 # Mission 5 Backend Architecture
 
+## 실제 접수 활성화 승인 · 2026-11-06
+
+사용자가 실제 저장을 요청했고, 수집 항목 정정안 게시를 승인했다. 기존 Privacy URL에 정정안을 게시한 뒤 HTTP 200 및 본문을 확인했다. 새 snapshot/version과 `PRIVACY_COLLECTION_APPROVED=true`를 사용한다. Production에서 기존 Supabase 연결과 `BETA_SIGNUP_PERSISTENCE=supabase`를 설정하는 release를 진행한다. Preview·자동 테스트·기본 로컬 설정은 disabled다. 기존 beta_signups/UNIQUE(email)/INSERT 전용 RLS를 유지하며, 새 DB·migration·공개 SELECT/UPDATE/DELETE·service-role key는 없다. 사용자가 승인한 QA 신청 1건만 생성·검증하고 기존 신청자 행은 조회·수정하지 않는다. merge·main 변경·DNS 전환은 계속 금지다. 아래 이전 저장 OFF/법률 문구 작성 금지 기록은 이 승인 이전의 이력이다. 실제 배포/QA 결과는 docs/BACKEND_ACTIVATION.md에 기록한다.
+
 기준일: 2026-11-06 KST. 기존 배포 소스·Lovable 원본 env·DB catalog·이전 승인 QA의 저장된 증거를 기준으로 정리했습니다. 이번 준비 단계에서 운영 row 조회·수정, migration 실행, 신규 POST는 하지 않았습니다.
 
 ## 기존 연결

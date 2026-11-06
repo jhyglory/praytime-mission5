@@ -8,7 +8,7 @@ function reply(body: unknown, status: number) {
   return Response.json(body, { status, headers: { "Cache-Control": "no-store" } });
 }
 
-export function createSignupHandler(getStore: () => SignupStore, serverNow: () => Date = () => new Date()) {
+export function createSignupHandler(getStore: () => SignupStore, serverNow: () => Date = () => new Date(), privacyApproved = PRIVACY_COLLECTION_APPROVED) {
   return async function POST(request: Request) {
     const origin = request.headers.get("origin");
     if (origin) {
@@ -33,8 +33,8 @@ export function createSignupHandler(getStore: () => SignupStore, serverNow: () =
     if (!parsed.success) return reply({ status: "invalid", errors: fieldErrorsFrom(parsed.error.issues) }, 422);
     // A trap submission never produces a receipt or a success/conversion signal.
     if (parsed.data.company.trim()) return reply({ status: "rejected", message: serverMessage }, 422);
-    // A deployment setting alone must not bypass the pending legal review.
-    if (process.env.VERCEL_ENV === "production" && !PRIVACY_COLLECTION_APPROVED) {
+    // Keep an explicit privacy release gate, independent of persistence settings.
+    if (process.env.VERCEL_ENV === "production" && !privacyApproved) {
       return reply({ status: "error", code: "PRIVACY_REVIEW_REQUIRED", message: serverMessage }, 503);
     }
     try {

@@ -1,8 +1,9 @@
 {
   "url": "https://praytime.glorifier.kr/privacy",
   "observed_date": "2026-11-06",
-  "source_asset": "privacy-DqWsLzak.js",
-  "sha256": "e3cac7e88efaa05063c27bf85c12ddbd25250962be6ce70ccc003f9fb8ef8f83",
-  "version": "privacy-sha256:e3cac7e88efaa05063c27bf85c12ddbd25250962be6ce70ccc003f9fb8ef8f83",
-  "canonicalization": "UTF-8 visible policy title/section headings/paragraphs in source order, separated by LF; trailing LF; excludes home link."
+  "source": "public rendered page HTTP 200; Lovable commit 5b8a5f2dfc7bc2fcbcb59c5050bee83180b66d0c",
+  "sha256": "61b237b3a2c926f95e6e445d7ba478dd4fb58eefae336009791785652b65207b",
+  "version": "privacy-sha256:61b237b3a2c926f95e6e445d7ba478dd4fb58eefae336009791785652b65207b",
+  "canonicalization": "UTF-8 rendered main h1/h2/p textContent in DOM order; collapse whitespace within each element; LF separation and trailing LF; excludes home link.",
+  "approved_by": "user: 게시하세요"
 }
