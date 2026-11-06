@@ -248,3 +248,7 @@ WHY NOW → THE GAP is final; **PENDING DESIGN has ended**. Figma motion context
 ## Release authorization update · 2026-11-06
 
 The user has now approved committing/pushing this final visual + favicon implementation, updating the existing PR #1 and redeploying the existing Vercel project. Earlier pre-approval publishing holds in this stage are satisfied. Keep feature/mission-5-landing, PR #1, main, the privacy guard and disabled persistence. No merge, actual DB INSERT, new DB or custom-domain DNS cutover is authorized.
+
+## Current micro-interaction release scope · 2026-11-06
+
+The final visual/favicon release is complete at `7c77356`. The subsequent micro-interaction patch includes: Hero pointer response, equal GAP anchor interactions (`#hero` / `#how-it-works`, confirmed by the user), active navigation and one-time WHY NOW count-up. Preserve the approved Figma layout/copy, existing transition, shadcn, wheel, form/API and privacy guard. No new dependency. After the diff and passing checks were reported, the user explicitly instructed “재배포해” on 2026-11-06. Commit/push on the existing feature branch, update PR #1 and redeploy the existing Vercel project are now authorized; the earlier local-only hold is satisfied. Merge, main changes, real DB storage and DNS cutover remain forbidden. See [MICRO_INTERACTIONS.md](MICRO_INTERACTIONS.md) for current implementation and fresh checks.

@@ -1,0 +1,384 @@
+import { expect, test, type Locator, type Page } from "@playwright/test";
+
+declare global {
+  interface Window {
+    microStats: {
+      started: number;
+      completed: number;
+      cls: number;
+      samples: { values: number[]; transforms: string[]; widths: string[] }[];
+    };
+  }
+}
+
+const runtimeProblems = new WeakMap<Page, string[]>();
+
+async function protectPage(page: Page) {
+  // These browser checks must never reach an external persistence endpoint.
+  await page.route(/^https?:\/\/(?!127\.0\.0\.1:3000(?:\/|$)).*/, route => route.abort());
+  const problems: string[] = [];
+  page.on("pageerror", error => problems.push(error.message));
+  page.on("console", message => {
+    if (["warning", "error"].includes(message.type())) problems.push(message.text());
+  });
+  return problems;
+}
+
+async function transform(element: Locator) {
+  return element.evaluate(el => {
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(el).transform);
+    return { x: matrix.m41, y: matrix.m42, scaleX: matrix.m11, scaleY: matrix.m22 };
+  });
+}
+
+async function centerSection(page: Page, selector: string) {
+  await page.locator(selector).evaluate(el => el.scrollIntoView({ block: "center", behavior: "instant" }));
+}
+
+test.beforeEach(async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  runtimeProblems.set(page, await protectPage(page));
+});
+
+test.afterEach(async ({ page }) => {
+  expect(runtimeProblems.get(page) ?? []).toEqual([]);
+});
+
+test("Hero responds opposite to the primary mouse within 2.5px and returns on leave", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  const hero = page.locator("#hero");
+  const artwork = hero.locator(".hero-artwork img");
+  await expect(hero).toHaveAttribute("data-pointer-motion", "enabled");
+  const contentBefore = await hero.locator(".hero-content").boundingBox();
+  const bounds = (await hero.boundingBox())!;
+  await page.mouse.move(bounds.x + bounds.width * 0.9, bounds.y + bounds.height * 0.9);
+  await expect.poll(async () => (await transform(artwork)).x).toBeLessThan(-0.5);
+  await expect.poll(async () => (await transform(artwork)).y).toBeLessThan(-0.5);
+  const moved = await transform(artwork);
+  expect(Math.hypot(moved.x, moved.y)).toBeLessThanOrEqual(2.501);
+  expect(moved.scaleX).toBe(1);
+  expect(moved.scaleY).toBe(1);
+  expect(await hero.locator(".hero-content").boundingBox()).toEqual(contentBefore);
+
+  // Secondary mouse and pen events must not replace the primary mouse sample.
+  const pointerPosition = await hero.evaluate(el => [el.style.getPropertyValue("--hero-pointer-x"), el.style.getPropertyValue("--hero-pointer-y")]);
+  await hero.dispatchEvent("pointermove", { pointerType: "mouse", isPrimary: false, clientX: 1, clientY: 1 });
+  await hero.dispatchEvent("pointermove", { pointerType: "pen", isPrimary: true, clientX: 1, clientY: 1 });
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+  expect(await hero.evaluate(el => [el.style.getPropertyValue("--hero-pointer-x"), el.style.getPropertyValue("--hero-pointer-y")])).toEqual(pointerPosition);
+
+  await page.mouse.move(10, bounds.y + bounds.height + 20);
+  await expect(hero).toHaveAttribute("data-pointer-state", "idle");
+  await expect.poll(async () => Math.hypot(...Object.values(await transform(artwork)).slice(0, 2))).toBeLessThan(0.01);
+  expect(await hero.evaluate(el => [el.style.getPropertyValue("--hero-pointer-x"), el.style.getPropertyValue("--hero-pointer-y")])).toEqual(["", ""]);
+});
+
+test("changing to reduced motion immediately disables and resets Hero parallax", async ({ page }) => {
+  await page.goto("/");
+  const hero = page.locator("#hero");
+  const artwork = hero.locator(".hero-artwork img");
+  await expect(hero).toHaveAttribute("data-pointer-motion", "enabled");
+  await page.mouse.move(1250, 550);
+  await expect.poll(async () => (await transform(artwork)).x).toBeLessThan(-0.5);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(hero).toHaveAttribute("data-pointer-motion", "disabled");
+  await expect(artwork).toHaveCSS("transform", "none");
+  await page.mouse.move(150, 150);
+  await expect(hero).toHaveAttribute("data-pointer-state", "idle");
+  await expect(artwork).toHaveCSS("transform", "none");
+});
+
+for (const { name, width, hasTouch } of [
+  { name: "desktop coarse pointer", width: 1440, hasTouch: true },
+  { name: "mobile-width fine pointer", width: 393, hasTouch: false },
+]) {
+  test(`Hero stays static with ${name}`, async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ baseURL, viewport: { width, height: 900 }, hasTouch, reducedMotion: "no-preference" });
+    try {
+      const page = await context.newPage();
+      const problems = await protectPage(page);
+      await page.goto("/");
+      expect(await page.evaluate(() => matchMedia("(pointer: coarse)").matches)).toBe(hasTouch);
+      await expect(page.locator("#hero")).toHaveAttribute("data-pointer-motion", "disabled");
+      await page.mouse.move(width * 0.8, 400);
+      await expect(page.locator(".hero-artwork img")).toHaveCSS("transform", "none");
+      await expect(page.locator("#hero")).toHaveAttribute("data-pointer-state", "idle");
+      expect(problems).toEqual([]);
+    } finally {
+      await context.close();
+    }
+  });
+}
+
+test("Equal Choice links share visual weight, focus rings and keyboard destination behavior", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const choices = page.locator(".gap-choice");
+  await expect(choices).toHaveCount(2);
+  const returning = page.getByRole("link", { name: "지금은 돌아가기", exact: true });
+  const time = page.getByRole("link", { name: "5 · 10 · 15분 선택", exact: true });
+  await expect(returning).toHaveAttribute("href", "#hero");
+  await expect(time).toHaveAttribute("href", "#how-it-works");
+  const styles = await choices.evaluateAll(elements => elements.map(el => {
+    const style = getComputedStyle(el);
+    const heading = getComputedStyle(el.querySelector("h3")!);
+    const bounds = el.getBoundingClientRect();
+    return { height: bounds.height, width: bounds.width, surface: style.backgroundColor, border: style.border, color: heading.color, weight: heading.fontWeight, size: heading.fontSize };
+  }));
+  expect(styles[0]).toEqual(styles[1]);
+  expect(styles[0].height).toBeGreaterThanOrEqual(44);
+
+  await returning.focus();
+  await page.keyboard.press("Tab");
+  await expect(time).toBeFocused();
+  for (const choice of [time, returning]) {
+    if (choice === returning) await page.keyboard.press("Shift+Tab");
+    await expect(choice).toBeFocused();
+    expect(await choice.evaluate(el => el.matches(":focus-visible"))).toBe(true);
+    await expect(choice).toHaveCSS("outline-width", "2px");
+    await expect(choice).toHaveCSS("outline-style", "solid");
+    await expect(choice).toHaveCSS("outline-color", "rgb(167, 156, 182)");
+    await expect(choice).toHaveCSS("outline-offset", "3px");
+  }
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/#hero$/);
+  await expect(page.locator("#hero-heading")).toBeFocused();
+  await time.focus();
+  await page.keyboard.press("Enter");
+  await expect(page).toHaveURL(/#how-it-works$/);
+  await expect(page.locator("#how-heading")).toBeFocused();
+});
+
+test("both Equal Choice panels lift and press equally, with outward arrows", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  for (const [index, direction] of [[0, -1], [1, 1]]) {
+    const choice = page.locator(".gap-choice").nth(index);
+    const panel = page.locator(".equal-outcomes > div").nth(index);
+    const arrow = choice.locator("img");
+    const textColor = await choice.locator("h3").evaluate(el => getComputedStyle(el).color);
+    await choice.hover();
+    await expect.poll(async () => (await transform(panel)).y).toBeCloseTo(-2, 1);
+    await expect.poll(async () => (await transform(arrow)).x).toBeCloseTo(4 * direction, 1);
+    await expect(choice.locator("h3")).toHaveCSS("color", textColor);
+    await expect(choice).toHaveCSS("box-shadow", "none");
+    await expect.poll(() => choice.evaluate(el => getComputedStyle(el, "::before").opacity)).toBe("1");
+    await page.mouse.down();
+    try {
+      await expect.poll(async () => (await transform(panel)).y).toBeCloseTo(0, 2);
+      await expect.poll(async () => (await transform(panel)).scaleX).toBeCloseTo(0.995, 3);
+      await expect(choice).toHaveCSS("background-color", "rgba(0, 0, 0, 0.08)");
+    } finally {
+      await page.mouse.up();
+    }
+  }
+});
+
+test("reduced motion keeps Equal Choice hover and press transforms static", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  for (let index = 0; index < 2; index += 1) {
+    const choice = page.locator(".gap-choice").nth(index);
+    const panel = page.locator(".equal-outcomes > div").nth(index);
+    await choice.hover();
+    await expect(panel).toHaveCSS("transform", "none");
+    await expect(choice.locator("img")).toHaveCSS("transform", "none");
+    await page.mouse.down();
+    try {
+      await expect(panel).toHaveCSS("transform", "none");
+      await expect(choice.locator("img")).toHaveCSS("transform", "none");
+    } finally {
+      await page.mouse.up();
+    }
+  }
+});
+
+test("navigation follows the real center section and clears in unmapped sections", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  const nav = page.getByRole("navigation", { name: "주요 메뉴" });
+  await expect(nav.locator("a[aria-current='location']")).toHaveCount(0);
+  for (const [id, name] of [["how-it-works", "작동 방식"], ["prayer-choice", "기도와 선택"], ["faq", "FAQ"]]) {
+    await centerSection(page, `#${id}`);
+    const active = nav.getByRole("link", { name, exact: true });
+    await expect(active).toHaveAttribute("aria-current", "location");
+    await expect(nav.locator("a[aria-current='location']")).toHaveCount(1);
+    await expect(active).toHaveCSS("opacity", "1");
+    for (const inactive of await nav.locator("a:not([aria-current])").all()) await expect(inactive).toHaveCSS("opacity", "0.65");
+  }
+  for (const selector of ["#the-gap", "#beta-signup", "#hero"]) {
+    await centerSection(page, selector);
+    await expect(nav.locator("a[aria-current='location']")).toHaveCount(0);
+  }
+});
+
+test("active navigation retains native anchor names, URLs and keyboard heading focus", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const nav = page.getByRole("navigation", { name: "주요 메뉴" });
+  for (const [name, destination, heading] of [
+    ["작동 방식", "how-it-works", "how-heading"],
+    ["기도와 선택", "prayer-choice", "prayer-heading"],
+    ["FAQ", "faq", "faq-heading"],
+  ]) {
+    const link = nav.getByRole("link", { name, exact: true });
+    await expect(link).toHaveAttribute("href", `#${destination}`);
+    await link.focus();
+    await page.keyboard.press("Enter");
+    expect(new URL(page.url()).hash).toBe(`#${destination}`);
+    await expect(page.locator(`#${heading}`)).toBeFocused();
+    await expect(link).toHaveAttribute("aria-current", "location");
+  }
+});
+
+test("WHY NOW counts once without overshoot or layout shift and stays final after reentry and reload", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  const grid = page.locator("#why-stats");
+  const numbers = grid.locator("[data-stat-number]");
+  await expect(grid).toHaveAttribute("data-count-state", "pending");
+  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+  await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
+  await page.evaluate(() => {
+    const grid = document.getElementById("why-stats")!;
+    const numbers = [...grid.querySelectorAll<HTMLElement>("[data-stat-number]")];
+    const fills = [...grid.querySelectorAll<HTMLElement>(".stat-fill")];
+    const result = window.microStats = { started: 0, completed: 0, cls: 0, samples: [] as { values: number[]; transforms: string[]; widths: string[] }[] };
+    const observer = new MutationObserver(() => {
+      const state = grid.dataset.countState;
+      if (state === "running" && !result.started) result.started = performance.now();
+      if (state === "running" || state === "complete") result.samples.push({ values: numbers.map(el => Number.parseFloat(el.textContent!)), transforms: fills.map(el => el.style.transform), widths: fills.map(el => el.style.width) });
+      if (state === "complete") {
+        result.completed = performance.now();
+        observer.disconnect();
+      }
+    });
+    observer.observe(grid, { subtree: true, childList: true, characterData: true, attributes: true });
+    new PerformanceObserver(list => {
+      for (const entry of list.getEntries()) {
+        const shift = entry as PerformanceEntry & { hadRecentInput: boolean; value: number };
+        if (!shift.hadRecentInput) result.cls += shift.value;
+      }
+    }).observe({ type: "layout-shift" });
+  });
+  await grid.scrollIntoViewIfNeeded();
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+  await expect(grid).toHaveAttribute("data-count-runs", "1");
+  const observation = await page.evaluate(() => window.microStats);
+  expect(observation.completed - observation.started).toBeGreaterThanOrEqual(650);
+  expect(observation.completed - observation.started).toBeLessThanOrEqual(900);
+  expect(observation.samples.length).toBeGreaterThan(2);
+  expect(observation.samples.some(sample => sample.values[0] > 0 && sample.values[0] < 34.3)).toBe(true);
+  expect(observation.samples.some(sample => sample.transforms.some(value => /^scaleX\(0\./.test(value)))).toBe(true);
+  for (const [index, final] of [34.3, 25.3].entries()) {
+    let previous = 0;
+    for (const sample of observation.samples) {
+      expect(sample.values[index]).toBeGreaterThanOrEqual(previous);
+      expect(sample.values[index]).toBeLessThanOrEqual(final);
+      expect(sample.widths[index]).toBe(`${final}%`);
+      previous = sample.values[index];
+    }
+    const track = (await grid.locator(".stat-track").nth(index).boundingBox())!;
+    const fill = (await grid.locator(".stat-fill").nth(index).boundingBox())!;
+    expect(fill.width / track.width * 100).toBeCloseTo(final, 1);
+  }
+  expect(observation.cls).toBeLessThanOrEqual(0.001);
+
+  await centerSection(page, "#hero");
+  await grid.scrollIntoViewIfNeeded();
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(grid).toHaveAttribute("data-count-runs", "1");
+  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+  await page.reload();
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(grid).toHaveAttribute("data-count-runs", "0");
+  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+});
+
+test("WHY NOW reduced motion immediately presents final accessible values and gauges", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const grid = page.locator("#why-stats");
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(grid).toHaveAttribute("data-count-runs", "0");
+  await grid.scrollIntoViewIfNeeded();
+  await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
+  await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
+  for (const fill of await grid.locator(".stat-fill").all()) await expect(fill).toHaveCSS("transform", "none");
+});
+
+test("without JavaScript, WHY NOW still renders both final statistics and real ratio gauges", async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 1440, height: 900 } });
+  try {
+    const page = await context.newPage();
+    const problems = await protectPage(page);
+    await page.goto("/");
+    const grid = page.locator("#why-stats");
+    await grid.scrollIntoViewIfNeeded();
+    await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
+    await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
+    for (const [index, final] of [34.3, 25.3].entries()) {
+      const fill = (await grid.locator(".stat-fill").nth(index).boundingBox())!;
+      const track = (await grid.locator(".stat-track").nth(index).boundingBox())!;
+      expect(fill.width / track.width * 100).toBeCloseTo(final, 1);
+    }
+    expect(problems).toEqual([]);
+  } finally {
+    await context.close();
+  }
+});
+
+test("mobile touch preserves choice, wheel, FAQ and beta CTA flows without saving data", async ({ browser, baseURL }) => {
+  const context = await browser.newContext({
+    baseURL,
+    viewport: { width: 393, height: 852 },
+    hasTouch: true,
+    isMobile: true,
+    reducedMotion: "reduce",
+  });
+  try {
+    const page = await context.newPage();
+    const problems = await protectPage(page);
+    let submissionRequests = 0;
+    page.on("request", request => {
+      if (new URL(request.url()).pathname === "/api/beta-signup") submissionRequests += 1;
+    });
+    await page.goto("/");
+    await page.evaluate(() => document.fonts.ready);
+    expect(await page.evaluate(() => navigator.maxTouchPoints > 0 && matchMedia("(pointer: coarse)").matches)).toBe(true);
+    await expect(page.locator("#hero")).toHaveAttribute("data-pointer-motion", "disabled");
+
+    await page.getByRole("link", { name: "5 · 10 · 15분 선택", exact: true }).tap();
+    await expect(page).toHaveURL(/#how-it-works$/);
+    const wheel = page.getByRole("radiogroup", { name: "사용 시간 미리보기" });
+    await wheel.getByRole("radio", { name: "15분", exact: true }).tap();
+    await expect(wheel).toHaveAttribute("data-selected", "15");
+    await expect(wheel.getByRole("radio", { name: "15분", exact: true })).toHaveAttribute("aria-checked", "true");
+    await wheel.getByRole("radio", { name: "10분", exact: true }).tap();
+    await expect(wheel).toHaveAttribute("data-selected", "10");
+    await expect(wheel.getByRole("radio", { name: "10분", exact: true })).toHaveAttribute("aria-checked", "true");
+
+    const questions = page.locator(".faq-item button");
+    await expect(questions).toHaveCount(7);
+    await expect(questions.nth(1)).toHaveAttribute("aria-expanded", "false");
+    await questions.nth(1).tap();
+    await expect(questions.nth(1)).toHaveAttribute("aria-expanded", "true");
+    await expect(page.locator("#faq-answer-1")).toBeVisible();
+    await questions.nth(1).tap();
+    await expect(questions.nth(1)).toHaveAttribute("aria-expanded", "false");
+    await expect(page.locator("#faq-answer-1")).toBeHidden();
+
+    await page.locator(".hero-actions").getByRole("link", { name: "베타 사전신청", exact: true }).tap();
+    await expect(page).toHaveURL(/#beta-signup$/);
+    await expect(page.getByRole("button", { name: "베타 사전신청", exact: true })).toBeDisabled();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    expect(submissionRequests).toBe(0);
+    expect(problems).toEqual([]);
+  } finally {
+    await context.close();
+  }
+});

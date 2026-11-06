@@ -98,6 +98,8 @@ The signature object belongs primarily to brand moments. Product UI should remai
 
 ## Current release authorization · 2026-11-06
 
+**Latest authorization — micro-interaction release:** after receiving the diff and passing checks, the user explicitly instructed “재배포해” on 2026-11-06. Commit/push the verified micro-interaction patch on feature/mission-5-landing, update existing PR #1 and redeploy the existing Vercel project. This supersedes the local-only hold for this patch; do not ask for approval again. Preserve the approved design, existing transition, shadcn, wheel, form/API/privacy guard and disabled persistence. Keep main untouched. No new PR, merge, real DB INSERT, persistence activation, new DB or DNS cutover is authorized. The prior visual/favicon release at 7c77356 remains the preceding baseline. Confirmed GAP destinations: RETURN → #hero; time choice → #how-it-works.
+
 The user has explicitly approved committing and pushing the final design, shadcn adoption and favicon on feature/mission-5-landing, updating existing PR #1, and redeploying the existing Vercel project. This satisfies the review-approval conditions below. Proceed with the authorized release after validation; do not request the same permission again. Merge, actual DB INSERT/persistence activation and custom-domain DNS cutover remain forbidden. Keep main untouched, preserve the existing PR and privacy guard.
 
 ## Current stage · Final implementation / submission

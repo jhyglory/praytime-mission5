@@ -6,7 +6,7 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 현재 단계
 
-섹션 분리·Light FAQ 7개·실제 shadcn/ui Accordion/Button 적용 위에 최종 Figma1088 visual patch, WHY NOW → THE GAP transition과 정사각형 Pause Mark 파비콘을 반영했습니다. **PENDING DESIGN은 종료되었습니다.** 구조·copy·anchor·폼·wheel interaction을 유지하고 최종 시안과 다른 색상·line-height·spacing만 보정합니다. 기존 폼·backend와 Privacy guard는 재사용하며 Production 저장은 OFF입니다. 최신 검증과 diff는 [FINAL_VISUAL_PATCH.md](docs/FINAL_VISUAL_PATCH.md)에 기록합니다. 사용자가 최종 commit·push·기존 PR #1 업데이트·Vercel 재배포를 승인했습니다. 같은 feature branch와 PR을 사용하며 merge·실제 DB 저장·DNS 전환은 보류합니다.
+최종 Figma1088 visual patch·shadcn/ui·FAQ7·transition·Pause Mark 파비콘은 `7c77356`으로 배포되었습니다. **현재는 그 기준점 위에 micro-interaction을 추가하고 검증한 상태**입니다. Hero 미세 pointer 반응, 동등한 GAP 링크, 메뉴 활성 상태, 세션당 한 번의 통계 count-up을 구현하며 승인된 IA·copy·반응형·transition·폼·API를 유지합니다. 사용자가 diff·검사 결과 확인 후 **이번 patch의 재배포를 승인했습니다.** 같은 feature branch에 commit·push하고 기존 PR #1과 Vercel을 업데이트합니다. Production 저장은 계속 OFF이며 merge·DB INSERT·DNS 전환도 하지 않습니다. 현재 사양·검증은 [MICRO_INTERACTIONS.md](docs/MICRO_INTERACTIONS.md), 이전 visual release는 [FINAL_VISUAL_PATCH.md](docs/FINAL_VISUAL_PATCH.md)를 확인하세요.
 
 - Repository: [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5) (private)
 - 작업 branch: `feature/mission-5-landing`
@@ -83,6 +83,10 @@ npm run start
 8개 섹션: HERO → ONE QUESTION → WHY NOW → THE GAP → TIME SELECT → PRAYER BEFORE CHOICE → FAQ → BETA SIGNUP.
 
 - CTA / 메뉴 anchor, 키보드 사용 시 목적지 heading focus
+- Hero: Desktop/fine pointer에서 원본 raster 전체를 최대 2.5px 이동, leave 시 복귀. Mobile/coarse/reduced-motion에서는 정적
+- THE GAP: 두 선택지를 동일한 hover/pressed/focus 규칙으로 처리. 돌아가기 → Hero, 시간 선택 → Time Select
+- 메뉴: 중앙 viewport의 섹션을 IntersectionObserver로 감지, opacity·aria-current만 갱신. Header의 기존 absolute 위치 유지
+- WHY NOW: 34.3% / 25.3%와 gauge를 750ms ease-out으로 세션당 1회 표시. SSR/no-JS/reduced-motion에서는 최종 수치 제공
 - WHY NOW → THE GAP: 실제 Figma opacity-loop timeline을 native Web Animations API로 구현. Desktop2800ms / Mobile2410ms, 화면 밖·background에서 pause, reduced-motion/static fallback. sticky·scroll-progress·scroll hijacking·WebGL·motion dependency 없음. [구현 사양](docs/MOTION_PLAN.md).
 - shadcn Accordion FAQ 7개 독립 토글, 첫 항목만 기본 펼침, Enter / Space / 화살표 / Home / End; Light 배경·Ink text·승인 chevron
 - 최종 TIME SELECT 프리뷰: 5 / 10 / 15분 중 10분 selected. 원본 mockup 재사용, swipe·중앙 snap·tap·키보드 선택 지원. Hero 앱 테마 toggle은 최종 Figma에 없어 노출하지 않습니다.
@@ -91,7 +95,7 @@ npm run start
 - 실제 HTTP 201 + receipt 이후에만 success와 전환 이벤트
 - reduced motion, live result announcement, native form controls
 
-1440 / 1280 / 1024 / 768 / 430 / 393 / 375 / 320px에서 overflow·asset·구조를 검증합니다. 최종 Desktop / Mobile의 시각 정합성과 motion은 해당 Figma 프레임·브라우저 screenshot 및 실제 timeline 동작을 비교하고, 최신 결과를 FINAL_VISUAL_PATCH.md에 기록합니다.
+1440 / 1280 / 1024 / 768 / 430 / 393 / 375 / 320px에서 overflow·asset·구조를 검증합니다. 최종 visual release 기록은 FINAL_VISUAL_PATCH.md, 현재 micro-interaction의 로컬 검증은 MICRO_INTERACTIONS.md를 확인하세요.
 
 ## Backend 구조
 
@@ -137,7 +141,7 @@ Vercel `glorifier1/praytime-mission5`에 배포했습니다. Production source�
 - 베타 신청 API는 기본 disabled. 실제 INSERT QA는 개인정보 고지 정합성 승인 후로 보류합니다. Production handler도503 PRIVACY_REVIEW_REQUIRED로 저장을 차단합니다. 일반 자동 테스트는 항상 mock / disabled입니다.
 - OS 접근 제한·기도 실행 등 제품 기능은 Landing의 설명·프리뷰입니다.
 - 자동 a11y 검증이 screen reader 전체 사용성·최종 색상 contrast 감사를 대체하지 않습니다.
-- 최종 visual/motion·favicon patch의 commit·push·기존 PR 업데이트·배포는 사용자 승인을 받았습니다. merge와 실제 DB 저장은 보류합니다. [MOTION_PLAN.md](docs/MOTION_PLAN.md)는 최종 구현 사양이며 예전 sticky/scroll-progress 제안은 폐기된 과거 기록입니다.
+- 최종 visual/motion·favicon release는 완료됐고, 현재 micro-interaction patch도 로컬 검증 후 사용자 배포 승인을 받았습니다. merge와 실제 DB 저장은 계속 보류합니다. [MOTION_PLAN.md](docs/MOTION_PLAN.md)의 기존 transition은 이번 patch에서 변경하지 않았습니다.
 - 커스텀 도메인의 DNS 전환은 별도 보류 상태입니다. 기존 Lovable 서비스 연결을 유지하며 현재 Vercel URL로 로컬 patch 이전 배포를 확인할 수 있습니다.
 
 Full-page QA PNG export (optional): `CAPTURE_QA_SCREENSHOTS=1 npm run test:e2e`. Required browser assertions always run.

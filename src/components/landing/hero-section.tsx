@@ -2,9 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { AnchorLink } from "@/components/landing/anchor-link";
 import { Header } from "@/components/landing/header";
+import { HeroPointerMotion } from "@/components/landing/hero-pointer-motion";
 
 export function HeroSection() {
   return <section className="hero" id="hero" aria-labelledby="hero-heading" data-figma-node="1088:916 / 1088:1251">
+    <HeroPointerMotion />
     <picture className="hero-artwork"><source media="(width < 768px)" srcSet="/assets/hero-atmosphere-mobile.png" /><img src="/assets/hero-atmosphere.png" alt="" width="1440" height="684" fetchPriority="high" /></picture>
     <div className="hero-legibility" aria-hidden="true" /><div className="hero-top-blend" aria-hidden="true" />
     <Header />

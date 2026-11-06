@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-06",
+  "scope": "LOCAL ONLY, uncommitted micro-interaction patch",
+  "baselineCommit": "7c77356c99992de08dcae5dc696264ac8b3acf09",
+  "branch": "feature/mission-5-landing",
+  "checks": [
+    {
+      "command": "npm run lint",
+      "result": "PASS",
+      "warnings": 0
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "PASS"
+    },
+    {
+      "command": "npm run test",
+      "result": "PASS",
+      "files": 4,
+      "tests": 40
+    },
+    {
+      "command": "npm run test:e2e",
+      "result": "PASS",
+      "tests": 31,
+      "existing": 18,
+      "added": 13,
+      "durationSeconds": 28.9
+    },
+    {
+      "command": "npm run build -- --webpack",
+      "result": "PASS"
+    }
+  ],
+  "qa": {
+    "widths": [
+      1440,
+      1280,
+      1024,
+      768,
+      430,
+      393,
+      375,
+      320
+    ],
+    "horizontalOverflow": false,
+    "consoleOrPageErrors": 0,
+    "missingAssets": 0,
+    "statsClsAfterFonts": 0,
+    "priorSectionGeometryExactMatch": [
+      1440,
+      393
+    ],
+    "equalChoiceRestingTextGeometryExactMatch": "all 8 widths"
+  },
+  "attemptNotes": [
+    "Initial lint prefer-const finding corrected before final checks.",
+    "First browser pass caught reduced-motion hover CSS specificity; corrected and rebuilt.",
+    "Next run: all 13 new tests passed; first existing case timed out creating Chrome context before navigation. Unchanged full suite rerun passed 31/31 without raising timeout or weakening assertions."
+  ],
+  "safety": {
+    "externalRequests": "aborted in browser QA",
+    "persistence": "disabled",
+    "realDbInsert": false,
+    "commit": false,
+    "push": false,
+    "prMutation": false,
+    "merge": false,
+    "deployment": false,
+    "dnsChange": false
+  }
+}
