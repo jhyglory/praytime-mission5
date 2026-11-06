@@ -19,7 +19,7 @@ Before implementation read docs/PRAYTIME_PRODUCT.md, docs/PRAYTIME_DESIGN.md, do
 - Once per card per page load; reopening/reloading replays. Never use sessionStorage/localStorage as a completion latch.
 - Reduced motion/no-JS shows readable final values. Pause or finish offscreen/background safely, and clean up observers/RAF/listeners.
 - Independent card-free intro: whole word그래서, then actual Figma logo plus은. Enough viewport height to avoid premature SNS bleed. No letter splitting or text/CSS substitute logo.
-- Next SNS scene: approved fixed declaration/support, all columns continuously UP, approximately12s cycles with independent phases.80 original user photos once per base cycle; duplicate tiles may not expose the same photo twice at once.16hearts/4shares repeatedly rise.
+- Next SNS scene: approved fixed declaration/support, all columns continuously UP, 15s cycles (latest user override:0.8× the original card speed) with independent phases.80 original user photos once per base cycle; duplicate tiles may not expose the same photo twice at once.16hearts/4shares repeatedly rise with their unchanged12s source timing.
 - Respect final frame geometry, clipping and stacking; no auto-scroll, scroll hijacking or new motion dependency.
 - Mobile WHY title32/48 and description26/44; preserve intended three-line composition with a safe narrower-width adaptation, no overlap.
 - GAP condition, CTA and arrow group share the panel center. Remove the sentence열기 전, 무엇 때문에 열었는지 떠올려 보세요. with no replacement.
@@ -46,6 +46,6 @@ Preserve feature/mission-5-landing and PR #1 ([하영]-미션5). User authorizes
 
 ## Completion evidence
 
-Run lint, typecheck, unit, npm run build -- --webpack and browser tests. Inspect whole-page actual screenshots at1440/393/360px, not build output alone. Verify24s+ SNS playback, seams/unique visible photos/particles, stat numeric+gauge synchronization and reload replay, navigation/CTA/wheel/FAQ/form, repeated navigation/reload, overflow/overlap and console errors. Test cancellation/cleanup and reduced motion.
+Run lint, typecheck, unit, npm run build -- --webpack and browser tests. Inspect whole-page actual screenshots at1440/393/360px, not build output alone. Verify30s+ SNS playback, seams/unique visible photos/particles, stat numeric+gauge synchronization and reload replay, navigation/CTA/wheel/FAQ/form, repeated navigation/reload, overflow/overlap and console errors. Test cancellation/cleanup and reduced motion.
 
 Deploy verified code, then repeat GET-only verification on https://praytime-mission5.vercel.app/. Report every section's checked/fixed status, real screenshots, reproduced motion results, unverified/residual differences, commit and deployment URL. Do not label historical PASS as current.

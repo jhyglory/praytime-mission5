@@ -33,7 +33,7 @@ Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS 
 - WHY NOW는 각 카드가 실제 **40%** 보일 때 독립 시작합니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**, 전체100% 길이는 연한 회색 track, 최종 red fill은 정확히34.3% /25.3%입니다.
 - 통계는 **카드마다 페이지 로드당 한 번** 실행합니다. 새로고침·페이지 재진입에서는 다시 실행하며, 완료 여부를 `sessionStorage`나 `localStorage`에 저장하지 않습니다. reduced-motion/no-JS는 읽을 수 있는 최종값을 표시합니다.
 - clean intro는 카드 없이 **“그래서” 전체 단어 → 실제 Figma 로고 + “은”** 순서로 한 번 등장하고 읽을 수 있는 결과를 유지합니다. 높이는 원본 Desktop760/Mobile680px와 **현재 viewport 높이 이상**을 모두 만족하도록 확보합니다. 다음 SNS scene과 교차 fade하거나 자동 스크롤하지 않습니다.
-- SNS scene은 최종 Figma의 Desktop760/Mobile680px 구간을 따릅니다. 선언·보조 문구는 고정하고 **모든 카드 열이 위로** 약12초 주기로 계속 흐릅니다. 원본 사진80개를 각 viewport의 base cycle에 한 번씩 배치하고, Desktop6열/Mobile3열과 독립 phase·동일 duplicate tile로 반복을 연결합니다. 하트16개·공유4개가 반복 상승합니다. 각25초 실제 재생과 모든 seam 경계 검사에서 화면 내 중복 사진0을 확인했습니다.
+- SNS scene은 최종 Figma의 Desktop760/Mobile680px 구간을 따릅니다. 선언·보조 문구는 고정하고 **모든 카드 열이 위로** 현재 원본의0.8배 속도인15초 주기로 계속 흐릅니다. 원본 사진80개를 각 viewport의 base cycle에 한 번씩 배치하고, Desktop6열/Mobile3열과 독립 phase·동일 duplicate tile로 반복을 연결합니다. 하트16개·공유4개는 기존12초 타이밍으로 반복 상승합니다. 각25초 실제 재생과 모든 seam 경계 검사에서 화면 내 중복 사진0을 확인했습니다.
 - THE GAP은 건축적 light artwork와 동등한 두 선택을 유지합니다. 조건 문구·light·CTA와 arrow 묶음은 각 panel 중앙축을 공유합니다. 돌아가기 → `#hero`, 시간 선택 → `#how-it-works`입니다. 요청된 문장 “열기 전, 무엇 때문에 열었는지 떠올려 보세요.”는 제거하며 대체 문구를 추가하지 않습니다.
 - TIME SELECT는 실제10분 wheel mockup을 유지하고 swipe/tap/키보드로5/10/15분을 선택할 수 있습니다.
 - PRAYER는 Dark section과 원본 Puzz를 유지합니다. Mobile은 원본128px figure와 해당 크기로 export된 grounding SVG를 사용합니다.
@@ -119,7 +119,7 @@ config/environment.example    값이 없는 환경 템플릿
 
 ## 배포와 보존 항목
 
-기존 Vercel `glorifier1/praytime-mission5` 프로젝트와 `feature/mission-5-landing`을 유지합니다. 화면 source834b5b0을 Production에 배포하고 canonical URL을1440/393/360px에서 재검증했습니다. 각약25초 SNS playback·통계 reload·주요 interaction·전체 화면에서 오류/overflow/실제 POST0을 확인했습니다. deployment ID와 실제 측정값은 [WHOLE_PAGE_FINAL.md](docs/WHOLE_PAGE_FINAL.md)에 있습니다. 이후 문서 검증 기록 commit은 배포된 UI source와 구분합니다.
+기존 Vercel `glorifier1/praytime-mission5` 프로젝트와 `feature/mission-5-landing`을 유지합니다. 전체 비교 release834b5b0은 최초 검증 기준선이며, 이후 Header CTA 제거와 사진 카드0.8배 속도 요청을 반영했습니다. 최신 code commit·deployment·배포 후 결과는 [기존 PR #1](https://github.com/jhyglory/praytime-mission5/pull/1)에서 관리합니다. 전체 비교와 release별 검증 이력은 [WHOLE_PAGE_FINAL.md](docs/WHOLE_PAGE_FINAL.md)에 있습니다.
 
 사용자 지정 공유 이미지는 `/og/praytime-share-8b6783f5.png` 원본1711×919를 유지합니다. favicon은 투명 배경의 Signal Red Pause Mark입니다. 기존 noindex, metadata, Privacy URL과 custom-domain DNS는 변경하지 않습니다. Figma 파일 수정, 새 기능·dependency·DB, main 변경과 merge는 이번 작업 범위에 없습니다.
 

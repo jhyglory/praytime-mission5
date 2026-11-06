@@ -97,22 +97,30 @@ test("Final SNS frame follows Figma and the independent intro fills the viewport
   }
 });
 
-test("photo streams stay unique and continuous through every source seam and repeated 12s loops", async ({ page }) => {
-  test.setTimeout(150_000);
+test("photo streams stay unique and continuous through every source seam and repeated 15s loops while particles retain 12s", async ({ page }) => {
+  test.setTimeout(180_000);
   for (const width of [1440,393,360]) {
     const variant=width === 1440 ? "desktop" : "mobile";
     await page.setViewportSize({ width,height:width === 1440 ? 1080 : 932 });
     await page.goto("/");
     const scene=page.locator(".card-intro__cards");
     await scene.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
-    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-state","running");
+    const transition=page.locator("[data-signature-transition]");
+    await expect(transition).toHaveAttribute("data-motion-state","running");
+    await expect(transition).toHaveAttribute("data-motion-duration","15000");
+    await expect(transition).toHaveAttribute("data-particle-motion-duration","12000");
+    expect(streams[variant].duration).toBe(12000);
     await page.evaluate(() => { for (const img of document.images) img.loading="eager"; });
     await expect.poll(() => page.evaluate(() => [...document.images].filter(img => !img.complete || !img.naturalWidth).length),{timeout:30_000}).toBe(0);
-    const resetTimes=streams[variant].tracks.filter(track => track.frames.some(frame => "transform" in frame) && track.nodeId.startsWith("1284:")).map(track => track.frames[1].offset * 12000);
+    const resetTimes=streams[variant].tracks.filter(track => track.frames.some(frame => "transform" in frame) && track.nodeId.startsWith("1284:")).map(track => track.frames[1].offset * 15000);
     const result=await scene.evaluate((el,{resetTimes,baseHeight}) => {
       const animations=el.getAnimations({subtree:true});
       const clip=el.getBoundingClientRect();
       const columns=[...el.querySelectorAll<HTMLElement>(".card-intro__column")];
+      const timings=animations.map(animation => {
+        const target=(animation.effect as KeyframeEffect).target as HTMLElement;
+        return { kind:target.matches(".card-intro__column") ? "column" : target.matches(".card-intro__particle") ? "particle" : "other",duration:animation.effect!.getTiming().duration };
+      });
       const scale=el.querySelector(".card-intro__art")!.getBoundingClientRect().height/baseHeight;
       const snapshot=(time:number) => {
         for (const animation of animations) { animation.pause();animation.currentTime=time; }
@@ -133,14 +141,22 @@ test("photo streams stay unique and continuous through every source seam and rep
         const transforms=columns.map(column => ({direction:column.dataset.columnDirection,y:new DOMMatrixReadOnly(getComputedStyle(column).transform).m42}));
         return {time,photos,particles,coverage,transforms};
       };
-      const pairs=[...resetTimes,12000,24000].map(time => [snapshot(time-2),snapshot(time+2)]);
-      const mid=snapshot(6000);
+      const pairs=[...resetTimes,15000,30000].map(time => [snapshot(time-2),snapshot(time+2)]);
+      const mid=snapshot(7500);
       const start=snapshot(0);
       const early=snapshot(1000);
+      const particleMid=snapshot(6000).particles;
+      const particleRepeats=[12000,24000].map(time => snapshot(time).particles);
       const now=document.timeline.currentTime;
       for (const animation of animations) { animation.currentTime=0;animation.play();if(typeof now==="number")animation.startTime=now; }
-      return {pairs,mid,start,early,scale,clip:{top:clip.top,bottom:clip.bottom}};
+      return {pairs,mid,start,early,particleMid,particleRepeats,timings,scale,clip:{top:clip.top,bottom:clip.bottom}};
     },{resetTimes,baseHeight:width === 1440 ? 760 : 680});
+    expect(result.timings.filter(timing => timing.kind === "column")).toHaveLength(width === 1440 ? 6 : 3);
+    expect(result.timings.filter(timing => timing.kind === "particle")).toHaveLength(40);
+    for (const timing of result.timings) {
+      expect(timing.kind).not.toBe("other");
+      expect(timing.duration).toBe(timing.kind === "column" ? 15000 : 12000);
+    }
     for (const [index,column] of result.start.transforms.entries()) {
       expect(column.direction).toBe("up");
       const movement=result.early.transforms[index].y-column.y;
@@ -149,8 +165,11 @@ test("photo streams stay unique and continuous through every source seam and rep
     for (const sample of [result.start,result.mid,...result.pairs.flat()]) {
       expect(sample.photos.length).toBeGreaterThan(5);
       expect(new Set(sample.photos.map(photo => photo.src)).size).toBe(sample.photos.length);
-      expect(sample.particles.filter(p => p.opacity > .05 && p.kind==="heart").length).toBeGreaterThan(1);
-      expect(sample.particles.some(p => p.opacity > .01 && p.kind==="share")).toBe(true);
+      // Source particles can fade completely at a sampled frame.
+      for (const particle of sample.particles) {
+        expect(particle.opacity).toBeGreaterThanOrEqual(0);
+        expect(particle.opacity).toBeLessThanOrEqual(1);
+      }
       expect(sample.coverage.length).toBeGreaterThan(1);
       for (const column of sample.coverage) {
         const gap=(width === 1440 ? 20 : 14)*result.scale;
@@ -175,9 +194,22 @@ test("photo streams stay unique and continuous through every source seam and rep
         expect(Math.abs(movement)).toBeCloseTo(speed*4,1);
       }
     }
-    expect(result.start.particles.some((p,i) => p.transform!==result.mid.particles[i].transform)).toBe(true);
+    const particleSamples=[result.start.particles,result.particleMid,result.mid.particles,...result.pairs.flat().map(sample => sample.particles)];
+    for (const kind of ["heart","share"]) {
+      expect(particleSamples.some(particles => particles.some(p => p.kind===kind && p.opacity > .01))).toBe(true);
+      expect(particleSamples.some(particles => particles.some((p,i) => p.kind===kind && p.transform!==result.start.particles[i].transform))).toBe(true);
+    }
+    // Both particle tracks repeat at their original12s clock, independently
+    // of the15s photographic column cycle.
+    for (const particles of result.particleRepeats) {
+      for (const [index,particle] of particles.entries()) {
+        expect(particle.kind).toBe(result.start.particles[index].kind);
+        expect(particle.opacity).toBeCloseTo(result.start.particles[index].opacity,5);
+        expect(particle.transform).toBe(result.start.particles[index].transform);
+      }
+    }
     {
-      await expect.poll(() => scene.evaluate(el => Number(el.getAnimations({subtree:true})[0].currentTime)),{timeout:28_000}).toBeGreaterThan(24100);
+      await expect.poll(() => scene.locator(".card-intro__column").first().evaluate(el => Number(el.getAnimations()[0].currentTime)),{timeout:35_000}).toBeGreaterThan(30100);
       expect(await scene.evaluate(el => el.getAnimations({subtree:true}).every(animation => animation.playState==="running"))).toBe(true);
     }
     await page.emulateMedia({ reducedMotion:"reduce" });

@@ -1,4 +1,4 @@
-/* Prototype1214:651 /1214:830: separate clean intro and continuous12s masonry.
+/* Prototype1214:651 /1214:830: separate clean intro and continuous15s masonry (0.8x card speed).
    Whole-page request: source-sized SNS scene, continuous upward columns. */
 .card-intro { position:relative; overflow:clip; isolation:isolate; background:#0b1020; color:#f1f1ee; }
 .card-intro__scene { pointer-events:none; }

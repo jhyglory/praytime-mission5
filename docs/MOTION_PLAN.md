@@ -1,5 +1,7 @@
 # WHY NOW → THE GAP · current motion specification
 
+> Latest speed override: SNS card columns run at0.8× the original speed, changing their cycle from12000ms to15000ms. Hearts/shares retain12000ms timing; the original Figma JSON remains unchanged.
+
 ## Whole-page final correction · 2026-11-06 — current authority
 
 This task covers every Desktop/Mobile landing section. Latest explicit user requirements override final1209:514/1051 Figma, which overrides older repository restrictions. Remove narrow “other sections unchanged” scope,100%/70% transparent/lavender gauges,3000ms/50% trigger/sessionStorage latch, and alternating-column behavior. Stats now1400ms/40% independent visibility, both red34.3%/25.3% of a gray100% track, once per page load and replay on reload. SNS columns all rise; independent intro gets sufficient viewport height. Audit every section at1440/393/360 and publish real24s+/reload/interaction evidence. Product/security/approved original assets and existing live backend remain unchanged. See AGENTS.md and docs/WHOLE_PAGE_FINAL.md. Earlier stage records below are historical where they conflict.

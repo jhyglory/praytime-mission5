@@ -10,6 +10,7 @@ import masonry from "./prototype-columns.json";
 
 // Full Landing1209:514 /1209:1051 has separate clean-intro and card scenes.
 // Prototype1214:651 (mobile1214:830) loops ONLY the decorative card streams.
+const cardPlaybackSpeed = 0.8;
 const desktopParticles = [
   [53.666668,689,14],[1363.03955,497.033325,16],[123.300003,277.674988,18],[1308,141,20],
   [171,414,14],[1246,323,16],[206.458328,538.19165,18],[1205.693726,315.825012,20],
@@ -44,6 +45,7 @@ export function SignatureTransition() {
   const variant = viewport.startsWith("mobile") ? "mobile" : "desktop";
   const animate = viewport.endsWith(":motion");
   const source = motion[variant];
+  const cardDuration = source.duration / cardPlaybackSpeed;
   const particles = variant === "mobile" ? mobileParticles : desktopParticles;
 
   useEffect(() => {
@@ -69,13 +71,13 @@ export function SignatureTransition() {
       const element = scene.querySelector<HTMLElement>('[data-node-id="' + track.nodeId + '"]');
       if (!element) throw new Error("Missing prototype motion node " + track.nodeId);
       // The final whole-page request restores continuous upward movement
-      // on every column, preserving source phase/speed and the duplicate seam.
+      // on every column. Slow only the cards; particles retain source timing.
       const column = masonry[variant].find(column => column.id === track.nodeId);
       const frames = column ? [
         { offset:0, transform:"translate(0px, 0px)", easing:"linear" },
         { offset:1, transform:"translate(0px, " + -column.cycleHeight + "px)", easing:"linear" },
       ] : track.frames;
-      const animation = element.animate(frames, { duration:source.duration, iterations:Infinity, fill:"both" });
+      const animation = element.animate(frames, { duration:column ? cardDuration : source.duration, iterations:Infinity, fill:"both" });
       animation.pause(); animation.currentTime = 0;
       return animation;
     });
@@ -107,9 +109,9 @@ export function SignatureTransition() {
       animations.forEach(animation => animation.cancel());
       document.removeEventListener("visibilitychange", syncPlayback);
     };
-  }, [animate, source, variant, viewport]);
+  }, [animate, cardDuration, source, variant, viewport]);
 
-  return <div ref={container} className="signature-transition card-intro" data-signature-transition data-motion-state="static" data-motion-duration="12000" data-motion-variant={variant} data-node-id={source.nodeId}>
+  return <div ref={container} className="signature-transition card-intro" data-signature-transition data-motion-state="static" data-motion-duration={cardDuration} data-particle-motion-duration={source.duration} data-motion-variant={variant} data-node-id={source.nodeId}>
     <p className="sr-only">그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.</p>
     <div className="card-intro__scene" aria-hidden="true">
       <CleanIntro variant={variant} viewport={viewport} />

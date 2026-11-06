@@ -169,3 +169,9 @@ Desktop shadow의 render 위치는55.3125/148.4375이며, PNG는 Desktop160×160
 Desktop·Mobile 상단 Header의 “무료로 신청하기” 링크만 제거했습니다. Hero CTA와 form submit, 로고·navigation 위치·높이·나머지 모든 섹션은 유지합니다. header CTA 전용 CSS와 미사용 import를 정리하고 기존 responsive/CTA journey 검사를 변경된 DOM에 맞췄습니다. 기존 Figma Header CTA보다 이번 명시적 사용자 요청이 우선합니다.
 
 이번 Header 변경의 lint·typecheck·unit47/47·Webpack production build와 관련 browser22/22가 통과했습니다. 전체40개 검증은 앞선834b5b0 기준선이며 이번 변경에서 전체를 다시 실행했다고 표시하지 않습니다.
+
+## 후속 사용자 수정 · 사진 카드 속도0.8배
+
+SNS 사진 카드 열의 이동 속도를 기존의0.8배로 낮춥니다. 같은 이동 거리의 cycle은12000/0.8=15000ms입니다. 하트/공유 transform·opacity는 기존12000ms를 유지합니다. 공통 누적 animation clock은 그대로 사용하고 column effect duration만 나누므로 offscreen/background pause와 phase 복원도 유지됩니다. 원본 Figma motion JSON·80사진 배정·카드 구조·이미지·다른 인터랙션은 바꾸지 않습니다. 위12초 카드 loop 검증은 이전 release 기록이며 이번15초 경계/반복 검증과 구분합니다.
+
+이번 속도 변경의 lint·typecheck·unit47/47·browser40/40·Webpack production build가 모두 통과했습니다. 실제1440/393/360px에서 각30.1초 이상 재생,15/30초 경계±2ms, 사진 중복/coverage, 원래12초 particle transform/opacity 반복, reduced-motion·offscreen pause를 확인했습니다. 실제 DB POST/INSERT는0건입니다.
