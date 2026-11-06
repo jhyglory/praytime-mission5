@@ -3,13 +3,13 @@ import type { Metadata } from "next";
 const title = "PrayTime — 기도로 멈추고 다시 선택하세요";
 const description = "SNS를 열기 전 잠깐 기도하고, 지금도 필요한지 돌아보세요. 필요하지 않으면 돌아가고, 필요하면 5 · 10 · 15분을 정해 사용합니다.";
 
-// Reuse the approved Hero artwork and the existing solid red Pause Mark.
+// Use the user's sharing artwork, separately from the unchanged Landing Hero.
 // The favicon uses a square Navy tile for crisp rendering at browser-tab sizes.
 const approvedAssets = {
   icon: "/assets/praytime-favicon.svg",
   fallbackIcon: "/favicon.ico",
   appleIcon: "/apple-touch-icon.png",
-  openGraph: { url: "/assets/hero-atmosphere.png", width: 1895, height: 830, alt: "PrayTime — 행동 전의 틈, Offset Interval" },
+  openGraph: { url: "/og/praytime-share-7e4689d8.png", width: 1711, height: 919, type: "image/png", alt: "PrayTime — 일상의 틈에서, 하나님과 마주하는 시간" },
 };
 
 export function buildSiteMetadata(siteUrl?: string): Metadata {
