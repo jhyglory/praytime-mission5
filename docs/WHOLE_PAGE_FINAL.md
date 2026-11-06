@@ -163,3 +163,9 @@ Desktop shadow의 render 위치는55.3125/148.4375이며, PNG는 Desktop160×160
 [Production intro evidence](evidence/whole-page/production-intro.json)는 타임라인을 조작하지 않은 실제 재생입니다. 세 폭에서 초기[0,0] → 단어 표시[1,0] → 실제 logo와은[1,1] 순서를 확인했습니다. intro 내부 카드/입자0, 다음 SNS scene의 top은 viewport 밖924px이었습니다(기존 anchor scroll margin24px 포함).
 
 전체 screenshot은 production-whole-1440.png /production-whole-393.png /production-whole-360.png이며, actual motion still은 production-sns-{width}.png, production-stats-{width}.png, production-intro-word/logo-{width}.png입니다. 사용자 전달 outputs에 저장했고 고해상도 원본으로 확인했습니다. 전체 still은 reduced-motion 상태이고 실제 motion still/측정과 구분합니다. 실제 Safari/물리 기기와 추가 DB INSERT만 검수하지 않았습니다.
+
+## 후속 사용자 수정 · Header CTA 제거
+
+Desktop·Mobile 상단 Header의 “무료로 신청하기” 링크만 제거했습니다. Hero CTA와 form submit, 로고·navigation 위치·높이·나머지 모든 섹션은 유지합니다. header CTA 전용 CSS와 미사용 import를 정리하고 기존 responsive/CTA journey 검사를 변경된 DOM에 맞췄습니다. 기존 Figma Header CTA보다 이번 명시적 사용자 요청이 우선합니다.
+
+이번 Header 변경의 lint·typecheck·unit47/47·Webpack production build와 관련 browser22/22가 통과했습니다. 전체40개 검증은 앞선834b5b0 기준선이며 이번 변경에서 전체를 다시 실행했다고 표시하지 않습니다.

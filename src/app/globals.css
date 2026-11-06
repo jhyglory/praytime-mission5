@@ -260,7 +260,6 @@ h1 { font-size: 44px; line-height: 60px; }
 .landing-header .solid-pause i { box-shadow: 0 0 7px rgb(255 68 56 / 24%); }
 .landing-header nav { width: auto; gap: 32px; }
 .landing-header nav a, .landing-header nav a:first-child, .landing-header nav a:last-child { width: 110px; color: rgb(255 255 255 / 82%); font-weight: 500; }
-.landing-header > .pt-button { height: 48px; min-height: 48px; width: 196px; white-space: nowrap; }
 .hero-content { position: relative; width: min(620px, calc(100% - 48px)); padding: 150px 0 0; margin-left: max(5vw, calc((100vw - 1440px) / 2 + 72px)); }
 .hero-content .eyebrow { color: rgb(241 241 238 / 72%); }
 .hero-content .body-copy { color: rgb(241 241 238 / 82%); }
@@ -348,7 +347,6 @@ h1 { font-size: 44px; line-height: 60px; }
   .landing-header { width: calc(100% - 64px); }
   .landing-header nav { gap: 16px; }
   .landing-header nav a, .landing-header nav a:first-child, .landing-header nav a:last-child { width: auto; }
-  .landing-header > .pt-button { width: 160px; font-size: 18px; }
   .hero-content { margin-left: 32px; max-width: 580px; }
   .time-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: 48px; }
   .time-mockup { width: 300px; height: 650.382px; }
@@ -371,7 +369,6 @@ h1 { font-size: 44px; line-height: 60px; }
   .landing-header .solid-pause i { width: 3.19px; height: 12.76px; top: 4.06px; }
   .landing-header .solid-pause i + i { left: 8.7px; }
   .landing-header nav { display: none; }
-  .landing-header > .pt-button { width: 172px; min-height: 44px; height: 44px; font-size: 16px; }
   .hero-content { padding-top: 104px; margin-left: 24px; width: calc(100% - 48px); gap: 20px; }
   .hero-content .body-copy { font-size: 16px; line-height: 26px; }
   .hero-actions { gap: 12px; }
@@ -441,7 +438,6 @@ h1 { font-size: 44px; line-height: 60px; }
 
 @media (width < 375px) {
   .landing-header { gap: 12px; }
-  .landing-header > .pt-button { width: 132px; font-size: 14px; }
   .hero .small-copy { font-size: 12px; }
   .voluntary-prayer { gap: 16px; }
   .voluntary-prayer h3 { font-size: 16px; line-height: 26px; }
@@ -502,7 +498,6 @@ h1 { font-size: 44px; line-height: 60px; }
   .landing-header .solid-pause { width: 13.714px; height: 20.571px; }
   .landing-header .solid-pause i { width: 3.143px; height: 12.571px; top: 4px; border-radius: 1.571px; }
   .landing-header .solid-pause i + i { left: 8.57px; }
-  .landing-header > .pt-button { font-size: 20px; padding-inline: 12px; }
   .one-question h2 { line-height: 52px; }
   .time-story { gap: 32px; }
   .time-mockup { clip-path: inset(6.3424% 3.4375% 6.3050% round 12.5% / 5.7659%); }
@@ -515,7 +510,6 @@ h1 { font-size: 44px; line-height: 60px; }
 
 @media (width < 375px) {
   /* Keep current narrow-width protection below the 393px design frame. */
-  .landing-header > .pt-button { font-size: 16px; padding-inline: 8px; }
 }
 
 /* Final WHY NOW and THE GAP: 1088:942 / 1088:1270 / 1088:986 / 1088:1319.

@@ -159,7 +159,8 @@ test("normal-motion navigation and two reloads keep the complete page healthy wi
     await expect(page.locator("#faq-question-0")).toHaveAttribute("aria-expanded", "true");
     await page.locator("#faq-question-2").click();
     await expect(page.locator("#faq-answer-2")).toBeVisible();
-    await page.locator(".landing-header").getByRole("link", { name: "무료로 신청하기", exact: true }).click();
+    await expect(page.locator(".landing-header").getByRole("link", { name: "무료로 신청하기", exact: true })).toHaveCount(0);
+    await page.locator(".hero-actions").getByRole("link", { name: "무료로 신청하기", exact: true }).click();
     await expect(page).toHaveURL(/#beta-signup$/);
     await expect(page.getByRole("button", { name: "무료로 신청하기", exact: true })).toBeDisabled();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);

@@ -32,6 +32,8 @@ Prayer does not automatically unlock SNS. Both RETURN and intentional5/10/15-min
 
 Use the existing Next.js App Router / React / TypeScript / Tailwind / shadcn/ui project. Keep actual Radix-backed shadcn Button/Accordion and PrayTime styling, never reset to the stock theme. Keep meaningful role-based section components and reusable UI.
 
+Latest user correction: remove the signup CTA from the header on Desktop and Mobile. Keep the Hero CTA and form submit; preserve the existing logo/navigation positions.
+
 Recent user copy CTA무료로 신청하기 and transparent red Pause Mark favicon / selected sharing image remain approved corrections. Keep the FAQ's approved seven product-compatible answers. Do not restore obsolete product logic.
 
 ## Backend/security and release

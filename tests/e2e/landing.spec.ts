@@ -98,17 +98,9 @@ for (const width of widths) {
     await expect(page.locator("main > section")).toHaveCount(8);
     await expect(page.locator("[data-form-group]")).toHaveCount(8);
     await expect(page.getByText("04 / THE GAP", { exact: true })).toHaveCount(0);
-    const headerCta = page.locator(".landing-header > .pt-button");
-    await expect(headerCta).toHaveText("무료로 신청하기");
-    const ctaText = await headerCta.evaluate(element => {
-      const range = document.createRange();
-      range.selectNodeContents(element);
-      const bounds = range.getBoundingClientRect();
-      const button = element.getBoundingClientRect();
-      return { textWidth: bounds.width, textHeight: bounds.height, buttonWidth: button.width, lineHeight: parseFloat(getComputedStyle(element).lineHeight) };
-    });
-    expect(ctaText.textWidth).toBeLessThanOrEqual(ctaText.buttonWidth);
-    expect(ctaText.textHeight).toBeLessThanOrEqual(ctaText.lineHeight);
+    await expect(page.locator(".landing-header > .pt-button")).toHaveCount(0);
+    await expect(page.locator(".landing-header").getByRole("link", { name: "무료로 신청하기", exact: true })).toHaveCount(0);
+    await expect(page.locator(".hero-actions").getByRole("link", { name: "무료로 신청하기", exact: true })).toHaveCount(1);
     for (const selector of [".why-now", ".time-section", "#faq", ".beta-section", ".site-footer"]) {
       await expect(page.locator(selector)).toHaveCSS("background-color", "rgb(245, 242, 247)");
     }
@@ -289,7 +281,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
   await page.getByRole("link", { name: "무료로 신청하기", exact: true }).first().click();
   await expect(page).toHaveURL(/#beta-signup$/);
   const betaLinks = page.getByRole("link", { name: "무료로 신청하기", exact: true });
-  await expect(betaLinks).toHaveCount(2);
+  await expect(betaLinks).toHaveCount(1);
   for (const link of await betaLinks.all()) {
     await link.focus();
     await page.keyboard.press("Enter");

@@ -1,12 +1,20 @@
 /* Final full-page frames: Desktop1209:514 / Mobile1209:1051.
    Keep the existing full-bleed Hero artwork and native interactions. */
+/* Keep the navigation in place after removing the header signup CTA. */
+.landing-header { display: grid; grid-template-columns: 168.5px minmax(0, 1fr) 196px; }
+.landing-header nav { justify-self: center; }
 .landing-header .solid-pause i { box-shadow: none; }
 .landing-header .wordmark { width: 168.5px; flex-shrink: 0; }
 .hero-content .body-copy { max-width: 520px; }
 .hero-content .small-copy { max-width: 560px; font-size: 14px; }
 .one-question h2 { font-size: 56px; line-height: 80px; }
 
+@media (768px <= width < 1200px) {
+  .landing-header { grid-template-columns: 168.5px minmax(0, 1fr) 160px; }
+}
+
 @media (width < 768px) {
+  .landing-header { grid-template-columns: 1fr; }
   .landing-header .wordmark {
     width: 128px;
     gap: 10.285714px;
@@ -18,12 +26,6 @@
   .landing-header .solid-pause { width: 13.714286px; height: 20.571429px; }
   .landing-header .solid-pause i { width: 3.142857px; height: 12.571429px; top: 4px; border-radius: 1.571429px; }
   .landing-header .solid-pause i + i { left: 8.571429px; }
-  .landing-header > .pt-button { width: 152px; padding-inline: 12px; font-size: 20px; flex-shrink: 0; }
   .hero h1 { font-size: 34px; }
   .one-question h2 { font-size: 32px; line-height: 48px; }
-}
-
-@media (width < 352px) {
-  .landing-header { gap: 16px; }
-  .landing-header > .pt-button { width: calc(100% - 144px); padding-inline: 12px; font-size: 16px; }
 }
