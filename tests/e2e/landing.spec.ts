@@ -21,12 +21,12 @@ test("semantic structure, head metadata, assets and anchors have no runtime warn
   await expect(page.locator("html")).toHaveAttribute("lang", "ko");
   await expect(page.locator("head meta[property='og:type']")).toHaveAttribute("content", "website");
   await expect(page.locator("head meta[property='og:locale']")).toHaveAttribute("content", "ko_KR");
-  await expect(page.locator("head meta[property='og:image']")).toHaveAttribute("content", /\/og\/praytime-share-7e4689d8\.png$/);
+  await expect(page.locator("head meta[property='og:image']")).toHaveAttribute("content", /\/og\/praytime-share-8b6783f5\.png$/);
   await expect(page.locator("head meta[property='og:image:width']")).toHaveAttribute("content", "1711");
   await expect(page.locator("head meta[property='og:image:height']")).toHaveAttribute("content", "919");
   await expect(page.locator("head meta[property='og:image:type']")).toHaveAttribute("content", "image/png");
-  await expect(page.locator("head meta[name='twitter:image']")).toHaveAttribute("content", /\/og\/praytime-share-7e4689d8\.png$/);
-  const shareImage = await page.request.get("/og/praytime-share-7e4689d8.png");
+  await expect(page.locator("head meta[name='twitter:image']")).toHaveAttribute("content", /\/og\/praytime-share-8b6783f5\.png$/);
+  const shareImage = await page.request.get("/og/praytime-share-8b6783f5.png");
   expect(shareImage.status()).toBe(200);
   expect(shareImage.headers()["content-type"]).toContain("image/png");
   await expect(page.locator("head meta[name='twitter:card']")).toHaveAttribute("content", "summary_large_image");

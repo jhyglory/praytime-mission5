@@ -136,7 +136,7 @@ Vercel `glorifier1/praytime-mission5`에 배포했습니다. Production source�
 
 - 최종 Figma에 없는 제품 기능이나 site-wide theme toggle은 추가하지 않았습니다.
 - 개인정보 고지의 누락·필수 여부·표현 범위 보완 승인이 필요합니다. 법률 문구는 임의 작성하지 않았습니다.
-- OG/Twitter 공유 이미지는 사용자가 지정한 「어둠 속 기도의 틈새」 원본 PNG(1711×919)를 사용합니다. 버전 경로는 `/og/praytime-share-7e4689d8.png`이며 Landing Hero와 별개입니다. favicon은 기존 Signal Red Pause Mark를 Navy 정사각형 타일로 구성한 SVG·16/32/48px ICO와180px Apple Touch icon을 사용합니다.
+- OG/Twitter 공유 이미지는 사용자가 지정한 「기도의 문, PrayTime」 원본 PNG(1711×919)를 사용합니다. 버전 경로는 `/og/praytime-share-8b6783f5.png`이며 Landing Hero와 별개입니다. favicon은 기존 Signal Red Pause Mark를 Navy 정사각형 타일로 구성한 SVG·16/32/48px ICO와180px Apple Touch icon을 사용합니다.
 - `SITE_URL` 미설정 시 Vercel system production URL을 metadata origin으로 사용합니다. 검색 indexing은 기존 noindex 유지, 공개 시 검토 필요.
 - 베타 신청 API는 기본 disabled. 실제 INSERT QA는 개인정보 고지 정합성 승인 후로 보류합니다. Production handler도503 PRIVACY_REVIEW_REQUIRED로 저장을 차단합니다. 일반 자동 테스트는 항상 mock / disabled입니다.
 - OS 접근 제한·기도 실행 등 제품 기능은 Landing의 설명·프리뷰입니다.

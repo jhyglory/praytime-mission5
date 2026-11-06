@@ -9,7 +9,7 @@ const approvedAssets = {
   icon: "/assets/praytime-favicon.svg",
   fallbackIcon: "/favicon.ico",
   appleIcon: "/apple-touch-icon.png",
-  openGraph: { url: "/og/praytime-share-7e4689d8.png", width: 1711, height: 919, type: "image/png", alt: "PrayTime — 일상의 틈에서, 하나님과 마주하는 시간" },
+  openGraph: { url: "/og/praytime-share-8b6783f5.png", width: 1711, height: 919, type: "image/png", alt: "PrayTime — 일상의 틈에서, 하나님과 마주하는 시간" },
 };
 
 export function buildSiteMetadata(siteUrl?: string): Metadata {
