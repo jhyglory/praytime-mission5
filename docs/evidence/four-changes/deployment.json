@@ -1,0 +1,17 @@
+{
+  "source_commit": "6ba19d90c6534ef839947af2dddd04e691eb3cba",
+  "id": "dpl_FZJKoB3G8tiwx7ANk375YT1qce3T",
+  "state": "READY",
+  "canonical_url": "https://praytime-mission5.vercel.app/",
+  "immutable_url": "https://praytime-mission5-nfmsskk23-glorifier1.vercel.app",
+  "public_browser_verified": true,
+  "widths": [
+    1440,
+    393,
+    360
+  ],
+  "actual_signup_posts": 0,
+  "actual_database_operations": 0,
+  "merge_performed": false,
+  "dns_changed": false
+}

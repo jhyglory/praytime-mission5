@@ -53,16 +53,35 @@ SNS 카드 내부와 떠오르는 공유4개를 같은 `PaperPlaneIcon` outline 
 | unit | PASS47/47 |
 | browser | PASS40/40,3.3m |
 | Webpack production build | PASS |
-| Desktop·Mobile 네 항목 실제 실행 screenshot | 로컬1440/393/360 PASS, outputs/four-local-* |
+| Desktop·Mobile 네 항목 실제 실행 screenshot | 로컬 및 Production1440/393/360 PASS |
 | SNS 실제 두 cycle·0.7속도·방향·seam·사진 중복·입자 | PASS — 실제44.45/44.10/44.48초, 중복/빈 구간0 |
 | 인트로 실제 진입·순서·빛 전환·dots/옛 문구 제거 | PASS — 최초 화면 밖0ms 유지, 실제4s 진입 재생 |
 | Prayer 빛20/50/80·divider/text geometry 보존 | PASS — 각 highlight/halo/bloom/haze20/50/80%, 긴 선 불변 |
 | reduced-motion·offscreen/background·cleanup·기존 interaction 회귀 | PASS — 정적 글/로고·카드, observer/animation cleanup, CTA/FAQ/wheel/form 회귀 |
-| 이번 source commit / push | PENDING |
-| 기존 PR #1 업데이트 | PENDING |
-| Vercel Ready 및 실제 Production 재확인 | PENDING |
+| 이번 source commit / push | 6ba19d90c6534ef839947af2dddd04e691eb3cba / PUSHED |
+| 기존 PR #1 업데이트 | 동일 feature head 반영, [정하영]-미션5 / open·unmerged |
+| Vercel Ready 및 실제 Production 재확인 | dpl_FZJKoB3G8tiwx7ANk375YT1qce3T / 공개1440·393·360 PASS |
 
-Release는 기존 `feature/mission-5-landing`, 공개 저장소, **[[정하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1)** 및 기존 Vercel 프로젝트를 사용한다. 실제 DB 조회/INSERT/변경·env/schema/RLS 변경·merge·main 수정·reset/rebase/force push·DNS 변경은 수행하지 않는다. 공개 QA는 signup endpoint를 차단한다. 실제 실행 후 Root가 이번 검사 결과·screenshot·source commit·배포 식별자를 채운다.
+Release는 기존 `feature/mission-5-landing`, 공개 저장소, **[[정하영]-미션5 #1](https://github.com/jhyglory/praytime-mission5/pull/1)** 및 기존 Vercel 프로젝트를 사용했다. 실제 DB 조회/INSERT/변경·env/schema/RLS 변경·merge·main 수정·reset/rebase/force push·DNS 변경은 수행하지 않았다. 공개 QA는 signup endpoint를 차단했다. 아래에 실제 검사 결과·screenshot·source commit·배포 식별자를 기록했다.
+
+## 실제 Production 확인
+
+[공개 사이트](https://praytime-mission5.vercel.app/)와 [검증된 immutable 배포](https://praytime-mission5-nfmsskk23-glorifier1.vercel.app)는 위 source commit의 결과다. [배포 manifest](evidence/four-changes/deployment.json)와 [실제 브라우저 측정](evidence/four-changes/production-browser.json)에 확인 내용을 기록했다.
+
+1440px44.2165초 /393px44.149초 /360px44.3984초 동안 타임라인을 seek하지 않고 실제 재생했다. 모두 새 주기21.428571초를 두 번 넘겼으며 열 방향·이전 속도 대비0.7·실제 사진80개/원본 cycle 중복0·동시 사진 중복0·빈 track0·고정 중앙 문구를 확인했다. 하트는 최대9개, 종이비행기는 최대3개가 동시에 보였으며 두 cycle 모두 반복 등장했다. 카드 내부와 입자의 모든 활성 공유 아이콘은 paper plane이다.
+
+인트로는 최초 화면 밖에서800ms 기다려도 clock0을 유지했고 실제 진입 후 흰 영역의 검은 단어 → slit/aperture → 투명 실제 로고와 은 순서를 확인했다. 인트로 내부 SNS/입자·점·옛 문구0, 다음 SNS의 중복 브랜드0이다. reduced-motion은 읽을 수 있는 정적 단어·로고·카드를 제공한다.
+
+Prayer 각 영역의 highlight·near halo·bloom·haze 중심은20/50/80%다. 긴 선의 시작·너비·높이, 타이포와 UI 높이는 그대로다. 실제 공개 화면의 page/console/HTTP 오류·가로 넘침·signup POST는 모두0건이다. API·privacy version·env·schema·RLS·기존 데이터에 변경이 없다.
+
+| 실제 배포 screenshot | Desktop | Mobile393 |
+| --- | --- | --- |
+| 흰색 단어 | [그래서](evidence/four-changes/intro-word-desktop.png) | [그래서](evidence/four-changes/intro-word-mobile.png) |
+| 네이비 실제 로고 | [로고](evidence/four-changes/intro-logo-desktop.png) | [로고](evidence/four-changes/intro-logo-mobile.png) |
+| 종이비행기·SNS 두 cycle 후 | [SNS](evidence/four-changes/sns-two-cycles-desktop.png) | [SNS](evidence/four-changes/sns-two-cycles-mobile.png) |
+| 단계별 빛 | [Prayer](evidence/four-changes/prayer-desktop.png) | [Prayer](evidence/four-changes/prayer-mobile.png) |
+
+추가 검증 기록 commit은 위 배포 이후의 문서·스크린샷만 포함하며 애플리케이션 source와 구분한다. 물리 iPhone/Android·Safari는 별도 수동 검수를 수행하지 않았다.
 
 로컬 실제 측정: [local-browser.json](evidence/four-changes/local-browser.json). 원본 screenshots는 outputs/four-local-*에 저장했다. 실제 재생 중 관찰한 프레임과 E2E의 seam ±2ms/81개 phase seek 검증은 별도로 구분했다.
 

@@ -1,0 +1,85 @@
+{
+  "source": "Exact Figma exports: restored intro1265:8075/8099 and wordmark1339:37732/37867",
+  "assets": [
+    {
+      "path": "public/assets/restored-intro/desktop-ambient.svg",
+      "bytes": 742,
+      "width": "2370.97",
+      "height": "590.357",
+      "viewBox": "0 0 2370.97 590.357",
+      "sha256": "f4b727c6877611753fb888158c052a8453ec3650748c0db9c02a9ed19eb045fa"
+    },
+    {
+      "path": "public/assets/restored-intro/desktop-inner.svg",
+      "bytes": 732,
+      "width": "1023.38",
+      "height": "228",
+      "viewBox": "0 0 1023.38 228",
+      "sha256": "af3793cafd6bc8646a52b8489a6e538cea5cb416eb34cfc6525c27a1f128ae40"
+    },
+    {
+      "path": "public/assets/restored-intro/desktop-middle.svg",
+      "bytes": 761,
+      "width": "1278.51",
+      "height": "344.714",
+      "viewBox": "0 0 1278.51 344.714",
+      "sha256": "b1e9f59f5f392111f342375693632c67e3d56a15a93ef10d6c6059dbd7a23e29"
+    },
+    {
+      "path": "public/assets/restored-intro/desktop-outer.svg",
+      "bytes": 758,
+      "width": "1662.57",
+      "height": "480.429",
+      "viewBox": "0 0 1662.57 480.429",
+      "sha256": "75cc70595221156d6707ae3a6cce01a84f90b076f5aa0c21e569456cc1bbc1ae"
+    },
+    {
+      "path": "public/assets/restored-intro/mobile-ambient.svg",
+      "bytes": 705,
+      "width": "773",
+      "height": "435",
+      "viewBox": "0 0 773 435",
+      "sha256": "52d9edbccef350e8fa98c9c7e2968975c1dd5c2811df490c6cdff7e1064e89f3"
+    },
+    {
+      "path": "public/assets/restored-intro/mobile-inner.svg",
+      "bytes": 712,
+      "width": "341",
+      "height": "168",
+      "viewBox": "0 0 341 168",
+      "sha256": "4d7bcf8a19db85a9ddd6e99df4d3df2569fce5efe7d06ac9f59e8df0f9bc5c09"
+    },
+    {
+      "path": "public/assets/restored-intro/mobile-middle.svg",
+      "bytes": 719,
+      "width": "427",
+      "height": "254",
+      "viewBox": "0 0 427 254",
+      "sha256": "be2fcb8f1d4d58acc0026063f1687efb6d4e7571af99f6ee554cb4f31505888f"
+    },
+    {
+      "path": "public/assets/restored-intro/mobile-outer.svg",
+      "bytes": 720,
+      "width": "557",
+      "height": "354",
+      "viewBox": "0 0 557 354",
+      "sha256": "591402b7b18e6b19268456415d507e41002362b6bdf13c26f92fa4dab1ba0495"
+    },
+    {
+      "path": "public/assets/restored-intro/praytime-wordmark-desktop.svg",
+      "bytes": 2406,
+      "width": "277",
+      "height": "45",
+      "viewBox": "0 0 277 45",
+      "sha256": "bf4b93907f11f37c1f9455479c32f73fcbf9e58897719b54c89f7ba1bbdbff69"
+    },
+    {
+      "path": "public/assets/restored-intro/praytime-wordmark-mobile.svg",
+      "bytes": 2475,
+      "width": "177",
+      "height": "29",
+      "viewBox": "0 0 177 29",
+      "sha256": "bbc328522fedbf2b6d1e506319c622e021f3082b0f4488cd51ed65c0fc749141"
+    }
+  ]
+}
