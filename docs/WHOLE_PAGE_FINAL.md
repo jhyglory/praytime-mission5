@@ -1,5 +1,28 @@
 # PrayTime · Whole Landing 최종 비교와 구현
 
+## Latest WHY visual override: red accents at 80% / 70%
+
+The numeric statistics remain 34.3% and 25.3%. The user requested invisible
+gray tracks and decorative red accent lengths of 80% and 70%. The layout
+containers remain full width with transparent backgrounds; both fills stay
+Signal Red #FF4438. The accents remain aria-hidden and the obsolete
+data-max attribute is removed. They do not define the numeric statistic scale.
+
+The existing 1400ms shared easing, independent 40% visibility trigger,
+once-per-load/reload behavior, offscreen/background pause and reduced/no-JS
+fallback remain unchanged. Number/rate and fill/accent-length share the same
+eased scalar. No counter JavaScript, text, section geometry, backend or other
+interactions changed.
+
+Latest checks: lint/typecheck/unit47/47/browser37/37/Webpack build PASS.
+Actual 1440/393/360/320px checks confirm transparent tracks, red fills,
+80/70% final lengths, factual visible/accessible values, two plays including
+reload, shared progress, reduced motion, no overflow/errors and no POSTs.
+Width comparisons allow the browser's 1/64 CSS-pixel layout rounding.
+See [measurements](evidence/red-accents/local-browser.json) and
+[validation](evidence/red-accents/validation.json). Earlier gray proportional
+34.3/25.3% bar measurements below are historical.
+
 ## Latest FAQ override: 85% typography and list spacing
 
 Questions changed from 20/30px to 17/25.5px; answers from 18/30px to

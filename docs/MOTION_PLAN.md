@@ -1,5 +1,7 @@
 # WHY NOW → THE GAP · current motion specification
 
+> Latest WHY visual override: transparent/invisible tracks and red decorative accent lengths80%/70%. Actual statistics remain34.3%/25.3%, with unchanged1400ms shared easing,40% trigger and reload behavior. Remove the old data-max scale; accents remain aria-hidden. Earlier gray/proportional-bar rules are superseded.
+
 > Latest speed override: SNS card columns run at0.8× the original speed, changing their cycle from12000ms to15000ms. Hearts/shares retain12000ms timing; the original Figma JSON remains unchanged.
 
 ## Whole-page final correction · 2026-11-06 — current authority

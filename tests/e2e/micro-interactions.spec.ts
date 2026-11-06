@@ -12,6 +12,7 @@ declare global {
 }
 
 const runtimeProblems = new WeakMap<Page, string[]>();
+const accentRatios = [0.8, 0.7] as const;
 
 async function protectPage(page: Page) {
   // These browser checks must never reach an external persistence endpoint.
@@ -35,8 +36,8 @@ async function centerSection(page: Page, selector: string) {
   await page.locator(selector).evaluate(el => el.scrollIntoView({ block: "center", behavior: "instant" }));
 }
 
-async function expectProportionalGauges(grid: Locator) {
-  for (const [index, rate] of [34.3, 25.3].entries()) {
+async function expectDecorativeAccents(grid: Locator) {
+  for (const [index, ratio] of accentRatios.entries()) {
     const card = grid.locator(".stat-card").nth(index);
     const track = card.locator(".stat-track");
     const fill = card.locator(".stat-fill");
@@ -46,10 +47,12 @@ async function expectProportionalGauges(grid: Locator) {
     });
     const box = (await track.boundingBox())!;
     expect(box.width).toBeCloseTo(available, 1);
-    expect((await fill.boundingBox())!.width).toBeCloseTo(box.width * rate / 100, 1);
+    expect((await fill.boundingBox())!.width).toBeCloseTo(box.width * ratio, 1);
     await expect(track).toHaveCSS("height", "6px");
     await expect(track).toHaveCSS("border-radius", "2px");
-    await expect(track).toHaveCSS("background-color", "rgb(233, 229, 236)");
+    await expect(track).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+    await expect(track).toHaveAttribute("aria-hidden", "true");
+    expect(await track.evaluate(element => element.hasAttribute("data-max"))).toBe(false);
     await expect(fill).toHaveCSS("border-radius", "2px");
     await expect(fill).toHaveCSS("background-color", "rgb(255, 68, 56)");
   }
@@ -311,8 +314,8 @@ test("WHY NOW shares 1400ms cubic number/fill progress, runs once per load and r
     for (const sample of observation.samples) {
       expect(sample.values[index]).toBeGreaterThanOrEqual(previous);
       expect(sample.values[index]).toBeLessThanOrEqual(final);
-      expect(Number.parseFloat(sample.widths[index])).toBeCloseTo(track.width * final / 100, 1);
-      // Both outputs use the same eased scalar, including one-decimal rounding.
+      expect(Number.parseFloat(sample.widths[index])).toBeCloseTo(track.width * accentRatios[index], 1);
+      // Number and decorative fill use the same eased scalar; the number rounds to one decimal.
       expect(Math.abs(sample.values[index] - final * sample.scales[index])).toBeLessThanOrEqual(0.051);
       const progress = Math.min(1, Math.max(0, (sample.at - observation.started) / 1400));
       expect(Math.abs(sample.scales[index] - (1 - (1 - progress) ** 3))).toBeLessThan(0.025);
@@ -320,7 +323,7 @@ test("WHY NOW shares 1400ms cubic number/fill progress, runs once per load and r
     }
   }
   expect(observation.cls).toBeLessThanOrEqual(0.001);
-  await expectProportionalGauges(grid);
+  await expectDecorativeAccents(grid);
 
   for (let reload = 0; reload < 2; reload += 1) {
     await centerSection(page, "#hero");
@@ -341,7 +344,7 @@ test("WHY NOW shares 1400ms cubic number/fill progress, runs once per load and r
   }
 });
 
-test("WHY NOW reduced motion immediately presents final accessible values and gauges", async ({ page }) => {
+test("WHY NOW reduced motion immediately presents final accessible values and decorative accents", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   const grid = page.locator("#why-stats");
@@ -351,10 +354,10 @@ test("WHY NOW reduced motion immediately presents final accessible values and ga
   await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
   await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
   for (const fill of await grid.locator(".stat-fill").all()) await expect(fill).toHaveCSS("transform", "none");
-  await expectProportionalGauges(grid);
+  await expectDecorativeAccents(grid);
 });
 
-test("without JavaScript, WHY NOW still renders exact statistics and proportional gauges", async ({ browser, baseURL }) => {
+test("without JavaScript, WHY NOW still renders exact statistics and decorative accents", async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 1440, height: 900 } });
   try {
     const page = await context.newPage();
@@ -364,7 +367,7 @@ test("without JavaScript, WHY NOW still renders exact statistics and proportiona
     await grid.scrollIntoViewIfNeeded();
     await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
     await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
-    await expectProportionalGauges(grid);
+    await expectDecorativeAccents(grid);
     const intro = page.locator("[data-signature-transition]");
     await intro.scrollIntoViewIfNeeded();
     await expect(intro.locator(".card-intro__headline")).toBeVisible();
@@ -418,7 +421,7 @@ test("mobile statistics trigger individually at 40% of the unmodified viewport a
   await expect(grid).toHaveAttribute("data-count-state", "complete");
   await expect(first).toHaveAttribute("data-count-runs", "1");
   await expect(second).toHaveAttribute("data-count-runs", "1");
-  await expectProportionalGauges(grid);
+  await expectDecorativeAccents(grid);
 });
 
 test("WHY NOW pauses in the background and reduced motion finishes a running animation", async ({ page }) => {
@@ -445,7 +448,7 @@ test("WHY NOW pauses in the background and reduced motion finishes a running ani
   await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
   await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
   for (const fill of await grid.locator(".stat-fill").all()) await expect(fill).toHaveCSS("transform", "none");
-  await expectProportionalGauges(grid);
+  await expectDecorativeAccents(grid);
 });
 
 test("mobile touch preserves choice, wheel, FAQ and beta CTA flows without saving data", async ({ browser, baseURL }) => {

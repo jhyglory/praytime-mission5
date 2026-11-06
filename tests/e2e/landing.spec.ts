@@ -283,8 +283,8 @@ test("final Hero overlay, statistic count accents and anchors match the approved
   for (const index of [0, 1]) {
     const track = await page.locator(".stat-track").nth(index).boundingBox();
     const fill = await page.locator(".stat-fill").nth(index).boundingBox();
-    expect(fill!.width).toBeCloseTo(track!.width * [0.343,0.253][index], 1);
-    await expect(page.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgb(233, 229, 236)");
+    expect(fill!.width).toBeCloseTo(track!.width * [0.8,0.7][index], 1);
+    await expect(page.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
     expect(await page.locator(".stat-value").nth(index).evaluate(el => getComputedStyle(el).color)).toBe("rgb(24, 24, 27)");
   }
   await page.getByRole("link", { name: "작동 방식 보기", exact: true }).focus();

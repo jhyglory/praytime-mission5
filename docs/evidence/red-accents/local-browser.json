@@ -1,0 +1,230 @@
+[
+  {
+    "width": 1440,
+    "runs": [
+      {
+        "samples": 89,
+        "duration": 1454.2999999523163,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 424,
+            "ratio": 0.7999705188679245
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 424,
+            "ratio": 0.6999926297169812
+          }
+        ]
+      },
+      {
+        "samples": 89,
+        "duration": 1461.199999988079,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 424,
+            "ratio": 0.7999705188679245
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 424,
+            "ratio": 0.6999926297169812
+          }
+        ]
+      }
+    ],
+    "styles": [
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "34.3%"
+      },
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "25.3%"
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "reducedMotion": "PASS"
+  },
+  {
+    "width": 393,
+    "runs": [
+      {
+        "samples": 88,
+        "duration": 1447.3999999761581,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 297,
+            "ratio": 0.7999789562289562
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 297,
+            "ratio": 0.6999684343434344
+          }
+        ]
+      },
+      {
+        "samples": 90,
+        "duration": 1457.300000011921,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 297,
+            "ratio": 0.7999789562289562
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 297,
+            "ratio": 0.6999684343434344
+          }
+        ]
+      }
+    ],
+    "styles": [
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "34.3%"
+      },
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "25.3%"
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "reducedMotion": "PASS"
+  },
+  {
+    "width": 360,
+    "runs": [
+      {
+        "samples": 89,
+        "duration": 1455.1000000238419,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 264,
+            "ratio": 0.7999526515151515
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 264,
+            "ratio": 0.6999881628787878
+          }
+        ]
+      },
+      {
+        "samples": 89,
+        "duration": 1449.8999999761581,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 264,
+            "ratio": 0.7999526515151515
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 264,
+            "ratio": 0.6999881628787878
+          }
+        ]
+      }
+    ],
+    "styles": [
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "34.3%"
+      },
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "25.3%"
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "reducedMotion": "PASS"
+  },
+  {
+    "width": 320,
+    "runs": [
+      {
+        "samples": 92,
+        "duration": 1487.7000000476837,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 224,
+            "ratio": 0.7999441964285714
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 224,
+            "ratio": 0.6999860491071429
+          }
+        ]
+      },
+      {
+        "samples": 89,
+        "duration": 1448.800000011921,
+        "final": [
+          {
+            "value": 34.3,
+            "trackWidth": 224,
+            "ratio": 0.7999441964285714
+          },
+          {
+            "value": 25.3,
+            "trackWidth": 224,
+            "ratio": 0.6999860491071429
+          }
+        ]
+      }
+    ],
+    "styles": [
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "34.3%"
+      },
+      {
+        "trackBackground": "rgba(0, 0, 0, 0)",
+        "fillColor": "rgb(255, 68, 56)",
+        "hidden": "true",
+        "hasMax": false,
+        "accessibleValue": "25.3%"
+      }
+    ],
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "reducedMotion": "PASS"
+  }
+]

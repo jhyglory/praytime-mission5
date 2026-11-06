@@ -31,7 +31,7 @@ Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS 
 - 상단 Header의 신청 CTA는 Desktop·Mobile 모두 제거했습니다. Hero CTA와 form submit의 **“무료로 신청하기”**는 유지합니다. 로고·기존 navigation 위치·원본 artwork는 보존합니다.
 - Hero/Question과 THE GAP은 사용자가 제공한 고화질 PNG 원본으로 교체했습니다. 원본 비율·기존 glass/slit 위치를 유지하고, GAP은 화면 진입 시 지연 로드합니다. [원본 해시](docs/evidence/high-resolution-assets/originals.json).
 - ONE QUESTION은 Hero와 같은 원본 artwork의 연속 crop을 사용합니다. 최종 Figma의 Desktop56/80, Mobile32/48 제목을 적용합니다.
-- WHY NOW는 각 카드가 실제 **40%** 보일 때 독립 시작합니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**, 전체100% 길이는 연한 회색 track, 최종 red fill은 정확히34.3% /25.3%입니다.
+- WHY NOW는 각 카드가 실제 **40%** 보일 때 독립 시작합니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**이며 회색 track은 표시하지 않습니다. 사용자 요청에 따른 장식용 최종 길이는80% /70%이고, 실제 통계 숫자34.3% /25.3%는 그대로 유지합니다.
 - 통계는 **카드마다 페이지 로드당 한 번** 실행합니다. 새로고침·페이지 재진입에서는 다시 실행하며, 완료 여부를 `sessionStorage`나 `localStorage`에 저장하지 않습니다. reduced-motion/no-JS는 읽을 수 있는 최종값을 표시합니다.
 - clean intro는 카드 없이 **“그래서” 전체 단어 → 실제 Figma 로고 + “은”** 순서로 한 번 등장하고 읽을 수 있는 결과를 유지합니다. 높이는 원본 Desktop760/Mobile680px와 **현재 viewport 높이 이상**을 모두 만족하도록 확보합니다. 다음 SNS scene과 교차 fade하거나 자동 스크롤하지 않습니다.
 - SNS scene은 최종 Figma의 Desktop760/Mobile680px 구간을 따릅니다. 선언·보조 문구는 고정하고 **모든 카드 열이 위로** 현재 원본의0.8배 속도인15초 주기로 계속 흐릅니다. 원본 사진80개를 각 viewport의 base cycle에 한 번씩 배치하고, Desktop6열/Mobile3열과 독립 phase·동일 duplicate tile로 반복을 연결합니다. 하트16개·공유4개는 기존12초 타이밍으로 반복 상승합니다. 각25초 실제 재생과 모든 seam 경계 검사에서 화면 내 중복 사진0을 확인했습니다.

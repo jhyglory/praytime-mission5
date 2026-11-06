@@ -15,7 +15,7 @@ Before implementation read docs/PRAYTIME_PRODUCT.md, docs/PRAYTIME_DESIGN.md, do
 ## Current motion/statistic requirements
 
 - WHY NOW:0.0→34.3% /25.3%, one decimal; each card triggers independently at40% actual visibility;1400ms smooth progression shared by number and fill.
-- Both bars Signal Red #FF4438;100% track is light gray, final fills exactly34.3% /25.3%. No transparent track,100%/70% accent lengths or lavender second fill.
+- Latest visual override: both bars are Signal Red #FF4438 decorative accents, final visible widths80% /70%, with transparent/invisible tracks. Actual statistics remain34.3% /25.3%; keep accents aria-hidden and remove the obsolete data-max scale. Do not restore gray tracks or proportional34.3%/25.3% visual widths.
 - Once per card per page load; reopening/reloading replays. Never use sessionStorage/localStorage as a completion latch.
 - Reduced motion/no-JS shows readable final values. Pause or finish offscreen/background safely, and clean up observers/RAF/listeners.
 - Independent card-free intro: whole word그래서, then actual Figma logo plus은. Enough viewport height to avoid premature SNS bleed. No letter splitting or text/CSS substitute logo.
