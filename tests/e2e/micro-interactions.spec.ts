@@ -35,6 +35,26 @@ async function centerSection(page: Page, selector: string) {
   await page.locator(selector).evaluate(el => el.scrollIntoView({ block: "center", behavior: "instant" }));
 }
 
+async function expectReferenceGauges(grid: Locator) {
+  for (const [index, color] of ["rgb(255, 68, 56)", "rgb(196, 192, 240)"].entries()) {
+    const card = grid.locator(".stat-card").nth(index);
+    const track = card.locator(".stat-track");
+    const fill = card.locator(".stat-fill");
+    const available = await card.evaluate(el => {
+      const css = getComputedStyle(el);
+      return el.clientWidth - Number.parseFloat(css.paddingLeft) - Number.parseFloat(css.paddingRight);
+    });
+    const box = (await track.boundingBox())!;
+    expect(box.width).toBeCloseTo(Math.min(available, 420) * (index === 0 ? 1 : 0.7), 1);
+    expect((await fill.boundingBox())!.width).toBeCloseTo(box.width, 1);
+    await expect(track).toHaveCSS("height", "7px");
+    await expect(track).toHaveCSS("border-radius", "0px");
+    await expect(track).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+    await expect(fill).toHaveCSS("border-radius", "0px");
+    await expect(fill).toHaveCSS("background-color", color);
+  }
+}
+
 test.beforeEach(async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.emulateMedia({ reducedMotion: "no-preference" });
@@ -240,7 +260,7 @@ test("WHY NOW counts once without overshoot or layout shift and stays final afte
   const grid = page.locator("#why-stats");
   const numbers = grid.locator("[data-stat-number]");
   await expect(grid).toHaveAttribute("data-count-state", "pending");
-  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+  await expect(numbers).toHaveText(["0.0%", "0.0%"]);
   await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
   await page.evaluate(() => {
     const grid = document.getElementById("why-stats")!;
@@ -269,8 +289,8 @@ test("WHY NOW counts once without overshoot or layout shift and stays final afte
   await expect(numbers).toHaveText(["34.3%", "25.3%"]);
   await expect(grid).toHaveAttribute("data-count-runs", "1");
   const observation = await page.evaluate(() => window.microStats);
-  expect(observation.completed - observation.started).toBeGreaterThanOrEqual(650);
-  expect(observation.completed - observation.started).toBeLessThanOrEqual(900);
+  expect(observation.completed - observation.started).toBeGreaterThanOrEqual(2800);
+  expect(observation.completed - observation.started).toBeLessThanOrEqual(3400);
   expect(observation.samples.length).toBeGreaterThan(2);
   expect(observation.samples.some(sample => sample.values[0] > 0 && sample.values[0] < 34.3)).toBe(true);
   expect(observation.samples.some(sample => sample.transforms.some(value => /^scaleX\(0\./.test(value)))).toBe(true);
@@ -288,6 +308,7 @@ test("WHY NOW counts once without overshoot or layout shift and stays final afte
     await expect(grid.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
   }
   expect(observation.cls).toBeLessThanOrEqual(0.001);
+  await expectReferenceGauges(grid);
 
   await centerSection(page, "#hero");
   await grid.scrollIntoViewIfNeeded();
@@ -310,6 +331,7 @@ test("WHY NOW reduced motion immediately presents final accessible values and ga
   await expect(grid.locator("[data-stat-number]")).toHaveText(["34.3%", "25.3%"]);
   await expect(grid.locator(".stat-value .sr-only")).toHaveText(["34.3%", "25.3%"]);
   for (const fill of await grid.locator(".stat-fill").all()) await expect(fill).toHaveCSS("transform", "none");
+  await expectReferenceGauges(grid);
 });
 
 test("without JavaScript, WHY NOW still renders exact statistics and full count accents", async ({ browser, baseURL }) => {
@@ -328,10 +350,37 @@ test("without JavaScript, WHY NOW still renders exact statistics and full count 
       expect(fill.width).toBeCloseTo(track.width, 1);
       await expect(grid.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
     }
+    await expectReferenceGauges(grid);
     expect(problems).toEqual([]);
   } finally {
     await context.close();
   }
+});
+
+test("mobile statistics wait for each visible card before the three-second fill", async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 600 });
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  const grid = page.locator("#why-stats");
+  const first = grid.locator(".stat-card").nth(0);
+  const second = grid.locator(".stat-card").nth(1);
+  await first.evaluate(el => {
+    const box = el.getBoundingClientRect();
+    const rootBottom = innerHeight * 0.85;
+    scrollTo({ top: scrollY + box.top - (rootBottom - box.height * 0.65), behavior: "instant" });
+  });
+  await expect(first).toHaveAttribute("data-count-state", "running");
+  await expect(second).toHaveAttribute("data-count-state", "pending");
+  await expect(second.locator("[data-stat-number]")).toHaveText("0.0%");
+  await expect(first).toHaveAttribute("data-count-state", "complete");
+  await expect(second).toHaveAttribute("data-count-runs", "0");
+  await second.evaluate(el => el.scrollIntoView({ block: "center", behavior: "instant" }));
+  await expect(second).toHaveAttribute("data-count-state", "running");
+  await expect(second).toHaveAttribute("data-count-state", "complete");
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(first).toHaveAttribute("data-count-runs", "1");
+  await expect(second).toHaveAttribute("data-count-runs", "1");
+  await expectReferenceGauges(grid);
 });
 
 test("mobile touch preserves choice, wheel, FAQ and beta CTA flows without saving data", async ({ browser, baseURL }) => {

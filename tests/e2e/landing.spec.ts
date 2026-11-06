@@ -193,6 +193,8 @@ test("final Hero overlay, statistic count accents and anchors match the approved
   page.on("console", message => { if (["warning", "error"].includes(message.type())) runtimeProblems.push(message.text()); });
   await page.goto("/");
   expect(await page.locator(".landing-header").evaluate(el => getComputedStyle(el).backgroundColor)).toBe("rgba(0, 0, 0, 0)");
+  await page.locator("#why-stats").scrollIntoViewIfNeeded();
+  await expect(page.locator("#why-stats")).toHaveAttribute("data-count-state", "complete");
   for (const index of [0, 1]) {
     const track = await page.locator(".stat-track").nth(index).boundingBox();
     const fill = await page.locator(".stat-fill").nth(index).boundingBox();

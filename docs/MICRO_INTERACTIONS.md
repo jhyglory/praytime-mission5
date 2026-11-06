@@ -11,9 +11,9 @@
 | Hero | `src/components/landing/hero-pointer-motion.tsx`, `hero-section.tsx` | 768px 이상·fine mouse·hover·no-preference 조건에서만 pointer 반대 방향 반응. 벡터 최대 2.5px, 240ms ease-out 복귀. 원본은 object/light가 합쳐진 raster이므로 분리·재생성 없이 더 엄격한 background 이동 한도 내에서 한 plane만 이동. 회전·확대·밝기 변경 없음 |
 | Equal Choice | `src/components/landing/gap-section.tsx` | 사용자가 확정한 `#hero` / `#how-it-works` 링크. 기존 AnchorLink 재사용, 키보드 activation 시 목적지 heading focus |
 | Navigation | `src/components/landing/active-section-nav.tsx`, `header.tsx` | 기존 3개 이름·anchor 유지. Header 높이를 반영한 중앙 band IO와 hysteresis. 일치하는 항목만 `aria-current=location`, opacity .65 → 1. Header absolute 위치 유지 |
-| WHY NOW | `src/components/landing/why-now-count-up.tsx`, `why-now-section.tsx` | 공유 IO 진입 시 750ms cubic ease-out. 숫자·색 막대 동시 실행, 34.3% / 25.3% 초과 없음. 각 수치에 도달하면 회색 track 없이 색 막대가 full width에 도달(사용자 승인 독립 최대값). sessionStorage로 세션당 1회, 재진입·새로고침 시 최종값 유지 |
+| WHY NOW | `src/components/landing/why-now-count-up.tsx`, `why-now-section.tsx` | 기존 운영 StatMetric 기준3000ms cubic ease-out. 각 카드50% visibility/bottom-15% IO. 숫자34.3%/25.3%,7px 각진 bar: 첫100% 빨강·둘째70% 연보라, 회색 없음. 세션당 각 카드1회, reduced/no-JS 최종값 |
 | CSS | `src/app/globals.css` 마지막 micro-interaction 블록 | 동등한 hover -2px, 화살표 바깥쪽 4px, active scale .995. 2px Lavender ring / offset3px. 기본 상태 geometry·surface 유지 |
-| 테스트 | `tests/e2e/micro-interactions.spec.ts` | 신규 13개. 기존 `landing.spec.ts` 18개를 수정하지 않음 |
+| 테스트 | `tests/e2e/micro-interactions.spec.ts` | 원래13개 + 카드별 mobile 시작1개 추가. 기존18개를 유지하고 변경된 스타일/시간 기대값을 갱신(총32개) |
 | 맥락 / 기록 | `AGENTS.md`, `README.md`, `docs/PRAYTIME_PRODUCT.md`, `docs/PRAYTIME_DESIGN.md`, `docs/MISSION5_LANDING.md`, 이 문서 | 이전 release와 현재 local-only patch의 권한 범위 구분 |
 | QA evidence | `docs/evidence/micro-interactions/checks.json`, `geometry.json` | 이번 실행 결과와 8개 viewport의 geometry·오류·CLS 기록 |
 
@@ -29,7 +29,7 @@
 
 - pointer는 cached Hero document bounds + 단일 pending rAF로 CSS custom properties만 갱신합니다. frame당 React state나 layout read가 없습니다.
 - Navigation은 scroll listener 없이 IO 경계 변화에만 active state를 갱신합니다. resize는 rAF로 제한하고 IO를 교체·disconnect합니다.
-- 두 통계는 하나의 IO와 rAF를 공유합니다. 각 색 막대의 width는100%로 고정하고 transform scaleX만 변경합니다. 사용자 승인에 따라 각 막대의 최대값은 해당 수치34.3 /25.3이며, 공통100% 척도를 그리는 통계 그래프가 아닙니다. 회색 track은 투명하고 막대는 aria-hidden 장식으로 유지합니다. 숫자는 소수점 한 자리로 textContent만 갱신합니다.
+- 하나의 IO가 각 카드를 관찰하고 하나의 rAF가 활성 카드만 갱신합니다. 각 색 막대의 width는100%로 고정하고 transform scaleX만 변경합니다. 사용자 승인에 따라 각 막대의 최대값은 해당 수치34.3 /25.3이며, 공통100% 척도를 그리는 통계 그래프가 아닙니다. 회색 track은 투명하고 막대는 aria-hidden 장식으로 유지합니다. 숫자는 소수점 한 자리로 textContent만 갱신합니다.
 - effect cleanup에서 observer, rAF, media/visibility/pointer/resize listener를 정리합니다. 상시 will-change, blur/filter/shadow/width/height animation을 추가하지 않았습니다.
 
 ## 검증
@@ -59,8 +59,22 @@ Viewport: 1440 / 1280 / 1024 / 768 / 430 / 393 / 375 / 320. Runtime console/page
 로컬 검증을 마쳤으며 diff 검토 후 commit/push할 수 있는 상태입니다. 배포 전 검증 기준 HEAD는 `7c77356`이며 아래 diff는 그 위의 변경사항입니다. 사용자의 새 release 승인으로 commit/push·기존 PR #1 업데이트·Vercel 재배포 보류는 해제됐습니다. 기존 feature branch와 PR을 유지하고 직접 merge하지 않습니다. Production 저장 OFF와 privacy guard를 유지하며 실제 저장은 LEGAL REVIEW REQUIRED 상태입니다.
 
 
-## WHY NOW fill presentation update · 2026-11-06
+## Previous WHY NOW fill presentation · superseded
 
 The user approved independent displayed maxima34.3 /25.3 and full-width decorative accents with no gray background. Exact numbers/source/accessible text remain intact; no shared statistical0–100 scale or progressbar semantics are introduced. The original750ms rAF and session-once behavior stay; session keyv2 gives existing visitors one first run of the updated presentation. Existing tests now check transparent tracks, full-width endpoints and stable layout width during scaleX growth, preserving monotonic numbers, once/reload, CLS, reduced-motion and no-JS coverage. Historical evidence JSON above remains unchanged.
 
 Fresh validation for this fill update: lint PASS, typecheck PASS, unit40/40 PASS, browser31/31 PASS (57.0s), Webpack production build PASS. The existing6s transition, other micro-interactions and all form/API/privacy/package/assets paths are preserved.
+
+
+## Current gauge reference · 2026-11-06
+
+The user rejected the approximation and explicitly asked to copy the gauge/speed at https://praytime.glorifier.kr/. Both the rendered page and Lovable `src/components/site/StatMetric.tsx` at ref `660f70b4d2854d82e018618d00122ce875880e46` were inspected read-only. No original-site source, DNS or database was changed.
+
+- Duration3000ms; easing `1-(1-p)^3`.
+- Track has no background;7px high, square ends. First width100%, color#FF4438; second width70%, color#C4C0F0. Reference inner maximum420px is preserved for the bars (second cap294px).
+- Each card starts when50% enters the viewport area with `rootMargin: 0px 0px -15% 0px`; mobile's second card waits for its own appearance.
+- Retain Mission5 Ink numbers/typography, exact34.3%/25.3%, source/copy/card layout and existing6s transition. No reference FAQ or other product claims are copied.
+- Preserve transform-based growth, one shared rAF, session-once per card, static accessible values and reduced/no-JS fallback. Hydrated unseen visuals start at0.0%/empty, while SSR/accessibility stays final. Version3 keys let existing visitors see the corrected animation once.
+- The7px bar intentionally adds1px to the desktop stats row and2px to the stacked mobile pair versus the prior6px presentation. Historical geometry/QA records remain unchanged.
+
+Fresh reference-correction checks: lint PASS, typecheck PASS, unit40/40 PASS, browser32/32 PASS (52.8s), Webpack production build PASS. The added mobile case verifies that the second card stays pending until seen. An initial test scroll-position calculation was corrected to use viewport height; application behavior was unchanged by that harness correction.
