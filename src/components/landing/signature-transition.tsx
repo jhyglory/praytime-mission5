@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useRef, useSyncExternalStore } from "react";
+import { CleanIntro } from "./clean-intro";
 import { MobileAmbientCard } from "./mobile-ambient-cards";
 import { AmbientCard } from "./ambient-cards";
 import motion from "./card-intro-motion.json";
@@ -37,7 +38,7 @@ const getServerViewport = () => "";
 
 export function SignatureTransition() {
   const container = useRef<HTMLDivElement>(null);
-  const cardScene = useRef<HTMLDivElement>(null);
+  const cardScene = useRef<HTMLElement>(null);
   // Stable SSR/hydration fallback. Mount only one viewport's decorative tree.
   const viewport = useSyncExternalStore(subscribeViewport, getViewport, getServerViewport);
   const variant = viewport.startsWith("mobile") ? "mobile" : "desktop";
@@ -56,7 +57,15 @@ export function SignatureTransition() {
     const animations: Animation[] = source.tracks.map(track => {
       const element = scene.querySelector<HTMLElement>('[data-node-id="' + track.nodeId + '"]');
       if (!element) throw new Error("Missing prototype motion node " + track.nodeId);
-      const animation = element.animate(track.frames, { duration:source.duration, iterations:Infinity, fill:"both" });
+      // Preserve the source speed/initial phase while letting the identical
+      // second tile carry the seam. A single linear cycle avoids interpolating
+      // the export's 1.2ms internal position reset through unrelated cards.
+      const column = masonry[variant].find(column => column.id === track.nodeId);
+      const frames = column ? [
+        { offset:0, transform:"translate(0px, 0px)", easing:"linear" },
+        { offset:1, transform:"translate(0px, " + -column.cycleHeight + "px)", easing:"linear" },
+      ] : track.frames;
+      const animation = element.animate(frames, { duration:source.duration, iterations:Infinity, fill:"both" });
       animation.pause(); animation.currentTime = 0;
       return animation;
     });
@@ -88,21 +97,14 @@ export function SignatureTransition() {
       animations.forEach(animation => animation.cancel());
       document.removeEventListener("visibilitychange", syncPlayback);
     };
-  }, [animate, source, viewport]);
+  }, [animate, source, variant, viewport]);
 
   return <div ref={container} className="signature-transition card-intro" data-signature-transition data-motion-state="static" data-motion-duration="12000" data-motion-variant={variant} data-node-id={source.nodeId}>
     <p className="sr-only">그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.</p>
     <div className="card-intro__scene" aria-hidden="true">
-      <div className="card-intro__clean" data-node-id={variant === "mobile" ? "1265:8099" : "1265:8075"}>
-        <div className="card-intro__intro-copy">
-          <p className="card-intro__therefore">그래서</p>
-          <div className="card-intro__brand">
-            <div className="card-intro__wordmark"><span className="card-intro__pause"><i /><i /></span><span>PRAYTIME</span></div><span className="card-intro__suffix">은</span>
-          </div>
-        </div>
-      </div>
-      <div ref={cardScene} className="card-intro__cards" data-node-id={variant === "mobile" ? "1214:831" : "1214:652"}>
-        {animate && <div className={"card-intro__art card-intro__art--" + variant}>
+      <CleanIntro variant={variant} viewport={viewport} />
+      <section ref={cardScene} className="card-intro__cards" data-node-id={variant === "mobile" ? "1214:831" : "1214:652"}>
+        {viewport && <div className={"card-intro__art card-intro__art--" + variant}>
           <img className="card-intro__floor" src={variant === "mobile" ? "/assets/card-intro/mobile-floor.svg" : "/assets/card-intro/prototype-floor.svg"} alt="" />
           <div className="card-intro__masonry">
             {masonry[variant].map(column => <div className="card-intro__column" key={column.id} style={{ left:column.x, top:column.y, width:column.width, height:column.height }} data-node-id={column.id}>
@@ -126,7 +128,7 @@ export function SignatureTransition() {
           <div className="card-intro__headline"><p>손이 먼저 움직인 순간,</p><p>다시 생각할 시간을<span className="card-intro__desktop-space"> </span><br className="card-intro__mobile-break" />돌려드립니다.</p></div>
           <p className="card-intro__anchor">잠깐 기도하고,<span className="card-intro__desktop-space"> </span><br className="card-intro__mobile-break" />필요한 만큼만 선택합니다.</p>
         </div>
-      </div>
+      </section>
     </div>
   </div>;
 }

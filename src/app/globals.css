@@ -539,7 +539,8 @@ h1 { font-size: 44px; line-height: 60px; }
 .equal-outcomes > div::before { content: ""; position: absolute; top: 0; right: 0; width: min(414px, 100%); height: 1px; background: linear-gradient(90deg, rgb(200 188 211 / 0%) 0%, rgb(200 188 211 / 42%) 25%, rgb(245 224 255 / 86%) 50%, rgb(200 188 211 / 54%) 57%, rgb(200 188 211 / 0%) 100%); }
 .equal-outcomes p { font-size: 16px; line-height: 26px; }
 .equal-outcomes h3 { font-size: 28px; font-weight: 500; line-height: 40px; }
-.equal-outcomes img { position: absolute; top: 64px; left: calc(50% + 123px); width: 24px; height: 24px; }
+.gap-choice__action { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.gap-choice__action > img { display: block; width: 24px; height: 24px; flex-shrink: 0; }
 
 @media (width < 768px) {
   .why-now { padding: 72px 0 64px; background: var(--paper); }
@@ -554,11 +555,11 @@ h1 { font-size: 44px; line-height: 60px; }
   .gap-slit { width: 6px; height: 230px; margin-top: 80px; }
   .gap-slit-penumbra { filter: blur(1.5px); }
   .gap-slit-core { left: 2px; width: 2px; filter: blur(.2px); }
-  .equal-outcomes { margin-top: 80px; grid-template-columns: 1fr; gap: 8px; padding-top: 0; text-align: left; }
+  .equal-outcomes { margin-top: 80px; grid-template-columns: 1fr; gap: 8px; padding-top: 0; text-align: center; }
   .equal-outcomes > div { min-height: 90px; padding: 20px 16px 0; gap: 6px; }
   .equal-outcomes p { font-size: 13px; line-height: 20px; }
-  .equal-outcomes h3 { max-width: calc(100% - 32px); font-size: 20px; line-height: 28px; }
-  .equal-outcomes img { left: auto; right: 16px; top: 48px; }
+  .equal-outcomes h3 { font-size: 20px; line-height: 28px; }
+  .gap-choice__action { gap: 12px; }
 }
 
 /* Micro-interactions enhance the approved resting layout only. */
@@ -572,7 +573,7 @@ h1 { font-size: 44px; line-height: 60px; }
 
 /* Both choices retain identical geometry, type and interaction weight. */
 .equal-outcomes > div { transition: transform 200ms ease-out; }
-.gap-choice { position: absolute; inset: 0; display: flex; flex-direction: column; gap: inherit; padding: inherit; min-height: 44px; color: inherit; background: transparent; transition: background-color 200ms ease-out; }
+.gap-choice { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; gap: inherit; padding: inherit; min-height: 44px; color: inherit; text-align: center; background: transparent; transition: background-color 200ms ease-out; }
 .gap-choice::before, .gap-choice::after { content: ""; position: absolute; pointer-events: none; opacity: 0; transition: opacity 200ms ease-out; }
 .gap-choice::before { inset: 0; border: 1px solid rgb(167 156 182 / 14%); border-radius: 3px; }
 .gap-choice::after { top: 0; left: 20%; width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgb(200 188 211 / 28%), transparent); }

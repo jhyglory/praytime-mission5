@@ -80,8 +80,9 @@ test("skip link and reduced-motion navigation support the keyboard", async ({ pa
   await expect(transition.locator(".card-intro__brand")).toBeVisible();
   await expect(transition.locator(".card-intro__headline")).toBeVisible();
   await expect(transition.locator(".card-intro__anchor")).toBeVisible();
-  await expect(transition.locator(".card-intro__art")).toBeHidden();
-  await expect(transition.locator(".card-intro__art")).toHaveCount(0);
+  await expect(transition.locator(".card-intro__art")).toBeVisible();
+  await expect(transition.locator(".card-intro__column")).toHaveCount(6);
+  await expect(transition.locator(".card-intro__clean")).toHaveAttribute("data-intro-state", "reduced");
   await expect(transition.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.");
   await expect(transition.locator(".card-intro__scene")).toHaveAttribute("aria-hidden", "true");
 });
@@ -135,8 +136,8 @@ for (const width of widths) {
     expect(architecture.src).toMatch(new RegExp(`/assets/landing-gap-${width < 768 ? "mobile" : "desktop"}\\.svg$`));
     expect(architecture.width).toBe(width < 768 ? 393 : 1440);
     expect(architecture.height).toBe(width < 768 ? 1024 : 1180);
-    await expect(page.locator(".gap-choice--return > img")).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
-    await expect(page.locator(".gap-choice--time > img")).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
+    await expect(page.locator(".gap-choice--return .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
+    await expect(page.locator(".gap-choice--time .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
     await expect(page.locator(".equal-outcomes .prayer-light-divider")).toHaveCount(2);
     const choices = await page.locator(".equal-outcomes > div").evaluateAll(elements => elements.map(el => {
       const box = el.getBoundingClientRect();
@@ -145,6 +146,19 @@ for (const width of widths) {
       return { width: box.width, height: box.height, x: box.x, y: box.y, fontSize: text.fontSize, fontWeight: text.fontWeight, color: text.color, background: surface.background, padding: surface.padding };
     }));
     expect(choices).toHaveLength(2);
+    const alignment = await page.locator(".equal-outcomes > div").evaluateAll(panels => panels.map(panel => {
+      const center = (element:Element) => { const r=element.getBoundingClientRect(); return r.left+r.width/2; };
+      const row=panel.querySelector(".gap-choice__action")!;
+      const text=row.querySelector("h3")!.getBoundingClientRect();
+      const arrow=row.querySelector("img")!.getBoundingClientRect();
+      return { panel:center(panel), light:center(panel.querySelector(".prayer-light-divider__highlight")!), label:center(panel.querySelector(".gap-choice > p")!), row:center(row), arrowPosition:getComputedStyle(row.querySelector("img")!).position, vertical:text.top+text.height/2-arrow.top-arrow.height/2 };
+    }));
+    for (const item of alignment) {
+      for (const center of [item.light,item.label,item.row]) expect(center).toBeCloseTo(item.panel,1);
+      expect(item.arrowPosition).toBe("static");
+      expect(Math.abs(item.vertical)).toBeLessThan(1);
+    }
+
     expect(choices[0].width).toBeCloseTo(choices[1].width, 2);
     expect(choices[0].height).toBeCloseTo(choices[1].height, 2);
     for (const property of ["fontSize", "fontWeight", "color", "background", "padding"] as const) expect(choices[0][property]).toBe(choices[1][property]);
@@ -298,17 +312,17 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await cards.evaluate(el => el.scrollIntoView({ block:"center", behavior:"instant" }));
     await expect(transition).toHaveAttribute("data-motion-state", "running");
     await expect(transition).toHaveAttribute("data-motion-duration", "12000");
-    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(width < 768 ? 43 : 46);
-    const renderedMotionNodes = await transition.evaluate(el => new Set(el.getAnimations({ subtree: true }).map(a => ((a.effect as KeyframeEffect).target as HTMLElement).dataset.nodeId)).size);
+    expect(await cards.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(width < 768 ? 43 : 46);
+    const renderedMotionNodes = await cards.evaluate(el => new Set(el.getAnimations({ subtree: true }).map(a => ((a.effect as KeyframeEffect).target as HTMLElement).dataset.nodeId)).size);
     expect(renderedMotionNodes).toBe(width < 768 ? 23 : 26);
     await expect(transition.locator(".card-intro__column")).toHaveCount(width < 768 ? 3 : 6);
     for (const column of await transition.locator(".card-intro__column").all()) await expect(column).toHaveCSS("opacity", width < 768 ? "0.52" : "0.64");
     await expect(transition.locator(".ambient-card")).toHaveCount(width < 768 ? 216 : 288);
     await expect(transition.locator(".card-intro__particle")).toHaveCount(20);
     const samples = await transition.evaluate(el => {
-      const animations = el.getAnimations({ subtree: true });
+      const animations = el.querySelector(".card-intro__cards")!.getAnimations({ subtree: true });
       const art = el.querySelector(".card-intro__art")!;
-      const copySelectors = [".card-intro__therefore", ".card-intro__brand", ".card-intro__headline", ".card-intro__anchor"];
+      const copySelectors = [".card-intro__headline", ".card-intro__anchor"];
       const textAnimationCounts = copySelectors.map(selector => el.querySelector(selector)!.getAnimations({ subtree:true }).length);
       const onlyArtAnimated = animations.every(animation => art.contains((animation.effect as KeyframeEffect).target));
       const snapshots = [0, 1000, 6000, 11999, 12000].map(time => {
@@ -329,7 +343,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
       return { snapshots, textAnimationCounts, onlyArtAnimated };
     });
     expect(samples.onlyArtAnimated).toBe(true);
-    expect(samples.textAnimationCounts).toEqual([0,0,0,0]);
+    expect(samples.textAnimationCounts).toEqual([0,0]);
     for (const sample of samples.snapshots) {
       expect(sample.containers).toEqual([1,1]);
       expect(sample.copy).toEqual(samples.snapshots[0].copy);

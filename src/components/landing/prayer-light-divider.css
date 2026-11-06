@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 .prayer-light-divider--choice {
-  --light-center: calc(100% - min(207px, 50%));
+  --light-center: 50%;
   --light-line-opacity: .77;
   --light-highlight-opacity: .85;
   --light-halo-opacity: .25;
@@ -74,7 +74,7 @@
   opacity: var(--light-line-opacity);
   background: linear-gradient(90deg, rgb(200 188 211 / 0%) 0%, rgb(200 188 211 / 30%) 13%, rgb(200 188 211 / 68%) 36%, rgb(241 233 245 / 94%) 50%, rgb(200 188 211 / 68%) 64%, rgb(200 188 211 / 30%) 87%, rgb(200 188 211 / 0%) 100%);
 }
-.prayer-light-divider--choice .prayer-light-divider__line { left: auto; width: min(414px, 100%); }
+.prayer-light-divider--choice .prayer-light-divider__line { left: 50%; right: auto; width: min(414px, 100%); transform: translateX(-50%); }
 
 /* Keep the original headings, native anchors and equal-choice hit areas.
    The architectural SVG carries the complete central light study. */
@@ -83,16 +83,13 @@
 .gap-architecture img { position: absolute; top: 0; left: 50%; display: block; width: auto; height: auto; max-width: none; transform: translateX(-50%); }
 .gap-section .equal-outcomes { margin-top: 564px; }
 .gap-section .equal-outcomes > div::before { content: none; }
-.gap-section .gap-choice--time > img { left: calc(50% + 128px); }
 
 @media (width < 768px) {
-  .prayer-light-divider--choice { --light-center: 50%; }
   .prayer-light-divider__highlight { width: 36px; }
   .prayer-light-divider__near-halo { width: 72px; }
   .prayer-light-divider__bloom { top: -27.5px; }
   .prayer-light-divider__haze { top: -43.5px; }
-  .prayer-light-divider--choice .prayer-light-divider__line { left: 0; width: 100%; }
+  .prayer-light-divider--choice .prayer-light-divider__line { width: 100%; }
   .gap-section .equal-outcomes { margin-top: 390px; }
   .gap-section .equal-outcomes p { color: rgb(241 241 238 / 68%); }
-  .gap-section .gap-choice--time > img { left: auto; }
 }

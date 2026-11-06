@@ -8,11 +8,11 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 핵심 흐름은 **PAUSE → PRAY → CHOOSE → USE → RETURN**입니다. 기도 완료가 SNS 자동 해제를 뜻하지 않습니다. 돌아가거나, 필요하면 **5 / 10 / 15분**을 정해 사용합니다. 시간이 끝나면 다시 제한되고 추가 사용에는 Prayer / Choice가 필요합니다. 이 프로젝트는 제품 자체의 OS 차단 기능이 아닌 소개·베타 신청 Landing입니다.
 
-최신 인트로/카드 기준: [실제 Figma prototype1214:651](https://www.figma.com/proto/J8iLsfruyMwVCakXsSJPq4/?node-id=1214-651&page-id=1209%3A513&starting-point-node-id=1209%3A514). 다른 섹션의 기존 구현 기준과 명시적인 CTA/파비콘 수정은 유지합니다.
+최신 기준: [Desktop1209:514](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1209-514) · [Mobile1209:1051](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1209-1051) · [Desktop entrance](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1265-8215) · [Mobile entrance](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1265-11339). 다른 섹션의 기존 구현 기준과 명시적인 CTA/파비콘 수정은 유지합니다.
 
 ## 현재 단계
 
-현재 최신 수정은 실제 프로토타입 Desktop1214:651 / Mobile1214:830을 기준으로 한 인트로·카드 모션 정정입니다. 카드 없는 인트로와 선언 화면을 독립 구간으로 분리하고, 원본 사진80개·Desktop6열/Mobile3열·12초 카드 스트림을 적용했습니다. 나머지 랜딩·shadcn·폼 동작은 유지합니다. Production은 승인된 기존 Supabase 접수를 사용하고 Preview·테스트·기본 로컬은 disabled입니다. 기존 feature branch / PR #1 / Vercel을 유지하며 merge·새 DB·DNS 전환은 하지 않습니다. [최신 변경과 검증](docs/PROTOTYPE_CORRECTION.md), [접수 활성화 이력](docs/BACKEND_ACTIVATION.md).
+현재 최신 수정은 full Desktop1209:514 / Mobile1209:1051과 intro previews1265:8215 /1265:11339에 대한 최종 명세를 반영합니다. 실제 Figma 로고로 “그래서 → 로고와 은”이 순차 등장하고, 다음 독립 섹션에서12초 카드 스트림이 계속 이동합니다. 카드 없는 인트로와 선언 화면을 독립 구간으로 분리하고, 원본 사진80개·Desktop6열/Mobile3열·12초 카드 스트림을 적용했습니다. 나머지 랜딩·shadcn·폼 동작은 유지합니다. Production은 승인된 기존 Supabase 접수를 사용하고 Preview·테스트·기본 로컬은 disabled입니다. 기존 feature branch / PR #1 / Vercel을 유지하며 merge·새 DB·DNS 전환은 하지 않습니다. [최신 변경과 검증](docs/FINAL_SNS_PATCH.md), [접수 활성화 이력](docs/BACKEND_ACTIVATION.md).
 
 - Repository: [jhyglory/praytime-mission5](https://github.com/jhyglory/praytime-mission5) (private)
 - 작업 branch: `feature/mission-5-landing`
@@ -93,7 +93,7 @@ npm run start
 - THE GAP: 두 선택지를 동일한 hover/pressed/focus 규칙으로 처리. 돌아가기 → Hero, 시간 선택 → Time Select
 - 메뉴: 중앙 viewport의 섹션을 IntersectionObserver로 감지, opacity·aria-current만 갱신. Header의 기존 absolute 위치 유지
 - WHY NOW: 기존 운영 페이지의 실제 StatMetric을 기준으로3000ms cubic ease-out, 회색 track 없는7px 각진 막대, 첫100% 빨강 /둘째70% 연보라를 적용합니다. 각 카드가 보일 때 개별 시작하며 세션당1회 실행합니다. 정확한34.3% /25.3%와 Ink typography·SSR/no-JS/reduced-motion 최종값은 유지합니다.
-- WHY NOW → THE GAP: 별도의 카드 없는 “그래서 / PRAYTIME은” 인트로 뒤에 고정 선언 문구와12초 연속 카드 스트림. Desktop6열/Mobile3열과20개 하트·공유 장식에 원본 timing/opacity 적용. Native WAAPI, offscreen/background pause, reduced-motion/no-JS 읽기 fallback. [정정 사양](docs/PROTOTYPE_CORRECTION.md).
+- WHY NOW → THE GAP: 별도의 카드 없는 “그래서 → 실제 Figma 로고와 은” 순차 등장 후 다음 구간의 고정 선언 문구와12초 연속 카드 스트림. Desktop6열/Mobile3열과20개 하트·공유 장식에 원본 timing/opacity 적용. Native WAAPI, offscreen/background pause, reduced-motion/no-JS 읽기 fallback. [최종 사양](docs/FINAL_SNS_PATCH.md).
 - shadcn Accordion FAQ 7개 독립 토글, 첫 항목만 기본 펼침, Enter / Space / 화살표 / Home / End; Light 배경·Ink text·승인 chevron
 - 최종 TIME SELECT 프리뷰: 5 / 10 / 15분 중 10분 selected. 원본 mockup 재사용, swipe·중앙 snap·tap·키보드 선택 지원. Hero 앱 테마 toggle은 최종 Figma에 없어 노출하지 않습니다.
 - 8개 폼 그룹, client·server validation, 최초 오류 focus

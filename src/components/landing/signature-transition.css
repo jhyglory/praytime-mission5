@@ -2,16 +2,15 @@
    Full Landing1209:514 /1209:1051 sets the two independent scroll sections. */
 .card-intro { position:relative; overflow:clip; isolation:isolate; background:#0b1020; color:#f1f1ee; }
 .card-intro__scene { pointer-events:none; }
+.card-intro__clean, .card-intro__cards { isolation:isolate; }
+.card-intro[data-motion-state="reduced"] .card-intro__particle-position { display:none; }
 .card-intro__clean, .card-intro__cards { position:relative; height:760px; overflow:clip; }
 .card-intro__intro-copy { position:absolute; top:263.5px; left:50%; width:min(1120px,calc(100% - 48px)); transform:translateX(-50%); display:flex; flex-direction:column; gap:128px; align-items:center; }
 .card-intro p { margin:0; }
 .card-intro__therefore { width:100%; font-size:44px; line-height:60px; font-weight:500; letter-spacing:-.88px; text-align:center; }
 .card-intro__brand { display:flex; align-items:center; justify-content:center; gap:8px; }
-.card-intro__wordmark { display:flex; align-items:flex-start; gap:22.275px; }
-.card-intro__wordmark > span:last-child { width:225px; height:45px; flex-shrink:0; font-family:var(--font-inter),sans-serif; font-size:34.65px; line-height:44.55px; font-weight:400; letter-spacing:6px; white-space:nowrap; }
-.card-intro__pause { position:relative; width:29.7px; height:44.55px; }
-.card-intro__pause i { position:absolute; left:0; top:8.66px; width:6.806px; height:27.225px; border-radius:3.403px; background:#ff4438; }
-.card-intro__pause i + i { left:18.56px; }
+.card-intro__wordmark { display:block; width:276.975px; height:45px; flex-shrink:0; }
+.card-intro__wordmark img { display:block; width:276.975px; height:45px; max-width:none; }
 .card-intro__suffix { width:32px; font-size:30px; line-height:44px; letter-spacing:-.6px; text-align:center; }
 .card-intro__art { position:absolute; top:0; left:50%; width:1440px; height:760px; transform:translateX(-50%); }
 .card-intro__floor { position:absolute; top:450px; left:-50px; display:block; max-width:none; }
@@ -43,11 +42,7 @@
   .card-intro__intro-copy { top:251px; gap:104px; }
   .card-intro__therefore { font-size:30px; line-height:42px; letter-spacing:-.6px; }
   .card-intro__brand { gap:5px; }
-  .card-intro__wordmark { gap:14.175px; }
-  .card-intro__wordmark > span:last-child { width:143px; height:29px; font-size:22.05px; line-height:28.35px; letter-spacing:6px; }
-  .card-intro__pause { width:18.9px; height:28.35px; }
-  .card-intro__pause i { top:5.51px; width:4.331px; height:17.325px; border-radius:2.166px; }
-  .card-intro__pause i + i { left:11.81px; }
+  .card-intro__wordmark, .card-intro__wordmark img { width:176.075px; height:29px; }
   .card-intro__suffix { width:22px; font-size:22px; line-height:32px; letter-spacing:-.44px; }
   .card-intro__art { width:393px; height:680px; }
   .card-intro__column { opacity:.52; }
@@ -67,8 +62,8 @@
 @media (width < 768px) {
   .why-now { position:relative; isolation:isolate; }
   .why-now::after { content:""; position:absolute; z-index:-1; inset:auto 0 0; height:190px; background:linear-gradient(transparent,rgb(11 16 32 / 75%) 50%,#0b1020); }
-  .why-now h2 { font-size:clamp(26px,8.1425vw,32px); line-height:48px; min-height:156px; }
-  .why-support { font-size:clamp(21px,6.6158vw,26px); line-height:44px; min-height:144px; }
+  .why-now h2 { font-size:32px; line-height:48px; min-height:156px; }
+  .why-support { font-size:26px; line-height:44px; min-height:144px; }
   .stat-source { color:#f1f1ee; opacity:.85; }
   .stat-track, .stat-card:nth-child(2) .stat-track { width:100%; max-width:none; height:6px; border-radius:2px; background:#e9e5ec; }
   .stat-fill { width:34.3%; border-radius:2px; }
