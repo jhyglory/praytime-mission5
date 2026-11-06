@@ -354,6 +354,11 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
       window.addEventListener("praytime:beta-signup-success", () => { window.qaConversions += 1; });
     });
     let requests = 0;
+    const dialogs: { type: string; message: string }[] = [];
+    page.on("dialog", async dialog => {
+      dialogs.push({ type: dialog.type(), message: dialog.message() });
+      await dialog.accept();
+    });
     let releaseResponse!: () => void;
     const responseGate = new Promise<void>(resolve => { releaseResponse = resolve; });
     await page.route("**/api/beta-signup", async route => {
@@ -373,11 +378,13 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
       await expect(submitting).toBeDisabled();
       await expect(submitting).toHaveAttribute("data-state", "submitting");
       await expect(submitting).toHaveAttribute("aria-busy", "true");
+      expect(dialogs).toEqual([]);
     } finally {
       releaseResponse();
     }
     await expect(page.locator(".form-result")).toContainText(outcome === "success" ? "사전신청이 접수되었습니다." : outcome === "duplicate" ? "이미 신청된 이메일입니다." : "신청을 접수하지 못했습니다.");
     expect(requests).toBe(1);
+    expect(dialogs).toEqual(outcome === "success" ? [{ type: "alert", message: "사전신청이 접수되었습니다.\n관심을 보내주셔서 감사합니다." }] : []);
     expect(await page.evaluate(() => window.qaConversions)).toBe(outcome === "success" ? 1 : 0);
   });
 }

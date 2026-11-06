@@ -66,6 +66,7 @@ export function BetaSignupForm() {
           // Integration hook only. No analytics service or personal data is added.
           window.dispatchEvent(new CustomEvent("praytime:beta-signup-success"));
         }
+        window.alert(`${resultCopy.success[0]}\n${resultCopy.success[1]}`);
       } else if (response.status === 409 && result.status === "duplicate") {
         setStatus("duplicate");
       } else if (response.status === 422 && result.status === "invalid" && result.errors) {

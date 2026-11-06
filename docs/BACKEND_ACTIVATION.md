@@ -46,3 +46,11 @@ Production 서버 환경만 SUPABASE_URL / SUPABASE_PUBLISHABLE_KEY / BETA_SIGNU
 - consent=false 요청422 및 consent 오류 확인. INSERT 없음.
 - 합성 QA row는 검증 이력으로 유지한다. 기존 신청자 변경/일괄 정리 없음.
 - 기존 PR #1 유지, merge하지 않았다. DNS 변경하지 않았다. Vercel에 이미 등록돼 있는 custom-domain alias와 실제 DNS 전환은 별개다.
+
+## 접수 성공 확인창
+
+사용자 요청에 따라 실제 201/status=success/receipt=true 응답을 받은 경우에만 브라우저 기본 alert을 표시한다. 확인 버튼으로 닫은 뒤 기존 성공 안내와 중복 제출 방지를 유지한다. 오류·중복·receipt 없는 응답에는 성공 alert이 없다. API/DB 변경과 추가 실제 INSERT는 없다.
+
+검증: lint/typecheck/unit40/40/Webpack build PASS, 관련 browser5/5 PASS (6.0s). HTTP 응답 대기 중 alert 없음 및 성공 응답일 때 정확히 한 번 alert/확인 동작을 검증했다.
+
+데이터 확인: 기존 Lovable 프로젝트 → More → Database → beta_signups. 신규 Mission5는 signup_source=mission5_landing 필터로 구분한다. https://docs.lovable.dev/features/database
