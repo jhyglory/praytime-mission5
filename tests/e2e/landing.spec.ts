@@ -93,6 +93,7 @@ for (const width of widths) {
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("main > section")).toHaveCount(8);
     await expect(page.locator("[data-form-group]")).toHaveCount(8);
+    await expect(page.getByText("04 / THE GAP", { exact: true })).toHaveCount(0);
     const headerCta = page.locator(".landing-header > .pt-button");
     await expect(headerCta).toHaveText("무료로 신청하기");
     const ctaText = await headerCta.evaluate(element => {
