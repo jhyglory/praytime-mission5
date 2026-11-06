@@ -1,8 +1,8 @@
 "use client";
 
-import type { AnchorHTMLAttributes, MouseEvent } from "react";
+import type { ComponentPropsWithRef, MouseEvent } from "react";
 
-export function AnchorLink({ href, onClick, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
+export function AnchorLink({ href, onClick, ...props }: ComponentPropsWithRef<"a">) {
   function navigate(event: MouseEvent<HTMLAnchorElement>) {
     onClick?.(event);
     if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !href?.startsWith("#")) return;

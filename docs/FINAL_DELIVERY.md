@@ -1,5 +1,9 @@
 # Mission 5 · Final delivery status
 
+Latest local visual implementation: Desktop1088:916 / Mobile1088:1251 / Desktop GAP1088:986. See [FINAL_VISUAL_PATCH.md](FINAL_VISUAL_PATCH.md) for the current uncommitted patch, completed transition and fresh checks. The deployment snapshot below remains historical; no new code has been pushed or deployed.
+
+Historical deployment/QA snapshot for HEAD529bdd8. The current uncommitted section extraction + approved Light FAQ7 + shadcn/ui Accordion/Button patch is not pushed or deployed. Latest local checks: lint PASS, typecheck PASS, unit40/40 PASS, Webpack production build PASS, browser18/18 PASS. Default Turbopack still fails at internal worker port binding with EPERM; the build script and deployment settings are unchanged. See BUILD_BROWSER_QA.md for current evidence and SHADCN_ADOPTION.md for the adopted components; SECTION_FAQ_PATCH_QA.md records the earlier section/FAQ stage. README / FIGMA_FINAL_COMPARISON.md record source priority. WHY NOW → THE GAP motion remains PENDING DESIGN. The PASS results below are historical HEAD529bdd8 evidence, distinct from the latest local checks.
+
 Final Figma: Desktop933:3 / Mobile933:4 / Handoff933:5, file J8iLsfruyMwVCakXsSJPq4. Previous freeze and preparation reports are historical. Current implementation uses final approved composition without redesign.
 
 ## Implemented

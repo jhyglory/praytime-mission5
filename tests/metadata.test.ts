@@ -7,7 +7,13 @@ describe("Submission metadata", () => {
     expect(String(metadata.metadataBase)).toBe("http://localhost:3000/");
     expect(metadata.alternates).toBeUndefined();
     expect(metadata.openGraph).toMatchObject({ images: [{ url: "/assets/hero-atmosphere.png", width: 1895, height: 830 }] });
-    expect(metadata.icons).toEqual({ icon: "/assets/pause-mark-favicon.png" });
+    expect(metadata.icons).toEqual({
+      icon: [
+        { url: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
+        { url: "/assets/praytime-favicon.svg", type: "image/svg+xml", sizes: "any" },
+      ],
+      apple: { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+    });
     expect(metadata.robots).toEqual({ index: false, follow: false });
     expect(metadata.twitter).toMatchObject({ card: "summary_large_image" });
   });

@@ -8,9 +8,12 @@ File key:
 
 Final implementation nodes:
 
-- Desktop: `933:3`
-- Mobile: `933:4`
-- Developer Handoff: `933:5`
+- Desktop: `1088:916`
+- Mobile: `1088:1251`
+- Desktop THE GAP: `1088:986`
+- Mobile THE GAP: `1088:1319` (child of Mobile)
+
+Desktop and Mobile govern their corresponding viewports; use the specified THE GAP nodes for that section. These final1088 frames supersede933/913 Landing frames. Handoff `933:5` is historical reference only and its Dark FAQ / five questions is obsolete. FAQ remains Light Background + seven questions. The user's explicit slit-only lighting/removal instruction overrides residual floor/ambient/bloom layers in exports. Do not modify Figma itself.
 
 Supporting sources:
 
@@ -21,7 +24,7 @@ Supporting sources:
 
 ## 2. Required Final Section Order
 
-Final 933:3 / 933:4 supersede the former composition. Do not invent or reorder sections.
+Final1088:916 /1088:1251 preserve the existing eight-section composition. Do not invent or reorder sections.
 
 1. HERO — full bleed artwork / transparent overlay header
 2. ONE QUESTION
@@ -29,14 +32,17 @@ Final 933:3 / 933:4 supersede the former composition. Do not invent or reorder s
 4. THE GAP
 5. TIME SELECT — exact supplied 10-minute mockup
 6. PRAYER BEFORE CHOICE — PAUSE / PRAY / CHOOSE, one Puzz
-7. FAQ — approved five answers, first item open
+7. FAQ — approved seven answers, Light background / Ink text / chevrons, first item open
 8. BETA SIGNUP — unchanged eight form groups, Light
 
-Footer follows. Copy and Desktop/Mobile line breaks come from final design context.
+Footer follows. SignatureTransition is a layout div between WHY NOW and THE GAP, not an extra semantic section; it preserves the eight-section structure. Copy and Desktop/Mobile line breaks come from final design context.
+
+All Light section backgrounds use Soft Paper #F5F2F7. THE GAP is Dark, Time Select Light, Prayer Before Choice Dark, FAQ Light and form Light. Keep the two Equal Choice outcomes visually equal. Time Select retains the supplied10-minute image and existing interactive wheel, with the Figma phone silhouette mask removing the outer image background. Apply final viewport typography, line-height and section spacing only.
 
 ## 3. Anchors
 
 - `#how-it-works`
+- `#the-gap`
 - `#faq`
 - `#beta-signup`
 
@@ -46,7 +52,9 @@ Hero primary CTA:
 
 Hero secondary CTA:
 
-**작동 방식 보기** → `#how-it-works`
+**작동 방식 보기** → `#the-gap`
+
+Header의 **작동 방식** 메뉴는 `#how-it-works`로 이동합니다. 기존 링크·heading focus 동작을 유지합니다.
 
 ## 4. Hero Copy
 
@@ -61,9 +69,8 @@ Headline:
 
 Description:
 
-**SNS를 열기 전 잠깐 기도하고, 지금도 필요한지 돌아보세요.<br />
-필요하지 않으면 돌아가고, 필요하면 5 · 10 · 15분을 정해 사용합니다.<br />
-시간이 끝나면 다시 제한됩니다.**
+**SNS를 열기 전 잠깐 기도하고,<br />
+지금도 필요한지 돌아보세요.**
 
 Microcopy:
 
@@ -71,28 +78,15 @@ Microcopy:
 
 ## 5. Hero Visual
 
-Use:
-
-- Offset Interval · B Refinement v1.1
-- actual approved app preview
-
-The Hero must show both brand world and actual product.
+Use the approved Offset Interval · B Refinement v1.1 atmospheric artwork full bleed, with transparent overlay Header and the final copy/CTA slots. The product preview appears separately in Time Select; do not add a phone composition inside the final Hero.
 
 ## 6. App Preview Theme Toggle
 
-This is **not** a site-wide theme toggle.
-
-Only the app preview changes between Light / Dark.
+Historical Hero preview toggle code may remain reusable but is not mounted in the final1088 Landing. Do not add a site-wide or Hero theme toggle. The actual visible product interaction is the5/10/15 Time Select wheel.
 
 ## 7. Problem Section
 
-Use Quiet Edit structure.
-
-Desktop: 4 behavior moments across.
-
-Mobile: stack vertically.
-
-Prefer typography, spacing, and dividers over card stacks.
+WHY NOW uses the final Quiet Edit evidence layout:34.3% /25.3% Ink statistics, white evidence cards and proportional red gauges on the Soft Paper section. Desktop uses two columns; Mobile stacks the two cards. Use final heading/supporting typography and spacing. The older four-behavior composition is superseded.
 
 ## 8. The Gap
 
@@ -100,7 +94,7 @@ Primary idea:
 
 **충동과 행동 사이, 기도가 머물 작은 틈을 만듭니다.**
 
-Use Pause Mark / Threshold identity.
+Use the final narrow Vertical Slit as the threshold identity. The user's slit-only lighting instruction removes floor reflection, surrounding bloom and horizontal glow. Use the matching Desktop/Mobile THE GAP node without adding new decorative systems.
 
 Show two valid outcomes equally:
 
@@ -139,12 +133,7 @@ Use 5 / 10 / 15 minutes if needed.
 At time end, restriction returns.
 Additional use requires Prayer / Choice again.
 
-Use only the app previews needed to explain this:
-
-- PAUSE
-- PRAY
-- CHOOSE
-- TIME SELECT
+The steps above describe the product model. They do not authorize a four-phone layout. The final Landing uses one supplied TIME SELECT product preview and the separate PAUSE / PRAY / CHOOSE prayer editorial row.
 
 ## 10. Expected Outcome & Feedback
 
@@ -171,9 +160,9 @@ Puzz may appear as a small companion.
 
 Anchor: `#faq`
 
-Keep the approved five FAQ items from Figma.
+Use the approved seven FAQ questions and stored expanded answers from the final Desktop/Mobile frames. Preserve independent toggles, keyboard controls, anchor and ARIA associations. Use 5 / 10 / 15 minutes, no automatic SNS unlock, RETURN or deliberate time choice, the basic direction of not collecting prayer originals, and no payment for beta signup. The beta-target question is removed from FAQ; the existing form audience/participation notice remains unchanged.
 
-Implementation may use shadcn Accordion if styled to match Figma.
+The actual FAQ uses shadcn/ui Accordion / Item / Trigger / Content customized to the existing Figma CSS and chevron. Root is controlled type=multiple; first item opens initially and the rest stay closed. Explicit question/answer IDs and ARIA associations remain, and forceMount + hidden keeps all association targets in the DOM. Do not add the stock theme or accordion height animations.
 
 ## 13. Beta Signup
 
@@ -248,6 +237,7 @@ Validate at least:
 - 430
 - 393
 - 375
+- 320
 
 No horizontal page overflow.
 
@@ -257,7 +247,8 @@ No horizontal page overflow.
 - beta CTA scroll
 - how-it-works scroll
 - FAQ interaction
-- app-preview Light/Dark toggle
+- Time Select5/10/15 wheel tap / keyboard / swipe
+- final WHY NOW → THE GAP opacity-loop transition with offscreen/background pause and reduced-motion fallback
 - form validation
 - loading/result states
 
@@ -286,15 +277,17 @@ Minimum:
 - Tailwind CSS
 - shadcn/ui where useful
 
+Current actual adoption: official shadcn/ui Radix Accordion and Button, manually customized to the existing CSS. FAQ uses Accordion primitives, Hero/Header use Button asChild + AnchorLink, and the signup form uses native Button submit. Button separates primary/secondary appearance from default/disabled/submitting state. The form adds only its existing submitting state prop; validation/handlers/API remain unchanged. See SHADCN_ADOPTION.md. Do not replace approved styling with the default shadcn theme or replace native form controls unnecessarily.
+
 ## 21. Definition of Done
 
 1. Desktop visually matches Figma closely.
 2. Mobile visually matches Figma closely.
 3. CTA anchors work.
 4. FAQ works.
-5. App Preview toggle works.
+5. Time Select wheel works; final motion and reduced-motion/static behavior match their specifications.
 6. Form validation works.
-7. Form sends a real POST request.
+7. Form sends a real local POST to the disabled Route Handler during automated QA; production persistence remains OFF and no real INSERT is allowed.
 8. Success/error states depend on server result.
 9. No horizontal overflow.
 10. Keyboard focus works.
@@ -304,8 +297,18 @@ Minimum:
 
 ## Final submission stage
 
-Visual freeze ended with final Desktop933:3 / Mobile933:4. The final frames override earlier Hero / app-theme / four-phone composition instructions above. Do not mount the previous Hero Light/Dark toggle or repeated phone previews: final Hero is full-bleed artwork and product behavior is the supplied Time Select mockup. Keep existing interaction code reusable, not visible additions to the final design.
+Visual freeze and PENDING DESIGN ended with final Desktop1088:916 / Mobile1088:1251 / Desktop THE GAP1088:986. The final frames override earlier933/913 frames and Hero / app-theme / four-phone composition instructions above. Do not mount the previous Hero Light/Dark toggle or repeated phone previews: final Hero is full-bleed artwork and product behavior is the supplied Time Select mockup. Keep existing interaction code reusable, not visible additions to the final design.
 
 Recheck existing schema; nullable consent fields are already applied. Reuse the adapter and existing DB, no RLS or constraint change. Actual INSERT QA is deferred until privacy notice alignment. Keep Production/Preview persistence off; production server returns503 PRIVACY_REVIEW_REQUIRED before accessing the store. Automated tests stay mocked/disabled.
 
-Finalize README and deployment evidence, commit/push feature branch and open [하영]-미션5 PR against main. Do not merge. Connect GitHub to Vercel and smoke-test the real URL. Keep current policy text until user supplies approved legal copy; report discrepancies rather than writing it.
+Current work is local only: apply the final visual differences on top of the existing role-based section components while preserving the original eight sections, approved copy, behavior and anchors. page.tsx composes sections, skip link, SignatureTransition and footer. Keep feature/mission-5-landing and PR #1; no commit/push, new PR, merge, reset, rebase, force push, main changes or Vercel redeployment before the user's final approval.
+
+The already adopted Radix-backed shadcn Accordion remains in FAQ; Button + CVA + Radix Slot remains in the existing CTAs and submit path with primary/secondary appearance and disabled/submitting states. Keep PrayTime styling; do not restore the stock shadcn appearance, replace the form system or add unrelated components. The final visual/motion authorization does not authorize backend changes or publishing.
+
+WHY NOW → THE GAP now uses the actual final Figma opacity-loop timeline: Desktop2800ms, Mobile2410ms. Native Web Animations API coordinates twelve retained tracks, with IntersectionObserver/offscreen/background pause and a prefers-reduced-motion/static fallback. Five reflection/ambient/aperture tracks per viewport are omitted under the user's explicit no-floor-reflection/no-bloom/no-horizontal-glow instruction. The transition has no sticky stage, scroll-progress animation, scroll hijacking, WebGL or added motion dependency. See MOTION_PLAN.md for node mapping and the superseded proposal.
+
+Run npm run lint, npm run typecheck, npm run test, npm run build -- --webpack and npm run test:e2e against this final local patch; browser tests use the completed production artifact with persistence disabled. Record fresh outcomes in FINAL_VISUAL_PATCH.md, keeping historical PASS evidence distinct and noting any environment-limited attempt honestly. Report results and diff before asking for publishing approval. Actual DB INSERT remains forbidden until privacy alignment. Keep current policy text until the user supplies approved legal copy; report discrepancies rather than writing it. Domain/DNS cutover is separately on hold, so preserve the existing Lovable service.
+
+## Release authorization update · 2026-11-06
+
+The user has now approved committing/pushing this final visual + favicon implementation, updating the existing PR #1 and redeploying the existing Vercel project. Earlier pre-approval publishing holds in this stage are satisfied. Keep feature/mission-5-landing, PR #1, main, the privacy guard and disabled persistence. No merge, actual DB INSERT, new DB or custom-domain DNS cutover is authorized.

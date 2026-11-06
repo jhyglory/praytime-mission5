@@ -1,0 +1,5 @@
+import { Puzz } from "@/components/landing/puzz";
+
+export function VoluntaryPrayerSection() {
+  return <section className="prayer-section" id="prayer-choice" aria-labelledby="prayer-heading"><div className="container prayer-editorial"><div className="prayer-heading"><div className="content-stack"><p className="eyebrow">MAKE ROOM FOR PRAYER</p><h2 id="prayer-heading" tabIndex={-1}>선택 앞에,<br />잠깐 기도.</h2></div><p className="prayer-statement">잠깐 멈추고, 하나님께 시선을 돌리고,<br />지금 필요한지 다시 살펴봅니다.</p></div><ol className="prayer-steps">{[["PAUSE", "잠깐 멈추고"], ["PRAY", "하나님께 시선을 돌리고"], ["CHOOSE", "지금 필요한지 다시 선택합니다."]].map(([title, meaning], index) => <li key={title}><p className="eyebrow">0{index + 1}</p><h3>{title}</h3><p>{meaning}</p></li>)}</ol><div className="voluntary-prayer"><Puzz /><div><h3>SNS를 열지 않아도,<span className="mobile-break"><br /></span><span className="desktop-space"> </span>원할 때 기도할 수 있습니다.</h3><p>목표는 많이 기도하는 횟수보다,<br className="desktop-space" /> 내가 왜 사용하는지 알고 선택하는 순간입니다.</p></div></div></div></section>;
+}

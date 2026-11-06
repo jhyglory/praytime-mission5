@@ -62,6 +62,15 @@ test("skip link and reduced-motion navigation support the keyboard", async ({ pa
   await expect(page.locator("#how-heading")).toBeFocused();
   expect(await page.locator("html").evaluate(el => getComputedStyle(el).scrollBehavior)).toBe("auto");
   await expect(page.locator(".form-result-region")).toHaveAttribute("aria-live", "polite");
+  const transition = page.locator("[data-signature-transition]");
+  await transition.scrollIntoViewIfNeeded();
+  await expect(transition).toHaveAttribute("data-motion-state", "reduced");
+  expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(0);
+  await expect(transition.locator(".signature-transition__bridge-first")).toBeVisible();
+  await expect(transition.locator(".signature-transition__bridge-first")).toHaveCSS("opacity", "1");
+  await expect(transition.locator(".signature-transition__bridge-second")).toHaveCSS("opacity", "1");
+  await expect(transition.locator(".sr-only")).toHaveText("그래서, 행동하기 전에 잠깐의 틈을 만듭니다.");
+  await expect(transition.locator(".signature-transition__scene")).toHaveAttribute("aria-hidden", "true");
 });
 
 for (const width of widths) {
@@ -72,6 +81,39 @@ for (const width of widths) {
     await expect(page.locator("h1")).toHaveCount(1);
     await expect(page.locator("main > section")).toHaveCount(8);
     await expect(page.locator("[data-form-group]")).toHaveCount(8);
+    for (const selector of [".one-question", ".why-now", ".time-section", "#faq", ".beta-section", ".site-footer"]) {
+      await expect(page.locator(selector)).toHaveCSS("background-color", "rgb(245, 242, 247)");
+    }
+    await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(11, 16, 32)");
+    await expect(page.locator(".prayer-section")).toHaveCSS("background-color", "rgb(23, 28, 38)");
+    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
+    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", width < 768 ? "2410" : "2800");
+    const slit = await page.locator(".gap-slit").boundingBox();
+    expect(slit!.width).toBe(width < 768 ? 6 : 9);
+    expect(slit!.height).toBe(width < 768 ? 230 : 340);
+    await expect(page.locator("#the-gap")).toHaveCSS("background-image", "none");
+    await expect(page.locator("#the-gap")).toHaveCSS("box-shadow", "none");
+    await expect(page.locator(".gap-slit")).toHaveCSS("box-shadow", "none");
+    await expect(page.locator("#the-gap img")).toHaveCount(2);
+    await expect(page.locator("#the-gap img").nth(0)).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
+    await expect(page.locator("#the-gap img").nth(1)).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
+    const choices = await page.locator(".equal-outcomes > div").evaluateAll(elements => elements.map(el => {
+      const box = el.getBoundingClientRect();
+      const text = getComputedStyle(el.querySelector("h3")!);
+      const surface = getComputedStyle(el);
+      return { width: box.width, height: box.height, x: box.x, y: box.y, fontSize: text.fontSize, fontWeight: text.fontWeight, color: text.color, background: surface.background, padding: surface.padding };
+    }));
+    expect(choices).toHaveLength(2);
+    expect(choices[0].width).toBeCloseTo(choices[1].width, 2);
+    expect(choices[0].height).toBeCloseTo(choices[1].height, 2);
+    for (const property of ["fontSize", "fontWeight", "color", "background", "padding"] as const) expect(choices[0][property]).toBe(choices[1][property]);
+    if (width < 768) {
+      expect(choices[0].x).toBeCloseTo(choices[1].x, 2);
+      expect(choices[1].y).toBeGreaterThan(choices[0].y + choices[0].height);
+    } else {
+      expect(choices[0].y).toBeCloseTo(choices[1].y, 2);
+      expect(choices[1].x).toBeGreaterThan(choices[0].x + choices[0].width);
+    }
     const geometry = await page.evaluate(() => ({
       viewport: window.innerWidth,
       document: document.documentElement.scrollWidth,
@@ -100,19 +142,55 @@ for (const width of widths) {
 test("FAQ defaults readable, toggles independently, and supports keyboard", async ({ page }) => {
   await page.goto("/");
   const questions = page.locator(".faq-item button");
-  await expect(questions).toHaveCount(5);
+  await expect(questions).toHaveCount(7);
+  await expect(questions).toHaveText([
+    "PrayTime은 그냥 기도 앱인가요?",
+    "PrayTime은 어떻게 작동하나요?",
+    "SNS를 아예 못 쓰게 하는 앱인가요?",
+    "기도를 오래 해야 하나요?",
+    "기도를 끝내면 바로 SNS가 열리나요?",
+    "제 기도 내용을 저장하나요?",
+    "사전 신청은 무료인가요?",
+  ]);
+  await expect(page.locator("#faq")).toHaveCSS("background-color", "rgb(245, 242, 247)");
+  await expect(page.locator("#faq-heading")).toHaveCSS("color", "rgb(24, 24, 27)");
+  await expect(questions.first().locator("img")).toHaveAttribute("src", "/assets/faq-chevron.svg");
   await expect(questions.first()).toHaveAttribute("aria-expanded", "true");
   for (const button of (await questions.all()).slice(1)) await expect(button).toHaveAttribute("aria-expanded", "false");
   await questions.nth(1).focus();
   await page.keyboard.press("Enter");
   await expect(questions.nth(1)).toHaveAttribute("aria-expanded", "true");
   await expect(page.locator("#faq-answer-1")).toBeVisible();
+  await expect(page.locator("#faq-answer-1")).toContainText("5분 · 10분 · 15분");
   await expect(page.locator("#faq-answer-0")).toBeVisible();
   await page.keyboard.press("Space");
   await expect(page.locator("#faq-answer-1")).toBeHidden();
+  await questions.nth(4).click();
+  await expect(page.locator("#faq-answer-4")).toContainText("SNS가 자동으로 열리지는 않습니다");
+  await questions.nth(5).click();
+  await expect(page.locator("#faq-answer-5")).toContainText("기도 원문을 기본적으로 수집하지 않는 방향");
+  await questions.nth(6).click();
+  await expect(page.locator("#faq-answer-6")).toContainText("사전 신청에는 결제가 발생하지 않습니다");
+  await expect(page.locator(".beta-context")).toContainText("베타 참여 확정을 의미하지 않습니다");
+  await questions.nth(6).press("Home");
+  await expect(questions.first()).toBeFocused();
+  await questions.first().press("End");
+  await expect(questions.nth(6)).toBeFocused();
+  await questions.nth(6).press("ArrowUp");
+  await expect(questions.nth(5)).toBeFocused();
+  await questions.nth(5).press("Space");
+  await expect(page.locator("#faq-answer-5")).toBeHidden();
+  await expect(page.locator("#faq-answer-0")).toBeVisible();
+  await questions.nth(5).press("ArrowDown");
+  await expect(questions.nth(6)).toBeFocused();
+  await expect(questions.nth(6)).toHaveCSS("outline-style", "solid");
+  await expect(questions.nth(6)).toHaveCSS("outline-width", "3px");
 });
 
 test("final Hero overlay, percentage gauges and anchors match the approved behavior", async ({ page }) => {
+  const runtimeProblems: string[] = [];
+  page.on("pageerror", error => runtimeProblems.push(error.message));
+  page.on("console", message => { if (["warning", "error"].includes(message.type())) runtimeProblems.push(message.text()); });
   await page.goto("/");
   expect(await page.locator(".landing-header").evaluate(el => getComputedStyle(el).backgroundColor)).toBe("rgba(0, 0, 0, 0)");
   for (const [index, percent] of [34.3, 25.3].entries()) {
@@ -130,6 +208,35 @@ test("final Hero overlay, percentage gauges and anchors match the approved behav
   await expect(page.locator("#prayer-heading")).toBeFocused();
   await page.getByRole("link", { name: "베타 사전신청", exact: true }).first().click();
   await expect(page).toHaveURL(/#beta-signup$/);
+  const betaLinks = page.getByRole("link", { name: "베타 사전신청", exact: true });
+  await expect(betaLinks).toHaveCount(2);
+  for (const link of await betaLinks.all()) {
+    await link.focus();
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/#beta-signup$/);
+    await expect(page.locator("#signup-heading")).toBeFocused();
+  }
+  // Exercise the actual viewport-specific timeline, including normal scrolling
+  // away from it. Opacity polling observes rendering rather than a fixed sleep.
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  for (const width of [1440, 393]) {
+    await page.setViewportSize({ width, height: 900 });
+    const transition = page.locator("[data-signature-transition]");
+    await transition.scrollIntoViewIfNeeded();
+    await expect(transition).toHaveAttribute("data-motion-state", "running");
+    await expect(transition).toHaveAttribute("data-motion-duration", width === 1440 ? "2800" : "2410");
+    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(12);
+    const slit = transition.locator('[data-motion-track="slit"]');
+    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 6_000, intervals: [50] }).toBeGreaterThan(0.5);
+    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 6_000, intervals: [50] }).toBeLessThan(0.1);
+    const scrollBefore = await page.evaluate(() => window.scrollY);
+    await page.mouse.wheel(0, 1400);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(scrollBefore + 500);
+    await page.locator("#faq").scrollIntoViewIfNeeded();
+    await expect(transition).toHaveAttribute("data-motion-state", "paused");
+    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).every(animation => animation.playState === "paused"))).toBe(true);
+  }
+  expect(runtimeProblems).toEqual([]);
 });
 
 test("validation focuses first error; real unconfigured route returns 503 and retains input", async ({ page }) => {
@@ -162,9 +269,11 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
       window.addEventListener("praytime:beta-signup-success", () => { window.qaConversions += 1; });
     });
     let requests = 0;
+    let releaseResponse!: () => void;
+    const responseGate = new Promise<void>(resolve => { releaseResponse = resolve; });
     await page.route("**/api/beta-signup", async route => {
       requests += 1;
-      await new Promise(resolve => setTimeout(resolve, 400));
+      await responseGate;
       await route.fulfill({ status: outcome === "duplicate" ? 409 : outcome === "server-failure" ? 502 : 201, contentType: "application/json", body: JSON.stringify(outcome === "duplicate" ? { status: "duplicate" } : outcome === "server-failure" ? { status: "error" } : { status: "success", ...(outcome === "success" ? { receipt: true } : {}) }) });
     });
     await page.goto("/");
@@ -174,7 +283,14 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
     await page.getByLabel("SNS·숏폼 사용을 줄이고 싶어서", { exact: true }).check();
     await page.locator("#consent").check();
     await page.getByRole("button", { name: "베타 사전신청", exact: true }).click();
-    await expect(page.getByRole("button", { name: "접수 중…" })).toBeDisabled();
+    try {
+      const submitting = page.getByRole("button", { name: "접수 중…" });
+      await expect(submitting).toBeDisabled();
+      await expect(submitting).toHaveAttribute("data-state", "submitting");
+      await expect(submitting).toHaveAttribute("aria-busy", "true");
+    } finally {
+      releaseResponse();
+    }
     await expect(page.locator(".form-result")).toContainText(outcome === "success" ? "사전신청이 접수되었습니다." : outcome === "duplicate" ? "이미 신청된 이메일입니다." : "신청을 접수하지 못했습니다.");
     expect(requests).toBe(1);
     expect(await page.evaluate(() => window.qaConversions)).toBe(outcome === "success" ? 1 : 0);

@@ -235,4 +235,16 @@ The desired sense of space comes from:
 
 ## Final visual authority
 
-Final Desktop 933:3 / Mobile 933:4 supersede the prior frames. The visual freeze is lifted only for implementing this approved final design. Hero is full bleed with a transparent overlay header; light regions use Paper White + restrained Lavender Mist. Data numbers are Ink with red fills on the same 100% track. Why Now dims gradually to The Gap. Product moment uses the supplied 10-minute Time Select image. No purple CTA/type/data, no additional visual exploration. Puzz and signature object are the provided originals. Existing Handoff 933:5 is supporting product/form context.
+Final visual sources are Desktop `1088:916` and Mobile `1088:1251`, using each for its corresponding viewport. THE GAP is Desktop `1088:986` / Mobile child `1088:1319`. These supersede the933/913 Landing frames; Handoff `933:5` is historical reference only. FAQ remains Light Background + seven questions with Ink text and the approved chevron. Do not edit Figma or reopen branding decisions.
+
+Hero remains full bleed with a transparent overlay header. All Light section backgrounds use Soft Paper **#F5F2F7**. THE GAP is Dark, Time Select Light, Voluntary Prayer Dark, FAQ Light and form Light. Preserve exact viewport typography, line-height and section spacing, including the phone silhouette mask around the supplied 10-minute Time Select image. Data numbers are Ink with proportional red gauges. Equal Choice must keep both outcomes at equal visual weight. No purple CTA/type/data or new visual exploration; Puzz and signature object use the provided originals.
+
+The user's explicit final lighting instruction takes precedence over stale exported effects: only the Vertical Slit emits light in THE GAP/transition. Omit floor reflection, surrounding bloom, horizontal glow and the associated broad ambient/aperture layers. This is a requested removal, not a new design direction. Preserve the separate final Prayer section divider treatment and original companion artwork shown in its frame.
+
+The final visual patch builds on the existing section-file extraction, seven-item FAQ and actual shadcn/ui Accordion/Button adoption. Accordion retains the copy/Light/Ink/chevron/ARIA structure; Button retains native button/link semantics and disabled/submitting states. shadcn's generic theme is not the visual authority.
+
+WHY NOW → THE GAP is final; **PENDING DESIGN has ended**. Figma motion context defines Desktop2800ms and Mobile2410ms looping opacity timelines. SignatureTransition uses native Web Animations API for twelve retained tracks, pauses offscreen/in the background, and supplies a reduced-motion/static fallback. Five reflection/ambient/aperture tracks per viewport are omitted under the user's removal instruction. There is no sticky/scroll-progress behavior, scroll hijacking, WebGL or new motion dependency. See MOTION_PLAN.md. The patch remains local pending the user's approval; no commit/push/deployment.
+
+## Release authorization update · 2026-11-06
+
+The user has now approved committing/pushing this final visual + favicon implementation, updating the existing PR #1 and redeploying the existing Vercel project. Earlier pre-approval publishing holds in this stage are satisfied. Keep feature/mission-5-landing, PR #1, main, the privacy guard and disabled persistence. No merge, actual DB INSERT, new DB or custom-domain DNS cutover is authorized.

@@ -311,14 +311,16 @@ h1 { font-size: 44px; line-height: 60px; }
 .puzz-final-shadow { left: 55.5px; top: 148.75px; }
 .puzz-final-body { inset: 0; width: 160px; height: 160px; object-fit: contain; }
 .section-rule { height: 1px; background: var(--border); }
-#faq { padding-block: 0 104px; background: #171c26; }
+#faq { color-scheme: light; --canvas: #fcfbfc; --text: #18181b; --secondary: #5f6268; --border: rgb(24 24 27 / 13%); --accent: #ff4438; padding-block: 0 104px; color: var(--text); background: var(--canvas); }
 #faq .section-rule { margin-bottom: 48px; }
 .faq-layout, .beta-layout { display: grid; grid-template-columns: minmax(0, 360fr) minmax(0, 744fr); gap: 96px; }
 .faq-heading { gap: 16px; }
-.faq-heading .eyebrow { color: rgb(241 241 238 / 64%); }
+#faq .faq-heading .eyebrow { color: #686873; }
 .faq-item { padding: 24px 0; }
 .faq-item button { min-height: 30px; }
 .faq-item h3 { font-size: 20px; line-height: 30px; }
+#faq .faq-item button[aria-expanded='true'] .faq-icon { transform: rotate(180deg); }
+#faq .faq-item [role='region'] .body-copy + .body-copy { margin-top: 30px; }
 .beta-section { padding: 80px 0 96px; }
 .beta-section .section-rule { margin-bottom: 64px; }
 .beta-context .small-copy { font-weight: 400; }
@@ -462,3 +464,139 @@ h1 { font-size: 44px; line-height: 60px; }
 .wheel-indicator { position: absolute; left: calc(50% - 3px); bottom: 3%; width: 6px; height: 6px; border-radius: 50%; background: #ff4438; }
 .wheel-indicator::before { content: ""; position: absolute; bottom: 10px; left: 2px; width: 2px; height: 12px; background: rgb(241 241 238 / 18%); }
 .nickname-helper-space { display: block; height: 22px; flex-shrink: 0; }
+
+/* Final approved visual patch · Desktop1088:916 / Mobile1088:1251. */
+/* Final static differences from Desktop1088:916 / Mobile1088:1251.
+   Merge after existing final-visual styles. WhyNow / THE GAP / transition are
+   deliberately excluded; root owns those styles. Existing interactions stay. */
+:root { --paper: #f5f2f7; --mist: #f5f2f7; }
+.light-section { --canvas: var(--paper); }
+#faq, .site-footer { --canvas: var(--paper); }
+
+/* Hero geometry/copy/assets are unchanged. Solid brand mark has no bloom. */
+.landing-header .solid-pause i { box-shadow: none; }
+
+/* ONE QUESTION: 1088:938–941 / 1088:1266–1269. */
+.one-question .content-stack { gap: 32px; }
+.one-question h2 { line-height: 84px; }
+
+/* TIME SELECT: 1088:1007–1017 / 1088:1340–1348. The full mockup wrapper
+   keeps its current geometry and wheel hit targets. Only the image's outer
+   background is clipped to the exact Figma phone silhouette. Percent radii
+   scale with the same wrapper at tablet and narrow mobile widths. */
+.time-section { --text: #18181b; --secondary: #5f6268; --border: rgb(24 24 27 / 12%); color: var(--text); background: var(--paper); }
+.time-story { gap: 32px; }
+.time-story .eyebrow { color: #686673; }
+.time-reminder.desktop-reminder { padding-top: 32px; }
+.time-mockup { border: 0; border-radius: 0; clip-path: inset(6.2908% 3.4848% 6.3486% round 12.7273% / 5.8707%); }
+
+/* PRAYER BEFORE CHOICE: 1088:1042–1069 / 1088:1374–1401. */
+.prayer-section { color-scheme: dark; --canvas: #171c26; --text: #f1f1ee; --secondary: #bdc3ca; --border: rgb(241 241 238 / 12%); --line: rgb(241 241 238 / 24%); --accent: #a79cb6; color: var(--text); background: var(--canvas); }
+.prayer-section .eyebrow { color: #a6b8af; }
+.prayer-statement { color: var(--secondary); }
+.prayer-steps li { position: relative; border-top: 0; padding-top: 13px; --prayer-divider-core: .48; --prayer-divider-shoulder: .25; --prayer-divider-glow: .1; --prayer-divider-blur: 10px; }
+.prayer-steps li:nth-child(2) { --prayer-divider-core: .64; --prayer-divider-shoulder: .333; --prayer-divider-glow: .17; --prayer-divider-blur: 14px; }
+.prayer-steps li:nth-child(3) { --prayer-divider-core: .55; --prayer-divider-shoulder: .286; --prayer-divider-glow: .13; --prayer-divider-blur: 12px; }
+.prayer-steps li::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, rgb(200 188 211 / 0%) 0%, rgb(200 188 211 / var(--prayer-divider-shoulder)) 14%, rgb(200 188 211 / var(--prayer-divider-core)) 50%, rgb(200 188 211 / var(--prayer-divider-shoulder)) 86%, rgb(200 188 211 / 0%) 100%); box-shadow: 0 0 var(--prayer-divider-blur) rgb(200 188 211 / var(--prayer-divider-glow)); }
+.prayer-section .puzz-final-art { left: -40px; }
+
+@media (width < 768px) {
+  /* 1088:1470–1473: preserve native shadcn anchor and 44px hit area. */
+  .landing-header .wordmark { gap: 10.286px; font-size: 16px; line-height: 20.571px; letter-spacing: 3.429px; }
+  .landing-header .solid-pause { width: 13.714px; height: 20.571px; }
+  .landing-header .solid-pause i { width: 3.143px; height: 12.571px; top: 4px; border-radius: 1.571px; }
+  .landing-header .solid-pause i + i { left: 8.57px; }
+  .landing-header > .pt-button { font-size: 20px; padding-inline: 12px; }
+  .one-question h2 { line-height: 52px; }
+  .time-story { gap: 32px; }
+  .time-mockup { clip-path: inset(6.3424% 3.4375% 6.3050% round 12.5% / 5.7659%); }
+  .prayer-heading { gap: 28px; }
+  .prayer-steps { gap: 32px; }
+  .prayer-section .puzz-final-art { left: 0; }
+  .faq-layout { gap: 32px; }
+  .footer-brand { gap: 24px; }
+}
+
+@media (width < 375px) {
+  /* Keep current narrow-width protection below the 393px design frame. */
+  .landing-header > .pt-button { font-size: 16px; }
+}
+
+/* Final WHY NOW and THE GAP: 1088:942 / 1088:1270 / 1088:986 / 1088:1319.
+   Slit layers 1089:1281–1282 / 1089:1291–1292 only: no environment/floor export. */
+.why-now { padding: 88px 0 64px; background: var(--paper); }
+.why-content { gap: 48px; }
+.why-now h2 { font-size: 44px; line-height: 68px; }
+.why-support { width: min(1000px, 100%); font-size: clamp(24px, 2.5vw, 36px); line-height: 56px; }
+.stats-grid { margin-top: 49px; }
+.gap-section { padding: 64px 0 84px; background: var(--stage); }
+.gap-section .section-stack { gap: 0; align-items: center; }
+.gap-section h2 { margin-top: 50px; font-size: 40px; line-height: 64px; }
+.gap-section .body-copy { margin-top: 80px; line-height: 36px; }
+.gap-slit { position: relative; width: 9px; height: 340px; margin-top: 112px; flex-shrink: 0; }
+.gap-slit-penumbra { position: absolute; inset: 0; background: rgb(242 216 185 / 62%); filter: blur(2px); }
+.gap-slit-core { position: absolute; top: 0; bottom: 0; left: 3px; width: 3px; filter: blur(.25px); background: linear-gradient(180deg, rgb(255 247 231 / 6%) 0%, rgb(255 247 231 / 80%) 11%, #fff7e7 86%, rgb(246 217 160 / 86%) 100%); }
+.equal-outcomes { margin-top: 112px; width: 100%; gap: 32px; text-align: center; }
+.equal-outcomes > div { position: relative; min-height: 116px; padding: 28px 24px 0; border: 0; gap: 8px; }
+.equal-outcomes > div::before { content: ""; position: absolute; top: 0; right: 0; width: min(414px, 100%); height: 1px; background: linear-gradient(90deg, rgb(200 188 211 / 0%) 0%, rgb(200 188 211 / 42%) 25%, rgb(245 224 255 / 86%) 50%, rgb(200 188 211 / 54%) 57%, rgb(200 188 211 / 0%) 100%); }
+.equal-outcomes p { font-size: 16px; line-height: 26px; }
+.equal-outcomes h3 { font-size: 28px; font-weight: 500; line-height: 40px; }
+.equal-outcomes img { position: absolute; top: 64px; left: calc(50% + 123px); width: 24px; height: 24px; }
+
+@media (width < 768px) {
+  .why-now { padding: 72px 0 64px; background: var(--paper); }
+  .why-content { gap: 40px; }
+  .why-now h2 { font-size: clamp(28px, 8.6514vw, 34px); line-height: 52px; }
+  .why-support { margin-top: 41px; font-size: clamp(23px, 7.1247vw, 28px); line-height: 48px; }
+  .stats-grid { margin-top: 41px; }
+  .stat-source { line-height: 24px; }
+  .gap-section { padding: 46px 0 65px; }
+  .gap-section h2 { margin-top: 39px; font-size: 28px; line-height: 44px; }
+  .gap-section .body-copy { margin-top: 56px; line-height: 30px; }
+  .gap-slit { width: 6px; height: 230px; margin-top: 80px; }
+  .gap-slit-penumbra { filter: blur(1.5px); }
+  .gap-slit-core { left: 2px; width: 2px; filter: blur(.2px); }
+  .equal-outcomes { margin-top: 80px; grid-template-columns: 1fr; gap: 8px; padding-top: 0; text-align: left; }
+  .equal-outcomes > div { min-height: 90px; padding: 20px 16px 0; gap: 6px; }
+  .equal-outcomes p { font-size: 13px; line-height: 20px; }
+  .equal-outcomes h3 { max-width: calc(100% - 32px); font-size: 20px; line-height: 28px; }
+  .equal-outcomes img { left: auto; right: 16px; top: 48px; }
+}
+
+/* Final Figma1088:965 /1088:1297. Only the slit emits light: the user's
+   explicit removal overrides the exported reflection/ambient/aperture layers. */
+.signature-transition { position: relative; height: 760px; overflow: clip; isolation: isolate; background: #0b1020; }
+.signature-transition__scene { position: absolute; inset: 0; pointer-events: none; }
+.signature-transition__paper { position: absolute; width: 2172.824px; height: 644.643px; top: -366.43px; left: calc(50% - 1086.41px); background: #f5f2f7; filter: blur(62.429px); }
+.signature-transition__cue { position: absolute; top: 0; left: 50%; }
+.signature-transition__cue--1 { margin-left: -102.2px; }
+.signature-transition__cue--3 { margin-left: 102.2px; }
+.signature-transition__dot { position: absolute; top: 116.71px; left: -2.8px; display: block; width: 5.6px; height: 5.6px; }
+.signature-transition__dot img { display: block; max-width: none; }
+.signature-transition__letter { position: absolute; top: 138.43px; left: -43.4px; width: 86.8px; margin: 0; color: #18181b; font-weight: 600; font-size: 40px; line-height: 54px; text-align: center; }
+.signature-transition__slit { position: absolute; top: 312.14px; left: calc(50% - 1.4px); width: 2.8px; height: 89.571px; border-radius: 1px; filter: blur(.679px); background: linear-gradient(180deg, rgba(216,206,228,0) 0%, rgba(234,226,220,.58) 22%, rgba(241,241,238,.9) 50%, rgba(234,226,220,.48) 78%, rgba(216,206,228,0) 100%); }
+.signature-transition__edge { position: absolute; top: 648.71px; width: 2.8px; height: 40.714px; border-radius: 1px; filter: blur(2.036px); opacity: .15; }
+.signature-transition__edge--left { left: calc(50% - 3.5px); background: rgba(240,219,191,.48); }
+.signature-transition__edge--right { left: calc(50% + .7px); background: rgba(240,219,191,.38); }
+.signature-transition__bridge-first, .signature-transition__bridge-second { position: absolute; left: 50%; width: min(1200px, calc(100% - 48px)); margin: 0; transform: translateX(-50%); text-align: center; }
+.signature-transition__bridge-first { top: 532px; color: rgba(241,241,238,.78); font-size: 28px; line-height: 42px; }
+.signature-transition__bridge-second { top: 582.21px; color: #f1f1ee; font-weight: 600; font-size: 40px; line-height: 56px; }
+.signature-transition__handoff { position: absolute; inset: auto 0 0; height: 67.857px; background: linear-gradient(180deg, rgba(11,16,32,0), #0b1020); }
+@media (width < 768px) {
+  .signature-transition { height: 560px; }
+  .signature-transition__paper { left: -100px; top: -270px; width: calc(100% + 200px); height: 475px; filter: blur(46px); }
+  .signature-transition__cue--1 { margin-left: -73px; }
+  .signature-transition__cue--3 { margin-left: 73px; }
+  .signature-transition__dot { top: 86px; left: -2px; width: 4px; height: 4px; }
+  .signature-transition__letter { top: 102px; left: -31px; width: 62px; font-size: 28px; line-height: 38px; }
+  .signature-transition__slit { top: 230px; left: calc(50% - 1px); width: 2px; height: 66px; filter: blur(.5px); }
+  .signature-transition__edge { top: 478px; width: 2px; height: 30px; filter: blur(1.5px); }
+  .signature-transition__edge--left { left: calc(50% - 2.5px); }
+  .signature-transition__edge--right { left: calc(50% + .5px); }
+  .signature-transition__bridge-first { top: 392px; font-size: 20px; line-height: 30px; }
+  .signature-transition__bridge-second { top: 429px; font-size: 28px; line-height: 40px; }
+  .signature-transition__handoff { height: 50px; }
+}
+@media (width < 350px) {
+  .signature-transition__bridge-second { font-size: 25px; }
+}
