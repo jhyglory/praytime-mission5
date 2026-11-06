@@ -87,7 +87,7 @@ for (const width of widths) {
     await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(11, 16, 32)");
     await expect(page.locator(".prayer-section")).toHaveCSS("background-color", "rgb(23, 28, 38)");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
-    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", width < 768 ? "2410" : "2800");
+    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "6000");
     const slit = await page.locator(".gap-slit").boundingBox();
     expect(slit!.width).toBe(width < 768 ? 6 : 9);
     expect(slit!.height).toBe(width < 768 ? 230 : 340);
@@ -224,11 +224,20 @@ test("final Hero overlay, percentage gauges and anchors match the approved behav
     const transition = page.locator("[data-signature-transition]");
     await transition.scrollIntoViewIfNeeded();
     await expect(transition).toHaveAttribute("data-motion-state", "running");
-    await expect(transition).toHaveAttribute("data-motion-duration", width === 1440 ? "2800" : "2410");
+    await expect(transition).toHaveAttribute("data-motion-duration", "6000");
     expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(12);
+    // A full-opacity reading window prevents the text becoming a brief flash.
+    const readingHolds = await transition.evaluate(el => ["word", "bridgeFirst", "bridgeSecond"].map(track => {
+      const effect = el.querySelector(`[data-motion-track="${track}"]`)!.getAnimations()[0].effect as KeyframeEffect;
+      const frames = effect.getKeyframes().filter(frame => Number(frame.opacity) === 1);
+      return (frames[1].computedOffset - frames[0].computedOffset) * Number(effect.getTiming().duration);
+    }));
+    expect(readingHolds[0]).toBeGreaterThanOrEqual(1000);
+    expect(readingHolds[1]).toBeGreaterThanOrEqual(1500);
+    expect(readingHolds[2]).toBeGreaterThanOrEqual(1500);
     const slit = transition.locator('[data-motion-track="slit"]');
-    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 6_000, intervals: [50] }).toBeGreaterThan(0.5);
-    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 6_000, intervals: [50] }).toBeLessThan(0.1);
+    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 8_000, intervals: [50] }).toBeGreaterThan(0.5);
+    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 8_000, intervals: [50] }).toBeLessThan(0.1);
     const scrollBefore = await page.evaluate(() => window.scrollY);
     await page.mouse.wheel(0, 1400);
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(scrollBefore + 500);

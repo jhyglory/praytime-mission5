@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-// Exact opacity tracks from Figma 1088:916 / 1088:1251. Repeated letters and
-// slit edges share tracks so every element stays on the same viewport timeline.
+// Opacity values and choreography from Figma 1088:916 / 1088:1251.
+// The user requested a slower reading pace after reviewing the live site.
 const opacity = {
   paper: [1, 1, 0, 0],
   dotFirst: [0, 1, 1, 0, 0],
@@ -14,34 +14,19 @@ const opacity = {
   bridge: [0, 0, 1, 1, 0, 0],
 } as const;
 
-const timelines = {
-  desktop: {
-    duration: 2800,
-    offsets: {
-      paper: [0, 0.1904, 0.3686, 1],
-      dotFirst: [0, 0.0368, 0.2211, 0.3011, 1],
-      dotSecond: [0, 0.0368, 0.0736, 0.2211, 0.3011, 1],
-      dotThird: [0, 0.0736, 0.1107, 0.2211, 0.3011, 1],
-      word: [0, 0.1107, 0.1904, 0.2643, 0.3379, 1],
-      slit: [0, 0.3439, 0.4239, 0.5282, 0.6236, 1],
-      edge: [0, 0.7004, 0.7864, 0.86, 1],
-      bridgeFirst: [0, 0.4793, 0.5775, 0.7218, 0.8139, 1],
-      bridgeSecond: [0, 0.5036, 0.6082, 0.7218, 0.8139, 1],
-    },
-  },
-  mobile: {
-    duration: 2410,
-    offsets: {
-      paper: [0, 0.2212, 0.4282, 1],
-      dotFirst: [0, 0.0427, 0.2568, 0.3498, 1],
-      dotSecond: [0, 0.0427, 0.0855, 0.2568, 0.3498, 1],
-      dotThird: [0, 0.0855, 0.1286, 0.2568, 0.3498, 1],
-      word: [0, 0.1286, 0.2212, 0.3071, 0.3925, 1],
-      slit: [0, 0.3996, 0.4925, 0.6137, 0.7245, 1],
-      edge: [0, 0.8137, 0.9137, 0.9992, 1],
-      bridgeFirst: [0, 0.5568, 0.671, 0.8386, 0.9456, 1],
-      bridgeSecond: [0, 0.5851, 0.7066, 0.8386, 0.9456, 1],
-    },
+const timeline = {
+  duration: 6000,
+  // Milliseconds make the readable holds explicit for both viewports.
+  times: {
+    paper: [0, 1950, 2700, 6000],
+    dotFirst: [0, 103, 1900, 2450, 6000],
+    dotSecond: [0, 103, 206, 1900, 2450, 6000],
+    dotThird: [0, 206, 310, 1900, 2450, 6000],
+    word: [0, 550, 1000, 2050, 2500, 6000],
+    slit: [0, 2600, 3050, 3500, 4000, 6000],
+    edge: [0, 4200, 4750, 5250, 6000],
+    bridgeFirst: [0, 2850, 3400, 5100, 5650, 6000],
+    bridgeSecond: [0, 3000, 3550, 5100, 5650, 6000],
   },
 } as const;
 
@@ -94,7 +79,6 @@ export function SignatureTransition() {
       animations.forEach(animation => animation.cancel());
       animations = [];
       const variant = mobile.matches ? "mobile" : "desktop";
-      const timeline = timelines[variant];
       root.dataset.motionVariant = variant;
       root.dataset.motionDuration = String(timeline.duration);
       if (reduced.matches || typeof root.animate !== "function") {
@@ -105,7 +89,7 @@ export function SignatureTransition() {
         const values = trackValues[track];
         const frames = values.map((value, index) => ({
           opacity: value,
-          offset: timeline.offsets[track][index],
+          offset: timeline.times[track][index] / timeline.duration,
           // Motion's easeInOut has the same cubic-bezier as CSS ease-in-out.
           easing: index < values.length - 2 ? "cubic-bezier(0.42, 0, 0.58, 1)" : "linear",
         }));

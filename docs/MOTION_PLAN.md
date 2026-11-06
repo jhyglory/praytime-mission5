@@ -1,6 +1,6 @@
 # WHY NOW → THE GAP · final implementation specification
 
-Status: final design approved; the former **PENDING DESIGN has ended**. Implementation is local and awaiting final verification/review. No commit, push, PR creation/merge or Vercel redeployment is authorized before the user approves the final diff/check results. Figma remains read-only. Latest results belong in FINAL_VISUAL_PATCH.md; this specification does not claim all checks have already passed.
+Status: final design and release are approved; **PENDING DESIGN has ended**. After reviewing the deployed page on2026-11-06, the user reported that “그래서” is too fast. The current correction changes timing only: a6000ms loop with longer readable holds for both viewports. The existing feature branch / PR #1 / Vercel workflow is retained. Figma remains read-only; merge, real DB storage and DNS cutover remain forbidden.
 
 ## Authoritative sources
 
@@ -8,11 +8,11 @@ Status: final design approved; the former **PENDING DESIGN has ended**. Implemen
 - [Mobile1088:1251](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4?node-id=1088-1251), transition child1088:1297
 - [Desktop THE GAP1088:986](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4?node-id=1088-986), Mobile child1088:1319
 
-The actual recursive Figma motion context defines **opacity timelines with looping cohorts**, Desktop2800ms / Mobile2410ms. It does not define a sticky or scroll-progress transition. The final sources supersede the933/913 frames and the earlier feasibility proposal.
+The original recursive Figma motion context defines **opacity timelines with looping cohorts**, Desktop2800ms / Mobile2410ms. These source durations are historical: the user’s later live-site feedback overrides runtime timing with the shared6000ms reading pace below. It does not define a sticky or scroll-progress transition. The final sources supersede the933/913 frames and the earlier feasibility proposal.
 
 ## Retained motion and explicit removal
 
-The export contains17 animated nodes per viewport. Twelve retained node tracks use the supplied opacity values, normalized offsets, easing and shared viewport duration. The user's explicit instruction to remove floor reflection, surrounding bloom and horizontal glow takes precedence over residual Figma effects. Five exported reflection/ambient/aperture tracks per viewport are therefore omitted rather than replayed.
+The export contains17 animated nodes per viewport. Twelve retained node tracks keep the supplied opacity values, easing and sequence. Timing offsets/duration are adjusted only under the user’s subsequent reading-speed correction. The user's explicit instruction to remove floor reflection, surrounding bloom and horizontal glow takes precedence over residual Figma effects. Five exported reflection/ambient/aperture tracks per viewport are therefore omitted rather than replayed.
 
 | Retained element | Desktop node(s) | Mobile node(s) |
 | --- | --- | --- |
@@ -40,14 +40,22 @@ THE GAP itself keeps only the narrow slit layers1089:1281–1282 /1089:1291–12
 - Native Web Animations API drives the12 tracks; repeated letters and edges share named tracks and one synchronized lifecycle. No motion package was installed.
 - CSS reserves the final stage height: Desktop760px / Mobile560px. Static CSS handles placement; only opacity is animated. Slit geometry/blur values remain local to their narrow elements.
 - IntersectionObserver starts/pauses playback when the stage enters/leaves view. The document visibility listener pauses hidden-tab playback. Re-entry resumes the coordinated current time.
-- Responsive matchMedia selects the Desktop/Mobile cohort and reconstructs animations when the viewport crosses the breakpoint. The duration remains the corresponding Figma2800/2410ms value.
+- Responsive matchMedia selects the Desktop/Mobile cohort and reconstructs animations when the viewport crosses the breakpoint. Both viewports now use the user-requested slower6000ms reading pace; viewport-specific geometry and assets remain unchanged.
 - prefers-reduced-motion cancels motion and exposes the static readable composition. The server and initial client HTML match; browser APIs are only accessed in useEffect. No hydration suppression or scroll-input listeners are used.
 - Unmount cleanup disconnects the observer, cancels animations and removes listeners. No sticky stage, scroll lock, wheel/touch interception, scroll hijacking, WebGL or requestAnimationFrame loop is added.
 - Dot cue SVGs are downloaded local Figma exports with the supplied desktop5.6px / mobile4px sizes. The full section screenshot is never used as a runtime asset.
 
+## Reading pace correction · 2026-11-06
+
+Original source timing gave “그래서” only about207ms at full opacity. The correction keeps the first dot cues at0–310ms, starts the word fade at550ms, and holds it fully visible at1000–2050ms. It fades out by2500ms while the Paper veil lasts through2700ms. Both bridge lines are fully visible together at3550–5100ms. The whole sequence repeats every6000ms on both viewports.
+
+Only timing data changes. Opacity values, easing, DOM, copy, dimensions, section order, slit-only lighting, scroll behavior, pause/resume and reduced-motion/static fallback remain intact. Existing browser coverage verifies the minimum reading windows through the actual Web Animations keyframes, in addition to real opacity cycling and offscreen pause.
+
+Fresh local verification for this correction: lint PASS, typecheck PASS, unit40/40 PASS, browser31/31 PASS (44.9s), `npm run build -- --webpack` PASS. The browser run includes both viewport reading holds, real opacity cycling, pause/reduced-motion and the existing8 responsive widths plus all micro-interactions/form scenarios. These results are separate from earlier visual/micro release records.
+
 ## Verification required for the final local patch
 
-Run lint, typecheck, unit tests, `npm run build -- --webpack`, then browser tests against that production artifact. Verify at least one complete actual loop per viewport, the2800/2410ms durations,12 coordinated tracks, offscreen/background pause, reduced-motion/static state, forward/back scrolling, normal keyboard anchors, no hydration/console errors and responsive geometry/overflow. Recheck FAQ, CTA, form loading/result/receipt behavior and all prior test cases without reducing their coverage. Record actual results in FINAL_VISUAL_PATCH.md, separate from earlier QA records.
+Run lint, typecheck, unit tests, `npm run build -- --webpack`, then browser tests against that production artifact. Verify at least one complete actual loop per viewport, the6000ms duration, word full-opacity hold≥1000ms, both bridge full-opacity holds≥1500ms,12 coordinated tracks, offscreen/background pause, reduced-motion/static state, forward/back scrolling, normal keyboard anchors, no hydration/console errors and responsive geometry/overflow. Recheck FAQ, CTA, form loading/result/receipt behavior and all prior test cases without reducing their coverage. Record actual results in FINAL_VISUAL_PATCH.md, separate from earlier QA records.
 
 Production/Preview signup persistence and the Privacy guard remain unchanged. No real DB INSERT or existing applicant read/update/delete is allowed during motion QA. Automated submission outcomes remain mocked or disabled.
 
