@@ -4,6 +4,8 @@
 
 ## Privacy 게시
 
+최신 게시본: 사용자 요청에 따른 과제명 제거와 새 버전은 [privacy/BRANDING_UPDATE.md](privacy/BRANDING_UPDATE.md)를 따른다. 아래 초기 활성화와 QA의 버전은 당시 실제 기록으로 보존한다.
+
 - 기존 URL 유지: https://praytime.glorifier.kr/privacy
 - Lovable 수정 commit: `5b8a5f2dfc7bc2fcbcb59c5050bee83180b66d0c`
 - Lovable 배포 요청: `15992227-9116-4340-8761-2875464bbbae`

@@ -6,4 +6,4 @@ export const PRIVACY_POLICY_URL = "https://praytime.glorifier.kr/privacy";
 // Published content verified at the existing URL on 2026-11-06.
 // Persistence still requires explicit server environment configuration.
 export const PRIVACY_COLLECTION_APPROVED = true;
-export const PRIVACY_POLICY_VERSION = "privacy-sha256:61b237b3a2c926f95e6e445d7ba478dd4fb58eefae336009791785652b65207b";
+export const PRIVACY_POLICY_VERSION = "privacy-sha256:77fa909dbd320635b6a2aa2d8bbfb5f8c590b1cc36957adaa3029537e87b1a1a";
