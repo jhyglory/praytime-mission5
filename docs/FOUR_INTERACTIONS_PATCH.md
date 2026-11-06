@@ -1,5 +1,9 @@
 # 네 가지 인터랙션 수정 · 2026-11-06
 
+후속 타이밍 요청: “그래서”의 완전 표시 시간을1500ms 추가했다. 전체4초 원본은5.5초로 늘고, 단어의 fade-in310–533.2ms는 유지한다. 완전 표시533.2–2240ms, fade-out2240–2446ms이며 흰 배경도 추가 hold 중 opacity1을 유지한다. 뒤의 빛·로고는1500ms씩 늦추고 각각의 전환 길이·easing·레이아웃은 보존했다. 아래4초 인트로의 측정·배포 정보는 이 후속 요청 이전 기록이다. 나머지 세 인터랙션과 backend는 변경하지 않았다.
+
+후속 변경 검증: lint/typecheck/unit47/47/관련 browser24/24(38.6s)/Webpack build PASS. 실제1440/393/360px에서 단어 완전 표시 약1700ms, 추가 hold 중 단어·흰 배경 opacity1, 화면 밖 clock0, reduced-motion, 오류/가로 넘침/신청POST0을 확인했다. [실측](evidence/intro-hold/local-browser.json). SNS 모션 코드는 동일하며 앞선40개 전체 검사·두 cycle 기록과 이번24개 실행을 구분한다. 후속 배포 식별자와 공개 검증은 PR #1에 기록한다.
+
 현재 명세는 사용자의 최신 네 항목 요청이다. 기존 Desktop·Mobile 전체 Landing, 제품 흐름, backend·개인정보 고지, 다른 문구·레이아웃·기능을 보존한다. 아래 새 검사 결과가 채워지기 전까지 과거 release의 PASS나 screenshot을 이번 변경의 완료 근거로 사용하지 않는다.
 
 ## Figma 근거

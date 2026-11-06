@@ -12,6 +12,7 @@ test("restored white intro reveals the whole word, slit and aperture before the 
     await page.goto("/");
     const clean=page.locator("[data-clean-intro]");
     const cards=page.locator(".card-intro__cards");
+    await expect(clean).toHaveAttribute("data-intro-duration","5500");
     await expect(clean).toHaveAttribute("data-intro-state","paused");
     await page.waitForTimeout(500);
     expect(await clean.evaluate(el => el.getAnimations({subtree:true}).every(a => a.currentTime === 0))).toBe(true);
@@ -33,22 +34,20 @@ test("restored white intro reveals the whole word, slit and aperture before the 
     expect(await clean.locator(".card-intro__therefore").evaluate(el => el.childElementCount)).toBe(0);
     const samples=await clean.evaluate(el => {
       const animations=el.getAnimations({ subtree:true });
-      return [0,650,1200,1650,2200,4000,16000].map(time => {
+      return [0,650,1500,2000,2700,3150,3700,5500,16000].map(time => {
         for (const animation of animations) { animation.pause();animation.currentTime=time; }
         return Object.fromEntries(["paper","therefore","slit","outer","brand"].map(part => [part,Number(getComputedStyle(el.querySelector('[data-intro-part="' + part + '"]')!).opacity)]));
       });
     });
     expect(samples[0]).toEqual({paper:1,therefore:0,slit:0,outer:0,brand:0});
-    expect(samples[1].therefore).toBe(1);
-    expect(samples[1].paper).toBeGreaterThan(.5);
-    expect(samples[1].brand).toBe(0);
-    expect(samples[2].paper).toBe(0);
-    expect(samples[2].therefore).toBe(0);
-    expect(samples[2].slit).toBe(1);
-    expect(samples[3].outer).toBe(1);
-    expect(samples[3].brand).toBeGreaterThan(.8);
-    expect(samples[4].brand).toBe(1);
-    for (const final of samples.slice(5)) expect(final).toEqual({paper:0,therefore:0,slit:0,outer:0,brand:1});
+    for (const held of samples.slice(1,4)) expect(held).toEqual({paper:1,therefore:1,slit:0,outer:0,brand:0});
+    expect(samples[4].paper).toBe(0);
+    expect(samples[4].therefore).toBe(0);
+    expect(samples[4].slit).toBe(1);
+    expect(samples[5].outer).toBe(1);
+    expect(samples[5].brand).toBeGreaterThan(.8);
+    expect(samples[6].brand).toBe(1);
+    for (const final of samples.slice(7)) expect(final).toEqual({paper:0,therefore:0,slit:0,outer:0,brand:1});
     await cards.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
     await expect(clean).toHaveAttribute("data-intro-state","complete");
     await clean.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));

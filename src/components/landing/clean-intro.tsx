@@ -14,7 +14,7 @@ export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; 
       element.dataset.introState = viewport ? "reduced" : "static";
       return;
     }
-    // Restored1265:8075 /8099: preserve the four-second light timeline.
+    // Preserve the restored light timing, with the user's extra1.5s reading hold.
     // The next SNS scene stays independent; play once on entry and hold the logo.
     const animations = introMotion.tracks.map(track => {
       const target = element.querySelector<HTMLElement>('[data-intro-part="' + track.part + '"]')!;
