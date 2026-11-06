@@ -7,11 +7,11 @@ const regions = [
 ] as const;
 
 // Whole-page rhythm verified against final1209:514 /1209:1051. At360px,
-// lower content may grow as it wraps; the separate clean intro fills900px.
-const sourceHeights: Record<number, readonly number[]> = {
-  1440: [88, 684, 484, 963, 900, 760, 1180, 923.40625, 757, 954, 1739, 123],
-  393: [72, 932, 380, 1098, 900, 680, 1024, 1187.734375, 999, 1224, 2513, 168],
-  360: [72, 932, 380, 1098, 900, 680, 1024, 1170.390625, 1051, 1284, 2539, 168],
+// lower content may grow as it wraps; intro fills900px and FAQ follows the85% user override.
+const referenceHeights: Record<number, readonly number[]> = {
+  1440: [88, 684, 484, 963, 900, 760, 1180, 923.40625, 757, 834.71875, 1739, 123],
+  393: [72, 932, 380, 1098, 900, 680, 1024, 1187.734375, 999, 1065.71875, 2513, 168],
+  360: [72, 932, 380, 1098, 900, 680, 1024, 1170.390625, 1051, 1091.21875, 2539, 168],
 };
 
 const observations = new WeakMap<Page, { errors: string[]; posts: string[] }>();
@@ -41,7 +41,7 @@ test.afterEach(async ({ page }) => {
 });
 
 for (const width of [1440, 393, 360]) {
-  test(`whole-page source rhythm, readable copy and no overflow at ${width}px`, async ({ page }) => {
+  test(`whole-page approved rhythm, readable copy and no overflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/");
@@ -60,7 +60,7 @@ for (const width of [1440, 393, 360]) {
       return { selector, x: box.x, y: box.y + scrollY, width: box.width, height: box.height };
     }), regions);
     for (const [index, box] of geometry.entries()) {
-      expect(Math.abs(box.height - sourceHeights[width][index]), `${box.selector} source height`).toBeLessThanOrEqual(1);
+      expect(Math.abs(box.height - referenceHeights[width][index]), `${box.selector} approved height`).toBeLessThanOrEqual(1);
       const inset = index === 0 ? (width === 1440 ? 80 : 24) : 0;
       expect(box.x, `${box.selector} left edge`).toBeCloseTo(inset, 1);
       expect(box.width, `${box.selector} full available width`).toBeCloseTo(width - inset * 2, 1);

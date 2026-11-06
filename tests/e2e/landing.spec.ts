@@ -223,6 +223,10 @@ for (const width of widths) {
 test("FAQ defaults readable, toggles independently, and supports keyboard", async ({ page }) => {
   await page.goto("/");
   const questions = page.locator(".faq-item button");
+  await expect(questions.first()).toHaveCSS("font-size", "17px");
+  await expect(questions.first()).toHaveCSS("line-height", "25.5px");
+  await expect(page.locator("#faq-answer-0 .body-copy").first()).toHaveCSS("font-size", "15.3px");
+  await expect(page.locator("#faq-answer-0 .body-copy").first()).toHaveCSS("line-height", "25.5px");
   await expect(questions).toHaveCount(7);
   await expect(questions).toHaveText([
     "PrayTime은 그냥 기도 앱인가요?",

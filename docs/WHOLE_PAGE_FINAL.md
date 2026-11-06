@@ -1,5 +1,27 @@
 # PrayTime · Whole Landing 최종 비교와 구현
 
+## Latest FAQ override: 85% typography and list spacing
+
+Questions changed from 20/30px to 17/25.5px; answers from 18/30px to
+15.3/25.5px. Row padding changed from 24px to 20.4px; question/answer,
+divider and chevron gaps from 16px to 13.6px; paragraph gaps from 30px
+to 25.5px. The section heading, outer padding/grid, 24px chevron,
+1px divider, seven answers and Accordion behavior remain unchanged.
+
+Default FAQ heights are 834.71875px at 1440px, 1065.71875px at 393px,
+and 1091.21875px at 360px. A closed single-line row is about 80.875px.
+Text reflows at the same width, so the whole section is not exactly 85%
+of its old height. Following sections move naturally with the document.
+Earlier 954/1224/1284px FAQ measurements below are historical.
+
+Latest checks: lint/typecheck/unit 47/47/browser 22/22/Webpack build PASS.
+Actual 1440/393/360/320px checks confirm computed values, unchanged
+headings, all seven open, Enter/Space/Home/End focus, no overflow/errors
+and no POSTs. See [measurements](evidence/faq-85/local-browser.json) and
+[validation](evidence/faq-85/validation.json). High-resolution images,
+0.8x photo speed, removed header CTA, form/backend/env, other sections,
+main, merge and DNS are unchanged.
+
 작성일: 2026-11-06. 이 문서는 최신 whole-page 요청의 구현·구간별 비교와 최종 로컬 검증 결과입니다. 최종 lint/typecheck/unit47/browser40/build가 통과했습니다. Production release 결과는 아래 표에서 별도로 기록합니다.
 
 ## 현재 기준
