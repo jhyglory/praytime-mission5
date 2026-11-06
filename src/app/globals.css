@@ -561,41 +561,6 @@ h1 { font-size: 44px; line-height: 60px; }
   .equal-outcomes img { left: auto; right: 16px; top: 48px; }
 }
 
-/* Final Figma1088:965 /1088:1297. Only the slit emits light: the user's
-   explicit removal overrides the exported reflection/ambient/aperture layers. */
-.signature-transition { position: relative; height: 760px; overflow: clip; isolation: isolate; background: #0b1020; }
-.signature-transition__scene { position: absolute; inset: 0; pointer-events: none; }
-.signature-transition__paper { position: absolute; width: 2172.824px; height: 644.643px; top: -366.43px; left: calc(50% - 1086.41px); background: #f5f2f7; filter: blur(62.429px); }
-.signature-transition__cue { position: absolute; top: 0; left: 50%; }
-.signature-transition__cue--1 { margin-left: -102.2px; }
-.signature-transition__cue--3 { margin-left: 102.2px; }
-.signature-transition__letter { position: absolute; top: 138.43px; left: -43.4px; width: 86.8px; margin: 0; color: #18181b; font-weight: 600; font-size: 40px; line-height: 54px; text-align: center; }
-.signature-transition__slit { position: absolute; top: 312.14px; left: calc(50% - 1.4px); width: 2.8px; height: 89.571px; border-radius: 1px; filter: blur(.679px); background: linear-gradient(180deg, rgba(216,206,228,0) 0%, rgba(234,226,220,.58) 22%, rgba(241,241,238,.9) 50%, rgba(234,226,220,.48) 78%, rgba(216,206,228,0) 100%); }
-.signature-transition__edge { position: absolute; top: 648.71px; width: 2.8px; height: 40.714px; border-radius: 1px; filter: blur(2.036px); opacity: .15; }
-.signature-transition__edge--left { left: calc(50% - 3.5px); background: rgba(240,219,191,.48); }
-.signature-transition__edge--right { left: calc(50% + .7px); background: rgba(240,219,191,.38); }
-.signature-transition__bridge-first, .signature-transition__bridge-second { position: absolute; left: 50%; width: min(1200px, calc(100% - 48px)); margin: 0; transform: translateX(-50%); text-align: center; }
-.signature-transition__bridge-first { top: 532px; color: rgba(241,241,238,.78); font-size: 28px; line-height: 42px; }
-.signature-transition__bridge-second { top: 582.21px; color: #f1f1ee; font-weight: 600; font-size: 40px; line-height: 56px; }
-.signature-transition__handoff { position: absolute; inset: auto 0 0; height: 67.857px; background: linear-gradient(180deg, rgba(11,16,32,0), #0b1020); }
-@media (width < 768px) {
-  .signature-transition { height: 560px; }
-  .signature-transition__paper { left: -100px; top: -270px; width: calc(100% + 200px); height: 475px; filter: blur(46px); }
-  .signature-transition__cue--1 { margin-left: -73px; }
-  .signature-transition__cue--3 { margin-left: 73px; }
-  .signature-transition__letter { top: 102px; left: -31px; width: 62px; font-size: 28px; line-height: 38px; }
-  .signature-transition__slit { top: 230px; left: calc(50% - 1px); width: 2px; height: 66px; filter: blur(.5px); }
-  .signature-transition__edge { top: 478px; width: 2px; height: 30px; filter: blur(1.5px); }
-  .signature-transition__edge--left { left: calc(50% - 2.5px); }
-  .signature-transition__edge--right { left: calc(50% + .5px); }
-  .signature-transition__bridge-first { top: 392px; font-size: 20px; line-height: 30px; }
-  .signature-transition__bridge-second { top: 429px; font-size: 28px; line-height: 40px; }
-  .signature-transition__handoff { height: 50px; }
-}
-@media (width < 350px) {
-  .signature-transition__bridge-second { font-size: 25px; }
-}
-
 /* Micro-interactions enhance the approved resting layout only. */
 /* The Hero object and light share one raster: move that plane within 2.5px. */
 @media (width >= 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {

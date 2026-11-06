@@ -76,13 +76,13 @@ test("skip link and reduced-motion navigation support the keyboard", async ({ pa
   await transition.scrollIntoViewIfNeeded();
   await expect(transition).toHaveAttribute("data-motion-state", "reduced");
   expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(0);
-  await expect(transition.locator(".signature-transition__bridge-first")).toBeVisible();
-  await expect(transition.locator(".signature-transition__bridge-first")).toHaveCSS("opacity", "1");
-  await expect(transition.locator(".signature-transition__bridge-second")).toHaveCSS("opacity", "1");
-  for (const letter of await transition.locator(".signature-transition__letter").all()) await expect(letter).toHaveCSS("opacity", "1");
-  await expect(transition.locator(".signature-transition__dot")).toHaveCount(0);
-  await expect(transition.locator(".sr-only")).toHaveText("그래서, 행동하기 전에 잠깐의 틈을 만듭니다.");
-  await expect(transition.locator(".signature-transition__scene")).toHaveAttribute("aria-hidden", "true");
+  await expect(transition.locator(".card-intro__therefore")).toBeVisible();
+  await expect(transition.locator(".card-intro__brand")).toBeVisible();
+  await expect(transition.locator(".card-intro__headline")).toBeVisible();
+  await expect(transition.locator(".card-intro__anchor")).toBeVisible();
+  await expect(transition.locator(".card-intro__art")).toBeHidden();
+  await expect(transition.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.");
+  await expect(transition.locator(".card-intro__scene")).toHaveAttribute("aria-hidden", "true");
 });
 
 for (const width of widths) {
@@ -113,7 +113,7 @@ for (const width of widths) {
     await expect(page.locator("#the-gap")).toHaveCSS("background-color", "rgb(11, 16, 32)");
     await expect(page.locator(".prayer-section")).toHaveCSS("background-color", "rgb(23, 28, 38)");
     await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-variant", width < 768 ? "mobile" : "desktop");
-    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "6000");
+    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-duration", "16000");
     const gapArtwork = page.locator(".gap-architecture");
     await expect(gapArtwork.locator("img")).toHaveAttribute("alt", "");
     const architecture = await gapArtwork.locator("img").evaluate(element => {
@@ -269,51 +269,35 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     const transition = page.locator("[data-signature-transition]");
     await transition.scrollIntoViewIfNeeded();
     await expect(transition).toHaveAttribute("data-motion-state", "running");
-    await expect(transition).toHaveAttribute("data-motion-duration", "6000");
-    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(14);
-    await expect(transition.locator(".signature-transition__dot")).toHaveCount(0);
-    await expect(transition.locator(".signature-transition__letter")).toHaveText(["그", "래", "서"]);
-    const reveal = await transition.evaluate(el => {
+    await expect(transition).toHaveAttribute("data-motion-duration", "16000");
+    expect(await transition.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(55);
+    const renderedMotionNodes = await transition.evaluate(el => new Set(el.getAnimations({ subtree: true }).map(a => ((a.effect as KeyframeEffect).target as HTMLElement).dataset.nodeId)).size);
+    expect(renderedMotionNodes).toBe(32);
+    await expect(transition.locator(".card-intro__column")).toHaveCount(6);
+    await expect(transition.locator(".ambient-card")).toHaveCount(72);
+    await expect(transition.locator(".card-intro__particle")).toHaveCount(20);
+    const samples = await transition.evaluate(el => {
       const animations = el.getAnimations({ subtree: true });
-      const samples = [150, 500, 850, 1000, 2000].map(time => {
+      const at = (selector: string) => Number(getComputedStyle(el.querySelector(selector)!).opacity);
+      const snapshots = [0, 650, 1951, 3999, 6000, 12000].map(time => {
         for (const animation of animations) { animation.pause(); animation.currentTime = time; }
-        return [...el.querySelectorAll(".signature-transition__letter")].map(letter => Number(getComputedStyle(letter).opacity));
+        return { clean: at(".card-intro__clean"), cards: at(".card-intro__cards"), therefore: at(".card-intro__therefore"), brand: at(".card-intro__brand"), headline: at(".card-intro__headline"), anchor: at(".card-intro__anchor"), column: getComputedStyle(el.querySelector(".card-intro__column")!).transform };
       });
-      // Resume the shared clock before observing the complete live cycle below.
       const now = document.timeline.currentTime;
-      for (const animation of animations) {
-        animation.currentTime = 0;
-        animation.play();
-        if (typeof now === "number") animation.startTime = now;
-      }
-      return samples;
+      for (const animation of animations) { animation.currentTime = 0; animation.play(); if (typeof now === "number") animation.startTime = now; }
+      return snapshots;
     });
-    expect(reveal[0][0]).toBeGreaterThan(.4);
-    expect(reveal[0].slice(1)).toEqual([0, 0]);
-    expect(reveal[1][0]).toBe(1);
-    expect(reveal[1][1]).toBeGreaterThan(.4);
-    expect(reveal[1][2]).toBe(0);
-    expect(reveal[2].slice(0, 2)).toEqual([1, 1]);
-    expect(reveal[2][2]).toBeGreaterThan(.4);
-    expect(reveal[3]).toEqual([1, 1, 1]);
-    expect(reveal[4]).toEqual([1, 1, 1]);
-    // A full-opacity reading window prevents the text becoming a brief flash.
-    const readingHolds = await transition.evaluate(el => ["letterThird", "bridgeFirst", "bridgeSecond"].map(track => {
-      const effect = el.querySelector(`[data-motion-track="${track}"]`)!.getAnimations()[0].effect as KeyframeEffect;
-      const frames = effect.getKeyframes().filter(frame => Number(frame.opacity) === 1);
-      return (frames[1].computedOffset - frames[0].computedOffset) * Number(effect.getTiming().duration);
-    }));
-    expect(readingHolds[0]).toBeGreaterThanOrEqual(1000);
-    expect(readingHolds[1]).toBeGreaterThanOrEqual(1500);
-    expect(readingHolds[2]).toBeGreaterThanOrEqual(1500);
-    const slit = transition.locator(".signature-transition__slit");
-    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 8_000, intervals: [50] }).toBeGreaterThan(0.5);
-    await expect.poll(async () => Number(await slit.evaluate(el => getComputedStyle(el).opacity)), { timeout: 8_000, intervals: [50] }).toBeLessThan(0.1);
-    const aperture = transition.locator(".signature-transition__aperture--outer");
-    await expect.poll(() => aperture.evaluate(el => {
-      const style = getComputedStyle(el);
-      return Math.min(Number(style.opacity), new DOMMatrixReadOnly(style.transform).a);
-    }), { timeout: 8_000, intervals: [50] }).toBeGreaterThan(.95);
+    expect(samples[0]).toMatchObject({ clean:1, cards:0, therefore:0, brand:0 });
+    expect(samples[1]).toMatchObject({ clean:1, cards:0, therefore:1, brand:0 });
+    expect(samples[2]).toMatchObject({ clean:1, cards:0, therefore:1, brand:1 });
+    expect(samples[3].cards).toBe(0);
+    expect(samples[4]).toMatchObject({ clean:0, cards:1, headline:1, anchor:1 });
+    expect(samples[4].column).not.toBe(samples[5].column);
+    if (width === 1440) {
+      await expect.poll(() => transition.locator(".card-intro__cards").evaluate(el => Number(getComputedStyle(el).opacity)), { timeout:6_000 }).toBe(1);
+      await expect.poll(() => transition.locator(".card-intro__clean").evaluate(el => Number(getComputedStyle(el).opacity)), { timeout:13_000 }).toBe(1);
+      await expect(transition.locator(".card-intro__cards")).toHaveCSS("opacity", "0");
+    }
     const scrollBefore = await page.evaluate(() => window.scrollY);
     await page.mouse.wheel(0, 1400);
     await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(scrollBefore + 500);

@@ -1,5 +1,9 @@
 # WHY NOW → THE GAP · current motion specification
 
+## Superseding source1265 · 2026-11-06
+
+The new requested full-motion1265:8215 replaces the historical6s timeline below. Clean intro1265:8081 defines the card-free start; the full scene coordinates the intro and card motion on a16s loop. See [CARD_INTRO_PATCH.md](CARD_INTRO_PATCH.md). The old three-letter/slit/aperture implementation is retired; other Landing interactions and live backend remain unchanged.
+
 ## Current authority · 2026-11-06
 
 The current visual source is [Figma page933:2](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/PrayTime?node-id=933-2), containing Desktop1088:916 and Mobile1088:1251. Source transition nodes are1088:965 /1088:1297. The user subsequently requested two explicit motion corrections: a slower6000ms reading pace, then sequential **그 → 래 → 서** instead of the dots-first / simultaneous-word reveal. These requests override the corresponding original Figma timing/choreography. Figma itself remains unchanged.

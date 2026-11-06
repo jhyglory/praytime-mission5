@@ -1,0 +1,133 @@
+[
+  {
+    "node": "1265:8235",
+    "slot": "imgQuietFloorInheritedPrayerLight",
+    "path": "/assets/card-intro/7225071c-290a-4eb2-a440-5de004ad0adc.svg",
+    "bytes": 723,
+    "sha256": "6ab72783f0d09c93e8f9c2a53a5cf999d29e101827dfd692fa952a346faf051c",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"1540\" height=\"400\" viewBox=\"0 0 1540 400\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "1265:8239",
+    "slot": "imgPhotoArchitecturalLight",
+    "path": "/assets/card-intro/8b7f22c3-e82d-4b7c-b363-071c884e5b13.png",
+    "bytes": 13330,
+    "sha256": "35549e3a5a7878f23bae459893ef0599f155c25665b10a0f0dbb5c9225122013"
+  },
+  {
+    "node": "1265:8239",
+    "slot": "imgInstagramCamera",
+    "path": "/assets/card-intro/9ea18c6f-99b9-4f41-ad7d-b568a12aa7ab.svg",
+    "bytes": 1061,
+    "sha256": "e6b76d0b3a96f86a76e87fdfe7989c9bae47d4659f26d61433f296718c644801",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"11.6471\" height=\"11.6471\" viewBox=\"0 0 11.6471 11.6471\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "1265:8240",
+    "slot": "imgVideoCinematicThumbnail",
+    "path": "/assets/card-intro/757c185d-bdaa-48f9-83dd-767276756001.png",
+    "bytes": 22394,
+    "sha256": "1050725a748fcc468326dba57284fa75abc4ebacdb5b895bcc8d4cc4972299cb"
+  },
+  {
+    "node": "1265:8240",
+    "slot": "imgYouTubePlay",
+    "path": "/assets/card-intro/e968c918-9d82-4673-9d03-291ac4074af2.svg",
+    "bytes": 742,
+    "sha256": "c6aa2b9c97970854037a114feead5c2bb80cd8e4db8812b92616f741679d6655",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"13.5882\" height=\"13.5882\" viewBox=\"0 0 13.5882 13.5882\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "1265:8240",
+    "slot": "imgVideoPlaybackAffordance",
+    "path": "/assets/card-intro/66d8d4ec-5256-424c-a56b-8079b3096e0f.svg",
+    "bytes": 332,
+    "sha256": "b6c74ecdfdb77f261691a09de408480624a37c84bc21beec4dd2c271e5c3eec8",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"19.4118\" height=\"19.4118\" viewBox=\"0 0 19.4118 19.4118\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "1265:8242",
+    "slot": "imgKakaoTalkBubble",
+    "path": "/assets/card-intro/2f41d994-dc14-4ac5-a48a-9da0a6b33cf8.svg",
+    "bytes": 504,
+    "sha256": "a1be9a665353e21c93cfd4eb89af2ed408ac121179c0b4d70a32dd6f7990c84c",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"12.2941\" height=\"12.2941\" viewBox=\"0 0 12.2941 12.2941\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "1265:8243",
+    "slot": "imgArchitecturalPhoto0",
+    "path": "/assets/card-intro/e34cd715-4b0f-48aa-8bb5-7fdb31f3947b.png",
+    "bytes": 13330,
+    "sha256": "35549e3a5a7878f23bae459893ef0599f155c25665b10a0f0dbb5c9225122013"
+  },
+  {
+    "node": "1265:8243",
+    "slot": "imgArchitecturalPhoto2",
+    "path": "/assets/card-intro/da485400-59bb-4b95-9046-793cfca2721b.png",
+    "bytes": 23902,
+    "sha256": "77dd5f50751409031a9f155616860af8d283280186be1e7f448a6d7d242257e2"
+  },
+  {
+    "node": "1265:8243",
+    "slot": "imgArchitecturalPhoto1",
+    "path": "/assets/card-intro/5d584a66-37b7-4294-85a6-64760bd4fd58.png",
+    "bytes": 22394,
+    "sha256": "1050725a748fcc468326dba57284fa75abc4ebacdb5b895bcc8d4cc4972299cb"
+  },
+  {
+    "node": "1265:8243",
+    "slot": "imgInstagramCamera",
+    "path": "/assets/card-intro/8abadb49-444e-4041-9b2c-5725185a66df.svg",
+    "bytes": 1061,
+    "sha256": "e6b76d0b3a96f86a76e87fdfe7989c9bae47d4659f26d61433f296718c644801",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"11.6471\" height=\"11.6471\" viewBox=\"0 0 11.6471 11.6471\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "1265:8244",
+    "slot": "imgYouTubePlay",
+    "path": "/assets/card-intro/fa5652f0-d224-4e8b-a7e9-d9b8eebec3c1.svg",
+    "bytes": 742,
+    "sha256": "62e6a18de3fa5122d3f3c9a753bca69d2b15e402be5e8388042de0b2c25dae24",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"13.5882\" height=\"13.5882\" viewBox=\"0 0 13.5882 13.5882\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "I1265:8330;68:15810",
+    "slot": "imgIcon",
+    "path": "/assets/card-intro/71365c2e-0e64-46a7-9834-7512f3867aa5.svg",
+    "bytes": 948,
+    "sha256": "df65d3cfd680f152c69869d5f13f3ed111ba9374f28bdb9530a1d1a1739085a6",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"13.5935\" height=\"12.0352\" viewBox=\"0 0 13.5935 12.0352\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "I1265:8346;68:15978",
+    "slot": "imgIcon",
+    "path": "/assets/card-intro/cdbcea2d-4b8c-4e61-97de-c23cf46bc3ee.svg",
+    "bytes": 514,
+    "sha256": "2a14ac88dc07378d434105bcbb5f0ba1882690a7bc98223b3382b09394ae83a5",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"13.8\" height=\"16.8\" viewBox=\"0 0 13.8 16.8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "I1265:8239;1245:704;68:15810",
+    "slot": "imgIcon",
+    "path": "/assets/card-intro/97d1a04d-f0d6-4e14-8d2b-91863e137558.svg",
+    "bytes": 957,
+    "sha256": "fc0e14983e8f09ec4d54fcb2f26d38d775d2c6dcdb59471b44ed7d25efad69eb",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"10.6806\" height=\"9.45625\" viewBox=\"0 0 10.6806 9.45625\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "I1265:8240;1245:723;68:15810",
+    "slot": "imgIcon",
+    "path": "/assets/card-intro/da127568-2f66-41be-af26-f9753a28ddb5.svg",
+    "bytes": 942,
+    "sha256": "72844fc52f7164b9d3adc267517bc462075a045cc96212658909f6ecca8d941b",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"10.6806\" height=\"9.45625\" viewBox=\"0 0 10.6806 9.45625\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  },
+  {
+    "node": "I1265:8239;1245:706;68:15978",
+    "slot": "imgIcon",
+    "path": "/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg",
+    "bytes": 591,
+    "sha256": "1c97fa4fca72a4a24bff078baa962092ba07d90009ff9d35055fb5febb1c8144",
+    "svgRoot": "<svg preserveAspectRatio=\"none\" overflow=\"visible\" style=\"display: block;\" width=\"8.43333\" height=\"10.2667\" viewBox=\"0 0 8.43333 10.2667\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">"
+  }
+]

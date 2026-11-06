@@ -36,7 +36,8 @@ async function centerSection(page: Page, selector: string) {
 }
 
 async function expectReferenceGauges(grid: Locator) {
-  for (const [index, color] of ["rgb(255, 68, 56)", "rgb(196, 192, 240)"].entries()) {
+  const mobile = await grid.evaluate(() => innerWidth < 768);
+  for (const [index, desktopColor] of ["rgb(255, 68, 56)", "rgb(196, 192, 240)"].entries()) {
     const card = grid.locator(".stat-card").nth(index);
     const track = card.locator(".stat-track");
     const fill = card.locator(".stat-fill");
@@ -45,13 +46,13 @@ async function expectReferenceGauges(grid: Locator) {
       return el.clientWidth - Number.parseFloat(css.paddingLeft) - Number.parseFloat(css.paddingRight);
     });
     const box = (await track.boundingBox())!;
-    expect(box.width).toBeCloseTo(Math.min(available, 420) * (index === 0 ? 1 : 0.7), 1);
-    expect((await fill.boundingBox())!.width).toBeCloseTo(box.width, 1);
-    await expect(track).toHaveCSS("height", "7px");
-    await expect(track).toHaveCSS("border-radius", "0px");
-    await expect(track).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
-    await expect(fill).toHaveCSS("border-radius", "0px");
-    await expect(fill).toHaveCSS("background-color", color);
+    expect(box.width).toBeCloseTo(mobile ? available : Math.min(available,420)*(index === 0 ? 1 : .7),1);
+    expect((await fill.boundingBox())!.width).toBeCloseTo(box.width*(mobile ? (index === 0 ? .343 : .253) : 1),1);
+    await expect(track).toHaveCSS("height", mobile ? "6px" : "7px");
+    await expect(track).toHaveCSS("border-radius", mobile ? "2px" : "0px");
+    await expect(track).toHaveCSS("background-color", mobile ? "rgb(233, 229, 236)" : "rgba(0, 0, 0, 0)");
+    await expect(fill).toHaveCSS("border-radius", mobile ? "2px" : "0px");
+    await expect(fill).toHaveCSS("background-color", mobile ? "rgb(255, 68, 56)" : desktopColor);
   }
 }
 
@@ -351,6 +352,11 @@ test("without JavaScript, WHY NOW still renders exact statistics and full count 
       await expect(grid.locator(".stat-track").nth(index)).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
     }
     await expectReferenceGauges(grid);
+    const intro = page.locator("[data-signature-transition]");
+    await intro.scrollIntoViewIfNeeded();
+    await expect(intro.locator(".card-intro__headline")).toBeVisible();
+    await expect(intro.locator(".card-intro__brand")).toBeVisible();
+    await expect(intro.locator(".card-intro__art")).toBeHidden();
     expect(problems).toEqual([]);
   } finally {
     await context.close();
