@@ -9,10 +9,10 @@ describe("Submission metadata", () => {
     expect(metadata.openGraph).toMatchObject({ images: [{ url: "/og/praytime-share-8b6783f5.png", width: 1711, height: 919, type: "image/png" }] });
     expect(metadata.icons).toEqual({
       icon: [
-        { url: "/favicon.ico", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
-        { url: "/assets/praytime-favicon.svg", type: "image/svg+xml", sizes: "any" },
+        { url: "/favicon.ico?v=red-pause", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
+        { url: "/assets/praytime-favicon.svg?v=red-pause", type: "image/svg+xml", sizes: "any" },
       ],
-      apple: { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
+      apple: { url: "/apple-touch-icon.png?v=red-pause", type: "image/png", sizes: "180x180" },
     });
     expect(metadata.robots).toEqual({ index: false, follow: false });
     expect(metadata.twitter).toMatchObject({ card: "summary_large_image", images: [{ url: "/og/praytime-share-8b6783f5.png", alt: "PrayTime — 일상의 틈에서, 하나님과 마주하는 시간" }] });

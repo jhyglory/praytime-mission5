@@ -1,5 +1,7 @@
 # PrayTime · Codex Project Instructions
 
+The latest favicon correction removes the Navy/black tile. Keep only the original Signal Red Pause Mark on a transparent canvas in SVG,16/32/48px ICO and180px Apple PNG; version icon metadata URLs to refresh the browser cache. Other artwork, sharing image and behavior stay unchanged.
+
 The latest user copy correction replaces the Header, Hero and form-submit CTA label with “무료로 신청하기”. Keep beta context/headings, existing link/button semantics, submitting copy and all form/API behavior. This explicit copy request overrides the CTA label in older Figma exports.
 
 ## Latest design refresh · 2026-11-06

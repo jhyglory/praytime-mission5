@@ -4,11 +4,11 @@ const title = "PrayTime — 기도로 멈추고 다시 선택하세요";
 const description = "SNS를 열기 전 잠깐 기도하고, 지금도 필요한지 돌아보세요. 필요하지 않으면 돌아가고, 필요하면 5 · 10 · 15분을 정해 사용합니다.";
 
 // Use the user's sharing artwork, separately from the unchanged Landing Hero.
-// The favicon uses a square Navy tile for crisp rendering at browser-tab sizes.
+// A transparent canvas keeps only the existing red Pause Mark in browser tabs.
 const approvedAssets = {
-  icon: "/assets/praytime-favicon.svg",
-  fallbackIcon: "/favicon.ico",
-  appleIcon: "/apple-touch-icon.png",
+  icon: "/assets/praytime-favicon.svg?v=red-pause",
+  fallbackIcon: "/favicon.ico?v=red-pause",
+  appleIcon: "/apple-touch-icon.png?v=red-pause",
   openGraph: { url: "/og/praytime-share-8b6783f5.png", width: 1711, height: 919, type: "image/png", alt: "PrayTime — 일상의 틈에서, 하나님과 마주하는 시간" },
 };
 

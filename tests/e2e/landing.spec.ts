@@ -19,6 +19,8 @@ test("semantic structure, head metadata, assets and anchors have no runtime warn
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
   await expect(page.locator("html")).toHaveAttribute("lang", "ko");
+  await expect(page.locator("head link[rel='icon'][type='image/svg+xml']")).toHaveAttribute("href", "/assets/praytime-favicon.svg?v=red-pause");
+  await expect(page.locator("head link[rel='icon'][type='image/x-icon']")).toHaveAttribute("href", "/favicon.ico?v=red-pause");
   await expect(page.locator("head meta[property='og:type']")).toHaveAttribute("content", "website");
   await expect(page.locator("head meta[property='og:locale']")).toHaveAttribute("content", "ko_KR");
   await expect(page.locator("head meta[property='og:image']")).toHaveAttribute("content", /\/og\/praytime-share-8b6783f5\.png$/);
