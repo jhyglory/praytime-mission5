@@ -1,5 +1,7 @@
 # 누적 interaction 보정 · 최종 배포
 
+최신 속도 보정: 빛의 원래7초 동작을1.3배 속도로 재생한다(약5384.62ms). 진입 대기는1200ms 유지하며 합계약6584.62ms다. 모든 단계/짧은fade 시간을 같은비율로 줄이고 기존 빛 모양·위치·상대 타이밍은 보존한다. 이하7000ms 실제 측정은 이전 단계 기록이다.
+
 최신 빛 대기 보정: Landing/개발 미리보기의 entry/replay wait는1200ms이며 기존7000ms 동작은 유지한다(합계약8200ms). 이하2000ms 대기 측정은 이전 단계 기록이다. 후속 검증은 문서 마지막에 기록한다.
 
 최신 후속 보정: SNS 카드 선행 대기만3000→1700ms로 줄이고400ms 동시fade는 유지한다. 아래 첫 배포 범위와53개 전체검사/3000ms 측정은8085b95의 기록이다. 후속 검증은 이 문서 마지막에 별도로 기록한다.
@@ -65,3 +67,13 @@ THE GAP 중심·상단·바닥·섹션 높이와 두 CTA는 기존 좌표를 유
 - 관련 GAP browser6개: 모두 PASS(49.0초).1440/393/360px 실제 대기 실측과7초 완료, 화면 밖 대기 취소·진행 중 재개, reduced-motion/no-JS·기존 두 선택지 링크를 검증했다.
 - 이번 보정에서 전체 browser suite를 재실행했다고 주장하지 않는다. Prayer/SNS 등의 이전 측정은 해당 commit 기록으로 유지한다.
 - 같은 feature branch/PR1/Vercel에 반영하고 공개 URL에서 실제1200+7000ms를 재검증한다. 후속 배포 commit과 공개 실측은 PR #1에 기록한다. backend/env/DB/DNS/main/merge와 실제 신청POST는 변경/실행하지 않는다.
+
+
+## 후속 보정 · 빛1.3배 속도
+
+사용자 요청에 따라 활성 ivory preset의 재생 속도를1.3배로 조정했다. 실제 동작은7000÷1.3=5384.615384615385ms이며, 외부 진입 대기1200ms는 유지한다(합계약6584.62ms). 모든 단계 경계와 내부70/350/100/180ms fade/pulse 시간까지1.3으로 나누어 원래 상대 타이밍·easing·geometry·광채를 보존한다. Landing과 개발 미리보기는 같은 duration/TIMING을 사용하고 slider/phase 표시는 약5.38초에 맞춰진다. 오래된 기본 비교 preset과 다른 모션은 변경하지 않는다.
+
+- lint/typecheck/unit60/webpack production build: 모두 PASS.
+- 관련 GAP browser6개: 모두 PASS(38.7초).1440/393/360px의 실제 playback 완료 시간,1200ms 대기, 최종 면·위치와 기존 CTA, 대기 취소·진행 중 재개·reduced-motion/no-JS를 검증했다.
+- 기존 unit6개는1.3배 경계/단축된 hold와 원본 시간÷1.3에서의 기존 시각/연속성을 검증하도록 갱신했다. 전체 unit개수60은 유지한다. 이번 수정에서 전체 browser suite를 재실행했다고 주장하지 않는다.
+- 같은 feature/PR1/Vercel에 배포하고 공개 URL에서 실제 속도/단계/최종 상태를 재검증한다. 공개 측정과 배포 commit은 PR #1에 기록한다. backend/env/DB/DNS/main/merge 변경과 실제 신청POST는 없다.

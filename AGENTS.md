@@ -2,6 +2,8 @@
 
 ## Current task and precedence
 
+Latest follow-up: play ONLY the active GapLightMotion ivory preset1.3x faster. Duration7000/1.3=5384.615384615385ms, all phase and micro-fade timings divideby1.3, same geometry/easing/brightness. Landing and development preview share the faster timing; entrywait remains1200ms (total~6584.62ms). Keep lifecycle/controls/reduced/no-JS and the older comparisonpreset unchanged. Verify targeted tests then commit/push samefeature/PR1 and deploy existingURL immediately. Earlier7s timings are history; no othermotion/backend/env/DB/DNS/main/merge changes.
+
 Latest follow-up: shorten ONLY the GapLightMotion entry/replay wait2000→1200ms in Landing and development preview. Preserve the active7000ms choreography, including its400ms internal dark phase, all light quality/geometry and lifecycle. Total entrywait+playback is8200ms. Verify targeted GAP tests, commit/push existingfeature/PR1 and deploy existing URL immediately. Old2000ms evidence is historical; do not change phaseboundaries withthe samevalue. Other motion/backend/env/DB/DNS/main/merge untouched.
 
 Latest follow-up: animate ONLY the Prayer01 PAUSE→02 PRAY→03 CHOOSE row on entry. Initially hide its lights and text in normal JS; a horizontal light draws/sweeps across01 while copy fades in, then fades out before02 and03 in order. Revealed copy remains, no loop, preserve layout/copy and original static20/50/80 light profiles for reduced-motion/no-JS. Shared3900ms WAAPI clock,1300ms per step; first step35% visible triggers, entire list visibility/background pause and cleanup. Verify then commit/push same feature/PR1 and deploy existing URL. All other interactions/backend/env/DB/DNS/main remain unchanged.

@@ -8,7 +8,7 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 기도 단계의01 PAUSE→02 PRAY→03 CHOOSE는 섹션 진입 시 빛이 선을 그으며 순서대로 나타납니다. 각 빛은 다음 단계 전에 사라지고 텍스트는 남습니다. 기존 위치·크기·문구는 유지하며 화면 밖/비활성 탭에서는 정지하고 reduced-motion/no-JS에서는 원래 정적 구성을 표시합니다. [구현·검증](docs/PRAYER_STEPS_MOTION.md).
 
-최신 배포 범위는 누적 interaction 보정입니다: 질문 문구의 스크롤 fade·영문 eyebrow 삭제, 통계500ms 대기, “그래서” 정지 대기600ms, SNS 카드 후1700ms에 검은 배경/문구 등장, THE GAP의1200ms 대기+7000ms 아이보리 빛 모션. 사용자가 랜딩 연결과 기존 feature/PR/Vercel을 통한 배포를 승인했습니다. 이전 “로컬만/아직 배포 안 함” 기록은 아래 보정 단계의 이력입니다. [현재 검증 및 릴리스](docs/FINAL_INTERACTION_RELEASE.md).
+최신 배포 범위는 누적 interaction 보정입니다: 질문 문구의 스크롤 fade·영문 eyebrow 삭제, 통계500ms 대기, “그래서” 정지 대기600ms, SNS 카드 후1700ms에 검은 배경/문구 등장, THE GAP의1200ms 대기+약5384.62ms(1.3배 속도) 아이보리 빛 모션. 사용자가 랜딩 연결과 기존 feature/PR/Vercel을 통한 배포를 승인했습니다. 이전 “로컬만/아직 배포 안 함” 기록은 아래 보정 단계의 이력입니다. [현재 검증 및 릴리스](docs/FINAL_INTERACTION_RELEASE.md).
 
 전체12구간 구현을 기준으로, 최신 작업은 **종이비행기 공유 아이콘·SNS 카드0.7배 속도와 열 교차·단계별 빛 중심·흰색→네이비 인트로** 네 항목입니다. 우선순위는 **최신 사용자 명세 → 최종 Figma Desktop1209:514 / Mobile1209:1051 및 복원된 인트로 → 기존 구현·문서**입니다. 네 항목 밖의 문구·레이아웃·기능은 유지합니다.
 
@@ -31,9 +31,9 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 빛의 틈 모션
 
-THE GAP은 검수한 `preview` preset의7초 타임라인과1200ms 진입 대기를 사용합니다. 전체 약8.2초 뒤 최종 발광면을 유지합니다. 이전4521.43ms 기본 preset은 과거 비교용으로만 남깁니다. `/dev/gap-light`의 재생/탐색 제어는 개발 모드에서만 사용할 수 있습니다. [로컬 보정 이력](docs/GAP_LIGHT_SEVEN_SECOND_STUDY.md).
+THE GAP은 검수한 `preview` preset을1.3배 속도(7000÷1.3=약5384.62ms)로 재생하고1200ms 진입 대기를 사용합니다. 전체 약6.58초 뒤 최종 발광면을 유지합니다. 이전4521.43ms 기본 preset은 과거 비교용으로만 남깁니다. `/dev/gap-light`의 재생/탐색 제어는 개발 모드에서만 사용할 수 있습니다. [로컬 보정 이력](docs/GAP_LIGHT_SEVEN_SECOND_STUDY.md).
 
-THE GAP의 중앙 빛은 재사용 가능한 `GapLightMotion` SVG 컴포넌트입니다. 짧은 빛의 하강 → 접촉·바닥 확산·머무름 → 상승과 연결된 틈 → 테두리 없는 아이보리 발광면 순서입니다. 진입 후1.2초 대기하고7초 동안 한 번 재생하며 화면 밖/비활성 탭에서는 일시정지하며, reduced-motion과 JavaScript 비활성화에서는 최종 모습을 표시합니다. 기존 문구·CTA·섹션 크기는 유지합니다. 개발 전용 미리보기는 `npm run preview:gap-light` 후 `/dev/gap-light`에서 실행합니다. [연결·검증 기록](docs/GAP_LIGHT_LANDING_RELEASE.md).
+THE GAP의 중앙 빛은 재사용 가능한 `GapLightMotion` SVG 컴포넌트입니다. 짧은 빛의 하강 → 접촉·바닥 확산·머무름 → 상승과 연결된 틈 → 테두리 없는 아이보리 발광면 순서입니다. 진입 후1.2초 대기하고약5.38초 동안 한 번 재생하며 화면 밖/비활성 탭에서는 일시정지하며, reduced-motion과 JavaScript 비활성화에서는 최종 모습을 표시합니다. 기존 문구·CTA·섹션 크기는 유지합니다. 개발 전용 미리보기는 `npm run preview:gap-light` 후 `/dev/gap-light`에서 실행합니다. [연결·검증 기록](docs/GAP_LIGHT_LANDING_RELEASE.md).
 
 ## 전체 Landing과 현재 동작
 

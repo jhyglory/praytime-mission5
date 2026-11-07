@@ -43,7 +43,7 @@ export function GapLightPreview() {
       <header className={styles.header}>
         <p className={styles.eyebrow}>LOCAL MOTION PREVIEW</p>
         <h1 className={styles.heading}>빛의 틈 · 모션 미리보기</h1>
-        <p className={styles.introduction}>랜딩페이지에 연결한 7초 타임라인과 빛의 질감을 재생·검수하는 로컬 미리보기입니다.</p>
+        <p className={styles.introduction}>랜딩페이지에 연결한 {seconds(GAP_LIGHT_DURATION)}초 타임라인과 빛의 질감을 재생·검수하는 로컬 미리보기입니다.</p>
       </header>
 
       <div className={styles.layout}>

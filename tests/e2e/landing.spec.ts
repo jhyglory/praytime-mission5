@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import path from "node:path";
+import { GAP_LIGHT_PREVIEW_DURATION } from "../../src/components/motion/gap-light-preview-timeline";
 
 declare global { interface Window { qaConversions: number } }
 
@@ -126,7 +127,7 @@ for (const width of widths) {
     const gapMotion = gapArtwork.locator("svg[data-gap-light-motion]");
     await expect(gapMotion).toHaveCount(1);
     await expect(gapMotion).toHaveAttribute("data-motion-variant", "preview");
-    await expect(gapMotion).toHaveAttribute("data-duration", "7000");
+    await expect(gapMotion).toHaveAttribute("data-duration", String(GAP_LIGHT_PREVIEW_DURATION));
     await expect(gapMotion).toHaveAttribute("data-start-delay", "1200");
     const lightPlacement = await gapMotion.evaluate(el => {
       const svg = el as SVGSVGElement;

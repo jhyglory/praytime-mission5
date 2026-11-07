@@ -3,15 +3,16 @@ import {
   GAP_LIGHT_SLIT_WIDTH, GAP_LIGHT_TOP, GAP_LIGHT_TRAVELER_LENGTH,
 } from "./gap-light-timeline";
 
-/** Approved seven-second ivory choreography shared by the landing and preview. */
-export const GAP_LIGHT_PREVIEW_DURATION = 7000;
+/** The approved seven-second source choreography plays at the requested1.3x. */
+export const GAP_LIGHT_PREVIEW_PLAYBACK_RATE = 1.3;
+export const GAP_LIGHT_PREVIEW_DURATION = 7000 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE;
 export const GAP_LIGHT_PREVIEW_TIMING = {
-  darkEnd: 400,
-  fallEnd: 1300,
-  impactEnd: 2000,
-  riseStart: 2300,
-  riseEnd: 4500,
-  openEnd: 6500,
+  darkEnd: 400 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
+  fallEnd: 1300 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
+  impactEnd: 2000 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
+  riseStart: 2300 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
+  riseEnd: 4500 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
+  openEnd: 6500 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
   end: GAP_LIGHT_PREVIEW_DURATION,
 } as const;
 
@@ -31,8 +32,8 @@ export function gapLightPreviewFrameAt(milliseconds: number) {
   const spread = smooth((time - riseEnd) / (openEnd - riseEnd));
   const settle = smooth((time - openEnd) / (end - openEnd));
   const sinceContact = time - fallEnd;
-  const contactIgnition = smooth(sinceContact / 70);
-  const contactPulse = 1 - smooth((sinceContact - 70) / 350);
+  const contactIgnition = smooth(sinceContact / (70 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE));
+  const contactPulse = 1 - smooth((sinceContact - 70 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE) / (350 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE));
   const length = GAP_LIGHT_TRAVELER_LENGTH;
   const startTop = 70;
   // Quadratic ease-in accelerates a short, centered dash toward the ground.
@@ -49,8 +50,8 @@ export function gapLightPreviewFrameAt(milliseconds: number) {
     travelerX: GAP_LIGHT_CENTER,
     travelerY: time < fallEnd ? fallingTop : risingTop,
     travelerLength: length,
-    travelerOpacity: smooth((time - darkEnd) / 100) * (1 - smooth((time - (riseEnd - 180)) / 180)),
-    // Keep the stationary dash through impact and the entire 300ms hold.
+    travelerOpacity: smooth((time - darkEnd) / (100 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE)) * (1 - smooth((time - (riseEnd - 180 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE)) / (180 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE))),
+    // Keep the stationary dash through impact and the proportionally shorter hold.
     // At lift-off, one identical opaque core replaces it to avoid a join.
     travelerCoreOpacity: time < riseStart ? 1 : 0,
     joinedY: risingTop,

@@ -52,7 +52,7 @@ for (const width of [1440, 393, 360]) {
     await page.goto("/");
     const motion = page.locator("#the-gap svg[data-gap-light-motion]");
     await expect(motion).toHaveAttribute("data-motion-variant", "preview");
-    await expect(motion).toHaveAttribute("data-duration", "7000");
+    await expect(motion).toHaveAttribute("data-duration", String(GAP_LIGHT_PREVIEW_DURATION));
     await expect(motion).toHaveAttribute("data-start-delay", "1200");
     await expect(motion).toHaveAttribute("data-motion-state", "paused");
     await page.waitForTimeout(250);
@@ -63,13 +63,14 @@ for (const width of [1440, 393, 360]) {
     await page.waitForTimeout(200);
     expect(await elapsed(motion)).toBe(0);
     await motion.evaluate(element => {
-      const target = element as SVGSVGElement & { entryTiming?: { waiting: number; playing: number } };
-      const result = { waiting: 0, playing: 0 };
+      const target = element as SVGSVGElement & { entryTiming?: { waiting: number; playing: number; complete: number } };
+      const result = { waiting: 0, playing: 0, complete: 0 };
       target.entryTiming = result;
       const observer = new MutationObserver(() => {
         const state = target.dataset.motionState;
         if (state === "waiting" && !result.waiting) result.waiting = performance.now();
-        if (state === "playing" && !result.playing) { result.playing = performance.now(); observer.disconnect(); }
+        if (state === "playing" && !result.playing) result.playing = performance.now();
+        if (state === "complete" && !result.complete) { result.complete = performance.now(); observer.disconnect(); }
       });
       observer.observe(target, { attributes: true, attributeFilter: ["data-motion-state"] });
     });
@@ -79,7 +80,7 @@ for (const width of [1440, 393, 360]) {
     expect(await elapsed(motion)).toBe(0);
     await expect(motion).toHaveAttribute("data-motion-state", "playing");
     const waitDuration = await motion.evaluate(element => {
-      const timing = (element as SVGSVGElement & { entryTiming: { waiting: number; playing: number } }).entryTiming;
+      const timing = (element as SVGSVGElement & { entryTiming: { waiting: number; playing: number; complete: number } }).entryTiming;
       return timing.playing - timing.waiting;
     });
     expect(waitDuration).toBeGreaterThanOrEqual(1180);
@@ -87,6 +88,12 @@ for (const width of [1440, 393, 360]) {
     await expect.poll(() => elapsed(motion)).toBeGreaterThan(0);
     await motion.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
     await expect(motion).toHaveAttribute("data-motion-state", "complete", { timeout: 12000 });
+    const activeDuration = await motion.evaluate(element => {
+      const timing = (element as SVGSVGElement & { entryTiming: { playing: number; complete: number } }).entryTiming;
+      return timing.complete - timing.playing;
+    });
+    expect(activeDuration).toBeGreaterThanOrEqual(GAP_LIGHT_PREVIEW_DURATION - 50);
+    expect(activeDuration).toBeLessThanOrEqual(GAP_LIGHT_PREVIEW_DURATION + 500);
     expect(await elapsed(motion)).toBeCloseTo(GAP_LIGHT_PREVIEW_DURATION, 4);
     await expect(motion.locator('[data-gap-part="face"]')).toHaveAttribute("opacity", "1");
     await expect(motion.locator('[data-gap-part="traveler"]')).toHaveAttribute("opacity", "0");
