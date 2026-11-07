@@ -45,7 +45,7 @@
 .ambient-card__icon-scale { position:absolute; display:block; transform-origin:0 0; }
 .ambient-card--mobile { box-shadow:inset 0 0 0 .288235px rgb(241 241 238 / 12%); }
 .ambient-card__photo { object-fit:cover; }
-.card-intro__quiet { position:absolute; left:160px; top:208px; width:1120px; height:344px; filter:blur(26px); background:linear-gradient(90deg,transparent 0%,rgb(11 16 32 / 86%) 18%,#0b1020 33%,#0b1020 67%,rgb(11 16 32 / 86%) 82%,transparent 100%); }
+.card-intro__quiet { position:absolute; left:160px; top:208px; width:1120px; height:344px; filter:blur(26px); background:linear-gradient(90deg,transparent 0%,rgb(0 0 0 / 86%) 18%,#000 33%,#000 67%,rgb(0 0 0 / 86%) 82%,transparent 100%); }
 .card-intro__night-edge { position:absolute; inset:0 0 auto; height:240px; background:linear-gradient(rgb(11 16 32 / 65%),transparent); }
 .card-intro__particle-position { position:absolute; }
 .card-intro__particle { position:relative; transform-origin:0 0; }
@@ -57,6 +57,14 @@
 .card-intro__headline { font-size:46px; line-height:68px; font-weight:500; letter-spacing:-.92px; }
 .card-intro__anchor { font-size:20px; line-height:32px; letter-spacing:-.4px; color:rgb(241 241 238 / 72%); }
 .card-intro__mobile-break { display:none; }
+/* Reveal copy and its black reading field together after cards have entered.
+   Without JS, or with reduced motion, the final readable state is immediate. */
+@media (scripting:enabled) and (prefers-reduced-motion:no-preference) {
+  .card-intro__cards:not([data-copy-state="shown"]) .card-intro__declaration,
+  .card-intro__cards:not([data-copy-state="shown"]) .card-intro__quiet { opacity:0; }
+  .card-intro__cards[data-copy-state="revealing"] .card-intro__declaration,
+  .card-intro__cards[data-copy-state="revealing"] .card-intro__quiet { opacity:1; transition:opacity 400ms ease-out; }
+}
 @media (width < 768px) {
   .card-intro__clean, .card-intro__cards { height:680px; }
   .clean-intro__canvas { height:680px; }
@@ -82,7 +90,7 @@
   .card-intro__art { width:393px; height:680px; }
   .card-intro__column { opacity:.52; }
   .card-intro__floor { left:-133.5px; top:370px; }
-  .card-intro__quiet { left:0; top:163px; width:393px; height:354px; filter:blur(14px); background:linear-gradient(90deg,transparent 0%,rgb(11 16 32 / 86%) 19%,#0b1020 33%,#0b1020 67%,rgb(11 16 32 / 86%) 81%,transparent 100%); }
+  .card-intro__quiet { left:0; top:163px; width:393px; height:354px; filter:blur(14px); background:linear-gradient(90deg,transparent 0%,rgb(0 0 0 / 86%) 19%,#000 33%,#000 67%,rgb(0 0 0 / 86%) 81%,transparent 100%); }
   .card-intro__night-edge { height:170px; }
   .card-intro__handoff { top:608px; width:393px; }
   .card-intro__declaration { gap:28px; }

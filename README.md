@@ -6,6 +6,8 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 현재 기준과 작업 상태
 
+최신 배포 범위는 누적 interaction 보정입니다: 질문 문구의 스크롤 fade·영문 eyebrow 삭제, 통계500ms 대기, “그래서” 정지 대기600ms, SNS 카드 후3000ms에 검은 배경/문구 등장, THE GAP의2000ms 대기+7000ms 아이보리 빛 모션. 사용자가 랜딩 연결과 기존 feature/PR/Vercel을 통한 배포를 승인했습니다. 이전 “로컬만/아직 배포 안 함” 기록은 아래 보정 단계의 이력입니다. [현재 검증 및 릴리스](docs/FINAL_INTERACTION_RELEASE.md).
+
 전체12구간 구현을 기준으로, 최신 작업은 **종이비행기 공유 아이콘·SNS 카드0.7배 속도와 열 교차·단계별 빛 중심·흰색→네이비 인트로** 네 항목입니다. 우선순위는 **최신 사용자 명세 → 최종 Figma Desktop1209:514 / Mobile1209:1051 및 복원된 인트로 → 기존 구현·문서**입니다. 네 항목 밖의 문구·레이아웃·기능은 유지합니다.
 
 - [최종 Desktop · 1440](https://www.figma.com/design/J8iLsfruyMwVCakXsSJPq4/?node-id=1209-514)
@@ -27,9 +29,15 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 빛의 틈 모션
 
-THE GAP의 중앙 빛은 재사용 가능한 `GapLightMotion` SVG 컴포넌트입니다. 짧은 빛의 하강 → 접촉과 동시에 상승·바닥 확산 → 연결된 틈 → 테두리 없는 아이보리 발광면 순서로 약4.52초 동안 한 번 재생합니다. 화면 진입 시 시작하고 화면 밖/비활성 탭에서는 일시정지하며, reduced-motion과 JavaScript 비활성화에서는 최종 모습을 표시합니다. 기존 문구·CTA·섹션 크기는 유지합니다. 개발 전용 미리보기는 `npm run preview:gap-light` 후 `/dev/gap-light`에서 실행합니다. [연결·검증 기록](docs/GAP_LIGHT_LANDING_RELEASE.md).
+THE GAP은 검수한 `preview` preset의7초 타임라인과2000ms 진입 대기를 사용합니다. 전체 약9초 뒤 최종 발광면을 유지합니다. 이전4521.43ms 기본 preset은 과거 비교용으로만 남깁니다. `/dev/gap-light`의 재생/탐색 제어는 개발 모드에서만 사용할 수 있습니다. [로컬 보정 이력](docs/GAP_LIGHT_SEVEN_SECOND_STUDY.md).
+
+THE GAP의 중앙 빛은 재사용 가능한 `GapLightMotion` SVG 컴포넌트입니다. 짧은 빛의 하강 → 접촉·바닥 확산·머무름 → 상승과 연결된 틈 → 테두리 없는 아이보리 발광면 순서입니다. 진입 후2초 대기하고7초 동안 한 번 재생하며 화면 밖/비활성 탭에서는 일시정지하며, reduced-motion과 JavaScript 비활성화에서는 최종 모습을 표시합니다. 기존 문구·CTA·섹션 크기는 유지합니다. 개발 전용 미리보기는 `npm run preview:gap-light` 후 `/dev/gap-light`에서 실행합니다. [연결·검증 기록](docs/GAP_LIGHT_LANDING_RELEASE.md).
 
 ## 전체 Landing과 현재 동작
+
+질문 “무심코 열게 된 SNS…”는 일반 모션 환경에서 처음에는 숨기고, 사용자가 스크롤한 뒤 제목이 화면에 들어오면800ms 동안 opacity로 나타납니다. 문구·위치·영역 크기는 유지하며 한 번 표시된 뒤 다시 숨기지 않습니다. reduced-motion/no-JS는 즉시 읽을 수 있습니다. 검증 후 이번 릴리스에 포함합니다.
+
+SNS 텍스트는 카드가 먼저 움직인 뒤3000ms 후 중앙 선언·보조 문구와 검은 reading field를 함께400ms fade-in합니다. 기존 위치/문구/카드 속도·방향은 유지하고 reduced-motion/no-JS에서는 바로 읽을 수 있습니다. [보정 이력](docs/SNS_COPY_REVEAL.md). 이번 릴리스에 포함합니다.
 
 Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS declaration → THE GAP → TIME SELECT → PRAYER BEFORE CHOICE → FAQ → BETA SIGNUP → Footer 순서입니다. Header는 Hero 위 overlay이며, clean intro와 SNS scene은 서로 다른 스크롤 구간입니다.
 
@@ -37,9 +45,9 @@ Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS 
 - Hero/Question은 사용자가 제공한 고화질 PNG 원본 비율·기존 glass 위치를 유지합니다. THE GAP은 이전 PNG의 빛 상단·바닥 위치를 보존하면서 위의 승인된 SVG 모션으로 교체했습니다. [과거 원본 해시](docs/evidence/high-resolution-assets/originals.json).
 - Hero 유리 이미지는 hover·마우스 이동에도 고정됩니다. 이전2.5px pointer parallax는 제거했으며 원본 이미지·crop·CTA hover/focus는 유지합니다.
 - ONE QUESTION은 Hero와 같은 원본 artwork의 연속 crop을 사용합니다. 최종 Figma의 Desktop56/80, Mobile32/48 제목을 적용합니다.
-- WHY NOW는 각 카드가 실제 **40%** 보인 뒤 **700ms 대기 후** 독립 시작합니다. 대기 중 화면 밖으로 나가거나 탭이 비활성화되면 취소하고 재진입 때 다시 기다립니다. 이미 시작한 애니메이션은 추가 대기 없이 이어집니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**이며 회색 track은 표시하지 않습니다. 사용자 요청에 따른 장식용 최종 길이는80% /70%이고, 실제 통계 숫자34.3% /25.3%는 그대로 유지합니다.
+- WHY NOW는 각 카드가 실제 **40%** 보인 뒤 **500ms 대기 후** 독립 시작합니다. 대기 중 화면 밖으로 나가거나 탭이 비활성화되면 취소하고 재진입 때 다시 기다립니다. 이미 시작한 애니메이션은 추가 대기 없이 이어집니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**이며 회색 track은 표시하지 않습니다. 사용자 요청에 따른 장식용 최종 길이는80% /70%이고, 실제 통계 숫자34.3% /25.3%는 그대로 유지합니다.
 - 통계는 **카드마다 페이지 로드당 한 번** 실행합니다. 새로고침·페이지 재진입에서는 다시 실행하며, 완료 여부를 `sessionStorage`나 `localStorage`에 저장하지 않습니다. reduced-motion/no-JS는 읽을 수 있는 최종값을 표시합니다.
-- clean intro는 **흰색 영역의 검은 “그래서” 전체 단어 → 얇은 빛과 배경 전환 → 네이비의 실제 빨간 Pause Mark·워드마크 + “은”** 순서입니다. 최신 요청으로 단어와 흰 배경의 완전 표시 상태를1.5초 더 유지하며 전체 타임라인은5.5초입니다. 원본의 등장·fade 속도는 유지하고 구간 진입 시 한 번 실행하며 화면 밖·비활성 탭에서 정지합니다. 점 세 개와 “행동하기 전에, 잠깐의 틈을 만듭니다.” 문구는 없으며, 인트로에 SNS 장식은 넣지 않습니다. reduced-motion/no-JS에서도 읽을 수 있는 정적 상태를 제공합니다.
+- clean intro는 **흰색 영역의 검은 “그래서” 전체 단어 → 얇은 빛과 배경 전환 → 네이비의 실제 빨간 Pause Mark·워드마크 + “은”** 순서입니다. 최신 요청으로 단어와 흰 배경의 공통 정지 대기를0.6초로 줄였으며 전체 타임라인은4.6초입니다. 원본의 등장·fade 속도는 유지하고 구간 진입 시 한 번 실행하며 화면 밖·비활성 탭에서 정지합니다. 점 세 개와 “행동하기 전에, 잠깐의 틈을 만듭니다.” 문구는 없으며, 인트로에 SNS 장식은 넣지 않습니다. reduced-motion/no-JS에서도 읽을 수 있는 정적 상태를 제공합니다.
 - SNS scene은 최종 Figma의 Desktop760/Mobile680px 구간과 고정 선언·보조 문구를 유지합니다. 카드 속도는 직전15초 모션의 **0.7배**이며 같은 이동 거리의 새 주기는 **15000÷0.7=21428.571428571428ms(약21.43초)**입니다. Desktop6열은 **↑↓↑↓↑↓**, Mobile3열은 **↑↓↑**로 열 전체가 교차 이동합니다. 원본 사진80개를 각 viewport의 base cycle에 한 번씩 배치하고 독립 phase·동일 duplicate tile로 양방향 반복을 연결합니다. 하트16개·종이비행기4개는 카드 방향과 무관하게 기존12초 타이밍으로 계속 상승합니다.
 - SNS 카드 안과 주변의 공유 glyph는 선으로 그린 재사용 `PaperPlaneIcon`으로 통일하며 기존 슬롯·색·투명도를 유지합니다. 다음 SNS 화면에는 인트로의그래서/로고를 다시 넣지 않습니다.
 - THE GAP은 건축적 light artwork와 동등한 두 선택을 유지합니다. 조건 문구·light·CTA와 arrow 묶음은 각 panel 중앙축을 공유합니다. 돌아가기 → `#hero`, 시간 선택 → `#how-it-works`입니다. 요청된 문장 “열기 전, 무엇 때문에 열었는지 떠올려 보세요.”는 제거하며 대체 문구를 추가하지 않습니다.

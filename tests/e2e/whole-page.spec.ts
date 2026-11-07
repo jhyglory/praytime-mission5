@@ -9,9 +9,9 @@ const regions = [
 // Whole-page rhythm verified against final1209:514 /1209:1051. At360px,
 // lower content may grow as it wraps; intro fills900px and FAQ follows the85% user override.
 const referenceHeights: Record<number, readonly number[]> = {
-  1440: [88, 684, 484, 963, 900, 760, 1180, 923.40625, 757, 834.71875, 1709, 123],
-  393: [72, 932, 380, 1098, 900, 680, 1024, 1187.734375, 999, 1065.71875, 2483, 168],
-  360: [72, 932, 380, 1098, 900, 680, 1024, 1170.390625, 1051, 1091.21875, 2509, 168],
+  1440: [88, 684, 416, 963, 900, 760, 1180, 923.40625, 757, 834.71875, 1709, 123],
+  393: [72, 932, 320, 1098, 900, 680, 1024, 1187.734375, 999, 1065.71875, 2483, 168],
+  360: [72, 932, 320, 1098, 900, 680, 1024, 1170.390625, 1051, 1091.21875, 2509, 168],
 };
 
 const observations = new WeakMap<Page, { errors: string[]; posts: string[] }>();

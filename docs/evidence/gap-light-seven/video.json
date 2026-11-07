@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "path": "/Users/codeit/Documents/Codex/2026-11-06/praytime-mission-5-landing-page-1/outputs/gap-light-seven/393-replay.webm",
+  "sourceElapsedMs": 7000,
+  "realCaptureWallMs": 7854.071459000001,
+  "canvas": {
+    "width": 393,
+    "height": 477
+  },
+  "frames": 418,
+  "receivedCDPFrames": 423,
+  "bytes": 115986,
+  "frameErrors": [],
+  "errors": [],
+  "posts": 0,
+  "metadata": {
+    "width": 393,
+    "height": 477,
+    "duration": "stream duration not indexed"
+  },
+  "decoded": [
+    {
+      "name": "fall",
+      "target": 1,
+      "time": 1.0382,
+      "ended": false,
+      "visiblePixels": 50,
+      "brightPixels": 0
+    },
+    {
+      "name": "contact",
+      "target": 1.8,
+      "time": 1.816,
+      "ended": false,
+      "visiblePixels": 135,
+      "brightPixels": 6
+    },
+    {
+      "name": "hold",
+      "target": 2.3,
+      "time": 2.3173,
+      "ended": false,
+      "visiblePixels": 745,
+      "brightPixels": 16
+    },
+    {
+      "name": "rise",
+      "target": 3.6,
+      "time": 3.6177,
+      "ended": false,
+      "visiblePixels": 1445,
+      "brightPixels": 380
+    },
+    {
+      "name": "open",
+      "target": 5.7,
+      "time": 5.72,
+      "ended": false,
+      "visiblePixels": 5030,
+      "brightPixels": 2757
+    },
+    {
+      "name": "final",
+      "target": 7.5,
+      "time": 7.5184,
+      "ended": false,
+      "visiblePixels": 14609,
+      "brightPixels": 6318
+    }
+  ],
+  "method": "Actual Chrome CDP frames cropped to SVG in hidden canvas.captureStream and encoded by native MediaRecorder. No source timeline seek during recorded replay. Saved WebM decoded and replayed normally in fresh Chrome page; no ffmpeg/dependency."
+}

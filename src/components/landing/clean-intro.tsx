@@ -14,7 +14,7 @@ export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; 
       element.dataset.introState = viewport ? "reduced" : "static";
       return;
     }
-    // Preserve the restored light timing, with the user's extra1.5s reading hold.
+    // Keep light/fade timings; the shared full-word pause is now600ms.
     // The next SNS scene stays independent; play once on entry and hold the logo.
     const animations = introMotion.tracks.map(track => {
       const target = element.querySelector<HTMLElement>('[data-intro-part="' + track.part + '"]')!;

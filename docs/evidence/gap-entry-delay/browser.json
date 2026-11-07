@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "waitMs": 701.8999999761581,
+      "playMs": 7014.5,
+      "totalMs": 7716.399999976158,
+      "mid": {
+        "state": "waiting",
+        "elapsed": 0
+      },
+      "controls": "PASS replay/pause/seek/final cancel timer; seek resume has no extra delay",
+      "reducedMotion": "PASS",
+      "errors": []
+    },
+    {
+      "width": 393,
+      "waitMs": 702.3999999761581,
+      "playMs": 7017.100000023842,
+      "totalMs": 7719.5,
+      "mid": {
+        "state": "waiting",
+        "elapsed": 0
+      },
+      "controls": "PASS replay/pause/seek/final cancel timer; seek resume has no extra delay",
+      "reducedMotion": "PASS",
+      "errors": []
+    }
+  ],
+  "status": "PASS"
+}

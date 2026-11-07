@@ -125,6 +125,9 @@ for (const width of widths) {
     await expect(gapArtwork.locator("img")).toHaveCount(0);
     const gapMotion = gapArtwork.locator("svg[data-gap-light-motion]");
     await expect(gapMotion).toHaveCount(1);
+    await expect(gapMotion).toHaveAttribute("data-motion-variant", "preview");
+    await expect(gapMotion).toHaveAttribute("data-duration", "7000");
+    await expect(gapMotion).toHaveAttribute("data-start-delay", "2000");
     const lightPlacement = await gapMotion.evaluate(el => {
       const svg = el as SVGSVGElement;
       const canvas = svg.getBoundingClientRect();
@@ -140,6 +143,8 @@ for (const width of widths) {
         viewHeight: svg.viewBox.baseVal.height,
         faceFill: face.getAttribute("fill"),
         faceStroke: face.getAttribute("stroke"),
+        faceFilter: face.getAttribute("filter"),
+        faceRadius: face.getAttribute("rx"),
       };
     });
     expect(lightPlacement.center).toBeCloseTo(width / 2, 1);
@@ -148,8 +153,10 @@ for (const width of widths) {
     expect(lightPlacement.viewWidth).toBe(1200);
     expect(lightPlacement.viewHeight).toBeCloseTo(1381 * 1200 / 1139, 3);
     expect(lightPlacement.ratio).toBeCloseTo(1139 / 1381, 3);
-    expect(lightPlacement.faceFill).toBe("#FEF9E7");
+    expect(lightPlacement.faceFill).toMatch(/^url\(#[^)]+-faceColor\)$/);
+    expect(lightPlacement.faceFilter).toMatch(/^url\(#[^)]+-faceSoftness\)$/);
     expect(lightPlacement.faceStroke).toBeNull();
+    expect(lightPlacement.faceRadius).toBeNull();
     await expect(page.locator(".gap-choice--return .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
     await expect(page.locator(".gap-choice--time .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
     await expect(page.locator(".equal-outcomes .prayer-light-divider")).toHaveCount(2);

@@ -8,6 +8,12 @@
 .hero-content .body-copy { max-width: 520px; }
 .hero-content .small-copy { max-width: 560px; font-size: 14px; }
 .one-question h2 { font-size: 56px; line-height: 80px; }
+/* Keep the text in layout and available to assistive technology while it fades.
+   The controller requires both a scroll and heading visibility before reveal. */
+@media (scripting:enabled) and (prefers-reduced-motion:no-preference) {
+  .one-question [data-question-reveal="pending"] { opacity:0; }
+  .one-question [data-question-reveal="shown"] { opacity:1; transition:opacity 800ms ease-out; }
+}
 
 @media (768px <= width < 1200px) {
   .landing-header { grid-template-columns: 168.5px minmax(0, 1fr) 160px; }

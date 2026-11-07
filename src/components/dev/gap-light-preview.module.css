@@ -29,6 +29,7 @@
 .range:disabled { opacity: .4; cursor: default; }
 .seekHelp { color: #aaa8b4; font-size: 12px; line-height: 20px; }
 .status { margin-top: 14px; min-height: 24px; color: #fffbed; font-size: 14px; line-height: 24px; }
+.phase { margin-top: 4px; color: #d1cfd6; font-size: 14px; line-height: 24px; }
 .description { margin-top: 18px; color: #c4c4cb; font-size: 14px; line-height: 24px; }
 .noteSection { margin-top: 28px; }
 .subheading { font-size: 17px; line-height: 26px; }

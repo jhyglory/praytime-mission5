@@ -6,6 +6,8 @@
   background: #080e26;
 }
 
+.preview { overflow: hidden; }
+
 /* Initial server-rendered frame is dark; static geometry is the final pose. */
 .canvas[data-motion-state="idle"] .light,
 .canvas[data-motion-state="idle"] .transient {

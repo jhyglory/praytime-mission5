@@ -253,7 +253,7 @@ test("active navigation retains native anchor names, URLs and keyboard heading f
   }
 });
 
-test("WHY NOW waits 700ms then shares 1400ms cubic number/fill progress, once per load and after reloads", async ({ page }) => {
+test("WHY NOW waits 500ms then shares 1400ms cubic number/fill progress, once per load and after reloads", async ({ page }) => {
   await page.addInitScript(() => {
     // Obsolete session flags must not suppress the new per-page animation.
     for (const rate of [34.3, 25.3]) sessionStorage.setItem(`praytime:why-now-countup:v3:${rate}`, "done");
@@ -297,15 +297,15 @@ test("WHY NOW waits 700ms then shares 1400ms cubic number/fill progress, once pe
   });
   await centerSection(page, "#why-stats");
   await expect(grid).toHaveAttribute("data-count-state", "waiting");
-  await page.waitForTimeout(450);
+  await page.waitForTimeout(250);
   await expect(numbers).toHaveText(["0.0%", "0.0%"]);
   for (const fill of await grid.locator(".stat-fill").all()) expect((await transform(fill)).scaleX).toBe(0);
   await expect(grid).toHaveAttribute("data-count-state", "complete");
   await expect(numbers).toHaveText(["34.3%", "25.3%"]);
   await expect(grid).toHaveAttribute("data-count-runs", "1");
   const observation = await page.evaluate(() => window.microStats);
-  expect(observation.started - observation.waiting).toBeGreaterThanOrEqual(680);
-  expect(observation.started - observation.waiting).toBeLessThanOrEqual(850);
+  expect(observation.started - observation.waiting).toBeGreaterThanOrEqual(480);
+  expect(observation.started - observation.waiting).toBeLessThanOrEqual(650);
   expect(observation.completed - observation.started).toBeGreaterThanOrEqual(1350);
   expect(observation.completed - observation.started).toBeLessThanOrEqual(1550);
   expect(observation.samples.length).toBeGreaterThan(2);
@@ -405,7 +405,7 @@ test("mobile statistics trigger individually at 40% of the unmodified viewport a
   await expect(first.locator("[data-stat-number]")).toHaveText("0.0%");
   await reveal(first, 0.41);
   await expect(first).toHaveAttribute("data-count-state", "waiting");
-  await page.waitForTimeout(450);
+  await page.waitForTimeout(250);
   await expect(first.locator("[data-stat-number]")).toHaveText("0.0%");
   await expect(first).toHaveAttribute("data-count-state", "running");
   await expect(second).toHaveAttribute("data-count-state", "pending");
@@ -457,7 +457,7 @@ test("WHY NOW cancels its startup wait offscreen or in the background, and reduc
     document.dispatchEvent(new Event("visibilitychange"));
   });
   await expect(grid).toHaveAttribute("data-count-state", "waiting");
-  await page.waitForTimeout(450);
+  await page.waitForTimeout(250);
   await expect(numbers).toHaveText(["0.0%", "0.0%"]);
   await page.emulateMedia({ reducedMotion: "reduce" });
   await expect(grid).toHaveAttribute("data-count-state", "complete");

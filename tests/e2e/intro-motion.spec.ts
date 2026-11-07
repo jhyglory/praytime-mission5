@@ -6,13 +6,112 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/beta-signup", route => route.abort());
 });
 
+test("SNS cards lead for 3000ms before the text and dark scrim reveal together on visible entry", async ({ page }) => {
+  test.setTimeout(45_000);
+  for (const width of [1440, 393]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await page.goto("/");
+    const scene = page.locator(".card-intro__cards");
+    const text = scene.locator(".card-intro__declaration");
+    const quiet = scene.locator(".card-intro__quiet");
+    await expect(scene).toHaveAttribute("data-copy-state", "pending");
+    await expect(scene).toHaveAttribute("data-copy-delay", "3000");
+    await expect(scene).toHaveAttribute("data-copy-fade", "400");
+    await expect(quiet).toHaveCount(1);
+    await expect(text).toHaveCSS("opacity", "0");
+    await expect(quiet).toHaveCSS("opacity", "0");
+
+    // Start and leave inside the browser, so automation round trips cannot
+    // accidentally consume the entire short startup window.
+    const firstEntry = await scene.evaluate(async el => {
+      el.scrollIntoView({ block: "start", behavior: "instant" });
+      await new Promise(resolve => setTimeout(resolve, 250));
+      const snapshot = {
+        text: Number(getComputedStyle(el.querySelector(".card-intro__declaration")!).opacity),
+        quiet: Number(getComputedStyle(el.querySelector(".card-intro__quiet")!).opacity),
+        columns: [...el.querySelectorAll(".card-intro__column")].every(column => column.getAnimations().some(animation => animation.playState === "running")),
+      };
+      document.getElementById("hero")!.scrollIntoView({ block: "start", behavior: "instant" });
+      return snapshot;
+    });
+    expect(firstEntry).toEqual({ text: 0, quiet: 0, columns: true });
+    await expect(scene).toHaveAttribute("data-copy-state", "pending");
+    await page.waitForTimeout(3200);
+    await expect(text).toHaveCSS("opacity", "0");
+    await expect(quiet).toHaveCSS("opacity", "0");
+
+    await scene.evaluate(el => {
+      type Sample = { at: number; state: string; text: number; quiet: number };
+      const target = el as HTMLElement & { revealQA?: { waiting: number; revealing: number; shown: number; samples: Sample[] } };
+      const result: NonNullable<typeof target.revealQA> = { waiting: 0, revealing: 0, shown: 0, samples: [] };
+      target.revealQA = result;
+      const observer = new MutationObserver(() => {
+        const state = target.dataset.copyState;
+        if (state === "waiting" || state === "revealing" || state === "shown") {
+          if (!result[state]) result[state] = performance.now();
+        }
+      });
+      observer.observe(target, { attributes: true, attributeFilter: ["data-copy-state"] });
+      const sample = () => {
+        result.samples.push({ at: performance.now(), state: target.dataset.copyState!,
+          text: Number(getComputedStyle(target.querySelector(".card-intro__declaration")!).opacity),
+          quiet: Number(getComputedStyle(target.querySelector(".card-intro__quiet")!).opacity) });
+        if (target.dataset.copyState === "shown") { observer.disconnect(); return; }
+        requestAnimationFrame(sample);
+      };
+      requestAnimationFrame(sample);
+      target.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+    await expect(scene).toHaveAttribute("data-copy-state", "shown");
+    await expect(text).toHaveCSS("opacity", "1");
+    await expect(quiet).toHaveCSS("opacity", "1");
+    const observation = await scene.evaluate(el => (el as HTMLElement & { revealQA: { waiting: number; revealing: number; shown: number; samples: { at: number; state: string; text: number; quiet: number }[] } }).revealQA);
+    expect(observation.revealing - observation.waiting).toBeGreaterThanOrEqual(2980);
+    expect(observation.revealing - observation.waiting).toBeLessThanOrEqual(3200);
+    expect(observation.shown - observation.revealing).toBeGreaterThanOrEqual(380);
+    expect(observation.samples.some(sample => sample.state === "waiting" && sample.text === 0 && sample.quiet === 0)).toBe(true);
+    expect(observation.samples.some(sample => sample.text > .1 && sample.text < .9)).toBe(true);
+    for (const sample of observation.samples) expect(Math.abs(sample.text - sample.quiet)).toBeLessThan(.04);
+    await expect(scene.locator(".card-intro__headline")).toContainText("손이 먼저 움직인 순간,");
+    await expect(scene.locator(".card-intro__headline")).toContainText("다시 생각할 시간을");
+    await expect(scene.locator(".card-intro__anchor")).toContainText("필요한 만큼만 선택합니다.");
+    expect(await scene.locator(".card-intro__column").evaluateAll(columns => columns.every(column => column.getAnimations().every(animation => animation.playState === "running")))).toBe(true);
+    await page.locator("#hero").evaluate(el => el.scrollIntoView({ behavior: "instant" }));
+    await scene.evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
+    await expect(scene).toHaveAttribute("data-copy-state", "shown");
+    await expect(text).toHaveCSS("opacity", "1");
+    await page.setViewportSize({ width: width === 1440 ? 393 : 1440, height: 900 });
+    await expect(scene).toHaveAttribute("data-copy-state", "shown");
+    await expect(text).toHaveCSS("opacity", "1");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(page.locator("[data-signature-transition]")).toHaveAttribute("data-motion-state", "reduced");
+    await expect(text).toHaveCSS("opacity", "1");
+    await expect(quiet).toHaveCSS("opacity", "1");
+    expect(await scene.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(0);
+  }
+});
+
+test.describe("SNS copy without JavaScript", () => {
+  test.use({ javaScriptEnabled: false });
+  test("shows readable text immediately without waiting for a reveal", async ({ page }) => {
+    for (const width of [1440, 393]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/");
+      const scene = page.locator(".card-intro__cards");
+      await expect(scene.locator(".card-intro__declaration")).toHaveCSS("opacity", "1");
+      await expect(scene.locator(".card-intro__headline")).toContainText("손이 먼저 움직인 순간,");
+    }
+  });
+});
+
 test("restored white intro reveals the whole word, slit and aperture before the logo on entry, with no SNS layers", async ({ page }) => {
   for (const width of [1440,393]) {
     await page.setViewportSize({ width,height:width === 1440 ? 760 : 680 });
     await page.goto("/");
     const clean=page.locator("[data-clean-intro]");
     const cards=page.locator(".card-intro__cards");
-    await expect(clean).toHaveAttribute("data-intro-duration","5500");
+    await expect(clean).toHaveAttribute("data-intro-duration","4600");
     await expect(clean).toHaveAttribute("data-intro-state","paused");
     await page.waitForTimeout(500);
     expect(await clean.evaluate(el => el.getAnimations({subtree:true}).every(a => a.currentTime === 0))).toBe(true);
@@ -34,7 +133,7 @@ test("restored white intro reveals the whole word, slit and aperture before the 
     expect(await clean.locator(".card-intro__therefore").evaluate(el => el.childElementCount)).toBe(0);
     const samples=await clean.evaluate(el => {
       const animations=el.getAnimations({ subtree:true });
-      return [0,650,1500,2000,2700,3150,3700,5500,16000].map(time => {
+      return [0,650,900,1100,1800,2250,2800,4600,16000].map(time => {
         for (const animation of animations) { animation.pause();animation.currentTime=time; }
         return Object.fromEntries(["paper","therefore","slit","outer","brand"].map(part => [part,Number(getComputedStyle(el.querySelector('[data-intro-part="' + part + '"]')!).opacity)]));
       });
@@ -129,6 +228,9 @@ test("alternating photo streams run at 70% speed without gaps or duplicate photo
     expect(streams[variant].duration).toBe(12000);
     await page.evaluate(() => { for (const img of document.images) img.loading="eager"; });
     await expect.poll(() => page.evaluate(() => [...document.images].filter(img => !img.complete || !img.naturalWidth).length),{timeout:30_000}).toBe(0);
+    // The one-time text/scrim CSS transition is separate from the permanent
+    // card/particle tracks; inspect that inventory after the reveal finishes.
+    await expect(scene).toHaveAttribute("data-copy-state", "shown");
     const resetTimes=streams[variant].tracks.filter(track => track.frames.some(frame => "transform" in frame) && track.nodeId.startsWith("1284:")).map(track => track.frames[1].offset * cardDuration);
     const result=await scene.evaluate((el,{resetTimes,baseHeight,cardDuration}) => {
       const animations=el.getAnimations({subtree:true});

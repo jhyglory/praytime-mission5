@@ -1,5 +1,10 @@
 # 빛의 틈 · Stage 3 로컬 모션 미리보기
 
+최신 배포 승인: 사용자가 누적 보정을 마무리해 기존 랜딩 주소에 배포하도록 요청했다. 이하 로컬-only/게시 보류 기록은 이전 단계의 이력이며, 현재 랜딩 연결·검증·배포는 [FINAL_INTERACTION_RELEASE.md](FINAL_INTERACTION_RELEASE.md)를 따른다.
+
+
+최신 로컬 보정: `/dev/gap-light`는 별도 `variant="preview"`로 실제7초 타임라인과 접촉·확산·머무름, 미세한 발광면·광채를 검수한다. 랜딩의 기본4521.43ms 모션은 유지하며 이번 변경은 게시하지 않는다. [7초 보정 기록](GAP_LIGHT_SEVEN_SECOND_STUDY.md)이 아래 과거 단계보다 우선한다.
+
 현재 단계 업데이트: 사용자가 완성된 모션의 랜딩 연결과 배포를 승인했다. 아래의 연결/배포 보류 문구와 기록은 미리보기 단계의 이력이다. 동일 컴포넌트를 THE GAP에서 사용하며, 현재 검증과 릴리스 상태는 [GAP_LIGHT_LANDING_RELEASE.md](GAP_LIGHT_LANDING_RELEASE.md)를 따른다. 개발용 제어 화면은 계속 production404다.
 
 현재 기준은 새 첨부 이미지 `docs/design-assets/gap-light-ivory/reference.png`와 후속 길이/0.7배 하강 속도 조정이다. 전체 약4.52초이며 이전ZIP/14·24 폭/8px 선택/테두리·캡/3.2·4.2초 고정 타임라인보다 우선한다. 기존 랜딩 연결·commit·push·배포·PR 수정/병합은 하지 않는다.

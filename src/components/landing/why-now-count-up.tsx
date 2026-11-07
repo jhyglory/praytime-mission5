@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 const duration = 1400;
-const startDelay = 700;
+const startDelay = 500;
 const visibilityThreshold = 0.4;
 type CountState = "pending" | "waiting" | "running" | "paused" | "complete";
 

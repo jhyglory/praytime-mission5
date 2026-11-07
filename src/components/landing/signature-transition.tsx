@@ -15,6 +15,8 @@ import masonry from "./prototype-columns.json";
 // The original12s particle clock remains independent of the card streams.
 const previousCardDuration = 15_000;
 const cardPlaybackSpeed = 0.7;
+const declarationDelay = 3000;
+const declarationFade = 400;
 const desktopParticles = [
   [53.666668,689,14],[1363.03955,497.033325,16],[123.300003,277.674988,18],[1308,141,20],
   [171,414,14],[1246,323,16],[206.458328,538.19165,18],[1205.693726,315.825012,20],
@@ -44,6 +46,7 @@ const getServerViewport = () => "";
 export function SignatureTransition() {
   const container = useRef<HTMLDivElement>(null);
   const cardScene = useRef<HTMLElement>(null);
+  const copyShown = useRef(false);
   // Stable SSR/hydration fallback. Mount only one viewport's decorative tree.
   const viewport = useSyncExternalStore(subscribeViewport, getViewport, getServerViewport);
   const variant = viewport.startsWith("mobile") ? "mobile" : "desktop";
@@ -51,6 +54,51 @@ export function SignatureTransition() {
   const source = motion[variant];
   const cardDuration = previousCardDuration / cardPlaybackSpeed;
   const particles = variant === "mobile" ? mobileParticles : desktopParticles;
+
+  useEffect(() => {
+    const scene = cardScene.current;
+    if (!scene) return;
+    // SSR/no-JS stays readable; hide only for the resolved motion preference.
+    if (!viewport) { scene.dataset.copyState = "pending"; return; }
+    if (copyShown.current || !animate || typeof IntersectionObserver === "undefined") {
+      copyShown.current = true;
+      scene.dataset.copyState = "shown";
+      return;
+    }
+    let waiting = 0, settling = 0;
+    let inView = false, revealed = false, disposed = false;
+    const clearTimers = () => { window.clearTimeout(waiting); window.clearTimeout(settling); waiting = 0; settling = 0; };
+    const finish = () => { clearTimers(); revealed = true; copyShown.current = true; scene.dataset.copyState = "shown"; };
+    const syncReveal = () => {
+      if (disposed) return;
+      if (!inView || document.hidden) {
+        // Don't continue the short fade out of sight; keep its readable result.
+        if (revealed) finish();
+        else { clearTimers(); scene.dataset.copyState = "pending"; }
+        return;
+      }
+      if (revealed || waiting) return;
+      scene.dataset.copyState = "waiting";
+      waiting = window.setTimeout(() => {
+        waiting = 0;
+        if (disposed || !inView || document.hidden) return;
+        revealed = true; copyShown.current = true;
+        scene.dataset.copyState = "revealing";
+        settling = window.setTimeout(finish, declarationFade);
+      }, declarationDelay);
+    };
+    scene.dataset.copyState = "pending";
+    const observer = new IntersectionObserver(entries => {
+      inView = entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .05);
+      syncReveal();
+    }, { threshold:.05 });
+    observer.observe(scene);
+    document.addEventListener("visibilitychange", syncReveal);
+    return () => {
+      disposed = true; clearTimers(); observer.disconnect();
+      document.removeEventListener("visibilitychange", syncReveal);
+    };
+  }, [animate, variant, viewport]);
 
   useEffect(() => {
     const scene = cardScene.current;
@@ -121,7 +169,7 @@ export function SignatureTransition() {
     <p className="sr-only">그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.</p>
     <div className="card-intro__scene" aria-hidden="true">
       <CleanIntro variant={variant} viewport={viewport} />
-      <section ref={cardScene} className="card-intro__cards" data-node-id={variant === "mobile" ? "1214:831" : "1214:652"}>
+      <section ref={cardScene} className="card-intro__cards" data-copy-state="pending" data-copy-delay={declarationDelay} data-copy-fade={declarationFade} data-node-id={variant === "mobile" ? "1214:831" : "1214:652"}>
         {viewport && <div className={"card-intro__art card-intro__art--" + variant}>
           <img className="card-intro__floor" src={variant === "mobile" ? "/assets/card-intro/mobile-floor.svg" : "/assets/card-intro/prototype-floor.svg"} alt="" />
           <div className="card-intro__masonry">

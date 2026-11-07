@@ -1,8 +1,10 @@
 # Mission 5 · Micro-interaction patch
 
+> 현재 릴리스: 사용자가 누적된 로컬 보정을 마무리한 뒤 기존 랜딩 주소에 배포하도록 승인했습니다. 아래의 로컬-only·배포 보류 문구는 당시 작업 이력이며 이번 승인으로 종료됐습니다. 기존 feature 브랜치와 PR #1을 유지하고, 현재 범위와 검증 결과는 [FINAL_INTERACTION_RELEASE.md](FINAL_INTERACTION_RELEASE.md)를 따릅니다. merge·main·DNS·backend/env·실제 DB 작업은 이번 릴리스에 포함하지 않습니다.
+
 ## Latest Hero override · 2026-11-07
 
-사용자가 hover 때 틈이 벌어져 보이는 반응 제거를 요청했다. Hero의2.5px 전체 이미지 pointer parallax와 전용 controller/CSS를 제거하고 고정 artwork로 유지한다. 유리와 빛은 하나의 PNG이며 개별 유리 바를 벌리는 코드는 없었다. 원본 이미지·crop·mask·정렬·CTA hover/focus는 보존한다. 아래 Hero 동작과 해당 검증 기록은 이전 구현 이력이다. 현재 통계는40% 노출 뒤700ms 대기/1400ms count/페이지당1회/빨간80·70% 장식이며 AGENTS.md와 README.md가 우선한다.
+사용자가 hover 때 틈이 벌어져 보이는 반응 제거를 요청했다. Hero의2.5px 전체 이미지 pointer parallax와 전용 controller/CSS를 제거하고 고정 artwork로 유지한다. 유리와 빛은 하나의 PNG이며 개별 유리 바를 벌리는 코드는 없었다. 원본 이미지·crop·mask·정렬·CTA hover/focus는 보존한다. 아래 Hero 동작과 해당 검증 기록은 이전 구현 이력이다. 현재 통계는40% 노출 뒤500ms 대기/1400ms count/페이지당1회/빨간80·70% 장식이며 AGENTS.md와 README.md가 우선한다. 최신 로컬 요청으로 기존700ms보다200ms 일찍 시작하며, 이번 단계에서는 배포하지 않는다.
 
 ## Historical patch
 
