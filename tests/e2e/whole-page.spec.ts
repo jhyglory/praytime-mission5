@@ -9,9 +9,9 @@ const regions = [
 // Whole-page rhythm verified against final1209:514 /1209:1051. At360px,
 // lower content may grow as it wraps; intro fills900px and FAQ follows the85% user override.
 const referenceHeights: Record<number, readonly number[]> = {
-  1440: [88, 684, 576, 963, 900, 760, 1180, 923.40625, 757, 834.71875, 1709, 123],
-  393: [72, 932, 416, 1098, 900, 680, 1024, 1187.734375, 999, 1065.71875, 2483, 168],
-  360: [72, 932, 416, 1098, 900, 680, 1024, 1170.390625, 1051, 1091.21875, 2509, 168],
+  1440: [88, 684, 576, 1027, 900, 760, 1180, 923.40625, 757, 834.71875, 1709, 123],
+  393: [72, 932, 416, 1138, 900, 680, 1024, 1187.734375, 999, 1065.71875, 2483, 168],
+  360: [72, 932, 416, 1138, 900, 680, 1024, 1170.390625, 1051, 1091.21875, 2509, 168],
 };
 
 const observations = new WeakMap<Page, { errors: string[]; posts: string[] }>();
@@ -99,12 +99,21 @@ for (const width of [1440, 393, 360]) {
       };
       const heading = element.querySelector("h2")!;
       const support = element.querySelector(".why-support")!;
+      const grid = element.querySelector("#why-stats")!;
       return {
         headingLines: lines(heading), supportLines: lines(support),
         headingSize: Number.parseFloat(getComputedStyle(heading).fontSize),
         supportSize: Number.parseFloat(getComputedStyle(support).fontSize),
+        statsBottom: grid.getBoundingClientRect().bottom, supportTop: support.getBoundingClientRect().top,
+        supportBottom: support.getBoundingClientRect().bottom, sourceTop: element.querySelector(".stat-source")!.getBoundingClientRect().top,
+        transitionTop: element.getBoundingClientRect().bottom - 190,
+        supportFollowsStats: Boolean(grid.compareDocumentPosition(support) & Node.DOCUMENT_POSITION_FOLLOWING),
       };
     });
+    expect(why.supportFollowsStats).toBe(true);
+    expect(why.supportTop).toBeGreaterThan(why.statsBottom);
+    expect(why.sourceTop).toBeGreaterThan(why.supportBottom);
+    expect(why.supportBottom).toBeLessThanOrEqual(why.transitionTop);
     expect(why.headingLines).toBe(3);
     expect(why.supportLines).toBe(width === 1440 ? 2 : 3);
     if (width === 393) expect([why.headingSize, why.supportSize]).toEqual([32, 26]);

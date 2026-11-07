@@ -3,6 +3,8 @@
 .why-now { position:relative; isolation:isolate; }
 .why-now::after { content:""; position:absolute; z-index:-1; inset:auto 0 0; height:190px; background:linear-gradient(transparent,rgb(11 16 32 / 75%) 50%,#0b1020); }
 .stat-source { color:#f1f1ee; opacity:.85; }
+/* Keep the relocated gray support copy above the190px dark transition. */
+.why-support + .stat-source { margin-top:64px; }
 .stat-track { max-width:none; }
 .card-intro__clean { min-height:100vh; min-height:100dvh; }
 .card-intro__cards { height:760px; }
@@ -12,6 +14,7 @@
 @media(width < 768px) {
   .why-now h2 { min-height:156px; font-size:32px; line-height:48px; }
   .why-support { min-height:144px; font-size:26px; line-height:44px; }
+  .why-support + .stat-source { margin-top:40px; }
   .stat-track { max-width:none; }
   .card-intro__cards { height:680px; }
   .card-intro__declaration { top:235px; }
