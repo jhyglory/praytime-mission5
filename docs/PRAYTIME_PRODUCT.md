@@ -2,7 +2,7 @@
 
 ## Latest intro clarification · 2026-11-08
 
-The explicit user correction keeps the full intro light for the entire visible 그래서 word, and navy from the actual PrayTime wordmark+은 entrance. Paper fades only1546–2010ms, after the word disappears and before the brand begins. Preserve4600ms duration,600ms hold, existing light/logo geometry, static/reduced readability and the separate SNS scene. See [INTRO_BACKGROUND_HANDOFF.md](INTRO_BACKGROUND_HANDOFF.md); earlier overlapping paper/word fades are superseded.
+The latest user correction restores the original STATIC upper-light→lower-navy intro gradient. The upper 그래서 area stays Soft Paper even after the word disappears, the actual logo appears and playback completes. Paper opacity stays1; no temporal background/handoff fade. Restore the original blurred paper geometry and keep4600ms/600ms word/light/logo timing, reduced/no-JS readability and the separate SNS scene. Other sections, including bright WHY NOW, are unchanged. See [INTRO_BACKGROUND_HANDOFF.md](INTRO_BACKGROUND_HANDOFF.md); the1fceb61 full-scene timed fade is superseded.
 
 ## Latest four-interaction patch authority · 2026-11-06
 

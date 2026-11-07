@@ -60,10 +60,7 @@
 /* Reveal copy and its black reading field together after cards have entered.
    Without JS, or with reduced motion, the final readable state is immediate. */
 @media (scripting:enabled) and (prefers-reduced-motion:no-preference) {
-  /* Cover the entire independent scene while the black word is visible.
-     Static/reduced views keep their readable light-word/navy-logo composition. */
-  .clean-intro__paper { left:0; top:50%; width:100%; height:max(760px,100vh); height:max(760px,100dvh); transform:translateY(-50%); filter:none; }
-  .clean-intro__handoff { opacity:0; }
+  /* Keep the original spatial light-to-navy gradient throughout playback. */
   .card-intro__clean[data-intro-state="static"] .card-intro__therefore,
   .card-intro__clean[data-intro-state="static"] .card-intro__brand { opacity:0; }
   .card-intro__cards:not([data-copy-state="shown"]) .card-intro__declaration,
@@ -104,7 +101,4 @@
   .card-intro__anchor { font-size:clamp(14px,4.3257vw,17px); line-height:28px; letter-spacing:-.34px; }
   .card-intro__mobile-break { display:block; }
   .card-intro__desktop-space { display:none; }
-}
-@media (scripting:enabled) and (prefers-reduced-motion:no-preference) and (width < 768px) {
-  .clean-intro__paper { left:0; top:50%; width:100%; height:max(680px,100vh); height:max(680px,100dvh); transform:translateY(-50%); filter:none; }
 }

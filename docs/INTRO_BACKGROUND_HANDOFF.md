@@ -1,32 +1,28 @@
-# Intro background handoff · 2026-11-08
+# Static intro gradient · 2026-11-08
 
-## Confirmed user correction
+## Current user correction
 
-“그래서” 동안만 밝게, “PrayTime은”부터 네이비.
+Restore the black gradient. Keep the upper 그래서 area light even after the word disappears.
 
-The former paper was only a blurred upper patch and faded at1133.2–1632ms while the black word remained visible until1546ms. This was a source/timeline issue, not evidence of a cache problem.
+The preceding1fceb61 implementation kept the entire scene light only while the word was visible and then faded it to navy. That interpreted a spatial distinction as a temporal background change. This correction supersedes it.
 
 ## Implementation
 
-- Normal-motion, JavaScript-enabled paper now covers the entire independent intro, including its viewport-height area. It uses solid Soft Paper #F5F2F7 with no blurred dark boundary.
-- Keep paper fully opaque through1546ms, including the whole word's fade-out. Only1546–2010ms crossfades to the existing navy #0B1020. The lower handoff uses the inverse opacity on the same WAAPI clock, so it cannot introduce a navy band under the visible word.
-- The actual red Pause/white wordmark+은 starts at the unchanged2010ms entrance, after the background reaches navy. Word, slit/aperture, logo positions,600ms shared hold and4600ms total timeline remain unchanged.
-- Hide initial word/brand only while normal-motion hydration is unresolved to prevent the final white logo flashing over the initial light scene.
-- Existing reduced-motion/no-JS static composition remains readable: upper light word and lower navy brand. Existing pause/resume, completed-state retention and breakpoint clock continuity remain.
-- Independent SNS scene, every other section, backend, environment, database and DNS are unchanged. No dependency added.
+- Restore the original exported blurred paper geometry and lower navy handoff. Upper light and lower navy are connected by the original spatial gradient, not a time-based whole-scene background switch.
+- Keep paper opacity1 from0ms through4600ms and after completion. Remove the temporal handoff track and full-scene paper media overrides added in1fceb61.
+- Therefore the upper word area remains light after the word fades, while the actual white/red logo+은 remains on the lower navy area. Returning to the completed intro does not darken its upper background.
+- Preserve word/light/logo geometry, actual assets,600ms hold,4600ms total, once-on-entry playback, offscreen/background pause, breakpoint continuity and completed-state retention. Keep the initial unresolved-hydration content guard.
+- Reduced-motion/no-JS retains the existing readable upper-word/lower-brand static composition.
+- Preserve separate SNS cards, its1700ms reading-field delay, the bright WHY NOW section, and every other interaction/backend/env/DB/DNS setting. No dependency added.
 
-## Validation
+## Current validation
 
-Current-source checks: lint PASS; typecheck PASS; unit60/60 PASS; Webpack production build PASS; scoped browser7/7 PASS in22.2s (intro sequence/breakpoint continuity/final responsive frame plus complete-page1440/393/360 and navigation/reload).
+Current source: lint PASS; typecheck PASS after build-generated types were stable; unit60/60 PASS; Webpack production build PASS; scoped browser7/7 PASS in22.3s. The first parallel typecheck overlapped Next's generated-type cleanup and was rerun successfully after build. Other project's3000 server was preserved; browser checks used an ignored3102 config with disabled persistence and the same production build.
 
-The default3000 port belongs to another project. Leave that process untouched. Use an ignored temporary Playwright config on3102 with the same production server and disabled persistence. Intro network isolation now derives its allowed origin from the configured baseURL; external endpoints and signup remain blocked. Initial tests on3102 exposed the old hardcoded3000 route guard; the corrected origin guard passed all7 scoped checks. No production code was changed to work around the port.
+Actual local Chrome1440/393/360 replay recorded278/279/278 frames: paper1 throughout, original gradient/handoff retained, logo first visible at~2016.5–2016.6ms and completion4600ms. Captures were inspected during the word, immediately after it disappears, during logo entrance and after completion. Upper light/gradient/lower navy remain in all4 stages. Reduced-motion/no-JS readability, breakpoint continuity, complete-page heights/nav/reload and0 overflow/errors/write requests passed. Screenshots and pixel/frame traces are local review artifacts outside the repository.
 
-Actual local Chrome replay at1440/393/360 recorded276/279/278 frames. Every frame with visible black word kept paper opacity1 and navy-handoff opacity0. White brand first appeared at~2016.5–2016.7ms with paper0; every run ended at4600ms. Paper bounds matched the full900px scene at all3 widths. Actual screenshots confirmed full light word and navy brand states. Reduced-motion and no-JS readability passed; no horizontal overflow, console/page error or write request occurred.
+Previous full-scene paper coverage and paper0-at-logo expectations are obsolete and must not be reported as current acceptance criteria. The full long-running66-test suite was not rerun for this scoped correction; prior full-suite PASS is historical. Real mobile hardware, Safari and FPS profiling were not tested.
 
-Production: after the same commit is Ready and the existing canonical alias is updated, repeat the actual entry/replay and screenshot checks on https://praytime-mission5.vercel.app/. Final deployment identity and public results are recorded in [existing PR #1](https://github.com/jhyglory/praytime-mission5/pull/1). Public QA uses GET/HEAD only and blocks external/writing requests. Screenshots and frame traces are local review artifacts, not bundled app assets.
+## Release
 
-The full long-running66-test suite was not rerun for this scoped background fix. Earlier PASS records are historical. Real mobile hardware, Safari and FPS profiling are not tested in this patch.
-
-## Release boundary
-
-Use the existing feature/mission-5-landing branch, PR #1 and Vercel project. No new PR, merge, main change, production signup POST, applicant query/DB operation or DNS change.
+Use existing feature/mission-5-landing, PR #1 and Vercel project. Public verification must replay the actual motion and inspect the upper light area after completion, not just during visible word frames. Block signup POSTs and external writes. Record deployment identity and public results in [PR #1](https://github.com/jhyglory/praytime-mission5/pull/1). No main/merge/new PR/DB/DNS change.
