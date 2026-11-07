@@ -7,11 +7,11 @@ import {
   GAP_LIGHT_SLIT_WIDTH, GAP_LIGHT_TOP, GAP_LIGHT_TRAVELER_LENGTH, gapLightFrameAt,
 } from "../src/components/motion/gap-light-timeline";
 import {
-  GAP_LIGHT_PREVIEW_DURATION, GAP_LIGHT_PREVIEW_PLAYBACK_RATE, GAP_LIGHT_PREVIEW_TIMING, gapLightPreviewFrameAt,
+  GAP_LIGHT_PREVIEW_DURATION, GAP_LIGHT_PREVIEW_PLAYBACK_RATE, GAP_LIGHT_PREVIEW_SLOW_EXTENSION, GAP_LIGHT_PREVIEW_TIMING, gapLightPreviewFrameAt,
 } from "../src/components/motion/gap-light-preview-timeline";
 
-// Sample the approved source poses at the correspondingly faster elapsed time.
-const sourceFrameAt = (sourceTime: number) => gapLightPreviewFrameAt(sourceTime / GAP_LIGHT_PREVIEW_PLAYBACK_RATE);
+// Preserve phase landmarks while allowing the explicitly extended descent.
+const sourceFrameAt = (sourceTime: number) => gapLightPreviewFrameAt(sourceTime / GAP_LIGHT_PREVIEW_PLAYBACK_RATE + GAP_LIGHT_PREVIEW_SLOW_EXTENSION * Math.min(1, Math.max(0, (sourceTime - 400) / 900)));
 
 describe("gap light choreography at 1.3x playback speed", () => {
   it("uses the faster ivory preset without changing the legacy default face or duration", () => {
@@ -36,15 +36,16 @@ describe("gap light choreography at 1.3x playback speed", () => {
 
   it("scales every source boundary by 1.3 while preserving contact spread and a proportionally shorter hold", () => {
     expect(GAP_LIGHT_PREVIEW_PLAYBACK_RATE).toBe(1.3);
-    expect(GAP_LIGHT_PREVIEW_DURATION).toBe(7000 / 1.3);
-    expect(GAP_LIGHT_PREVIEW_TIMING).toEqual({ darkEnd: 400 / 1.3, fallEnd: 1300 / 1.3, impactEnd: 2000 / 1.3, riseStart: 2300 / 1.3, riseEnd: 4500 / 1.3, openEnd: 6500 / 1.3, end: 7000 / 1.3 });
+    expect(GAP_LIGHT_PREVIEW_SLOW_EXTENSION).toBe(400);
+    expect(GAP_LIGHT_PREVIEW_DURATION).toBe(7000 / 1.3 + 400);
+    expect(GAP_LIGHT_PREVIEW_TIMING).toEqual({ darkEnd: 400 / 1.3, fallEnd: 1300 / 1.3 + 400, impactEnd: 2000 / 1.3 + 400, riseStart: 2300 / 1.3 + 400, riseEnd: 4500 / 1.3 + 400, openEnd: 6500 / 1.3 + 400, end: 7000 / 1.3 + 400 });
     const phases = [[0, "dark"], [399, "dark"], [400, "fall"], [1299, "fall"],
       [1300, "impact"], [1999, "impact"], [2000, "hold"], [2299, "hold"],
       [2300, "rise"], [4499, "rise"], [4500, "open"], [6499, "open"],
       [6500, "settle"], [6999, "settle"], [7000, "complete"]] as const;
     for (const [time, phase] of phases) expect(sourceFrameAt(time).phase).toBe(phase);
     expect(GAP_LIGHT_PREVIEW_TIMING.riseStart - GAP_LIGHT_PREVIEW_TIMING.impactEnd).toBeCloseTo(300 / 1.3, 10);
-    expect(sourceFrameAt(500).time).toBeCloseTo(500 / 1.3, 10);
+    expect(sourceFrameAt(500).time).toBeCloseTo(500 / 1.3 + 400 / 9, 10);
     expect(sourceFrameAt(7000).time).toBe(GAP_LIGHT_PREVIEW_DURATION);
     expect(sourceFrameAt(0)).toEqual(sourceFrameAt(-100));
     expect(sourceFrameAt(0)).toEqual(sourceFrameAt(NaN));
@@ -57,16 +58,25 @@ describe("gap light choreography at 1.3x playback speed", () => {
     expect(lastStep).toBeGreaterThan(firstStep * 5);
     const start = sourceFrameAt(400).travelerY;
     const distance = sourceFrameAt(1300).travelerY - start;
-    // The first half glides; the fastest motion happens near the ground.
-    const halfway = (sourceFrameAt(850).travelerY - start) / distance;
-    expect(halfway).toBeGreaterThan(.1);
-    expect(halfway).toBeLessThan(.15);
+    const { darkEnd, fallEnd } = GAP_LIGHT_PREVIEW_TIMING;
+    const slowEnd = darkEnd + 450 / 1.3 + 400;
+    const slowProgress = (gapLightPreviewFrameAt(slowEnd).travelerY - start) / distance;
+    expect(slowProgress).toBeGreaterThan(.1);
+    expect(slowProgress).toBeLessThan(.15);
+    const midpoint = (gapLightPreviewFrameAt((darkEnd + fallEnd) / 2).travelerY - start) / distance;
+    expect(midpoint).toBeGreaterThan(.01);
+    expect(midpoint).toBeLessThan(.08);
+    // Preserve the original magnetic tail at the same actual rate, shifted400ms.
+    for (const [progress, position] of [[.5, .121484375], [.7, .4509], [.8, .71744], [.9, .93905], [1, 1]]) {
+      const elapsed = darkEnd + progress * 900 / 1.3 + 400;
+      expect((gapLightPreviewFrameAt(elapsed).travelerY - start) / distance).toBeCloseTo(position, 4);
+    }
     const steps = Array.from({ length: 100 }, (_, index) =>
-      sourceFrameAt(400 + (index + 1) * 9).travelerY - sourceFrameAt(400 + index * 9).travelerY);
+      gapLightPreviewFrameAt(darkEnd + (fallEnd - darkEnd) * (index + 1) / 100).travelerY - gapLightPreviewFrameAt(darkEnd + (fallEnd - darkEnd) * index / 100).travelerY);
     expect(steps.every(step => step >= -1e-8)).toBe(true);
     const peak = (steps.indexOf(Math.max(...steps)) + .5) / steps.length;
-    expect(peak).toBeGreaterThan(.7);
-    expect(peak).toBeLessThan(.85);
+    expect(peak).toBeGreaterThan(.8);
+    expect(peak).toBeLessThan(.93);
     const contact = GAP_LIGHT_PREVIEW_TIMING.fallEnd;
     const atContact = gapLightPreviewFrameAt(contact).travelerY;
     const justBefore = gapLightPreviewFrameAt(contact - 1).travelerY;

@@ -4,16 +4,23 @@ import {
 } from "./gap-light-timeline";
 import { smootherstep as smooth } from "@/lib/motion";
 
-/** The approved seven-second source choreography plays at the requested1.3x. */
+/** Keep the1.3x choreography, adding time only to the slow descent. */
 export const GAP_LIGHT_PREVIEW_PLAYBACK_RATE = 1.3;
-export const GAP_LIGHT_PREVIEW_DURATION = 7000 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE;
+export const GAP_LIGHT_PREVIEW_SLOW_EXTENSION = 400;
+const originalFallDuration = 900 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE;
+const originalSlowDuration = originalFallDuration / 2;
+const slowDuration = originalSlowDuration + GAP_LIGHT_PREVIEW_SLOW_EXTENSION;
+const rampDuration = slowDuration / 4;
+const rampStart = slowDuration - rampDuration;
+const glideRate = (originalSlowDuration - rampDuration / 2) / (slowDuration - rampDuration / 2);
+export const GAP_LIGHT_PREVIEW_DURATION = 7000 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE + GAP_LIGHT_PREVIEW_SLOW_EXTENSION;
 export const GAP_LIGHT_PREVIEW_TIMING = {
   darkEnd: 400 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
-  fallEnd: 1300 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
-  impactEnd: 2000 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
-  riseStart: 2300 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
-  riseEnd: 4500 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
-  openEnd: 6500 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE,
+  fallEnd: 1300 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE + GAP_LIGHT_PREVIEW_SLOW_EXTENSION,
+  impactEnd: 2000 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE + GAP_LIGHT_PREVIEW_SLOW_EXTENSION,
+  riseStart: 2300 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE + GAP_LIGHT_PREVIEW_SLOW_EXTENSION,
+  riseEnd: 4500 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE + GAP_LIGHT_PREVIEW_SLOW_EXTENSION,
+  openEnd: 6500 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE + GAP_LIGHT_PREVIEW_SLOW_EXTENSION,
   end: GAP_LIGHT_PREVIEW_DURATION,
 } as const;
 
@@ -23,7 +30,15 @@ const clamp = (value: number) => Math.min(1, Math.max(0, value));
 export function gapLightPreviewFrameAt(milliseconds: number) {
   const time = Number.isNaN(milliseconds) ? 0 : Math.max(0, Math.min(GAP_LIGHT_PREVIEW_DURATION, milliseconds));
   const { darkEnd, fallEnd, impactEnd, riseStart, riseEnd, openEnd, end } = GAP_LIGHT_PREVIEW_TIMING;
-  const fall = clamp((time - darkEnd) / (fallEnd - darkEnd));
+  const fallElapsed = Math.max(0, Math.min(fallEnd - darkEnd, time - darkEnd));
+  const ramp = clamp((fallElapsed - rampStart) / rampDuration);
+  // Integral of smootherstep: the source clock joins the original magnetic
+  // pull at exactly its old rate and acceleration, without a speed kink.
+  const rampIntegral = ramp ** 4 * (2.5 + ramp * (-3 + ramp));
+  const sourceFallTime = fallElapsed < slowDuration
+    ? glideRate * fallElapsed + (1 - glideRate) * rampDuration * rampIntegral
+    : originalSlowDuration + fallElapsed - slowDuration;
+  const fall = clamp(sourceFallTime / originalFallDuration);
   const impact = smooth((time - fallEnd) / (impactEnd - fallEnd));
   const rise = smooth((time - riseStart) / (riseEnd - riseStart));
   const spread = smooth((time - riseEnd) / (openEnd - riseEnd));

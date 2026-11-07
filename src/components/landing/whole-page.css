@@ -1,9 +1,8 @@
 /* Complete final1209 Desktop/Mobile audit; explicit latest requirements override
    earlier fullscreen/alternating motion and decorative statistic bars. */
 .why-now { position:relative; isolation:isolate; }
-.why-now::after { content:""; position:absolute; z-index:-1; inset:auto 0 0; height:190px; background:linear-gradient(transparent,rgb(11 16 32 / 75%) 50%,#0b1020); }
-.stat-source { color:#f1f1ee; opacity:.85; }
-/* Keep the relocated gray support copy above the190px dark transition. */
+.stat-source { color:#696a70; opacity:1; }
+/* Preserve citation spacing after the relocated explanation. */
 .why-support + .stat-source { margin-top:64px; }
 .stat-track { max-width:none; }
 .card-intro__clean { min-height:100vh; min-height:100dvh; }

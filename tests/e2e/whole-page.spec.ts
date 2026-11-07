@@ -106,14 +106,20 @@ for (const width of [1440, 393, 360]) {
         supportSize: Number.parseFloat(getComputedStyle(support).fontSize),
         statsBottom: grid.getBoundingClientRect().bottom, supportTop: support.getBoundingClientRect().top,
         supportBottom: support.getBoundingClientRect().bottom, sourceTop: element.querySelector(".stat-source")!.getBoundingClientRect().top,
-        transitionTop: element.getBoundingClientRect().bottom - 190,
+        backgroundImage: getComputedStyle(element).backgroundImage,
+        afterContent: getComputedStyle(element, "::after").content,
+        sourceColor: getComputedStyle(element.querySelector(".stat-source")!).color,
+        sourceOpacity: getComputedStyle(element.querySelector(".stat-source")!).opacity,
         supportFollowsStats: Boolean(grid.compareDocumentPosition(support) & Node.DOCUMENT_POSITION_FOLLOWING),
       };
     });
     expect(why.supportFollowsStats).toBe(true);
     expect(why.supportTop).toBeGreaterThan(why.statsBottom);
     expect(why.sourceTop).toBeGreaterThan(why.supportBottom);
-    expect(why.supportBottom).toBeLessThanOrEqual(why.transitionTop);
+    expect(why.backgroundImage).toBe("none");
+    expect(why.afterContent).toBe("none");
+    expect(why.sourceColor).toBe("rgb(105, 106, 112)");
+    expect(why.sourceOpacity).toBe("1");
     expect(why.headingLines).toBe(3);
     expect(why.supportLines).toBe(width === 1440 ? 2 : 3);
     if (width === 393) expect([why.headingSize, why.supportSize]).toEqual([32, 26]);
