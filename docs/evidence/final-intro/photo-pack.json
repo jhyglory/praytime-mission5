@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-11-06T11:55:53.774161+00:00",
+  "archive": {
+    "filename": "PrayTime_SNS_Photo_Pack_80.zip",
+    "sha256": "cc4f231d239f03323c81a812e619c3d736ab0416ae7b32566addec3eed18495f",
+    "entries": 84,
+    "photos": 80,
+    "photosBytes": 23890874,
+    "uniquePhotoSHA256": 80,
+    "nonPhotoEntriesRead": 0,
+    "extractedFiles": 0
+  },
+  "assetManifest": "docs/evidence/prototype-correction/assets.json",
+  "matches": {
+    "publicBytes": 80,
+    "manifestSHA1_SHA256_Bytes": 80
+  },
+  "cycles": {
+    "desktop": {
+      "sceneHeight": 760,
+      "duration": 12000,
+      "photoSlots": 80,
+      "uniquePhotos": 80,
+      "duplicatePhotoSlots": 0,
+      "columns": [
+        {
+          "nodeId": "1284:14248",
+          "cardCount": 24,
+          "photoSlots": 14,
+          "cycleHeight": 4486.09375,
+          "duplicateClearance": 3441.5408325195312,
+          "cycleTailGap": 20.000167846679688,
+          "resetBeforeError": 6.120703073975164e-05,
+          "resetAfterError": 2.0703123482235242e-07,
+          "twoCopiesHeightMatch": true
+        },
+        {
+          "nodeId": "1284:14299",
+          "cardCount": 24,
+          "photoSlots": 14,
+          "cycleHeight": 4370.97607421875,
+          "duplicateClearance": 3326.4231567382812,
+          "cycleTailGap": 19.99913787841797,
+          "resetBeforeError": 0.0001223906247105333,
+          "resetAfterError": 1.7187494449899532e-07,
+          "twoCopiesHeightMatch": true
+        },
+        {
+          "nodeId": "1284:14350",
+          "cardCount": 24,
+          "photoSlots": 13,
+          "cycleHeight": 4243.21142578125,
+          "duplicateClearance": 3198.6585083007812,
+          "cycleTailGap": 19.99962615966797,
+          "resetBeforeError": 0.00012228906234668102,
+          "resetAfterError": 7.03125806467142e-08,
+          "twoCopiesHeightMatch": true
+        },
+        {
+          "nodeId": "1284:14401",
+          "cardCount": 24,
+          "photoSlots": 13,
+          "cycleHeight": 4412.3291015625,
+          "duplicateClearance": 3367.7761840820312,
+          "cycleTailGap": 20.000167846679688,
+          "resetBeforeError": 3.4374988899799064e-07,
+          "resetAfterError": 2.1874984668102115e-07,
+          "twoCopiesHeightMatch": true
+        },
+        {
+          "nodeId": "1284:14452",
+          "cardCount": 24,
+          "photoSlots": 13,
+          "cycleHeight": 4243.21142578125,
+          "duplicateClearance": 3198.6585083007812,
+          "cycleTailGap": 19.99938201904297,
+          "resetBeforeError": 3.0486327887047082e-05,
+          "resetAfterError": 2.9492187536561687e-07,
+          "twoCopiesHeightMatch": true
+        },
+        {
+          "nodeId": "1284:14503",
+          "cardCount": 24,
+          "photoSlots": 13,
+          "cycleHeight": 4243.21142578125,
+          "duplicateClearance": 3198.6585083007812,
+          "cycleTailGap": 19.99962615966797,
+          "resetBeforeError": 0.00012174218682048377,
+          "resetAfterError": 4.765624908031896e-07,
+          "twoCopiesHeightMatch": true
+        }
+      ]
+    },
+    "mobile": {
+      "sceneHeight": 680,
+      "duration": 12000,
+      "photoSlots": 80,
+      "uniquePhotos": 80,
+      "duplicatePhotoSlots": 0,
+      "columns": [
+        {
+          "nodeId": "1284:22496",
+          "cardCount": 36,
+          "photoSlots": 27,
+          "cycleHeight": 4594.458984375,
+          "duplicateClearance": 3732.470748901367,
+          "cycleTailGap": 13.999126434326172,
+          "resetBeforeError": 0.00012163281280663796,
+          "resetAfterError": 7.812445801391732e-09,
+          "twoCopiesHeightMatch": true
+        },
+        {
+          "nodeId": "1284:22571",
+          "cardCount": 36,
+          "photoSlots": 27,
+          "cycleHeight": 4594.458984375,
+          "duplicateClearance": 3732.470748901367,
+          "cycleTailGap": 13.999588012695312,
+          "resetBeforeError": 0.00012164062536612619,
+          "resetAfterError": 2.656252036103979e-07,
+          "twoCopiesHeightMatch": true
+        },
+        {
+          "nodeId": "1284:22646",
+          "cardCount": 36,
+          "photoSlots": 26,
+          "cycleHeight": 4547.16455078125,
+          "duplicateClearance": 3685.176315307617,
+          "cycleTailGap": 13.999267578125,
+          "resetBeforeError": 4.062494554091245e-07,
+          "resetAfterError": 3.74999899577233e-07,
+          "twoCopiesHeightMatch": true
+        }
+      ]
+    }
+  },
+  "verification": {
+    "command": "npm run test -- tests/photo-assignment.test.ts",
+    "testFilesPassed": 1,
+    "testsPassed": 7
+  }
+}

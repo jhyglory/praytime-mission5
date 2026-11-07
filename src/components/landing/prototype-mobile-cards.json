@@ -1,0 +1,2804 @@
+[
+  {
+    "id": "1284:22498",
+    "name": "Card / Instagram · Photo / 01",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 0,
+    "width": 140,
+    "height": 162.6352996826172,
+    "opacity": 1,
+    "cornerRadius": 11.529412269592285,
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 1,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.09019608050584793,
+          "g": 0.10980392247438431,
+          "b": 0.14901961386203766
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:4"
+          }
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 0.12156862765550613,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.9450980424880981,
+          "g": 0.9450980424880981,
+          "b": 0.9333333373069763
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:9"
+          }
+        }
+      }
+    ],
+    "effects": [],
+    "children": [
+      {
+        "id": "I1284:22498;1245:695",
+        "name": "App identity",
+        "type": "FRAME",
+        "x": 7.700000762939453,
+        "y": 7.700000762939453,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22498;1245:696",
+            "name": "Instagram / camera",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0.7941176891326904,
+            "width": 7.411764621734619,
+            "height": 7.411764621734619,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22498;1245:697",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 0.9264706373214722,
+                "y": 0.9264706373214722,
+                "width": 5.558823585510254,
+                "height": 5.558823585510254,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              },
+              {
+                "id": "I1284:22498;1245:698",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 2.470588445663452,
+                "y": 2.470588445663452,
+                "width": 2.470588207244873,
+                "height": 2.470588207244873,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              },
+              {
+                "id": "I1284:22498;1245:699",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 5.095588684082031,
+                "y": 1.698529601097107,
+                "width": 0.6176470518112183,
+                "height": 0.6176470518112183,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/9ea18c6f-99b9-4f41-ad7d-b568a12aa7ab.svg"
+          },
+          {
+            "id": "I1284:22498;1245:700",
+            "name": "App name",
+            "type": "TEXT",
+            "x": 11.117648124694824,
+            "y": 0,
+            "width": 98.82353210449219,
+            "height": 9,
+            "opacity": 0.9200000166893005,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 5.764706134796143,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Medium"
+            },
+            "fontWeight": 500,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "Instagram"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22498;1245:701",
+        "name": "Photo / PT_001",
+        "type": "FRAME",
+        "x": 7.699999809265137,
+        "y": 22.464706420898438,
+        "width": 125.17647552490234,
+        "height": 102.94117736816406,
+        "opacity": 1,
+        "cornerRadius": 5.764706134796143,
+        "fills": [
+          {
+            "type": "IMAGE",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "scaleMode": "FILL",
+            "scalingFactor": 1,
+            "rotation": 0,
+            "filters": {
+              "exposure": 0,
+              "contrast": 0,
+              "saturation": 0,
+              "temperature": 0,
+              "tint": 0,
+              "highlights": 0,
+              "shadows": 0
+            },
+            "imageTransform": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "imageHash": "a4a1d5f79d839adc2426f67130b4ac54b54c61f0"
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "children": [],
+        "imageSlot": "photo"
+      },
+      {
+        "id": "I1284:22498;1245:703",
+        "name": "Engagement actions",
+        "type": "FRAME",
+        "x": 7.699999809265137,
+        "y": 131.17059326171875,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22498;1245:704",
+            "name": "Like / Signal Red",
+            "type": "INSTANCE",
+            "x": 0,
+            "y": 1,
+            "width": 7,
+            "height": 7,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22498;1245:704;68:15810",
+                "name": "Icon",
+                "type": "VECTOR",
+                "x": 0.4517069458961487,
+                "y": 0.874467670917511,
+                "width": 6.096742630004883,
+                "height": 5.317615509033203,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 1,
+                      "g": 0.2666666805744171,
+                      "b": 0.21960784494876862
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:12"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 1,
+                      "g": 0.2666666805744171,
+                      "b": 0.21960784494876862
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:12"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/97d1a04d-f0d6-4e14-8d2b-91863e137558.svg"
+          },
+          {
+            "id": "I1284:22498;1245:706",
+            "name": "Share / outline",
+            "type": "INSTANCE",
+            "x": 12.764705657958984,
+            "y": 1,
+            "width": 7,
+            "height": 7,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22498;1245:706;68:15978",
+                "name": "Icon",
+                "type": "VECTOR",
+                "x": 1.166666865348816,
+                "y": 0.5833334922790527,
+                "width": 4.666666507720947,
+                "height": 5.8333330154418945,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg"
+          },
+          {
+            "id": "I1284:22498;1245:708",
+            "name": "Engagement / count",
+            "type": "TEXT",
+            "x": 25.5294132232666,
+            "y": 0,
+            "width": 49.411766052246094,
+            "height": 9,
+            "opacity": 0.5199999809265137,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 4.941176414489746,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Regular"
+            },
+            "fontWeight": 400,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "1,284"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22498;1245:709",
+        "name": "Post caption",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 145.935302734375,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 0.699999988079071,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 4.941176414489746,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 8.235294342041016
+        },
+        "characters": "daily.archive · 오늘의 작은 기록"
+      }
+    ],
+    "kind": 0
+  },
+  {
+    "id": "1284:22499",
+    "name": "Card / YouTube · Video / 02",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 176.6352996826172,
+    "width": 140,
+    "height": 130.1058807373047,
+    "opacity": 1,
+    "cornerRadius": 11.529412269592285,
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 1,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.09019608050584793,
+          "g": 0.10980392247438431,
+          "b": 0.14901961386203766
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:4"
+          }
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 0.12156862765550613,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.9450980424880981,
+          "g": 0.9450980424880981,
+          "b": 0.9333333373069763
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:9"
+          }
+        }
+      }
+    ],
+    "effects": [],
+    "children": [
+      {
+        "id": "I1284:22499;1245:711",
+        "name": "App identity",
+        "type": "FRAME",
+        "x": 7.700000762939453,
+        "y": 7.700000762939453,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22499;1245:712",
+            "name": "YouTube / play",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0.17647075653076172,
+            "width": 8.647058486938477,
+            "height": 8.647058486938477,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22499;1245:713",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 0.3602941632270813,
+                "y": 1.4411766529083252,
+                "width": 7.926470756530762,
+                "height": 5.764706134796143,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 1,
+                      "g": 0.2666666805744171,
+                      "b": 0.21960784494876862
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:12"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              },
+              {
+                "id": "I1284:22499;1245:714",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 3.6029415130615234,
+                "y": 2.8823533058166504,
+                "width": 2.161764621734619,
+                "height": 2.8823530673980713,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/e968c918-9d82-4673-9d03-291ac4074af2.svg"
+          },
+          {
+            "id": "I1284:22499;1245:715",
+            "name": "App name",
+            "type": "TEXT",
+            "x": 12.352940559387207,
+            "y": 0,
+            "width": 98.82353210449219,
+            "height": 9,
+            "opacity": 0.9200000166893005,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 5.764706134796143,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Medium"
+            },
+            "fontWeight": 500,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "YouTube"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22499;1245:716",
+        "name": "Photo / PT_038",
+        "type": "FRAME",
+        "x": 7.699999809265137,
+        "y": 22.464706420898438,
+        "width": 125.17647552490234,
+        "height": 70.4117660522461,
+        "opacity": 1,
+        "cornerRadius": 5.764706134796143,
+        "fills": [
+          {
+            "type": "IMAGE",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "scaleMode": "FILL",
+            "scalingFactor": 1,
+            "rotation": 0,
+            "filters": {
+              "exposure": 0,
+              "contrast": 0,
+              "saturation": 0,
+              "temperature": 0,
+              "tint": 0,
+              "highlights": 0,
+              "shadows": 0
+            },
+            "imageTransform": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "imageHash": "89065f600a3d53017be5f3728c34d347083a11b0"
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22499;1245:717",
+            "name": "Video / playback affordance",
+            "type": "FRAME",
+            "x": 56.41176986694336,
+            "y": 28.823532104492188,
+            "width": 12.352941513061523,
+            "height": 12.352941513061523,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22499;1245:718",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 4.63235330581665,
+                "y": 2.5735297203063965,
+                "width": 6.176470756530762,
+                "height": 7.205882549285889,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/66d8d4ec-5256-424c-a56b-8079b3096e0f.svg"
+          },
+          {
+            "id": "I1284:22499;1245:719",
+            "name": "Video duration",
+            "type": "TEXT",
+            "x": 103.76471710205078,
+            "y": 58.4705924987793,
+            "width": 15.647059440612793,
+            "height": 9,
+            "opacity": 0.8500000238418579,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 4.941176414489746,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Regular"
+            },
+            "fontWeight": 400,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "08:42"
+          },
+          {
+            "id": "I1284:22499;1245:720",
+            "name": "Playback / rail",
+            "type": "RECTANGLE",
+            "x": 0,
+            "y": 69.58824157714844,
+            "width": 125.17647552490234,
+            "height": 0.8235294222831726,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": []
+          },
+          {
+            "id": "I1284:22499;1245:721",
+            "name": "Playback / progress",
+            "type": "RECTANGLE",
+            "x": 0,
+            "y": 69.58824157714844,
+            "width": 42.82352828979492,
+            "height": 0.8235294222831726,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 0.2666666805744171,
+                  "b": 0.21960784494876862
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:12"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": []
+          }
+        ],
+        "imageSlot": "video"
+      },
+      {
+        "id": "I1284:22499;1245:722",
+        "name": "Engagement actions",
+        "type": "FRAME",
+        "x": 7.699999809265137,
+        "y": 98.64118194580078,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22499;1245:723",
+            "name": "Like / outline",
+            "type": "INSTANCE",
+            "x": 0,
+            "y": 1,
+            "width": 7,
+            "height": 7,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22499;1245:723;68:15810",
+                "name": "Icon",
+                "type": "VECTOR",
+                "x": 0.4517069458961487,
+                "y": 0.874467670917511,
+                "width": 6.096742630004883,
+                "height": 5.317615509033203,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/da127568-2f66-41be-af26-f9753a28ddb5.svg"
+          },
+          {
+            "id": "I1284:22499;1245:725",
+            "name": "Share / outline",
+            "type": "INSTANCE",
+            "x": 12.764705657958984,
+            "y": 1,
+            "width": 7,
+            "height": 7,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22499;1245:725;68:15978",
+                "name": "Icon",
+                "type": "VECTOR",
+                "x": 1.166666865348816,
+                "y": 0.5833334922790527,
+                "width": 4.666666507720947,
+                "height": 5.8333330154418945,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg"
+          },
+          {
+            "id": "I1284:22499;1245:727",
+            "name": "Engagement / count",
+            "type": "TEXT",
+            "x": 25.5294132232666,
+            "y": 0,
+            "width": 49.411766052246094,
+            "height": 9,
+            "opacity": 0.5199999809265137,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 4.941176414489746,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Regular"
+            },
+            "fontWeight": 400,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "공유"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22499;1245:728",
+        "name": "Post caption",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 113.4058837890625,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 0.699999988079071,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 4.941176414489746,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 8.235294342041016
+        },
+        "characters": "조용한 하루를 기록하는 방법"
+      }
+    ],
+    "kind": 1
+  },
+  {
+    "id": "1284:22500",
+    "name": "Card / Threads · Text / 03",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 320.7411804199219,
+    "width": 140,
+    "height": 81.69412231445312,
+    "opacity": 1,
+    "cornerRadius": 11.529412269592285,
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 1,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.09019608050584793,
+          "g": 0.10980392247438431,
+          "b": 0.14901961386203766
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:4"
+          }
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 0.12156862765550613,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.9450980424880981,
+          "g": 0.9450980424880981,
+          "b": 0.9333333373069763
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:9"
+          }
+        }
+      }
+    ],
+    "effects": [],
+    "children": [
+      {
+        "id": "I1284:22500;1245:730",
+        "name": "App identity",
+        "type": "FRAME",
+        "x": 7.700000762939453,
+        "y": 7.700000762939453,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22500;1245:731",
+            "name": "Threads / glyph",
+            "type": "TEXT",
+            "x": 0,
+            "y": 0,
+            "width": 8.235294342041016,
+            "height": 9,
+            "opacity": 1,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 5.764706134796143,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Medium"
+            },
+            "fontWeight": 500,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "@"
+          },
+          {
+            "id": "I1284:22500;1245:732",
+            "name": "App name",
+            "type": "TEXT",
+            "x": 11.941177368164062,
+            "y": 0,
+            "width": 98.82353210449219,
+            "height": 9,
+            "opacity": 0.9200000166893005,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 5.764706134796143,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Medium"
+            },
+            "fontWeight": 500,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "Threads"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22500;1245:733",
+        "name": "Post author",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 22.464706420898438,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 0.5,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 4.941176414489746,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 8.235294342041016
+        },
+        "characters": "slow.notes · 2분"
+      },
+      {
+        "id": "I1284:22500;1245:734",
+        "name": "Post body",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 37.22941207885742,
+        "width": 125.17647552490234,
+        "height": 22,
+        "opacity": 0.8999999761581421,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 6.588235378265381,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 10.70588207244873
+        },
+        "characters": "잠깐 보려고 열었는데,\n어느새 다음 이야기를 읽고 있다."
+      },
+      {
+        "id": "I1284:22500;1245:735",
+        "name": "Engagement actions",
+        "type": "FRAME",
+        "x": 7.699999809265137,
+        "y": 64.9941177368164,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22500;1245:736",
+            "name": "Like / outline",
+            "type": "INSTANCE",
+            "x": 0,
+            "y": 0,
+            "width": 7,
+            "height": 7,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22500;1245:736;68:15810",
+                "name": "Icon",
+                "type": "VECTOR",
+                "x": 0.4517069458961487,
+                "y": 0.874467670917511,
+                "width": 6.096742630004883,
+                "height": 5.317615509033203,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/da127568-2f66-41be-af26-f9753a28ddb5.svg"
+          },
+          {
+            "id": "I1284:22500;1245:738",
+            "name": "Share / outline",
+            "type": "INSTANCE",
+            "x": 12.7647066116333,
+            "y": 0,
+            "width": 7,
+            "height": 7,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22500;1245:738;68:15978",
+                "name": "Icon",
+                "type": "VECTOR",
+                "x": 1.166666865348816,
+                "y": 0.5833334922790527,
+                "width": 4.666666507720947,
+                "height": 5.8333330154418945,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/6f41e6ae-4ba8-4554-bc58-74dd2fde67fa.svg"
+          },
+          {
+            "id": "I1284:22500;1245:740",
+            "name": "Reply count",
+            "type": "TEXT",
+            "x": 25.5294132232666,
+            "y": 0,
+            "width": 70,
+            "height": 9,
+            "opacity": 0.4000000059604645,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 4.941176414489746,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Regular"
+            },
+            "fontWeight": 400,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "24개의 답글"
+          }
+        ]
+      }
+    ],
+    "kind": 2
+  },
+  {
+    "id": "1284:22501",
+    "name": "Card / KakaoTalk · Chat / 04",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 416.435302734375,
+    "width": 140,
+    "height": 82.811767578125,
+    "opacity": 1,
+    "cornerRadius": 11.529412269592285,
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 1,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.09019608050584793,
+          "g": 0.10980392247438431,
+          "b": 0.14901961386203766
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:4"
+          }
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 0.12156862765550613,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.9450980424880981,
+          "g": 0.9450980424880981,
+          "b": 0.9333333373069763
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:9"
+          }
+        }
+      }
+    ],
+    "effects": [],
+    "children": [
+      {
+        "id": "I1284:22501;1245:742",
+        "name": "App identity",
+        "type": "FRAME",
+        "x": 7.700000762939453,
+        "y": 7.700000762939453,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22501;1245:743",
+            "name": "KakaoTalk / bubble",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0.5882351398468018,
+            "width": 7.8235297203063965,
+            "height": 7.8235297203063965,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22501;1245:744",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 0.9779412746429443,
+                "y": 0.9779412746429443,
+                "width": 5.867647171020508,
+                "height": 5.867647171020508,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/2f41d994-dc14-4ac5-a48a-9da0a6b33cf8.svg"
+          },
+          {
+            "id": "I1284:22501;1245:745",
+            "name": "App name",
+            "type": "TEXT",
+            "x": 11.529413223266602,
+            "y": 0,
+            "width": 98.82353210449219,
+            "height": 9,
+            "opacity": 0.9200000166893005,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 5.764706134796143,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Medium"
+            },
+            "fontWeight": 500,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "KakaoTalk"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22501;1245:746",
+        "name": "Conversation",
+        "type": "FRAME",
+        "x": 7.699999809265137,
+        "y": 22.464706420898438,
+        "width": 125.17647552490234,
+        "height": 37.882354736328125,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22501;1245:747",
+            "name": "Incoming message",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0,
+            "width": 88.11764526367188,
+            "height": 17.235294342041016,
+            "opacity": 1,
+            "cornerRadius": 2.470588207244873,
+            "fills": [],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22501;1247:775",
+                "name": "Bubble / translucent background",
+                "type": "RECTANGLE",
+                "x": 0,
+                "y": 0,
+                "width": 88.11764526367188,
+                "height": 16.47058868408203,
+                "opacity": 0.07000000029802322,
+                "cornerRadius": 2.470588207244873,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              },
+              {
+                "id": "I1284:22501;1245:748",
+                "name": "Incoming text",
+                "type": "TEXT",
+                "x": 4.941176891326904,
+                "y": 4.117647171020508,
+                "width": 78.23529815673828,
+                "height": 9,
+                "opacity": 0.800000011920929,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": [],
+                "fontSize": 4.941176414489746,
+                "fontName": {
+                  "family": "Pretendard",
+                  "style": "Regular"
+                },
+                "fontWeight": 400,
+                "lineHeight": {
+                  "unit": "PIXELS",
+                  "value": 8.235294342041016
+                },
+                "characters": "이거 봤어요?"
+              }
+            ]
+          },
+          {
+            "id": "I1284:22501;1245:749",
+            "name": "Outgoing message",
+            "type": "FRAME",
+            "x": 30.470590591430664,
+            "y": 21.411766052246094,
+            "width": 94.70588684082031,
+            "height": 17.235294342041016,
+            "opacity": 1,
+            "cornerRadius": 2.470588207244873,
+            "fills": [],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22501;1247:776",
+                "name": "Bubble / translucent background",
+                "type": "RECTANGLE",
+                "x": 0,
+                "y": 0,
+                "width": 94.70588684082031,
+                "height": 16.47058868408203,
+                "opacity": 0.11999999731779099,
+                "cornerRadius": 2.470588207244873,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              },
+              {
+                "id": "I1284:22501;1245:750",
+                "name": "Outgoing text",
+                "type": "TEXT",
+                "x": 4.941176891326904,
+                "y": 4.117647171020508,
+                "width": 84.82353210449219,
+                "height": 9,
+                "opacity": 0.800000011920929,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": [],
+                "fontSize": 4.941176414489746,
+                "fontName": {
+                  "family": "Pretendard",
+                  "style": "Regular"
+                },
+                "fontWeight": 400,
+                "lineHeight": {
+                  "unit": "PIXELS",
+                  "value": 8.235294342041016
+                },
+                "characters": "잠깐만 볼게요."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "I1284:22501;1245:751",
+        "name": "Conversation time",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 66.11177062988281,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 0.3199999928474426,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 4.941176414489746,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 8.235294342041016
+        },
+        "characters": "오후 9:41"
+      }
+    ],
+    "kind": 3
+  },
+  {
+    "id": "1284:22502",
+    "name": "Card / Collection / 05",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 513.2470703125,
+    "width": 140,
+    "height": 181.9882354736328,
+    "opacity": 1,
+    "cornerRadius": 11.529412269592285,
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 1,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.09019608050584793,
+          "g": 0.10980392247438431,
+          "b": 0.14901961386203766
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:4"
+          }
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 0.12156862765550613,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.9450980424880981,
+          "g": 0.9450980424880981,
+          "b": 0.9333333373069763
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:9"
+          }
+        }
+      }
+    ],
+    "effects": [],
+    "children": [
+      {
+        "id": "I1284:22502;1260:1900",
+        "name": "App identity",
+        "type": "FRAME",
+        "x": 7.700000762939453,
+        "y": 8.523530006408691,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22502;1260:1901",
+            "name": "Instagram / camera",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0.7941176891326904,
+            "width": 7.411764621734619,
+            "height": 7.411764621734619,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22502;1260:1902",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 0.9264706373214722,
+                "y": 0.9264706373214722,
+                "width": 5.558823585510254,
+                "height": 5.558823585510254,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              },
+              {
+                "id": "I1284:22502;1260:1903",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 2.470588445663452,
+                "y": 2.470588445663452,
+                "width": 2.470588207244873,
+                "height": 2.470588207244873,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [],
+                "strokes": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "effects": []
+              },
+              {
+                "id": "I1284:22502;1260:1904",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 5.095588684082031,
+                "y": 1.698529601097107,
+                "width": 0.6176470518112183,
+                "height": 0.6176470518112183,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/9ea18c6f-99b9-4f41-ad7d-b568a12aa7ab.svg"
+          },
+          {
+            "id": "I1284:22502;1260:1905",
+            "name": "App name",
+            "type": "TEXT",
+            "x": 11.117648124694824,
+            "y": 0,
+            "width": 98.82353210449219,
+            "height": 9,
+            "opacity": 0.9200000166893005,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 5.764706134796143,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Medium"
+            },
+            "fontWeight": 500,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "Instagram"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22502;1260:1906",
+        "name": "Collection title",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 24.111766815185547,
+        "width": 125.17647552490234,
+        "height": 11,
+        "opacity": 1,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 6.588235378265381,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 10.70588207244873
+        },
+        "characters": "저장한 순간들"
+      },
+      {
+        "id": "I1284:22502;1260:1907",
+        "name": "Saved images / masonry",
+        "type": "FRAME",
+        "x": 7.699999809265137,
+        "y": 41.70000457763672,
+        "width": 125.17647552490234,
+        "height": 131.76470947265625,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22502;1260:1908",
+            "name": "Saved images / left",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0,
+            "width": 60.11764907836914,
+            "height": 131.76470947265625,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22502;1260:1910",
+                "name": "Photo / PT_075",
+                "type": "RECTANGLE",
+                "x": 0,
+                "y": 0,
+                "width": 60.11764907836914,
+                "height": 51.882354736328125,
+                "opacity": 1,
+                "cornerRadius": 5.764706134796143,
+                "fills": [
+                  {
+                    "type": "IMAGE",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "scaleMode": "FILL",
+                    "scalingFactor": 1,
+                    "rotation": 0,
+                    "filters": {
+                      "exposure": 0,
+                      "contrast": 0,
+                      "saturation": 0,
+                      "temperature": 0,
+                      "tint": 0,
+                      "highlights": 0,
+                      "shadows": 0
+                    },
+                    "imageTransform": [
+                      [
+                        1,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        1,
+                        0
+                      ]
+                    ],
+                    "imageHash": "634ec53c47bcdcf54496ef6c43ac6b7bc3a0a7c7"
+                  }
+                ],
+                "strokes": [],
+                "effects": [],
+                "imageSlot": "collection0"
+              },
+              {
+                "id": "I1284:22502;1260:1911",
+                "name": "Photo / PT_032",
+                "type": "RECTANGLE",
+                "x": 0,
+                "y": 56.82353591918945,
+                "width": 60.11764907836914,
+                "height": 74.94117736816406,
+                "opacity": 1,
+                "cornerRadius": 5.764706134796143,
+                "fills": [
+                  {
+                    "type": "IMAGE",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "scaleMode": "FILL",
+                    "scalingFactor": 1,
+                    "rotation": 0,
+                    "filters": {
+                      "exposure": 0,
+                      "contrast": 0,
+                      "saturation": 0,
+                      "temperature": 0,
+                      "tint": 0,
+                      "highlights": 0,
+                      "shadows": 0
+                    },
+                    "imageTransform": [
+                      [
+                        1,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        1,
+                        0
+                      ]
+                    ],
+                    "imageHash": "0b997f2f98eefb811d570c3a8b7dbeeaf8caa054"
+                  }
+                ],
+                "strokes": [],
+                "effects": [],
+                "imageSlot": "collection2"
+              }
+            ]
+          },
+          {
+            "id": "I1284:22502;1260:1909",
+            "name": "Saved images / right",
+            "type": "FRAME",
+            "x": 65.05883026123047,
+            "y": 0,
+            "width": 60.11764907836914,
+            "height": 97.94117736816406,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22502;1260:1912",
+                "name": "Photo / PT_069",
+                "type": "RECTANGLE",
+                "x": 0,
+                "y": 0,
+                "width": 60.11764907836914,
+                "height": 84,
+                "opacity": 1,
+                "cornerRadius": 5.764706134796143,
+                "fills": [
+                  {
+                    "type": "IMAGE",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "scaleMode": "FILL",
+                    "scalingFactor": 1,
+                    "rotation": 0,
+                    "filters": {
+                      "exposure": 0,
+                      "contrast": 0,
+                      "saturation": 0,
+                      "temperature": 0,
+                      "tint": 0,
+                      "highlights": 0,
+                      "shadows": 0
+                    },
+                    "imageTransform": [
+                      [
+                        1,
+                        0,
+                        0
+                      ],
+                      [
+                        0,
+                        1,
+                        0
+                      ]
+                    ],
+                    "imageHash": "c8fdbdc36b6f6fe2e6408724fc3095751f11c4de"
+                  }
+                ],
+                "strokes": [],
+                "effects": [],
+                "imageSlot": "collection1"
+              },
+              {
+                "id": "I1284:22502;1260:1913",
+                "name": "Saved count",
+                "type": "TEXT",
+                "x": 0,
+                "y": 88.9411849975586,
+                "width": 60.11764907836914,
+                "height": 9,
+                "opacity": 0.550000011920929,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": [],
+                "fontSize": 4.941176414489746,
+                "fontName": {
+                  "family": "Pretendard",
+                  "style": "Regular"
+                },
+                "fontWeight": 400,
+                "lineHeight": {
+                  "unit": "PIXELS",
+                  "value": 8.235294342041016
+                },
+                "characters": "+16개의 저장된 순간"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "kind": 4
+  },
+  {
+    "id": "1284:22503",
+    "name": "Card / Notification / 06",
+    "type": "INSTANCE",
+    "x": 0,
+    "y": 709.2352905273438,
+    "width": 140,
+    "height": 59.22352981567383,
+    "opacity": 1,
+    "cornerRadius": 11.529412269592285,
+    "fills": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 1,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.09019608050584793,
+          "g": 0.10980392247438431,
+          "b": 0.14901961386203766
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:4"
+          }
+        }
+      }
+    ],
+    "strokes": [
+      {
+        "type": "SOLID",
+        "visible": true,
+        "opacity": 0.12156862765550613,
+        "blendMode": "NORMAL",
+        "color": {
+          "r": 0.9450980424880981,
+          "g": 0.9450980424880981,
+          "b": 0.9333333373069763
+        },
+        "boundVariables": {
+          "color": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:745:9"
+          }
+        }
+      }
+    ],
+    "effects": [],
+    "children": [
+      {
+        "id": "I1284:22503;1260:1915",
+        "name": "App identity",
+        "type": "FRAME",
+        "x": 7.700000762939453,
+        "y": 8.523530006408691,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 1,
+        "cornerRadius": 0,
+        "fills": [],
+        "strokes": [],
+        "effects": [],
+        "children": [
+          {
+            "id": "I1284:22503;1260:1916",
+            "name": "YouTube / play",
+            "type": "FRAME",
+            "x": 0,
+            "y": 0.17647075653076172,
+            "width": 8.647058486938477,
+            "height": 8.647058486938477,
+            "opacity": 1,
+            "cornerRadius": 0,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": false,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 1,
+                  "g": 1,
+                  "b": 1
+                },
+                "boundVariables": {}
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "children": [
+              {
+                "id": "I1284:22503;1260:1917",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 0.3602941632270813,
+                "y": 1.4411766529083252,
+                "width": 7.926470756530762,
+                "height": 5.764706134796143,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 1,
+                      "g": 0.2666666805744171,
+                      "b": 0.21960784494876862
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:12"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              },
+              {
+                "id": "I1284:22503;1260:1918",
+                "name": "Vector",
+                "type": "VECTOR",
+                "x": 3.6029415130615234,
+                "y": 2.8823533058166504,
+                "width": 2.161764621734619,
+                "height": 2.8823530673980713,
+                "opacity": 1,
+                "cornerRadius": 0,
+                "fills": [
+                  {
+                    "type": "SOLID",
+                    "visible": true,
+                    "opacity": 1,
+                    "blendMode": "NORMAL",
+                    "color": {
+                      "r": 0.9450980424880981,
+                      "g": 0.9450980424880981,
+                      "b": 0.9333333373069763
+                    },
+                    "boundVariables": {
+                      "color": {
+                        "type": "VARIABLE_ALIAS",
+                        "id": "VariableID:745:6"
+                      }
+                    }
+                  }
+                ],
+                "strokes": [],
+                "effects": []
+              }
+            ],
+            "iconSrc": "/assets/card-intro/e968c918-9d82-4673-9d03-291ac4074af2.svg"
+          },
+          {
+            "id": "I1284:22503;1260:1919",
+            "name": "App name",
+            "type": "TEXT",
+            "x": 12.352940559387207,
+            "y": 0,
+            "width": 98.82353210449219,
+            "height": 9,
+            "opacity": 0.9200000166893005,
+            "fills": [
+              {
+                "type": "SOLID",
+                "visible": true,
+                "opacity": 1,
+                "blendMode": "NORMAL",
+                "color": {
+                  "r": 0.9450980424880981,
+                  "g": 0.9450980424880981,
+                  "b": 0.9333333373069763
+                },
+                "boundVariables": {
+                  "color": {
+                    "type": "VARIABLE_ALIAS",
+                    "id": "VariableID:745:6"
+                  }
+                }
+              }
+            ],
+            "strokes": [],
+            "effects": [],
+            "fontSize": 5.764706134796143,
+            "fontName": {
+              "family": "Pretendard",
+              "style": "Medium"
+            },
+            "fontWeight": 500,
+            "lineHeight": {
+              "unit": "PIXELS",
+              "value": 8.235294342041016
+            },
+            "characters": "YouTube"
+          }
+        ]
+      },
+      {
+        "id": "I1284:22503;1260:1920",
+        "name": "Notification title",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 24.111766815185547,
+        "width": 125.17647552490234,
+        "height": 11,
+        "opacity": 1,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 6.588235378265381,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 10.70588207244873
+        },
+        "characters": "새 영상이 도착했어요."
+      },
+      {
+        "id": "I1284:22503;1260:1921",
+        "name": "Notification meta",
+        "type": "TEXT",
+        "x": 7.699999809265137,
+        "y": 41.70000457763672,
+        "width": 125.17647552490234,
+        "height": 9,
+        "opacity": 0.5199999809265137,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0.9450980424880981,
+              "g": 0.9450980424880981,
+              "b": 0.9333333373069763
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:745:6"
+              }
+            }
+          }
+        ],
+        "strokes": [],
+        "effects": [],
+        "fontSize": 4.941176414489746,
+        "fontName": {
+          "family": "Pretendard",
+          "style": "Regular"
+        },
+        "fontWeight": 400,
+        "lineHeight": {
+          "unit": "PIXELS",
+          "value": 8.235294342041016
+        },
+        "characters": "구독 중인 채널 · 방금"
+      }
+    ],
+    "kind": 5
+  }
+]

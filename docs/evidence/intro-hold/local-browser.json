@@ -1,0 +1,62 @@
+[
+  {
+    "width": 1440,
+    "status": 200,
+    "durationMs": 5500,
+    "fullyVisibleFrom": 533.3,
+    "fullyVisibleUntil": 2233.2999999999997,
+    "observedFullHoldMs": 1699.9999999999998,
+    "addedHoldMs": 1500,
+    "held": {
+      "therefore": 1,
+      "paper": 1,
+      "slit": 0,
+      "brand": 0
+    },
+    "offscreenPaused": true,
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0,
+    "overflow": 0
+  },
+  {
+    "width": 393,
+    "status": 200,
+    "durationMs": 5500,
+    "fullyVisibleFrom": 533.292,
+    "fullyVisibleUntil": 2233.1920000000005,
+    "observedFullHoldMs": 1699.9000000000005,
+    "addedHoldMs": 1500,
+    "held": {
+      "therefore": 1,
+      "paper": 1,
+      "slit": 0,
+      "brand": 0
+    },
+    "offscreenPaused": true,
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0,
+    "overflow": 0
+  },
+  {
+    "width": 360,
+    "status": 200,
+    "durationMs": 5500,
+    "fullyVisibleFrom": 533.4000000000001,
+    "fullyVisibleUntil": 2233.2999999999997,
+    "observedFullHoldMs": 1699.8999999999996,
+    "addedHoldMs": 1500,
+    "held": {
+      "therefore": 1,
+      "paper": 1,
+      "slit": 0,
+      "brand": 0
+    },
+    "offscreenPaused": true,
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0,
+    "overflow": 0
+  }
+]

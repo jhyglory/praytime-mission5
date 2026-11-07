@@ -1,0 +1,30 @@
+{
+  "endpoint": "https://yxiubxjpapiacvhbkxvd.supabase.co",
+  "keyType": "publishable",
+  "keyFingerprint": "3aa8f542a8c9572f88b0b8d92d507bd1a8e857bb9c0bcf7177ee97bf88f205cc",
+  "requests": [
+    {
+      "method": "OPTIONS",
+      "path": "/rest/v1/beta_signups",
+      "status": 200,
+      "allow": "GET, HEAD, POST, OPTIONS",
+      "contentType": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/",
+      "status": 401,
+      "allow": null,
+      "contentType": "application/json;charset=UTF-8",
+      "errorCode": null
+    },
+    {
+      "method": "GET",
+      "path": "/rest/v1/beta_signups?select=nickname,email,os,signup_reason,age_range,target_apps,reduction_methods,utm_source,utm_medium,utm_campaign,utm_content,referrer&limit=0",
+      "status": 200,
+      "allow": null,
+      "contentType": "application/json; charset=utf-8",
+      "emptyResultConfirmed": true
+    }
+  ]
+}

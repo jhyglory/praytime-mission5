@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="773" height="435" viewBox="0 0 773 435" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Lavender ambient / fading" filter="url(#filter0_f_0_386)">
+<ellipse cx="386.5" cy="217.5" rx="286.5" ry="117.5" fill="#C8BCD3" fill-opacity="0.1"/>
+</g>
+<defs>
+<filter id="filter0_f_0_386" x="0" y="0" width="773" height="435" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="50" result="effect1_foregroundBlur_0_386"/>
+</filter>
+</defs>
+</svg>

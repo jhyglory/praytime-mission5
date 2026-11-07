@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="242.08" height="60" viewBox="0 0 242.08 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Prayer Light / 1088:1051 / bloom" opacity="0.1365" filter="url(#filter0_f_0_305)">
+<ellipse cx="121.04" cy="30" rx="103.04" ry="12" fill="#C8BCD3"/>
+</g>
+<defs>
+<filter id="filter0_f_0_305" x="0" y="0" width="242.08" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="9" result="effect1_foregroundBlur_0_305"/>
+</filter>
+</defs>
+</svg>

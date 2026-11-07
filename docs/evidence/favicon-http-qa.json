@@ -1,0 +1,41 @@
+{
+  "scope": "local production build GET only",
+  "icons": [
+    {
+      "rel": "icon",
+      "href": "/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "16x16 32x32 48x48",
+      "status": 200,
+      "content_type": "image/x-icon",
+      "bytes": 1292,
+      "image_sizes": [
+        16,
+        32,
+        48
+      ]
+    },
+    {
+      "rel": "icon",
+      "href": "/assets/praytime-favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "status": 200,
+      "content_type": "image/svg+xml",
+      "bytes": 311
+    },
+    {
+      "rel": "apple-touch-icon",
+      "href": "/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "status": 200,
+      "content_type": "image/png",
+      "bytes": 3236,
+      "dimensions": [
+        180,
+        180
+      ]
+    }
+  ]
+}

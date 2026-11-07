@@ -1,0 +1,120 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "geometry": {
+      "scrollWidth": 1440,
+      "sections": [
+        {
+          "name": "hero",
+          "top": 0,
+          "height": 684,
+          "background": "rgb(23, 28, 38)"
+        },
+        {
+          "name": "one-question light-section",
+          "top": 684,
+          "height": 514,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "why-now light-section",
+          "top": 1198,
+          "height": 963,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "landing-section section-depth gap-section",
+          "top": 2921,
+          "height": 1180,
+          "background": "rgb(11, 16, 32)"
+        },
+        {
+          "name": "time-section light-section",
+          "top": 4101,
+          "height": 923.40625,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "prayer-section",
+          "top": 5024.40625,
+          "height": 757,
+          "background": "rgb(23, 28, 38)"
+        },
+        {
+          "name": "landing-section",
+          "top": 5781.40625,
+          "height": 842,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "landing-section beta-section light-section",
+          "top": 6623.40625,
+          "height": 1739,
+          "background": "rgb(245, 242, 247)"
+        }
+      ],
+      "transitionHeight": 760,
+      "missingImages": []
+    }
+  },
+  {
+    "width": 393,
+    "errors": [],
+    "geometry": {
+      "scrollWidth": 393,
+      "sections": [
+        {
+          "name": "hero",
+          "top": 0,
+          "height": 889,
+          "background": "rgb(23, 28, 38)"
+        },
+        {
+          "name": "one-question light-section",
+          "top": 889,
+          "height": 366,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "why-now light-section",
+          "top": 1255,
+          "height": 1098,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "landing-section section-depth gap-section",
+          "top": 2913,
+          "height": 1024,
+          "background": "rgb(11, 16, 32)"
+        },
+        {
+          "name": "time-section light-section",
+          "top": 3937,
+          "height": 1187.734375,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "prayer-section",
+          "top": 5124.734375,
+          "height": 999,
+          "background": "rgb(23, 28, 38)"
+        },
+        {
+          "name": "landing-section",
+          "top": 6123.734375,
+          "height": 1112,
+          "background": "rgb(245, 242, 247)"
+        },
+        {
+          "name": "landing-section beta-section light-section",
+          "top": 7235.734375,
+          "height": 2509,
+          "background": "rgb(245, 242, 247)"
+        }
+      ],
+      "transitionHeight": 560,
+      "missingImages": []
+    }
+  }
+]

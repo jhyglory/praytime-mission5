@@ -1,0 +1,362 @@
+[
+  {
+    "width": 1440,
+    "status": 200,
+    "background": [
+      8,
+      14,
+      38
+    ],
+    "corners": [
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ]
+    ],
+    "geometry": {
+      "width": 1440,
+      "height": 1180,
+      "content": [
+        {
+          "selector": "h2",
+          "text": "충동과 행동 사이,기도가 머물 작은 틈을 만듭니다.",
+          "x": 471.15625,
+          "y": 136,
+          "width": 497.6875,
+          "height": 128
+        },
+        {
+          "selector": ".body-copy",
+          "text": "PrayTime은 SNS를 여는 순간에 개입합니다.짧게 기도한 뒤, 지금도 필요한 사용인지 다시 선택합니다.",
+          "x": 520.6875,
+          "y": 344,
+          "width": 398.625,
+          "height": 72
+        },
+        {
+          "selector": ".gap-architecture img",
+          "text": "",
+          "x": 547.8359375,
+          "y": 482.15625,
+          "width": 344.328125,
+          "height": 438.140625
+        },
+        {
+          "selector": ".equal-outcomes",
+          "text": "필요하지 않다면지금은 돌아가기필요하다면5 · 10 · 15분 선택",
+          "x": 120,
+          "y": 980,
+          "width": 1200,
+          "height": 116
+        },
+        {
+          "selector": ".gap-choice--return",
+          "text": "필요하지 않다면지금은 돌아가기",
+          "x": 120,
+          "y": 980,
+          "width": 584,
+          "height": 116
+        },
+        {
+          "selector": ".gap-choice--time",
+          "text": "필요하다면5 · 10 · 15분 선택",
+          "x": 736,
+          "y": 980,
+          "width": 584,
+          "height": 116
+        }
+      ],
+      "artwork": "/assets/high-resolution/gap-hq-8f930896b76a.png"
+    },
+    "errors": [],
+    "overflow": 0,
+    "signupPosts": 0,
+    "anchors": "PASS"
+  },
+  {
+    "width": 393,
+    "status": 200,
+    "background": [
+      8,
+      14,
+      38
+    ],
+    "corners": [
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ]
+    ],
+    "geometry": {
+      "width": 393,
+      "height": 1024,
+      "content": [
+        {
+          "selector": "h2",
+          "text": "충동과 행동 사이,기도가 머물 작은 틈을 만듭니다.",
+          "x": 77.890625,
+          "y": 103,
+          "width": 237.203125,
+          "height": 132
+        },
+        {
+          "selector": ".body-copy",
+          "text": "PrayTime은 SNS를 여는 순간에 개입합니다.짧게 기도한 뒤, 지금도 필요한 사용인지 다시 선택합니다.",
+          "x": 63.421875,
+          "y": 291,
+          "width": 266.140625,
+          "height": 90
+        },
+        {
+          "selector": ".gap-architecture img",
+          "text": "",
+          "x": 80.0390625,
+          "y": 429.984375,
+          "width": 232.921875,
+          "height": 296.375
+        },
+        {
+          "selector": ".equal-outcomes",
+          "text": "필요하지 않다면지금은 돌아가기필요하다면5 · 10 · 15분 선택",
+          "x": 24,
+          "y": 771,
+          "width": 345,
+          "height": 188
+        },
+        {
+          "selector": ".gap-choice--return",
+          "text": "필요하지 않다면지금은 돌아가기",
+          "x": 24,
+          "y": 771,
+          "width": 345,
+          "height": 90
+        },
+        {
+          "selector": ".gap-choice--time",
+          "text": "필요하다면5 · 10 · 15분 선택",
+          "x": 24,
+          "y": 869,
+          "width": 345,
+          "height": 90
+        }
+      ],
+      "artwork": "/assets/high-resolution/gap-hq-8f930896b76a.png"
+    },
+    "errors": [],
+    "overflow": 0,
+    "signupPosts": 0,
+    "anchors": "PASS"
+  },
+  {
+    "width": 360,
+    "status": 200,
+    "background": [
+      8,
+      14,
+      38
+    ],
+    "corners": [
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ]
+    ],
+    "geometry": {
+      "width": 360,
+      "height": 1024,
+      "content": [
+        {
+          "selector": "h2",
+          "text": "충동과 행동 사이,기도가 머물 작은 틈을 만듭니다.",
+          "x": 61.390625,
+          "y": 103,
+          "width": 237.203125,
+          "height": 132
+        },
+        {
+          "selector": ".body-copy",
+          "text": "PrayTime은 SNS를 여는 순간에 개입합니다.짧게 기도한 뒤, 지금도 필요한 사용인지 다시 선택합니다.",
+          "x": 46.921875,
+          "y": 291,
+          "width": 266.140625,
+          "height": 90
+        },
+        {
+          "selector": ".gap-architecture img",
+          "text": "",
+          "x": 63.5390625,
+          "y": 429.984375,
+          "width": 232.921875,
+          "height": 296.375
+        },
+        {
+          "selector": ".equal-outcomes",
+          "text": "필요하지 않다면지금은 돌아가기필요하다면5 · 10 · 15분 선택",
+          "x": 24,
+          "y": 771,
+          "width": 312,
+          "height": 188
+        },
+        {
+          "selector": ".gap-choice--return",
+          "text": "필요하지 않다면지금은 돌아가기",
+          "x": 24,
+          "y": 771,
+          "width": 312,
+          "height": 90
+        },
+        {
+          "selector": ".gap-choice--time",
+          "text": "필요하다면5 · 10 · 15분 선택",
+          "x": 24,
+          "y": 869,
+          "width": 312,
+          "height": 90
+        }
+      ],
+      "artwork": "/assets/high-resolution/gap-hq-8f930896b76a.png"
+    },
+    "errors": [],
+    "overflow": 0,
+    "signupPosts": 0,
+    "anchors": "PASS"
+  },
+  {
+    "width": 320,
+    "status": 200,
+    "background": [
+      8,
+      14,
+      38
+    ],
+    "corners": [
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ],
+      [
+        8,
+        14,
+        38
+      ]
+    ],
+    "geometry": {
+      "width": 320,
+      "height": 1024,
+      "content": [
+        {
+          "selector": "h2",
+          "text": "충동과 행동 사이,기도가 머물 작은 틈을 만듭니다.",
+          "x": 41.390625,
+          "y": 103,
+          "width": 237.203125,
+          "height": 132
+        },
+        {
+          "selector": ".body-copy",
+          "text": "PrayTime은 SNS를 여는 순간에 개입합니다.짧게 기도한 뒤, 지금도 필요한 사용인지 다시 선택합니다.",
+          "x": 26.921875,
+          "y": 291,
+          "width": 266.140625,
+          "height": 90
+        },
+        {
+          "selector": ".gap-architecture img",
+          "text": "",
+          "x": 43.5390625,
+          "y": 429.984375,
+          "width": 232.921875,
+          "height": 296.375
+        },
+        {
+          "selector": ".equal-outcomes",
+          "text": "필요하지 않다면지금은 돌아가기필요하다면5 · 10 · 15분 선택",
+          "x": 24,
+          "y": 771,
+          "width": 272,
+          "height": 188
+        },
+        {
+          "selector": ".gap-choice--return",
+          "text": "필요하지 않다면지금은 돌아가기",
+          "x": 24,
+          "y": 771,
+          "width": 272,
+          "height": 90
+        },
+        {
+          "selector": ".gap-choice--time",
+          "text": "필요하다면5 · 10 · 15분 선택",
+          "x": 24,
+          "y": 869,
+          "width": 272,
+          "height": 90
+        }
+      ],
+      "artwork": "/assets/high-resolution/gap-hq-8f930896b76a.png"
+    },
+    "errors": [],
+    "overflow": 0,
+    "signupPosts": 0,
+    "anchors": "PASS"
+  }
+]

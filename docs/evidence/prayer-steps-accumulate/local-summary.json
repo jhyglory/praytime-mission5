@@ -1,0 +1,479 @@
+{
+  "baseURL": "http://127.0.0.1:3000",
+  "status": "PASS",
+  "startedAt": "2026-11-07T10:21:19.346Z",
+  "finishedAt": "2026-11-07T10:21:36.411Z",
+  "scope": "Fresh actual Chrome Desktop/Mobile; real cumulative3900ms prayer-light playback, no timeline seeking; non-GET/HEAD and cross-origin requests blocked.",
+  "errors": [],
+  "writes": [],
+  "reducedMotion": {
+    "status": "PASS",
+    "steps": [
+      {
+        "text": [
+          1,
+          1,
+          1
+        ],
+        "light": 1,
+        "center": 0.2
+      },
+      {
+        "text": [
+          1,
+          1,
+          1
+        ],
+        "light": 1,
+        "center": 0.5
+      },
+      {
+        "text": [
+          1,
+          1,
+          1
+        ],
+        "light": 1,
+        "center": 0.8
+      }
+    ]
+  },
+  "verification": "Full real-frame assertions passed: ordered fade and line drawing, previous lights/lines never disappear, future lights hidden, final/reentryallthree1, geometry unchanged, overflow0. Rawframes stay in task outputs/prayer-steps-accumulate-local/browser.json.",
+  "results": [
+    {
+      "width": 1440,
+      "elapsedMs": 3905,
+      "initial": [
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        },
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        },
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        }
+      ],
+      "final": {
+        "at": 5076.600000023842,
+        "clock": 3900,
+        "state": "complete",
+        "text": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "light": [
+          1,
+          1,
+          1
+        ],
+        "line": [
+          1,
+          1,
+          1
+        ],
+        "head": [
+          0.9999830411828082,
+          1,
+          0.9999744581139606
+        ]
+      },
+      "reentry": {
+        "at": 5173.200000047684,
+        "clock": 3900,
+        "state": "complete",
+        "text": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "light": [
+          1,
+          1,
+          1
+        ],
+        "line": [
+          1,
+          1,
+          1
+        ],
+        "head": [
+          0.9999830411828082,
+          1,
+          0.9999744581139606
+        ]
+      },
+      "before": [
+        {
+          "x": 120,
+          "pageY": 6142.40625,
+          "width": 368,
+          "height": 113
+        },
+        {
+          "x": 536,
+          "pageY": 6142.40625,
+          "width": 368,
+          "height": 113
+        },
+        {
+          "x": 952,
+          "pageY": 6142.40625,
+          "width": 368,
+          "height": 113
+        }
+      ],
+      "after": [
+        {
+          "x": 120,
+          "pageY": 6142.40625,
+          "width": 368,
+          "height": 113
+        },
+        {
+          "x": 536,
+          "pageY": 6142.40625,
+          "width": 368,
+          "height": 113
+        },
+        {
+          "x": 952,
+          "pageY": 6142.40625,
+          "width": 368,
+          "height": 113
+        }
+      ],
+      "overflow": 0
+    },
+    {
+      "width": 393,
+      "elapsedMs": 3901.199999988079,
+      "initial": [
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        },
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        },
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        }
+      ],
+      "final": {
+        "at": 4920.100000023842,
+        "clock": 3900,
+        "state": "complete",
+        "text": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "light": [
+          1,
+          1,
+          1
+        ],
+        "line": [
+          1,
+          1,
+          1
+        ],
+        "head": [
+          1,
+          1,
+          1
+        ]
+      },
+      "reentry": {
+        "at": 5008.199999988079,
+        "clock": 3900,
+        "state": "complete",
+        "text": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "light": [
+          1,
+          1,
+          1
+        ],
+        "line": [
+          1,
+          1,
+          1
+        ],
+        "head": [
+          1,
+          1,
+          1
+        ]
+      },
+      "before": [
+        {
+          "x": 24,
+          "pageY": 6481.734375,
+          "width": 345,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6626.734375,
+          "width": 345,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6771.734375,
+          "width": 345,
+          "height": 113
+        }
+      ],
+      "after": [
+        {
+          "x": 24,
+          "pageY": 6481.734375,
+          "width": 345,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6626.734375,
+          "width": 345,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6771.734375,
+          "width": 345,
+          "height": 113
+        }
+      ],
+      "overflow": 0
+    },
+    {
+      "width": 360,
+      "elapsedMs": 3916.100000023842,
+      "initial": [
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        },
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        },
+        {
+          "text": [
+            0,
+            0,
+            0
+          ],
+          "light": 0
+        }
+      ],
+      "final": {
+        "at": 4937.700000047684,
+        "clock": 3900,
+        "state": "complete",
+        "text": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "light": [
+          1,
+          1,
+          1
+        ],
+        "line": [
+          1,
+          1,
+          1
+        ],
+        "head": [
+          0.999969971485627,
+          1,
+          0.9999799483861679
+        ]
+      },
+      "reentry": {
+        "at": 5033.600000023842,
+        "clock": 3900,
+        "state": "complete",
+        "text": [
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "light": [
+          1,
+          1,
+          1
+        ],
+        "line": [
+          1,
+          1,
+          1
+        ],
+        "head": [
+          0.999969971485627,
+          1,
+          0.9999799483861679
+        ]
+      },
+      "before": [
+        {
+          "x": 24,
+          "pageY": 6464.390625,
+          "width": 312,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6609.390625,
+          "width": 312,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6754.390625,
+          "width": 312,
+          "height": 113
+        }
+      ],
+      "after": [
+        {
+          "x": 24,
+          "pageY": 6464.390625,
+          "width": 312,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6609.390625,
+          "width": 312,
+          "height": 113
+        },
+        {
+          "x": 24,
+          "pageY": 6754.390625,
+          "width": 312,
+          "height": 113
+        }
+      ],
+      "overflow": 0
+    }
+  ]
+}

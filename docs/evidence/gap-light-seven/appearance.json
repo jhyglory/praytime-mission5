@@ -1,0 +1,130 @@
+{
+  "width": 393,
+  "height": 477,
+  "faceRow": 230,
+  "faceSamples": [
+    {
+      "x": 189,
+      "rgb": [
+        255,
+        253,
+        243
+      ]
+    },
+    {
+      "x": 190,
+      "rgb": [
+        255,
+        254,
+        245
+      ]
+    },
+    {
+      "x": 191,
+      "rgb": [
+        255,
+        254,
+        248
+      ]
+    },
+    {
+      "x": 192,
+      "rgb": [
+        255,
+        255,
+        250
+      ]
+    },
+    {
+      "x": 194,
+      "rgb": [
+        255,
+        255,
+        252
+      ]
+    },
+    {
+      "x": 196,
+      "rgb": [
+        255,
+        255,
+        254
+      ]
+    },
+    {
+      "x": 198,
+      "rgb": [
+        255,
+        255,
+        252
+      ]
+    },
+    {
+      "x": 200,
+      "rgb": [
+        255,
+        255,
+        250
+      ]
+    },
+    {
+      "x": 202,
+      "rgb": [
+        255,
+        254,
+        245
+      ]
+    },
+    {
+      "x": 203,
+      "rgb": [
+        255,
+        253,
+        242
+      ]
+    },
+    {
+      "x": 204,
+      "rgb": [
+        205,
+        206,
+        201
+      ]
+    }
+  ],
+  "floorEdge": [
+    {
+      "x": 0,
+      "rgb": [
+        9,
+        15,
+        39
+      ]
+    },
+    {
+      "x": 1,
+      "rgb": [
+        9,
+        15,
+        39
+      ]
+    },
+    {
+      "x": 391,
+      "rgb": [
+        9,
+        15,
+        39
+      ]
+    },
+    {
+      "x": 392,
+      "rgb": [
+        9,
+        15,
+        39
+      ]
+    }
+  ],
+  "note": "Actual final PNG samples: faint horizontal face variation, soft antialiased edge, floor fields fade to navy at the canvas boundaries. This is not a claim of subjective appearance equivalence on every display."
+}

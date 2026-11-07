@@ -1,0 +1,3112 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "results": [
+    {
+      "width": 1440,
+      "beforeCaptureValid": true,
+      "beforeStart": {
+        "at": 4463.799999952316,
+        "state": "waiting",
+        "textOpacity": 0,
+        "quietOpacity": 0,
+        "rootState": "running",
+        "sinceWaitingMs": 21.600000023841858
+      },
+      "beforeEnd": {
+        "at": 4768.599999964237,
+        "state": "waiting",
+        "textOpacity": 0,
+        "quietOpacity": 0,
+        "rootState": "running",
+        "sinceWaitingMs": 326.4000000357628
+      },
+      "afterStart": {
+        "at": 8099.5,
+        "state": "shown",
+        "textOpacity": 1,
+        "quietOpacity": 1,
+        "rootState": "running",
+        "sinceWaitingMs": 3657.300000011921
+      },
+      "afterEnd": {
+        "at": 8617.399999976158,
+        "state": "shown",
+        "textOpacity": 1,
+        "quietOpacity": 1,
+        "rootState": "running",
+        "sinceWaitingMs": 4175.700000047684
+      },
+      "events": {
+        "waiting": 4442.299999952316,
+        "revealing": 7444,
+        "shown": 7844.599999964237
+      },
+      "samples": [
+        {
+          "at": 4434.399999976158,
+          "state": "pending",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "paused"
+        },
+        {
+          "at": 4442,
+          "state": "pending",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "paused"
+        },
+        {
+          "at": 4452.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4556.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4586.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4589.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4603.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4619.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4635.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4652.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4683.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4685.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4702.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4719.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4736,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4786.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4802.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4819.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4835.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4852.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4869.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4885.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4902.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4918.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4936.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4953.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4969,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4986.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5002,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5018.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5036.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5052.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5069.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5085.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5102.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5119.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5136.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5153.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5169.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5186.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5202.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5219,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5236.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5253.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5269.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5286.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5302.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5319.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5336.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5352.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5368.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5385.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5402.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5419.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5436.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5452.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5469.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5486.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5502.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5519.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5535.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5552.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5569.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5586.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5603,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5619.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5635.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5652.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5669.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5686.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5702.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5719.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5735.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5752.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5769.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5785.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5802.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5819.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5836.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5852.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5869.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5885.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5903.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5919.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5936.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5953.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5969.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 5986.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6003.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6019.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6036.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6052.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6069.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6085.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6102.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6119.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6136.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6153.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6169.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6186.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6203.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6219.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6236.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6252.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6270,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6286.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6303.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6319.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6336.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6353.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6370.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6386,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6403.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6419.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6436.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6453,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6469.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6486.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6503.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6519.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6536.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6552.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6570.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6586.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6603.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6619.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6635.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6653.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6669.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6686.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6702.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6719.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6736.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6753,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6770.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6786.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6802.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6819.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6836.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6853.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6870.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6886.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6903,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6919.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6936.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6952.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6969.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 6986.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7002.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7019.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7035.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7052.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7069.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7086.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7102.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7119.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7136.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7152.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7169.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7185.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7202.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7218.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7236.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7252.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7269.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7286.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7303.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7319.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7336.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7353,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7369.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7386.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7403.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7419.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7436.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7452.799999952316,
+          "state": "revealing",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 7469.199999988079,
+          "state": "revealing",
+          "textOpacity": 0.0687121,
+          "quietOpacity": 0.0687121,
+          "rootState": "running"
+        },
+        {
+          "at": 7485.299999952316,
+          "state": "revealing",
+          "textOpacity": 0.134809,
+          "quietOpacity": 0.134809,
+          "rootState": "running"
+        },
+        {
+          "at": 7502.799999952316,
+          "state": "revealing",
+          "textOpacity": 0.19832,
+          "quietOpacity": 0.19832,
+          "rootState": "running"
+        },
+        {
+          "at": 7518.799999952316,
+          "state": "revealing",
+          "textOpacity": 0.260575,
+          "quietOpacity": 0.260575,
+          "rootState": "running"
+        },
+        {
+          "at": 7536,
+          "state": "revealing",
+          "textOpacity": 0.320175,
+          "quietOpacity": 0.320175,
+          "rootState": "running"
+        },
+        {
+          "at": 7552.699999988079,
+          "state": "revealing",
+          "textOpacity": 0.377902,
+          "quietOpacity": 0.377902,
+          "rootState": "running"
+        },
+        {
+          "at": 7569.599999964237,
+          "state": "revealing",
+          "textOpacity": 0.434084,
+          "quietOpacity": 0.434084,
+          "rootState": "running"
+        },
+        {
+          "at": 7586.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.488342,
+          "quietOpacity": 0.488342,
+          "rootState": "running"
+        },
+        {
+          "at": 7602.799999952316,
+          "state": "revealing",
+          "textOpacity": 0.54063,
+          "quietOpacity": 0.54063,
+          "rootState": "running"
+        },
+        {
+          "at": 7619.399999976158,
+          "state": "revealing",
+          "textOpacity": 0.590888,
+          "quietOpacity": 0.590888,
+          "rootState": "running"
+        },
+        {
+          "at": 7636.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.638759,
+          "quietOpacity": 0.638759,
+          "rootState": "running"
+        },
+        {
+          "at": 7652.799999952316,
+          "state": "revealing",
+          "textOpacity": 0.684458,
+          "quietOpacity": 0.684458,
+          "rootState": "running"
+        },
+        {
+          "at": 7669.899999976158,
+          "state": "revealing",
+          "textOpacity": 0.728389,
+          "quietOpacity": 0.728389,
+          "rootState": "running"
+        },
+        {
+          "at": 7686.5,
+          "state": "revealing",
+          "textOpacity": 0.769379,
+          "quietOpacity": 0.769379,
+          "rootState": "running"
+        },
+        {
+          "at": 7702.199999988079,
+          "state": "revealing",
+          "textOpacity": 0.808047,
+          "quietOpacity": 0.808047,
+          "rootState": "running"
+        },
+        {
+          "at": 7719.299999952316,
+          "state": "revealing",
+          "textOpacity": 0.843762,
+          "quietOpacity": 0.843762,
+          "rootState": "running"
+        },
+        {
+          "at": 7737,
+          "state": "revealing",
+          "textOpacity": 0.87676,
+          "quietOpacity": 0.87676,
+          "rootState": "running"
+        },
+        {
+          "at": 7753.299999952316,
+          "state": "revealing",
+          "textOpacity": 0.906419,
+          "quietOpacity": 0.906419,
+          "rootState": "running"
+        },
+        {
+          "at": 7770.199999988079,
+          "state": "revealing",
+          "textOpacity": 0.932833,
+          "quietOpacity": 0.932833,
+          "rootState": "running"
+        },
+        {
+          "at": 7786.5,
+          "state": "revealing",
+          "textOpacity": 0.955499,
+          "quietOpacity": 0.955499,
+          "rootState": "running"
+        },
+        {
+          "at": 7802.699999988079,
+          "state": "revealing",
+          "textOpacity": 0.974046,
+          "quietOpacity": 0.974046,
+          "rootState": "running"
+        },
+        {
+          "at": 7819.699999988079,
+          "state": "revealing",
+          "textOpacity": 0.987958,
+          "quietOpacity": 0.987958,
+          "rootState": "running"
+        },
+        {
+          "at": 7836.899999976158,
+          "state": "revealing",
+          "textOpacity": 0.996865,
+          "quietOpacity": 0.996865,
+          "rootState": "running"
+        },
+        {
+          "at": 7853.199999988079,
+          "state": "shown",
+          "textOpacity": 1,
+          "quietOpacity": 1,
+          "rootState": "running"
+        }
+      ],
+      "columns": [
+        {
+          "direction": "up",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 133.3339999999996,
+              "playState": "running"
+            }
+          ]
+        },
+        {
+          "direction": "down",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 133.3339999999996,
+              "playState": "running"
+            }
+          ]
+        },
+        {
+          "direction": "up",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 133.3339999999996,
+              "playState": "running"
+            }
+          ]
+        },
+        {
+          "direction": "down",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 133.3339999999996,
+              "playState": "running"
+            }
+          ]
+        },
+        {
+          "direction": "up",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 133.3339999999996,
+              "playState": "running"
+            }
+          ]
+        },
+        {
+          "direction": "down",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 133.3339999999996,
+              "playState": "running"
+            }
+          ]
+        }
+      ],
+      "particleClocks": [
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000
+      ],
+      "copy": "손이 먼저 움직인 순간,\n\n다시 생각할 시간을 돌려드립니다.\n\n잠깐 기도하고, 필요한 만큼만 선택합니다.",
+      "quietBackground": "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.86) 18%, rgb(0, 0, 0) 33%, rgb(0, 0, 0) 67%, rgba(0, 0, 0, 0.86) 82%, rgba(0, 0, 0, 0) 100%)",
+      "imageCount": 559,
+      "loadedImages": 408,
+      "overflow": 0,
+      "waitMs": 3001.7000000476837,
+      "fadeMs": 400.5999999642372,
+      "errors": [],
+      "posts": [],
+      "blockedExternal": []
+    },
+    {
+      "width": 393,
+      "beforeCaptureValid": true,
+      "beforeStart": {
+        "at": 1909.5999999642372,
+        "state": "waiting",
+        "textOpacity": 0,
+        "quietOpacity": 0,
+        "rootState": "running",
+        "sinceWaitingMs": 16.100000023841858
+      },
+      "beforeEnd": {
+        "at": 2080.599999964237,
+        "state": "waiting",
+        "textOpacity": 0,
+        "quietOpacity": 0,
+        "rootState": "running",
+        "sinceWaitingMs": 187
+      },
+      "afterStart": {
+        "at": 5406.299999952316,
+        "state": "shown",
+        "textOpacity": 1,
+        "quietOpacity": 1,
+        "rootState": "running",
+        "sinceWaitingMs": 3512.800000011921
+      },
+      "afterEnd": {
+        "at": 5570.199999988079,
+        "state": "shown",
+        "textOpacity": 1,
+        "quietOpacity": 1,
+        "rootState": "running",
+        "sinceWaitingMs": 3676.900000035763
+      },
+      "events": {
+        "waiting": 1893.5999999642372,
+        "revealing": 4895.599999964237,
+        "shown": 5297.399999976158
+      },
+      "samples": [
+        {
+          "at": 1888.199999988079,
+          "state": "pending",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "paused"
+        },
+        {
+          "at": 1902,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 1971.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 1987,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2002,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2018.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2035.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2062.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2080.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2084.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2102.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2118,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2135.2999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2152.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2168.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2185.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2201.2999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2218.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2235.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2252.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2268.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2285.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2302.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2324.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2338.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2352.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2369.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2385.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2402.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2418.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2435,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2452.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2469.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2485.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2501.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2518.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2534.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2552.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2568.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2586.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2602.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2617.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2635.2999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2652.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2668.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2685.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2701.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2719.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2735.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2752.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2768.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2785.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2802.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2818.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2835.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2851.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2868.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2884.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2901.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2918.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2935.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2951.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2968.2999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 2984.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3001.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3017.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3034.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3051.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3068.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3085.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3101.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3118.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3134.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3151.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3168.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3184.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3201.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3218.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3234.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3251.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3268.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3285.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3302.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3319.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3335.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3352.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3369.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3385.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3402.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3419.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3435.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3452.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3468.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3485,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3502,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3518.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3535.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3552.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3569.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3585.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3602.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3618.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3635.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3652.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3668.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3685.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3701.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3718.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3734.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3751.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3768.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3784.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3801.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3818.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3834.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3851.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3868.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3884.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3901.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3918.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3934.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3951.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3968.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 3984.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4001.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4018.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4035.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4052.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4069.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4085.7999999523163,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4102.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4118.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4135.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4151.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4168.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4184.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4202.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4218.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4234.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4251.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4268.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4285,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4301.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4319.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4335.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4352.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4369.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4385,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4401.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4418.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4434.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4451.5,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4468.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4484.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4501.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4518.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4534.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4551.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4568.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4585.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4602.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4618.299999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4635,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4651.599999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4668.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4684.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4701.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4718.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4734.899999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4751.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4768.199999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4784.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4802.099999964237,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4819,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4835.799999952316,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4852.399999976158,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4869,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4885.699999988079,
+          "state": "waiting",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4902.299999952316,
+          "state": "revealing",
+          "textOpacity": 0,
+          "quietOpacity": 0,
+          "rootState": "running"
+        },
+        {
+          "at": 4919.299999952316,
+          "state": "revealing",
+          "textOpacity": 0.0689702,
+          "quietOpacity": 0.0689702,
+          "rootState": "running"
+        },
+        {
+          "at": 4934.799999952316,
+          "state": "revealing",
+          "textOpacity": 0.134669,
+          "quietOpacity": 0.134669,
+          "rootState": "running"
+        },
+        {
+          "at": 4952.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.198938,
+          "quietOpacity": 0.198938,
+          "rootState": "running"
+        },
+        {
+          "at": 4968.799999952316,
+          "state": "revealing",
+          "textOpacity": 0.260444,
+          "quietOpacity": 0.260444,
+          "rootState": "running"
+        },
+        {
+          "at": 4985.5,
+          "state": "revealing",
+          "textOpacity": 0.320048,
+          "quietOpacity": 0.320048,
+          "rootState": "running"
+        },
+        {
+          "at": 5002.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.378121,
+          "quietOpacity": 0.378121,
+          "rootState": "running"
+        },
+        {
+          "at": 5019.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.433965,
+          "quietOpacity": 0.433965,
+          "rootState": "running"
+        },
+        {
+          "at": 5035.399999976158,
+          "state": "revealing",
+          "textOpacity": 0.488227,
+          "quietOpacity": 0.488227,
+          "rootState": "running"
+        },
+        {
+          "at": 5051.699999988079,
+          "state": "revealing",
+          "textOpacity": 0.540519,
+          "quietOpacity": 0.540519,
+          "rootState": "running"
+        },
+        {
+          "at": 5069.199999988079,
+          "state": "revealing",
+          "textOpacity": 0.590782,
+          "quietOpacity": 0.590782,
+          "rootState": "running"
+        },
+        {
+          "at": 5085.699999988079,
+          "state": "revealing",
+          "textOpacity": 0.638939,
+          "quietOpacity": 0.638939,
+          "rootState": "running"
+        },
+        {
+          "at": 5102.5,
+          "state": "revealing",
+          "textOpacity": 0.68463,
+          "quietOpacity": 0.68463,
+          "rootState": "running"
+        },
+        {
+          "at": 5119.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.728043,
+          "quietOpacity": 0.728043,
+          "rootState": "running"
+        },
+        {
+          "at": 5136,
+          "state": "revealing",
+          "textOpacity": 0.769293,
+          "quietOpacity": 0.769293,
+          "rootState": "running"
+        },
+        {
+          "at": 5151.5,
+          "state": "revealing",
+          "textOpacity": 0.807967,
+          "quietOpacity": 0.807967,
+          "rootState": "running"
+        },
+        {
+          "at": 5169.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.843895,
+          "quietOpacity": 0.843895,
+          "rootState": "running"
+        },
+        {
+          "at": 5185.699999988079,
+          "state": "revealing",
+          "textOpacity": 0.876692,
+          "quietOpacity": 0.876692,
+          "rootState": "running"
+        },
+        {
+          "at": 5202.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.906527,
+          "quietOpacity": 0.906527,
+          "rootState": "running"
+        },
+        {
+          "at": 5219.099999964237,
+          "state": "revealing",
+          "textOpacity": 0.932927,
+          "quietOpacity": 0.932927,
+          "rootState": "running"
+        },
+        {
+          "at": 5235.599999964237,
+          "state": "revealing",
+          "textOpacity": 0.955454,
+          "quietOpacity": 0.955454,
+          "rootState": "running"
+        },
+        {
+          "at": 5251.799999952316,
+          "state": "revealing",
+          "textOpacity": 0.973912,
+          "quietOpacity": 0.973912,
+          "rootState": "running"
+        },
+        {
+          "at": 5268.699999988079,
+          "state": "revealing",
+          "textOpacity": 0.987933,
+          "quietOpacity": 0.987933,
+          "rootState": "running"
+        },
+        {
+          "at": 5285.299999952316,
+          "state": "revealing",
+          "textOpacity": 0.996888,
+          "quietOpacity": 0.996888,
+          "rootState": "running"
+        },
+        {
+          "at": 5302,
+          "state": "shown",
+          "textOpacity": 1,
+          "quietOpacity": 1,
+          "rootState": "running"
+        }
+      ],
+      "columns": [
+        {
+          "direction": "up",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 3683.208,
+              "playState": "running"
+            }
+          ]
+        },
+        {
+          "direction": "down",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 3683.208,
+              "playState": "running"
+            }
+          ]
+        },
+        {
+          "direction": "up",
+          "animations": [
+            {
+              "duration": 21428.57142857143,
+              "currentTime": 3683.208,
+              "playState": "running"
+            }
+          ]
+        }
+      ],
+      "particleClocks": [
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000,
+        12000
+      ],
+      "copy": "손이 먼저 움직인 순간,\n\n다시 생각할 시간을\n돌려드립니다.\n\n잠깐 기도하고,\n필요한 만큼만 선택합니다.",
+      "quietBackground": "linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.86) 19%, rgb(0, 0, 0) 33%, rgb(0, 0, 0) 67%, rgba(0, 0, 0, 0.86) 81%, rgba(0, 0, 0, 0) 100%)",
+      "imageCount": 497,
+      "loadedImages": 497,
+      "overflow": 0,
+      "waitMs": 3002,
+      "fadeMs": 401.80000001192093,
+      "errors": [],
+      "posts": [],
+      "blockedExternal": []
+    }
+  ],
+  "scope": "Actual local Chrome Desktop/Mobile; direct CDP PNG capture, no source timeline seeking or production network.",
+  "status": "PASS"
+}

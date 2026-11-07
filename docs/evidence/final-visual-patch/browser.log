@@ -1,0 +1,30 @@
+> praytime-mission5@1.0.0 test:e2e
+> playwright test
+
+[WebServer] (node:11026) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 18 tests using 1 worker
+
+(node:11027) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/landing.spec.ts:14:1 › semantic structure, head metadata, assets and anchors have no runtime warnings (699ms)
+  ✓   2 tests/e2e/landing.spec.ts:56:1 › skip link and reduced-motion navigation support the keyboard (429ms)
+  ✓   3 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 1440px (346ms)
+  ✓   4 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 1280px (314ms)
+  ✓   5 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 1024px (299ms)
+  ✓   6 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 768px (314ms)
+  ✓   7 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 430px (306ms)
+  ✓   8 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 393px (306ms)
+  ✓   9 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 375px (302ms)
+  ✓  10 tests/e2e/landing.spec.ts:77:3 › responsive layout and assets at 320px (296ms)
+  ✓  11 tests/e2e/landing.spec.ts:142:1 › FAQ defaults readable, toggles independently, and supports keyboard (1.9s)
+  ✓  12 tests/e2e/landing.spec.ts:190:1 › final Hero overlay, percentage gauges and anchors match the approved behavior (7.0s)
+  ✓  13 tests/e2e/landing.spec.ts:242:1 › validation focuses first error; real unconfigured route returns 503 and retains input (554ms)
+  ✓  14 tests/e2e/landing.spec.ts:266:3 › mocked transport: success has the correct receipt and conversion behavior (590ms)
+  ✓  15 tests/e2e/landing.spec.ts:266:3 › mocked transport: duplicate has the correct receipt and conversion behavior (1.9s)
+  ✓  16 tests/e2e/landing.spec.ts:266:3 › mocked transport: no-receipt has the correct receipt and conversion behavior (1.9s)
+  ✓  17 tests/e2e/landing.spec.ts:266:3 › mocked transport: server-failure has the correct receipt and conversion behavior (1.9s)
+  ✓  18 tests/e2e/landing.spec.ts:301:1 › Time Select supports tap, keyboard and horizontal swipe with 10 minutes initially selected (472ms)
+
+  18 passed (22.5s)

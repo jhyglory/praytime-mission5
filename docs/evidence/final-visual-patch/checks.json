@@ -1,0 +1,18 @@
+{
+  "date_kst": "2026-11-06",
+  "scope": "final design + favicon approved release candidate, before commit",
+  "base_head": "529bdd8094ac45c8c20dd9ef04ee9a486500c70d",
+  "branch": "feature/mission-5-landing",
+  "results": {
+    "lint": "PASS,0 warnings",
+    "typecheck": "PASS",
+    "unit": "40/40 PASS",
+    "browser": "18/18 PASS,22.5s",
+    "build_webpack": "PASS"
+  },
+  "production_persistence": "disabled",
+  "production_origin": "https://praytime-mission5.vercel.app",
+  "merge": false,
+  "db_insert": false,
+  "dns_cutover": false
+}

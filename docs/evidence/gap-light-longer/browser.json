@@ -1,0 +1,65 @@
+[
+  {
+    "width": 1440,
+    "length": 73.5803336259877,
+    "faceHeight": 1021.9490781387182,
+    "cssLength": 36.79016681299385,
+    "returning": {
+      "headBottom": 1211.1168034354223,
+      "ground": 1220.017559262511,
+      "poolRadius": 14.920767936904097
+    },
+    "final": {
+      "time": 4200,
+      "width": 48.46356453028972,
+      "fill": "#FEF9E7",
+      "travelerOpacity": 0,
+      "overflow": 0
+    },
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0
+  },
+  {
+    "width": 393,
+    "length": 73.5803336259877,
+    "faceHeight": 1021.9490781387182,
+    "cssLength": 24.097559262510973,
+    "returning": {
+      "headBottom": 1210.4091521188084,
+      "ground": 1220.017559262511,
+      "poolRadius": 16.027289883344956
+    },
+    "final": {
+      "time": 4200,
+      "width": 48.46356453028972,
+      "fill": "#FEF9E7",
+      "travelerOpacity": 0,
+      "overflow": 0
+    },
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0
+  },
+  {
+    "width": 360,
+    "length": 73.5803336259877,
+    "faceHeight": 1021.9490781387182,
+    "cssLength": 22.07410008779631,
+    "returning": {
+      "headBottom": 1210.2886934497567,
+      "ground": 1220.017559262511,
+      "poolRadius": 16.21473804607948
+    },
+    "final": {
+      "time": 4200,
+      "width": 48.46356453028972,
+      "fill": "#FEF9E7",
+      "travelerOpacity": 0,
+      "overflow": 0
+    },
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0
+  }
+]

@@ -1,0 +1,677 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "durationMs": 4217.900000035763,
+      "geometry": {
+        "x": 160,
+        "y": 161,
+        "width": 600,
+        "height": 727.46875
+      },
+      "final": {
+        "time": 4200,
+        "state": "complete",
+        "phase": "complete",
+        "top": 198.0684811237928,
+        "base": 1220.017559262511,
+        "faceHeight": 1021.9490781387182,
+        "faceX": 575.7682177348552,
+        "faceWidth": 48.46356453028972,
+        "faceOpacity": 1,
+        "travelerX": 600,
+        "haloX": 600,
+        "travelerTop": 198.06848112379282,
+        "travelerLength": 49.05355575065847,
+        "travelerBottom": 247.12203687445128,
+        "travelerOpacity": 0,
+        "trailTop": 198.06848112379282,
+        "trailHeight": 1021.9490781387182,
+        "trailOpacity": 0,
+        "floorOpacity": 1,
+        "floorRX": 500,
+        "floorRY": 105,
+        "impactRX": 130,
+        "impactRY": 45,
+        "impactOpacity": 0,
+        "impactX": 600,
+        "impactY": 1220.017559262511,
+        "contactOpacity": 1,
+        "ambientOpacity": 1
+      },
+      "finalFaceCssPx": 24.23178226514486,
+      "travelerPercentOfFinalHeight": 4.8,
+      "reference": {
+        "width": 1139,
+        "height": 1381,
+        "rectangleWidth": 46,
+        "rectangleTop": 188,
+        "rectangleBase": 1158,
+        "note": "Vector reconstruction based on PNG geometry/color direction; not claimed pixel-identical."
+      },
+      "fallEasing": "PASS: smoothstep position fitted to actual sample times",
+      "maximumSwaySvg": 11.998229348486234,
+      "immediateReturn": {
+        "time": 1011.1999999880791,
+        "aboveGround": 3.1236451911199765,
+        "growingImpactRX": 5.36610686776238
+      },
+      "duringImpact": {
+        "time": 1261.199999988079,
+        "aboveGround": 73.32729130855819,
+        "growingImpactRX": 88.39122046538945
+      },
+      "faceRGBSamples": [
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ]
+      ],
+      "screenshots": [
+        {
+          "name": "dark",
+          "beforeMs": 0,
+          "afterMs": 77.89999998807889,
+          "path": "1440-dark.png"
+        },
+        {
+          "name": "fall",
+          "requestedMs": 550,
+          "beforeMs": 561.1999999880791,
+          "afterMs": 627.8999999880789,
+          "path": "1440-fall.png"
+        },
+        {
+          "name": "contact-rise",
+          "requestedMs": 1050,
+          "beforeMs": 1061.199999988079,
+          "afterMs": 1144.4999999880793,
+          "path": "1440-contact-rise.png"
+        },
+        {
+          "name": "impact-rise",
+          "requestedMs": 1300,
+          "beforeMs": 1311.199999988079,
+          "afterMs": 1394.4999999880793,
+          "path": "1440-impact-rise.png"
+        },
+        {
+          "name": "rise",
+          "requestedMs": 2100,
+          "beforeMs": 2111.199999988079,
+          "afterMs": 2194.4999999880793,
+          "path": "1440-rise.png"
+        },
+        {
+          "name": "open",
+          "requestedMs": 3350,
+          "beforeMs": 3361.0999999880787,
+          "afterMs": 3477.7999999880794,
+          "path": "1440-open.png"
+        }
+      ],
+      "seekResults": [
+        {
+          "requestedMs": 500,
+          "observedMs": 500
+        },
+        {
+          "requestedMs": 1200,
+          "observedMs": 1200
+        },
+        {
+          "requestedMs": 2000,
+          "observedMs": 2000
+        },
+        {
+          "requestedMs": 3300,
+          "observedMs": 3300
+        }
+      ],
+      "keyboardSeek": "PASS: ArrowRight2010 / End4200 / Home0",
+      "manualPauseResume": "PASS",
+      "manualPauseSurvivesOffscreen": "PASS",
+      "manualPauseSurvivesVisibilityEvent": "PASS (simulated visibilitychange)",
+      "automaticVisibilityPauseResume": "PASS (simulated visibilitychange)",
+      "repeatedReplayAndStill": "PASS",
+      "replayAgain": "PASS",
+      "reducedMotionAndDisabledSlider": "PASS",
+      "noEdgeOrStrokeGeometry": "PASS",
+      "actualElapsedReplay": true,
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    },
+    {
+      "width": 393,
+      "durationMs": 4216.900000035763,
+      "geometry": {
+        "x": 0,
+        "y": 186,
+        "width": 393,
+        "height": 476.484375
+      },
+      "final": {
+        "time": 4200,
+        "state": "complete",
+        "phase": "complete",
+        "top": 198.0684811237928,
+        "base": 1220.017559262511,
+        "faceHeight": 1021.9490781387182,
+        "faceX": 575.7682177348552,
+        "faceWidth": 48.46356453028972,
+        "faceOpacity": 1,
+        "travelerX": 600,
+        "haloX": 600,
+        "travelerTop": 198.06848112379282,
+        "travelerLength": 49.05355575065847,
+        "travelerBottom": 247.12203687445128,
+        "travelerOpacity": 0,
+        "trailTop": 198.06848112379282,
+        "trailHeight": 1021.9490781387182,
+        "trailOpacity": 0,
+        "floorOpacity": 1,
+        "floorRX": 500,
+        "floorRY": 105,
+        "impactRX": 130,
+        "impactRY": 45,
+        "impactOpacity": 0,
+        "impactX": 600,
+        "impactY": 1220.017559262511,
+        "contactOpacity": 1,
+        "ambientOpacity": 1
+      },
+      "finalFaceCssPx": 15.871817383669883,
+      "travelerPercentOfFinalHeight": 4.8,
+      "reference": {
+        "width": 1139,
+        "height": 1381,
+        "rectangleWidth": 46,
+        "rectangleTop": 188,
+        "rectangleBase": 1158,
+        "note": "Vector reconstruction based on PNG geometry/color direction; not claimed pixel-identical."
+      },
+      "fallEasing": "PASS: smoothstep position fitted to actual sample times",
+      "maximumSwaySvg": 11.996959892229597,
+      "immediateReturn": {
+        "time": 1012,
+        "aboveGround": 3.2048978209561483,
+        "growingImpactRX": 5.500917759999999
+      },
+      "duringImpact": {
+        "time": 1262,
+        "aboveGround": 73.68084789743511,
+        "growingImpactRX": 88.68427776
+      },
+      "faceRGBSamples": [
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ]
+      ],
+      "screenshots": [
+        {
+          "name": "dark",
+          "beforeMs": 0,
+          "afterMs": 62.09999999999991,
+          "path": "393-dark.png"
+        },
+        {
+          "name": "fall",
+          "requestedMs": 550,
+          "beforeMs": 562,
+          "afterMs": 645.4000000000001,
+          "path": "393-fall.png"
+        },
+        {
+          "name": "contact-rise",
+          "requestedMs": 1050,
+          "beforeMs": 1062.1,
+          "afterMs": 1128.8000000000002,
+          "path": "393-contact-rise.png"
+        },
+        {
+          "name": "impact-rise",
+          "requestedMs": 1300,
+          "beforeMs": 1312.1,
+          "afterMs": 1378.6999999999998,
+          "path": "393-impact-rise.png"
+        },
+        {
+          "name": "rise",
+          "requestedMs": 2100,
+          "beforeMs": 2112,
+          "afterMs": 2178.7,
+          "path": "393-rise.png"
+        },
+        {
+          "name": "open",
+          "requestedMs": 3350,
+          "beforeMs": 3362,
+          "afterMs": 3462,
+          "path": "393-open.png"
+        }
+      ],
+      "seekResults": [
+        {
+          "requestedMs": 500,
+          "observedMs": 500
+        },
+        {
+          "requestedMs": 1200,
+          "observedMs": 1200
+        },
+        {
+          "requestedMs": 2000,
+          "observedMs": 2000
+        },
+        {
+          "requestedMs": 3300,
+          "observedMs": 3300
+        }
+      ],
+      "keyboardSeek": "PASS: ArrowRight2010 / End4200 / Home0",
+      "manualPauseResume": "PASS",
+      "manualPauseSurvivesOffscreen": "PASS",
+      "manualPauseSurvivesVisibilityEvent": "PASS (simulated visibilitychange)",
+      "automaticVisibilityPauseResume": "PASS (simulated visibilitychange)",
+      "repeatedReplayAndStill": "PASS",
+      "replayAgain": "PASS",
+      "reducedMotionAndDisabledSlider": "PASS",
+      "noEdgeOrStrokeGeometry": "PASS",
+      "actualElapsedReplay": true,
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    },
+    {
+      "width": 360,
+      "durationMs": 4217.5,
+      "geometry": {
+        "x": 0,
+        "y": 211,
+        "width": 360,
+        "height": 436.484375
+      },
+      "final": {
+        "time": 4200,
+        "state": "complete",
+        "phase": "complete",
+        "top": 198.0684811237928,
+        "base": 1220.017559262511,
+        "faceHeight": 1021.9490781387182,
+        "faceX": 575.7682177348552,
+        "faceWidth": 48.46356453028972,
+        "faceOpacity": 1,
+        "travelerX": 600,
+        "haloX": 600,
+        "travelerTop": 198.06848112379282,
+        "travelerLength": 49.05355575065847,
+        "travelerBottom": 247.12203687445128,
+        "travelerOpacity": 0,
+        "trailTop": 198.06848112379282,
+        "trailHeight": 1021.9490781387182,
+        "trailOpacity": 0,
+        "floorOpacity": 1,
+        "floorRX": 500,
+        "floorRY": 105,
+        "impactRX": 130,
+        "impactRY": 45,
+        "impactOpacity": 0,
+        "impactX": 600,
+        "impactY": 1220.017559262511,
+        "contactOpacity": 1,
+        "ambientOpacity": 1
+      },
+      "finalFaceCssPx": 14.539069359086916,
+      "travelerPercentOfFinalHeight": 4.8,
+      "reference": {
+        "width": 1139,
+        "height": 1381,
+        "rectangleWidth": 46,
+        "rectangleTop": 188,
+        "rectangleBase": 1158,
+        "note": "Vector reconstruction based on PNG geometry/color direction; not claimed pixel-identical."
+      },
+      "fallEasing": "PASS: smoothstep position fitted to actual sample times",
+      "maximumSwaySvg": 11.9964609761887,
+      "immediateReturn": {
+        "time": 1012.400000023842,
+        "aboveGround": 3.2459061008130448,
+        "growingImpactRX": 5.568886706142467
+      },
+      "duringImpact": {
+        "time": 1262.400000023842,
+        "aboveGround": 73.85789753018753,
+        "growingImpactRX": 88.8306211107991
+      },
+      "faceRGBSamples": [
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ]
+      ],
+      "screenshots": [
+        {
+          "name": "dark",
+          "beforeMs": 12.400000023841812,
+          "afterMs": 79.10000002384186,
+          "path": "360-dark.png"
+        },
+        {
+          "name": "fall",
+          "requestedMs": 550,
+          "beforeMs": 562.4000000238418,
+          "afterMs": 629.1000000238419,
+          "path": "360-fall.png"
+        },
+        {
+          "name": "contact-rise",
+          "requestedMs": 1050,
+          "beforeMs": 1062.400000023842,
+          "afterMs": 1129.000000023842,
+          "path": "360-contact-rise.png"
+        },
+        {
+          "name": "impact-rise",
+          "requestedMs": 1300,
+          "beforeMs": 1312.400000023842,
+          "afterMs": 1379.1000000238419,
+          "path": "360-impact-rise.png"
+        },
+        {
+          "name": "rise",
+          "requestedMs": 2100,
+          "beforeMs": 2112.3000000238417,
+          "afterMs": 2195.7000000238418,
+          "path": "360-rise.png"
+        },
+        {
+          "name": "open",
+          "requestedMs": 3350,
+          "beforeMs": 3362.3000000238417,
+          "afterMs": 3445.600000023842,
+          "path": "360-open.png"
+        }
+      ],
+      "seekResults": [
+        {
+          "requestedMs": 500,
+          "observedMs": 500
+        },
+        {
+          "requestedMs": 1200,
+          "observedMs": 1200
+        },
+        {
+          "requestedMs": 2000,
+          "observedMs": 2000
+        },
+        {
+          "requestedMs": 3300,
+          "observedMs": 3300
+        }
+      ],
+      "keyboardSeek": "PASS: ArrowRight2010 / End4200 / Home0",
+      "manualPauseResume": "PASS",
+      "manualPauseSurvivesOffscreen": "PASS",
+      "manualPauseSurvivesVisibilityEvent": "PASS (simulated visibilitychange)",
+      "automaticVisibilityPauseResume": "PASS (simulated visibilitychange)",
+      "repeatedReplayAndStill": "PASS",
+      "replayAgain": "PASS",
+      "reducedMotionAndDisabledSlider": "PASS",
+      "noEdgeOrStrokeGeometry": "PASS",
+      "actualElapsedReplay": true,
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    }
+  ],
+  "noJS": [
+    {
+      "reducedMotion": "no-preference",
+      "differentFromNavy": 0,
+      "result": "PASS"
+    },
+    {
+      "reducedMotion": "reduce",
+      "differentFromNavy": 87212,
+      "result": "PASS"
+    }
+  ],
+  "errors": [],
+  "video": {
+    "status": "PASS",
+    "path": "/Users/codeit/Documents/Codex/2026-11-06/praytime-mission-5-landing-page-1/outputs/gap-light-gentle/393-replay.webm",
+    "mimeType": "video/webm;codecs=vp8",
+    "canvas": {
+      "width": 393,
+      "height": 477
+    },
+    "decodedMetadata": {
+      "width": 393,
+      "height": 477,
+      "duration": "stream duration not indexed"
+    },
+    "sourceElapsedMs": 4200,
+    "realCaptureWallMs": 4879.604583,
+    "canvasFrameUpdates": 245,
+    "requestedCanvasCaptureFPS": 30,
+    "receivedCDPFrames": 250,
+    "bytes": 91869,
+    "frameErrors": [],
+    "errors": [],
+    "posts": 0,
+    "method": "Actual Chrome Page.startScreencast JPEG frames cropped to SVG in same-page hidden canvas.captureStream, encoded by native MediaRecorder. No seeking during recorded replay and no external encoder/dependency.",
+    "decodedContent": {
+      "status": "PASS",
+      "metadata": {
+        "width": 393,
+        "height": 477,
+        "duration": "stream duration not indexed"
+      },
+      "thresholdNote": "Thin antialiased/compressed dash has lower peak luminance; visible content is checked above80 luma against~20luma navy, with final interior additionally above210RGB. Initial overlystrict200-luma threshold was adjusted after inspecting real decoded frames.",
+      "method": "Decoded saved WebM and played real-time without indexed seeking; sampled at1.0/2.4/4.5seconds.",
+      "samples": [
+        {
+          "requestedTime": 1,
+          "videoTime": 1.0486,
+          "ended": false,
+          "brightPixels": 6,
+          "visiblePixels": 34,
+          "visibleCenterBandRows": 17,
+          "centerBrightRows": 0,
+          "maximumLuminance": 182.33333333333334,
+          "centerRGB": [
+            7,
+            14,
+            37
+          ],
+          "topRGB": [
+            7,
+            14,
+            37
+          ],
+          "floorRGB": [
+            7,
+            14,
+            37
+          ]
+        },
+        {
+          "requestedTime": 2.4,
+          "videoTime": 2.4287,
+          "ended": false,
+          "brightPixels": 28,
+          "visiblePixels": 889,
+          "visibleCenterBandRows": 261,
+          "centerBrightRows": 0,
+          "maximumLuminance": 196.66666666666666,
+          "centerRGB": [
+            73,
+            75,
+            90
+          ],
+          "topRGB": [
+            7,
+            14,
+            37
+          ],
+          "floorRGB": [
+            153,
+            153,
+            152
+          ]
+        },
+        {
+          "requestedTime": 4.5,
+          "videoTime": 4.5177,
+          "ended": false,
+          "brightPixels": 5518,
+          "visiblePixels": 16674,
+          "visibleCenterBandRows": 335,
+          "centerBrightRows": 335,
+          "maximumLuminance": 248,
+          "centerRGB": [
+            255,
+            249,
+            230
+          ],
+          "topRGB": [
+            252,
+            249,
+            230
+          ],
+          "floorRGB": [
+            227,
+            224,
+            213
+          ]
+        }
+      ]
+    }
+  }
+}

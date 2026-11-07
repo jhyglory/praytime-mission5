@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "times": [
+        {
+          "waitMs": 501.80000001192093,
+          "durationMs": 1402.800000011921
+        },
+        {
+          "waitMs": 501.9000000357628,
+          "durationMs": 1402.699999988079
+        }
+      ],
+      "cancelOffscreen": "PASS",
+      "reducedMotion": "PASS",
+      "errors": [],
+      "posts": 0
+    },
+    {
+      "width": 393,
+      "times": [
+        {
+          "waitMs": 502.2000000476837,
+          "durationMs": 1408.199999988079
+        },
+        {
+          "waitMs": 506.19999998807907,
+          "durationMs": 1404.199999988079
+        }
+      ],
+      "cancelOffscreen": "PASS",
+      "reducedMotion": "PASS",
+      "errors": [],
+      "posts": 0
+    }
+  ],
+  "status": "PASS"
+}

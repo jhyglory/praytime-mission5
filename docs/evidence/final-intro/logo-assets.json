@@ -1,0 +1,22 @@
+[
+  {
+    "sourceNode": "1265:8079",
+    "src": "/assets/card-intro/praytime-wordmark-desktop.png",
+    "bytes": 2596,
+    "sha256": "33ce81ef70282c93e808170927cc0874959ea47b1a1ad93b72f2256a9c61294f",
+    "width": 277,
+    "height": 45,
+    "renderedWidth": 276.975,
+    "renderedHeight": 45
+  },
+  {
+    "sourceNode": "1265:8103",
+    "src": "/assets/card-intro/praytime-wordmark-mobile.png",
+    "bytes": 1690,
+    "sha256": "1bf5ccd5b1281b102eeb6da12ac39429b47c7a769041bb4a57e595ec2bd11934",
+    "width": 177,
+    "height": 29,
+    "renderedWidth": 176.075,
+    "renderedHeight": 29
+  }
+]

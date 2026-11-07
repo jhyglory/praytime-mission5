@@ -1,0 +1,26 @@
+{
+  "validatedAt": "2026-11-06T13:31:36.792627+00:00",
+  "baseCommit": "883a62ea706874b262dc509dbbd910692a640896",
+  "scale": 0.85,
+  "questionPx": [
+    17,
+    25.5
+  ],
+  "answerPx": [
+    15.3,
+    25.5
+  ],
+  "rowPaddingPx": 20.4,
+  "questionAnswerGapPx": 13.6,
+  "paragraphGapPx": 25.5,
+  "dividerGapPx": 13.6,
+  "sectionHeadingChanged": false,
+  "copyChanged": false,
+  "chevronChanged": false,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "unitPassed": 47,
+  "browserPassed": 22,
+  "build": "PASS --webpack",
+  "productionPosts": 0
+}

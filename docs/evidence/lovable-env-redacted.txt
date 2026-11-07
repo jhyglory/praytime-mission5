@@ -1,0 +1,6 @@
+SUPABASE_PROJECT_ID="yxiubxjpapiacvhbkxvd"
+SUPABASE_PUBLISHABLE_KEY="[KEY_REDACTED]"
+SUPABASE_URL="https://yxiubxjpapiacvhbkxvd.supabase.co"
+VITE_SUPABASE_PROJECT_ID="yxiubxjpapiacvhbkxvd"
+VITE_SUPABASE_PUBLISHABLE_KEY="[KEY_REDACTED]"
+VITE_SUPABASE_URL="https://yxiubxjpapiacvhbkxvd.supabase.co"

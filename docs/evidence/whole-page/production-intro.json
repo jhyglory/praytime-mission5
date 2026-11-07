@@ -1,0 +1,92 @@
+[
+  {
+    "width": 1440,
+    "first": {
+      "clock": 33.239999999999995,
+      "opacity": [
+        0,
+        0
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    },
+    "word": {
+      "clock": 933.2860000000001,
+      "opacity": [
+        1,
+        0
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    },
+    "logo": {
+      "clock": 2883.1399999999994,
+      "opacity": [
+        1,
+        1
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    }
+  },
+  {
+    "width": 393,
+    "first": {
+      "clock": 16.602000000000004,
+      "opacity": [
+        0,
+        0
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    },
+    "word": {
+      "clock": 899.9019999999999,
+      "opacity": [
+        1,
+        0
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    },
+    "logo": {
+      "clock": 2849.828,
+      "opacity": [
+        1,
+        1
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    }
+  },
+  {
+    "width": 360,
+    "first": {
+      "clock": 0,
+      "opacity": [
+        0,
+        0
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    },
+    "word": {
+      "clock": 916.6659999999999,
+      "opacity": [
+        1,
+        0
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    },
+    "logo": {
+      "clock": 2849.9999999999995,
+      "opacity": [
+        1,
+        1
+      ],
+      "cards": 0,
+      "nextSceneTop": 924
+    }
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "date_kst": "2026-11-06",
+  "stage": "design-independent preparation",
+  "tests": {
+    "lint": "pass",
+    "typecheck": "pass",
+    "unit": 34,
+    "browser": 16,
+    "build": "pass"
+  },
+  "visual_baseline_changed_files": [
+    "src/app/layout.tsx",
+    "src/app/page.tsx",
+    "src/components/landing/hero-preview.tsx"
+  ],
+  "css_or_public_assets_changed": false,
+  "local_persistence": "disabled",
+  "actual_key_values_found_in_git_candidates": [],
+  "client_js_chunks_scanned": 10,
+  "configured_values_found_in_client": {
+    "SUPABASE_URL": [],
+    "SUPABASE_PUBLISHABLE_KEY": []
+  },
+  "db_requests_this_stage": 0,
+  "live_post_requests_this_stage": 0,
+  "draft_sql_executed": false,
+  "historical_consent_migration_already_applied": true,
+  "historical_qa_row_count": 1,
+  "git": {
+    "branch": "feature/mission-5-landing",
+    "remote": "https://github.com/jhyglory/praytime-mission5.git",
+    "private": true,
+    "commits": 0,
+    "push": false,
+    "pr_created": false
+  },
+  "published_policy_module_sha256": "5a3dffefde442aa0cd58d3c7464c5ca8c3f5953fcaf24de4451a9d55cc71800e"
+}
