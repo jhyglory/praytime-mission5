@@ -2,7 +2,9 @@
 
 ## Current task and precedence
 
-Latest release authorization: the user asks to finish ALL pending local corrections and deploy to the existing landing URL. Connect the approved7s ivory light with2000ms entrywait to GapSection (variant=preview, visibilityThreshold=.2), preserving its current top/base anchors and CTA layout. Include stats500ms, clean-intro600ms hold/4600ms timeline, SNS3000ms+400ms fade, deleted BEFORE YOU OPEN and800ms scroll-gated question fade. Verify then commit/push on existing feature/mission-5-landing, update existing PR #1 and deploy the existing Vercel project. Prior local-only holds below are historical and superseded for this release. No merge/main/DNS/backend/env/realDB/signupPOST changes. Keep developer preview controls production404. Record current checks and limitations in docs/FINAL_INTERACTION_RELEASE.md; previous PASS records are historical.
+Latest follow-up: reduce ONLY the SNS card-first lead-in3000→1700ms. Preserve the400ms simultaneous black-field/text fade, existing stream/particle clocks and all other approved behavior. Existing feature/PR1/deployment authorization continues; verify the targeted SNS tests and public Desktop/Mobile timing. Old3000ms evidence below is historical.
+
+Latest release authorization: the user asks to finish ALL pending local corrections and deploy to the existing landing URL. Connect the approved7s ivory light with2000ms entrywait to GapSection (variant=preview, visibilityThreshold=.2), preserving its current top/base anchors and CTA layout. Include stats500ms, clean-intro600ms hold/4600ms timeline, SNS1700ms+400ms fade, deleted BEFORE YOU OPEN and800ms scroll-gated question fade. Verify then commit/push on existing feature/mission-5-landing, update existing PR #1 and deploy the existing Vercel project. Prior local-only holds below are historical and superseded for this release. No merge/main/DNS/backend/env/realDB/signupPOST changes. Keep developer preview controls production404. Record current checks and limitations in docs/FINAL_INTERACTION_RELEASE.md; previous PASS records are historical.
 
 ## Historical: local correction stages
 

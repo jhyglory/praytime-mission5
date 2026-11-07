@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
   await page.route("**/api/beta-signup", route => route.abort());
 });
 
-test("SNS cards lead for 3000ms before the text and dark scrim reveal together on visible entry", async ({ page }) => {
+test("SNS cards lead for 1700ms before the text and dark scrim reveal together on visible entry", async ({ page }) => {
   test.setTimeout(45_000);
   for (const width of [1440, 393]) {
     await page.setViewportSize({ width, height: 900 });
@@ -16,7 +16,7 @@ test("SNS cards lead for 3000ms before the text and dark scrim reveal together o
     const text = scene.locator(".card-intro__declaration");
     const quiet = scene.locator(".card-intro__quiet");
     await expect(scene).toHaveAttribute("data-copy-state", "pending");
-    await expect(scene).toHaveAttribute("data-copy-delay", "3000");
+    await expect(scene).toHaveAttribute("data-copy-delay", "1700");
     await expect(scene).toHaveAttribute("data-copy-fade", "400");
     await expect(quiet).toHaveCount(1);
     await expect(text).toHaveCSS("opacity", "0");
@@ -37,7 +37,7 @@ test("SNS cards lead for 3000ms before the text and dark scrim reveal together o
     });
     expect(firstEntry).toEqual({ text: 0, quiet: 0, columns: true });
     await expect(scene).toHaveAttribute("data-copy-state", "pending");
-    await page.waitForTimeout(3200);
+    await page.waitForTimeout(1900);
     await expect(text).toHaveCSS("opacity", "0");
     await expect(quiet).toHaveCSS("opacity", "0");
 
@@ -67,8 +67,8 @@ test("SNS cards lead for 3000ms before the text and dark scrim reveal together o
     await expect(text).toHaveCSS("opacity", "1");
     await expect(quiet).toHaveCSS("opacity", "1");
     const observation = await scene.evaluate(el => (el as HTMLElement & { revealQA: { waiting: number; revealing: number; shown: number; samples: { at: number; state: string; text: number; quiet: number }[] } }).revealQA);
-    expect(observation.revealing - observation.waiting).toBeGreaterThanOrEqual(2980);
-    expect(observation.revealing - observation.waiting).toBeLessThanOrEqual(3200);
+    expect(observation.revealing - observation.waiting).toBeGreaterThanOrEqual(1680);
+    expect(observation.revealing - observation.waiting).toBeLessThanOrEqual(1900);
     expect(observation.shown - observation.revealing).toBeGreaterThanOrEqual(380);
     expect(observation.samples.some(sample => sample.state === "waiting" && sample.text === 0 && sample.quiet === 0)).toBe(true);
     expect(observation.samples.some(sample => sample.text > .1 && sample.text < .9)).toBe(true);

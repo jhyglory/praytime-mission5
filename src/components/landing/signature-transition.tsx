@@ -15,7 +15,7 @@ import masonry from "./prototype-columns.json";
 // The original12s particle clock remains independent of the card streams.
 const previousCardDuration = 15_000;
 const cardPlaybackSpeed = 0.7;
-const declarationDelay = 3000;
+const declarationDelay = 1700;
 const declarationFade = 400;
 const desktopParticles = [
   [53.666668,689,14],[1363.03955,497.033325,16],[123.300003,277.674988,18],[1308,141,20],

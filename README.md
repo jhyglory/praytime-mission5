@@ -6,7 +6,7 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 현재 기준과 작업 상태
 
-최신 배포 범위는 누적 interaction 보정입니다: 질문 문구의 스크롤 fade·영문 eyebrow 삭제, 통계500ms 대기, “그래서” 정지 대기600ms, SNS 카드 후3000ms에 검은 배경/문구 등장, THE GAP의2000ms 대기+7000ms 아이보리 빛 모션. 사용자가 랜딩 연결과 기존 feature/PR/Vercel을 통한 배포를 승인했습니다. 이전 “로컬만/아직 배포 안 함” 기록은 아래 보정 단계의 이력입니다. [현재 검증 및 릴리스](docs/FINAL_INTERACTION_RELEASE.md).
+최신 배포 범위는 누적 interaction 보정입니다: 질문 문구의 스크롤 fade·영문 eyebrow 삭제, 통계500ms 대기, “그래서” 정지 대기600ms, SNS 카드 후1700ms에 검은 배경/문구 등장, THE GAP의2000ms 대기+7000ms 아이보리 빛 모션. 사용자가 랜딩 연결과 기존 feature/PR/Vercel을 통한 배포를 승인했습니다. 이전 “로컬만/아직 배포 안 함” 기록은 아래 보정 단계의 이력입니다. [현재 검증 및 릴리스](docs/FINAL_INTERACTION_RELEASE.md).
 
 전체12구간 구현을 기준으로, 최신 작업은 **종이비행기 공유 아이콘·SNS 카드0.7배 속도와 열 교차·단계별 빛 중심·흰색→네이비 인트로** 네 항목입니다. 우선순위는 **최신 사용자 명세 → 최종 Figma Desktop1209:514 / Mobile1209:1051 및 복원된 인트로 → 기존 구현·문서**입니다. 네 항목 밖의 문구·레이아웃·기능은 유지합니다.
 
@@ -37,7 +37,7 @@ THE GAP의 중앙 빛은 재사용 가능한 `GapLightMotion` SVG 컴포넌트�
 
 질문 “무심코 열게 된 SNS…”는 일반 모션 환경에서 처음에는 숨기고, 사용자가 스크롤한 뒤 제목이 화면에 들어오면800ms 동안 opacity로 나타납니다. 문구·위치·영역 크기는 유지하며 한 번 표시된 뒤 다시 숨기지 않습니다. reduced-motion/no-JS는 즉시 읽을 수 있습니다. 검증 후 이번 릴리스에 포함합니다.
 
-SNS 텍스트는 카드가 먼저 움직인 뒤3000ms 후 중앙 선언·보조 문구와 검은 reading field를 함께400ms fade-in합니다. 기존 위치/문구/카드 속도·방향은 유지하고 reduced-motion/no-JS에서는 바로 읽을 수 있습니다. [보정 이력](docs/SNS_COPY_REVEAL.md). 이번 릴리스에 포함합니다.
+SNS 텍스트는 카드가 먼저 움직인 뒤1700ms 후 중앙 선언·보조 문구와 검은 reading field를 함께400ms fade-in합니다. 기존 위치/문구/카드 속도·방향은 유지하고 reduced-motion/no-JS에서는 바로 읽을 수 있습니다. [보정 이력](docs/SNS_COPY_REVEAL.md). 이번 릴리스에 포함합니다.
 
 Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS declaration → THE GAP → TIME SELECT → PRAYER BEFORE CHOICE → FAQ → BETA SIGNUP → Footer 순서입니다. Header는 Hero 위 overlay이며, clean intro와 SNS scene은 서로 다른 스크롤 구간입니다.
 

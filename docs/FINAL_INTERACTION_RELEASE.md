@@ -1,5 +1,7 @@
 # 누적 interaction 보정 · 최종 배포
 
+최신 후속 보정: SNS 카드 선행 대기만3000→1700ms로 줄이고400ms 동시fade는 유지한다. 아래 첫 배포 범위와53개 전체검사/3000ms 측정은8085b95의 기록이다. 후속 검증은 이 문서 마지막에 별도로 기록한다.
+
 사용자가 모든 보정을 마무리한 뒤 기존 랜딩 주소에 배포하도록 승인했다. 기존 feature/mission-5-landing과 PR #1을 사용한다. 이전 로컬-only 보류는 이번 릴리스에서 종료되며 merge/main/DNS/backend/env/실제 신청 데이터는 변경하지 않는다.
 
 ## 반영 범위
@@ -41,3 +43,13 @@
 THE GAP 중심·상단·바닥·섹션 높이와 두 CTA는 기존 좌표를 유지한다. 새 face gradient/0.8-unit softness 및 border/stroke/rx 없음, 단계 전환·2초 대기·7초 완료를 확인했다. Developer preview는production404이며 reduced-motion은 즉시 최종 모습을 표시한다. console/page error0, 실제 POST0, 기존 신청 데이터 접근0.
 
 [로컬 실제 측정](evidence/final-interaction-release/local-browser.json)과 같은 디렉터리의 Desktop/Mobile 화면을 확인했다. 배포는 이 검증된 소스를 같은 feature branch와 PR #1에 반영한다. 공개 URL의 commit/배포 상태 및 배포 후 실제 측정은 PR #1과 별도 사용자 전달 evidence에 기록한다. 물리 기기·Safari와 실제 개인정보 저장은 이번 QA에서 확인하지 않았다.
+
+
+## 후속 보정 · SNS1700ms
+
+사용자가 SNS 카드 선행 대기만3초에서1.7초로 변경했다. runtime 수정은 declarationDelay3000→1700 한 줄이며400ms fade, 기존 문구/배경 geometry/카드·입자 clock/진입·취소·재진입·reduced-motion/no-JS 동작을 유지한다. 이전3초 측정은 위8085b95 기록으로 보존한다.
+
+- lint/typecheck/unit60/webpack production build: PASS.
+- 관련 browser2개: PASS(13.1초). Desktop1440/Mobile393에서1700ms 대기 실측, 화면 밖 타이머 취소, 두 레이어 동시fade, 재진입/viewport 변경/reduced-motion/no-JS를 검증했다.
+- 이번1.7초 보정에서 전체53개를 다시 실행했다고 주장하지 않는다. 이전 전체53 PASS는8085b95 기록이다. 카드 이동 구현과 다른 runtime 파일은 변경하지 않았다.
+- 같은 feature branch·PR #1과 기존 Vercel URL로 배포한다. 공개 URL의 후속 실제 시간 측정은 PR #1에 기록한다. backend/env/DB/DNS/main/merge 변경과 실제 신청POST는 없다.
