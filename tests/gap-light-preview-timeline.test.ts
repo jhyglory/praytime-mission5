@@ -55,6 +55,18 @@ describe("gap light choreography at 1.3x playback speed", () => {
     const firstStep = sourceFrameAt(500).travelerY - sourceFrameAt(450).travelerY;
     const lastStep = sourceFrameAt(1250).travelerY - sourceFrameAt(1200).travelerY;
     expect(lastStep).toBeGreaterThan(firstStep * 5);
+    const start = sourceFrameAt(400).travelerY;
+    const distance = sourceFrameAt(1300).travelerY - start;
+    // The first half glides; the fastest motion happens near the ground.
+    const halfway = (sourceFrameAt(850).travelerY - start) / distance;
+    expect(halfway).toBeGreaterThan(.1);
+    expect(halfway).toBeLessThan(.15);
+    const steps = Array.from({ length: 100 }, (_, index) =>
+      sourceFrameAt(400 + (index + 1) * 9).travelerY - sourceFrameAt(400 + index * 9).travelerY);
+    expect(steps.every(step => step >= -1e-8)).toBe(true);
+    const peak = (steps.indexOf(Math.max(...steps)) + .5) / steps.length;
+    expect(peak).toBeGreaterThan(.7);
+    expect(peak).toBeLessThan(.85);
     const contact = GAP_LIGHT_PREVIEW_TIMING.fallEnd;
     const atContact = gapLightPreviewFrameAt(contact).travelerY;
     const justBefore = gapLightPreviewFrameAt(contact - 1).travelerY;

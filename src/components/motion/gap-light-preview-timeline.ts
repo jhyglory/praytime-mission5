@@ -33,9 +33,11 @@ export function gapLightPreviewFrameAt(milliseconds: number) {
   const contactPulse = 1 - smooth((sinceContact - 70 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE) / (350 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE));
   const length = GAP_LIGHT_TRAVELER_LENGTH;
   const startTop = 70;
-  // Accelerate through the fall, then meet the stationary contact with zero
-  // velocity and acceleration. The short dash still leaves no descent trace.
-  const fallingProgress = clamp(fall ** 5 * (21 + fall * (-35 + 15 * fall)));
+  // Glide first, then let the ground pull most of the distance in the last
+  // part of the fall. Both curves settle with zero velocity/acceleration,
+  // so the magnetic catch has no impact snap, overshoot or descent trace.
+  const magneticPull = fall ** 8 * (45 + fall * (-80 + 36 * fall));
+  const fallingProgress = clamp(0.15 * smooth(fall) + 0.85 * magneticPull);
   const fallingTop = startTop + (GAP_LIGHT_BASE - length - startTop) * fallingProgress;
   const risingTop = GAP_LIGHT_BASE - length - (GAP_LIGHT_BASE - length - GAP_LIGHT_TOP) * rise;
   const faceWidth = GAP_LIGHT_SLIT_WIDTH + (GAP_LIGHT_FINAL_WIDTH - GAP_LIGHT_SLIT_WIDTH) * spread;

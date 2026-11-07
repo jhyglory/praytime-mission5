@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-08",
+  "source": "Actual local production playback before the release commit; no source seeking.",
+  "checks": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "unit": "60/60 PASS",
+    "scopedBrowser": "10/10 PASS (46.0s)",
+    "webpackBuild": "PASS"
+  },
+  "results": [
+    {
+      "width": 1440,
+      "waitMs": 1200.9,
+      "activeMs": 5397.3,
+      "magneticFall": {
+        "sampleCount": 42,
+        "midpointProgress": 0.12191041377647381,
+        "peakNormalizedTime": 0.7661444444100063,
+        "peakNormalizedSpeed": 2.73438121481262,
+        "groundDifference": 0,
+        "startY": 70,
+        "lastFallY": 1146.4232034320567,
+        "contactY": 1146.4372256365232,
+        "dashHeight": 73.5803336259877,
+        "monotonic": true
+      },
+      "palette": {
+        "kind": "radialGradient",
+        "stops": [
+          "#FFFEED",
+          "#FFF8DF",
+          "#FFEEC4",
+          "#F0D396"
+        ],
+        "line": "#FFF7DD",
+        "trail": "#FFF7DD",
+        "near": "#FFE8AE"
+      },
+      "geometry": {
+        "sectionHeight": 1180,
+        "top": 527.9902053308487,
+        "bottom": 867.98787940979,
+        "centerOffset": 0,
+        "faceWidth": 16.1236011774838
+      },
+      "phases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "overflow": 0
+    },
+    {
+      "width": 393,
+      "waitMs": 1201.5,
+      "activeMs": 5402.3,
+      "magneticFall": {
+        "sampleCount": 41,
+        "midpointProgress": 0.1217144432200496,
+        "peakNormalizedTime": 0.7731499999655618,
+        "peakNormalizedSpeed": 2.7356616399544587,
+        "groundDifference": 0,
+        "startY": 70,
+        "lastFallY": 1145.3453503535673,
+        "contactY": 1146.4372256365232,
+        "dashHeight": 73.5803336259877,
+        "monotonic": true
+      },
+      "palette": {
+        "kind": "radialGradient",
+        "stops": [
+          "#FFFEED",
+          "#FFF8DF",
+          "#FFEEC4",
+          "#F0D396"
+        ],
+        "line": "#FFF7DD",
+        "trail": "#FFF7DD",
+        "near": "#FFE8AE"
+      },
+      "geometry": {
+        "sectionHeight": 1024,
+        "top": 460.99759939193723,
+        "bottom": 690.9893726603191,
+        "centerOffset": 0,
+        "faceWidth": 10.906826454997063
+      },
+      "phases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "overflow": 0
+    },
+    {
+      "width": 360,
+      "waitMs": 1201.1,
+      "activeMs": 5393.6,
+      "magneticFall": {
+        "sampleCount": 42,
+        "midpointProgress": 0.12185301016944947,
+        "peakNormalizedTime": 0.7603666667011049,
+        "peakNormalizedSpeed": 2.7285799532746893,
+        "groundDifference": 0,
+        "startY": 70,
+        "lastFallY": 1146.298023503373,
+        "contactY": 1146.4372256365232,
+        "dashHeight": 73.5803336259877,
+        "monotonic": true
+      },
+      "palette": {
+        "kind": "radialGradient",
+        "stops": [
+          "#FFFEED",
+          "#FFF8DF",
+          "#FFEEC4",
+          "#F0D396"
+        ],
+        "line": "#FFF7DD",
+        "trail": "#FFF7DD",
+        "near": "#FFE8AE"
+      },
+      "geometry": {
+        "sectionHeight": 1024,
+        "top": 460.99759939193723,
+        "bottom": 690.9893726603191,
+        "centerOffset": 0,
+        "faceWidth": 10.906826454997063
+      },
+      "phases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "overflow": 0
+    }
+  ],
+  "reduced": {
+    "status": "PASS",
+    "width": 393,
+    "immediateFinal": true,
+    "elapsed": 5384.615384615385
+  },
+  "errors": [],
+  "writes": [],
+  "traceNote": "Raw RAF samples are retained in the local release artifact outputs/gap-magnetic-local/browser.json; this versioned file contains the checked summary."
+}
