@@ -8,6 +8,9 @@
 .hero-content .body-copy { max-width: 520px; }
 .hero-content .small-copy { max-width: 560px; font-size: 14px; }
 .one-question h2 { font-size: 56px; line-height: 80px; }
+.one-question [data-question-part] { display:block; }
+/* Three line-heights between phrase starts; keep wrapped lines at their original leading. */
+.one-question [data-question-part="followup"] { margin-block-start:160px; }
 /* Keep the text in layout and available to assistive technology while it fades.
    The controller requires both a scroll and heading visibility before reveal. */
 @media (scripting:enabled) and (prefers-reduced-motion:no-preference) {
@@ -35,6 +38,7 @@
   .landing-header .solid-pause i + i { left: 8.571429px; }
   .hero h1 { font-size: 34px; }
   .one-question h2 { font-size: 32px; line-height: 48px; }
+  .one-question [data-question-part="followup"] { margin-block-start:96px; }
 }
 
 /* Latest user originals: preserve the glass bars' existing size/position.

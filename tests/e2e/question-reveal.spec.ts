@@ -38,6 +38,16 @@ for (const width of [1440, 393, 360]) {
     await expect(followup).toHaveCSS("opacity", "0");
     await expect(heading).toContainText("무심코 열게 된 SNS,");
     await expect(page.getByText("BEFORE YOU OPEN", { exact: true })).toHaveCount(0);
+    const spacing = await heading.evaluate(element => {
+      const lead = element.querySelector<HTMLElement>('[data-question-part="lead"]')!;
+      const followup = element.querySelector<HTMLElement>('[data-question-part="followup"]')!;
+      return { pitch:followup.getBoundingClientRect().top - lead.getBoundingClientRect().top,
+        gap:followup.getBoundingClientRect().top - lead.getBoundingClientRect().bottom,
+        leading:Number.parseFloat(getComputedStyle(lead).lineHeight), followupLeading:Number.parseFloat(getComputedStyle(followup).lineHeight) };
+    });
+    expect(spacing.pitch).toBeCloseTo(spacing.leading * 3, 1);
+    expect(spacing.gap).toBeCloseTo(spacing.leading * 2, 1);
+    expect(spacing.followupLeading).toBe(spacing.leading);
 
     const result = await heading.evaluate(async element => {
       const geometry = () => {
