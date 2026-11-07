@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 
 const duration = 1400;
+const startDelay = 700;
 const visibilityThreshold = 0.4;
-type CountState = "pending" | "running" | "paused" | "complete";
+type CountState = "pending" | "waiting" | "running" | "paused" | "complete";
 
 // SSR and accessible spans stay final. Only the visual spans/fills are enhanced.
 export function WhyNowCountUp() {
@@ -15,7 +16,7 @@ export function WhyNowCountUp() {
     const counters = [...grid.querySelectorAll<HTMLElement>("[data-stat-number]")].flatMap(number => {
       const card = number.closest<HTMLElement>(".stat-card");
       if (!card) return [];
-      return [{ number, card, rate: Number(number.dataset.rate), fill: card.querySelector<HTMLElement>(".stat-fill"), state: "pending" as CountState, ran: false, inView: false, startedAt: 0, elapsed: 0 }];
+      return [{ number, card, rate: Number(number.dataset.rate), fill: card.querySelector<HTMLElement>(".stat-fill"), state: "pending" as CountState, ran: false, inView: false, startedAt: 0, elapsed: 0, timer: 0 }];
     });
     if (!counters.length) return;
     let frame = 0;
@@ -26,11 +27,17 @@ export function WhyNowCountUp() {
         counter.card.dataset.countState = counter.state;
         counter.card.dataset.countRuns = counter.ran ? "1" : "0";
       }
-      grid.dataset.countState = counters.some(counter => counter.state === "running") ? "running" : counters.some(counter => counter.state === "paused") ? "paused" : counters.every(counter => counter.state === "complete") ? "complete" : "pending";
+      grid.dataset.countState = counters.some(counter => counter.state === "running") ? "running" : counters.some(counter => counter.state === "paused") ? "paused" : counters.some(counter => counter.state === "waiting") ? "waiting" : counters.every(counter => counter.state === "complete") ? "complete" : "pending";
       grid.dataset.countRuns = counters.some(counter => counter.ran) ? "1" : "0";
     };
 
+    const clearDelay = (counter: typeof counters[number]) => {
+      window.clearTimeout(counter.timer);
+      counter.timer = 0;
+    };
+
     const finish = (counter: typeof counters[number]) => {
+      clearDelay(counter);
       counter.number.textContent = `${counter.rate.toFixed(1)}%`;
       counter.fill?.style.removeProperty("transform");
       counter.state = "complete";
@@ -38,6 +45,11 @@ export function WhyNowCountUp() {
     };
 
     const pause = (counter: typeof counters[number], now: number) => {
+      if (counter.state === "waiting") {
+        clearDelay(counter);
+        counter.state = "pending";
+        return;
+      }
       if (counter.state !== "running") return;
       counter.elapsed = Math.min(duration, counter.elapsed + Math.max(0, now - counter.startedAt));
       counter.state = "paused";
@@ -66,13 +78,26 @@ export function WhyNowCountUp() {
       if (counters.some(counter => counter.state === "running")) frame = requestAnimationFrame(tick);
     };
 
-    const start = (counter: typeof counters[number], now: number) => {
-      if (disposed || counter.state === "complete" || counter.state === "running" || !counter.inView || document.hidden) return;
-      if (reduced.matches) { finish(counter); return; }
+    const begin = (counter: typeof counters[number], now: number) => {
       counter.state = "running";
       counter.ran = true;
       counter.startedAt = now;
       if (!frame) frame = requestAnimationFrame(tick);
+    };
+
+    const start = (counter: typeof counters[number], now: number) => {
+      if (disposed || counter.state === "complete" || counter.state === "running" || counter.state === "waiting" || !counter.inView || document.hidden) return;
+      if (reduced.matches) { finish(counter); return; }
+      // Only the first start waits; an interrupted count resumes its own progress.
+      if (counter.ran) { begin(counter, now); return; }
+      counter.state = "waiting";
+      counter.timer = window.setTimeout(() => {
+        counter.timer = 0;
+        if (disposed) return;
+        if (!counter.inView || document.hidden) counter.state = "pending";
+        else begin(counter, performance.now());
+        syncState();
+      }, startDelay);
     };
 
     const observer = typeof IntersectionObserver === "undefined" ? undefined : new IntersectionObserver(entries => {
@@ -125,6 +150,7 @@ export function WhyNowCountUp() {
       document.removeEventListener("visibilitychange", onVisibilityChange);
       // Restore the static fallback; Strict Mode's next setup can start cleanly.
       counters.forEach(counter => {
+        clearDelay(counter);
         counter.number.textContent = `${counter.rate.toFixed(1)}%`;
         counter.fill?.style.removeProperty("transform");
       });

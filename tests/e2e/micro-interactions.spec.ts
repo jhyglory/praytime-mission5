@@ -3,6 +3,7 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 declare global {
   interface Window {
     microStats: {
+      waiting: number;
       started: number;
       completed: number;
       cls: number;
@@ -257,7 +258,7 @@ test("active navigation retains native anchor names, URLs and keyboard heading f
   }
 });
 
-test("WHY NOW shares 1400ms cubic number/fill progress, runs once per load and replays after both reloads", async ({ page }) => {
+test("WHY NOW waits 700ms then shares 1400ms cubic number/fill progress, once per load and after reloads", async ({ page }) => {
   await page.addInitScript(() => {
     // Obsolete session flags must not suppress the new per-page animation.
     for (const rate of [34.3, 25.3]) sessionStorage.setItem(`praytime:why-now-countup:v3:${rate}`, "done");
@@ -274,10 +275,11 @@ test("WHY NOW shares 1400ms cubic number/fill progress, runs once per load and r
     const grid = document.getElementById("why-stats")!;
     const numbers = [...grid.querySelectorAll<HTMLElement>("[data-stat-number]")];
     const fills = [...grid.querySelectorAll<HTMLElement>(".stat-fill")];
-    const result: Window["microStats"] = window.microStats = { started: 0, completed: 0, cls: 0, samples: [] };
+    const result: Window["microStats"] = window.microStats = { waiting: 0, started: 0, completed: 0, cls: 0, samples: [] };
     const observer = new MutationObserver(() => {
       const state = grid.dataset.countState;
       const now = performance.now();
+      if (state === "waiting" && !result.waiting) result.waiting = now;
       if (state === "running" && !result.started) result.started = now;
       if (state === "running" || state === "complete") result.samples.push({
         at: now,
@@ -299,10 +301,16 @@ test("WHY NOW shares 1400ms cubic number/fill progress, runs once per load and r
     }).observe({ type: "layout-shift" });
   });
   await centerSection(page, "#why-stats");
+  await expect(grid).toHaveAttribute("data-count-state", "waiting");
+  await page.waitForTimeout(450);
+  await expect(numbers).toHaveText(["0.0%", "0.0%"]);
+  for (const fill of await grid.locator(".stat-fill").all()) expect((await transform(fill)).scaleX).toBe(0);
   await expect(grid).toHaveAttribute("data-count-state", "complete");
   await expect(numbers).toHaveText(["34.3%", "25.3%"]);
   await expect(grid).toHaveAttribute("data-count-runs", "1");
   const observation = await page.evaluate(() => window.microStats);
+  expect(observation.started - observation.waiting).toBeGreaterThanOrEqual(680);
+  expect(observation.started - observation.waiting).toBeLessThanOrEqual(850);
   expect(observation.completed - observation.started).toBeGreaterThanOrEqual(1350);
   expect(observation.completed - observation.started).toBeLessThanOrEqual(1550);
   expect(observation.samples.length).toBeGreaterThan(2);
@@ -401,6 +409,9 @@ test("mobile statistics trigger individually at 40% of the unmodified viewport a
   await expect(first).toHaveAttribute("data-count-state", "pending");
   await expect(first.locator("[data-stat-number]")).toHaveText("0.0%");
   await reveal(first, 0.41);
+  await expect(first).toHaveAttribute("data-count-state", "waiting");
+  await page.waitForTimeout(450);
+  await expect(first.locator("[data-stat-number]")).toHaveText("0.0%");
   await expect(first).toHaveAttribute("data-count-state", "running");
   await expect(second).toHaveAttribute("data-count-state", "pending");
   await expect(second.locator("[data-stat-number]")).toHaveText("0.0%");
@@ -422,6 +433,44 @@ test("mobile statistics trigger individually at 40% of the unmodified viewport a
   await expect(first).toHaveAttribute("data-count-runs", "1");
   await expect(second).toHaveAttribute("data-count-runs", "1");
   await expectDecorativeAccents(grid);
+});
+
+test("WHY NOW cancels its startup wait offscreen or in the background, and reduced motion skips the wait", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
+  const grid = page.locator("#why-stats");
+  const numbers = grid.locator("[data-stat-number]");
+  await centerSection(page, "#why-stats");
+  await expect(grid).toHaveAttribute("data-count-state", "waiting");
+  await centerSection(page, "#hero");
+  await expect(grid).toHaveAttribute("data-count-state", "pending");
+  await page.waitForTimeout(750);
+  await expect(numbers).toHaveText(["0.0%", "0.0%"]);
+  await expect(grid).toHaveAttribute("data-count-runs", "0");
+
+  await centerSection(page, "#why-stats");
+  await expect(grid).toHaveAttribute("data-count-state", "waiting");
+  await page.evaluate(() => {
+    Object.defineProperty(document, "hidden", { value: true, configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect(grid).toHaveAttribute("data-count-state", "pending");
+  await page.waitForTimeout(750);
+  await expect(numbers).toHaveText(["0.0%", "0.0%"]);
+  await page.evaluate(() => {
+    Reflect.deleteProperty(document, "hidden");
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await expect(grid).toHaveAttribute("data-count-state", "waiting");
+  await page.waitForTimeout(450);
+  await expect(numbers).toHaveText(["0.0%", "0.0%"]);
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(numbers).toHaveText(["34.3%", "25.3%"]);
+  await expect(grid).toHaveAttribute("data-count-runs", "0");
+  await page.waitForTimeout(750);
+  await expect(grid).toHaveAttribute("data-count-state", "complete");
+  await expect(grid).toHaveAttribute("data-count-runs", "0");
 });
 
 test("WHY NOW pauses in the background and reduced motion finishes a running animation", async ({ page }) => {
