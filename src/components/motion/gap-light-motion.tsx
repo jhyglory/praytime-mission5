@@ -46,6 +46,7 @@ export const GapLightMotion = forwardRef<GapLightMotionHandle, GapLightMotionPro
   const controller = useRef<GapLightMotionHandle | null>(null);
   const callbacks = useRef({ onProgress, onStateChange });
   const preview = variant === "preview";
+  const lineColor = preview ? "#FFF7DD" : LINE_COLOR;
   const duration = preview ? GAP_LIGHT_PREVIEW_DURATION : GAP_LIGHT_DURATION;
   const timing = preview ? GAP_LIGHT_PREVIEW_TIMING : GAP_LIGHT_TIMING;
   const frameAt = frameFunctions[variant];
@@ -221,16 +222,17 @@ export const GapLightMotion = forwardRef<GapLightMotionHandle, GapLightMotionPro
   return <svg ref={svgRef} className={[styles.canvas, preview && styles.preview, className].filter(Boolean).join(" ")} viewBox={`0 0 ${GAP_LIGHT_VIEW_WIDTH} ${GAP_LIGHT_VIEW_HEIGHT}`} width={GAP_LIGHT_VIEW_WIDTH} height={GAP_LIGHT_VIEW_HEIGHT} style={{ aspectRatio: `${GAP_LIGHT_VIEW_WIDTH} / ${GAP_LIGHT_VIEW_HEIGHT}` }} role="img" aria-labelledby={id("title")} data-gap-light-motion data-motion-variant={variant} data-motion-state={mode === "still" ? "still" : "idle"} data-duration={duration} data-start-delay={startDelayMs}>
     <title id={id("title")}>짧은 빛이 내려와 바닥을 밝히고 다시 올라가 아이보리 발광면을 여는 모습</title>
     <defs>
-      <radialGradient id={id("ambientColor")}><stop stopColor={preview ? "#FFFFF8" : "#FFF6E2"} stopOpacity={preview ? "1" : ".12"} /><stop offset=".25" stopColor={preview ? "#FFFFF8" : "#FFF6E2"} stopOpacity={preview ? ".4" : ".1"} /><stop offset=".6" stopColor={preview ? "#FFFFF8" : "#FFF6E2"} stopOpacity={preview ? ".08" : ".035"} /><stop offset="1" stopColor={preview ? "#FFFFF8" : "#FFF6E2"} stopOpacity="0" /></radialGradient>
-      <radialGradient id={id("floorOuter")}><stop stopColor={preview ? "#FFFEF3" : "#FFF6E4"} stopOpacity={preview ? ".48" : ".42"} /><stop offset=".25" stopColor={preview ? "#FFFEF3" : "#FFF6E4"} stopOpacity=".22" /><stop offset=".6" stopColor={preview ? "#FFFEF3" : "#FFF6E4"} stopOpacity={preview ? ".035" : ".06"} /><stop offset={preview ? ".88" : "1"} stopColor={preview ? "#FFFEF3" : "#FFF6E4"} stopOpacity="0" /></radialGradient>
-      <radialGradient id={id("floorInner")}><stop stopColor={preview ? "#FFFFF7" : "#FFFAEB"} stopOpacity={preview ? ".7" : ".62"} /><stop offset=".25" stopColor={preview ? "#FFFFF7" : "#FFFAEB"} stopOpacity=".34" /><stop offset=".65" stopColor={preview ? "#FFFFF7" : "#FFFAEB"} stopOpacity=".07" /><stop offset="1" stopColor={preview ? "#FFFFF7" : "#FFFAEB"} stopOpacity="0" /></radialGradient>
-      <radialGradient id={id("contactColor")}><stop stopColor="#FFFFF5" stopOpacity=".95" /><stop offset=".3" stopColor="#FFFBEA" stopOpacity=".45" /><stop offset="1" stopColor="#FFFBEA" stopOpacity="0" /></radialGradient>
-      <radialGradient id={id("movingAura")}><stop stopColor="#FFFFF4" stopOpacity=".6" /><stop offset=".3" stopColor="#FFFFF4" stopOpacity=".18" /><stop offset="1" stopColor="#FFFFF4" stopOpacity="0" /></radialGradient>
+      <radialGradient id={id("ambientColor")}><stop stopColor={preview ? "#FFE9B7" : "#FFF6E2"} stopOpacity={preview ? "1" : ".12"} /><stop offset=".25" stopColor={preview ? "#F3D69D" : "#FFF6E2"} stopOpacity={preview ? ".4" : ".1"} /><stop offset=".6" stopColor={preview ? "#E8C38B" : "#FFF6E2"} stopOpacity={preview ? ".08" : ".035"} /><stop offset="1" stopColor={preview ? "#E8C38B" : "#FFF6E2"} stopOpacity="0" /></radialGradient>
+      <radialGradient id={id("floorOuter")}><stop stopColor={preview ? "#F9E1AA" : "#FFF6E4"} stopOpacity={preview ? ".4" : ".42"} /><stop offset=".25" stopColor={preview ? "#F0CE92" : "#FFF6E4"} stopOpacity={preview ? ".16" : ".22"} /><stop offset=".6" stopColor={preview ? "#E6BE7E" : "#FFF6E4"} stopOpacity={preview ? ".025" : ".06"} /><stop offset={preview ? ".88" : "1"} stopColor={preview ? "#E6BE7E" : "#FFF6E4"} stopOpacity="0" /></radialGradient>
+      <radialGradient id={id("floorInner")}><stop stopColor={preview ? "#FFF8DF" : "#FFFAEB"} stopOpacity={preview ? ".7" : ".62"} /><stop offset=".25" stopColor={preview ? "#FFE9B7" : "#FFFAEB"} stopOpacity=".34" /><stop offset=".65" stopColor={preview ? "#F0D194" : "#FFFAEB"} stopOpacity=".07" /><stop offset="1" stopColor={preview ? "#F0D194" : "#FFFAEB"} stopOpacity="0" /></radialGradient>
+      <radialGradient id={id("contactColor")}><stop stopColor={preview ? "#FFFBE8" : "#FFFFF5"} stopOpacity=".95" /><stop offset=".3" stopColor={preview ? "#FFE6AD" : "#FFFBEA"} stopOpacity=".45" /><stop offset="1" stopColor={preview ? "#F1CB88" : "#FFFBEA"} stopOpacity="0" /></radialGradient>
+      <radialGradient id={id("movingAura")}><stop stopColor={preview ? "#FFF6D8" : "#FFFFF4"} stopOpacity=".6" /><stop offset=".3" stopColor={preview ? "#F6D99C" : "#FFFFF4"} stopOpacity=".18" /><stop offset="1" stopColor={preview ? "#EDC68A" : "#FFFFF4"} stopOpacity="0" /></radialGradient>
       <filter id={id("nearBlur")} filterUnits="userSpaceOnUse" x="0" y="0" width={GAP_LIGHT_VIEW_WIDTH} height={GAP_LIGHT_VIEW_HEIGHT}><feGaussianBlur stdDeviation={preview ? "12" : "28"} /></filter>
       <filter id={id("midBlur")} filterUnits="userSpaceOnUse" x="0" y="0" width={GAP_LIGHT_VIEW_WIDTH} height={GAP_LIGHT_VIEW_HEIGHT}><feGaussianBlur stdDeviation={preview ? "48" : "68"} /></filter>
       {preview && <>
-        <linearGradient id={id("faceColor")} x1="0" y1="0" x2="1" y2="0"><stop stopColor="#FFFDF0" /><stop offset=".22" stopColor="#FFFFFA" /><stop offset=".5" stopColor="#FFFFFE" /><stop offset=".78" stopColor="#FFFFFA" /><stop offset="1" stopColor="#FFFDF0" /></linearGradient>
-        <filter id={id("faceSoftness")} filterUnits="userSpaceOnUse" x="0" y="0" width={GAP_LIGHT_VIEW_WIDTH} height={GAP_LIGHT_VIEW_HEIGHT}><feGaussianBlur stdDeviation=".8" /></filter>
+        {/* A softly hotter lower center gives the filled face depth without an outline. */}
+        <radialGradient id={id("faceColor")} cx=".5" cy=".62" r=".85"><stop stopColor="#FFFEED" /><stop offset=".25" stopColor="#FFF8DF" /><stop offset=".6" stopColor="#FFEEC4" /><stop offset="1" stopColor="#F0D396" /></radialGradient>
+        <filter id={id("faceSoftness")} filterUnits="userSpaceOnUse" x="0" y="0" width={GAP_LIGHT_VIEW_WIDTH} height={GAP_LIGHT_VIEW_HEIGHT}><feGaussianBlur stdDeviation="2.2" /></filter>
       </>}
       <filter id={id("trailBlur")} filterUnits="userSpaceOnUse" x="0" y="0" width={GAP_LIGHT_VIEW_WIDTH} height={GAP_LIGHT_VIEW_HEIGHT}><feGaussianBlur stdDeviation="5" /></filter>
       <linearGradient id={id("revealFade")} data-gap-part="ambient-feather" gradientUnits="userSpaceOnUse" x1="0" y1="-100" x2="0" y2="-36"><stop stopColor="black" /><stop offset="1" stopColor="white" /></linearGradient>
@@ -241,8 +243,8 @@ export const GapLightMotion = forwardRef<GapLightMotionHandle, GapLightMotionPro
     <g data-gap-layer="background"><rect width={GAP_LIGHT_VIEW_WIDTH} height={GAP_LIGHT_VIEW_HEIGHT} fill="#080E26" /></g>
     <g className={styles.light} data-gap-layer="ambient" data-gap-part="ambient">
       <ellipse data-gap-part="ambient-outer" cx={GAP_LIGHT_CENTER} cy={centerY} rx={final.ambientRadius} ry={GAP_LIGHT_HEIGHT * .66} fill={`url(#${id("ambientColor")})`} opacity={final.farGlowOpacity} />
-      <rect data-gap-part="ambient-mid" x={GAP_LIGHT_CENTER - final.midGlowWidth / 2} y={GAP_LIGHT_TOP} width={final.midGlowWidth} height={GAP_LIGHT_HEIGHT} fill={preview ? "#FFFFF6" : "#FFF4DD"} opacity={final.midGlowOpacity ?? ".22"} filter={`url(#${id("midBlur")})`} />
-      <rect data-gap-part="ambient-near" x={GAP_LIGHT_CENTER - final.nearGlowWidth / 2} y={GAP_LIGHT_TOP} width={final.nearGlowWidth} height={GAP_LIGHT_HEIGHT} fill={preview ? "#FFFFF4" : "#FFF4DD"} opacity={final.nearGlowOpacity ?? ".45"} filter={`url(#${id("nearBlur")})`} />
+      <rect data-gap-part="ambient-mid" x={GAP_LIGHT_CENTER - final.midGlowWidth / 2} y={GAP_LIGHT_TOP} width={final.midGlowWidth} height={GAP_LIGHT_HEIGHT} fill={preview ? "#F0CF96" : "#FFF4DD"} opacity={final.midGlowOpacity ?? ".22"} filter={`url(#${id("midBlur")})`} />
+      <rect data-gap-part="ambient-near" x={GAP_LIGHT_CENTER - final.nearGlowWidth / 2} y={GAP_LIGHT_TOP} width={final.nearGlowWidth} height={GAP_LIGHT_HEIGHT} fill={preview ? "#FFE8AE" : "#FFF4DD"} opacity={final.nearGlowOpacity ?? ".45"} filter={`url(#${id("nearBlur")})`} />
     </g>
     <g className={styles.light} data-gap-layer="floor-spread" data-gap-part="floor-spread">
       <ellipse data-gap-part="floor-outer" cx={GAP_LIGHT_CENTER} cy={GAP_LIGHT_BASE + 12} rx={final.floorRadius} ry={final.floorRY} fill={`url(#${id("floorOuter")})`} />
@@ -251,10 +253,10 @@ export const GapLightMotion = forwardRef<GapLightMotionHandle, GapLightMotionPro
     </g>
     <g className={styles.light} data-gap-layer="floor-contact" data-gap-part="contact"><ellipse data-gap-part="contact-glow" cx={GAP_LIGHT_CENTER} cy={GAP_LIGHT_BASE} rx={final.contactRadius} ry={final.contactRY} fill={`url(#${id("contactColor")})`} /></g>
     <g className={styles.transient} data-gap-layer="trail" data-gap-part="trail" opacity="0">
-      <rect data-gap-part="trail-glow" x={GAP_LIGHT_CENTER - 7} y={GAP_LIGHT_TOP} width="14" height={GAP_LIGHT_HEIGHT} fill={LINE_COLOR} opacity=".4" filter={`url(#${id("trailBlur")})`} mask={`url(#${id("trailGlowMask")})`} />
-      <rect data-gap-part="trail-core" x={GAP_LIGHT_CENTER - GAP_LIGHT_SLIT_WIDTH / 2} y={GAP_LIGHT_TOP} width={GAP_LIGHT_SLIT_WIDTH} height={GAP_LIGHT_HEIGHT} fill={LINE_COLOR} />
+      <rect data-gap-part="trail-glow" x={GAP_LIGHT_CENTER - 7} y={GAP_LIGHT_TOP} width="14" height={GAP_LIGHT_HEIGHT} fill={lineColor} opacity=".4" filter={`url(#${id("trailBlur")})`} mask={`url(#${id("trailGlowMask")})`} />
+      <rect data-gap-part="trail-core" x={GAP_LIGHT_CENTER - GAP_LIGHT_SLIT_WIDTH / 2} y={GAP_LIGHT_TOP} width={GAP_LIGHT_SLIT_WIDTH} height={GAP_LIGHT_HEIGHT} fill={lineColor} />
     </g>
     <g className={styles.light} data-gap-layer="face" data-gap-part="face"><rect data-gap-part="face-rect" x={GAP_LIGHT_CENTER - GAP_LIGHT_FINAL_WIDTH / 2} y={GAP_LIGHT_TOP} width={GAP_LIGHT_FINAL_WIDTH} height={GAP_LIGHT_HEIGHT} fill={preview ? `url(#${id("faceColor")})` : "#FEF9E7"} filter={preview ? `url(#${id("faceSoftness")})` : undefined} /></g>
-    <g className={styles.transient} data-gap-layer="traveler" data-gap-part="traveler" opacity="0"><ellipse data-gap-part="traveler-halo" cx={GAP_LIGHT_CENTER} cy={70 + GAP_LIGHT_TRAVELER_LENGTH / 2} rx="7" ry={GAP_LIGHT_TRAVELER_LENGTH * .8} fill={`url(#${id("movingAura")})`} /><rect data-gap-part="traveler-core" x={GAP_LIGHT_CENTER - GAP_LIGHT_SLIT_WIDTH / 2} y="70" width={GAP_LIGHT_SLIT_WIDTH} height={GAP_LIGHT_TRAVELER_LENGTH} opacity={final.travelerCoreOpacity} fill={LINE_COLOR} /></g>
+    <g className={styles.transient} data-gap-layer="traveler" data-gap-part="traveler" opacity="0"><ellipse data-gap-part="traveler-halo" cx={GAP_LIGHT_CENTER} cy={70 + GAP_LIGHT_TRAVELER_LENGTH / 2} rx="7" ry={GAP_LIGHT_TRAVELER_LENGTH * .8} fill={`url(#${id("movingAura")})`} /><rect data-gap-part="traveler-core" x={GAP_LIGHT_CENTER - GAP_LIGHT_SLIT_WIDTH / 2} y="70" width={GAP_LIGHT_SLIT_WIDTH} height={GAP_LIGHT_TRAVELER_LENGTH} opacity={final.travelerCoreOpacity} fill={lineColor} /></g>
   </svg>;
 });

@@ -37,6 +37,8 @@ WHY NOW의 “스마트폰 사용을 줄이려는 마음이 있어도…” 설�
 
 ## 빛의 틈 모션
 
+최신 빛의 표현은 밝은 아이보리 중심과 은은한 샴페인 골드의 가장자리·주변·바닥 광채입니다. 발광면 내부의 작은 밝기 차이와 실제 화면 약0.5–0.73px의 가장자리 softness로 균일한 흰 막대 인상을 완화했습니다. 기존 직사각형 크기·모션·진입 대기는 유지합니다. [빛 보정·검증](docs/GAP_CHAMPAGNE_LIGHT.md).
+
 THE GAP은 검수한 `preview` preset을1.3배 속도(7000÷1.3=약5384.62ms)로 재생하고1200ms 진입 대기를 사용합니다. 전체 약6.58초 뒤 최종 발광면을 유지합니다. 이전4521.43ms 기본 preset은 과거 비교용으로만 남깁니다. `/dev/gap-light`의 재생/탐색 제어는 개발 모드에서만 사용할 수 있습니다. [로컬 보정 이력](docs/GAP_LIGHT_SEVEN_SECOND_STUDY.md).
 
 THE GAP의 중앙 빛은 재사용 가능한 `GapLightMotion` SVG 컴포넌트입니다. 짧은 빛의 하강 → 접촉·바닥 확산·머무름 → 상승과 연결된 틈 → 테두리 없는 아이보리 발광면 순서입니다. 진입 후1.2초 대기하고약5.38초 동안 한 번 재생하며 화면 밖/비활성 탭에서는 일시정지하며, reduced-motion과 JavaScript 비활성화에서는 최종 모습을 표시합니다. 기존 문구·CTA·섹션 크기는 유지합니다. 개발 전용 미리보기는 `npm run preview:gap-light` 후 `/dev/gap-light`에서 실행합니다. [연결·검증 기록](docs/GAP_LIGHT_LANDING_RELEASE.md).

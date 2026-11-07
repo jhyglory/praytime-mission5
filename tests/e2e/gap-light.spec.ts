@@ -42,7 +42,7 @@ async function expectIvorySurface(motion: Locator) {
   const face = motion.locator('[data-gap-part="face-rect"]');
   await expect(face).toHaveAttribute("fill", /^url\(#[^)]+-faceColor\)$/);
   await expect(face).toHaveAttribute("filter", /^url\(#[^)]+-faceSoftness\)$/);
-  await expect(motion.locator('filter[id$="-faceSoftness"] feGaussianBlur')).toHaveAttribute("stdDeviation", ".8");
+  await expect(motion.locator('filter[id$="-faceSoftness"] feGaussianBlur')).toHaveAttribute("stdDeviation", "2.2");
   expect(await face.evaluate(element => ["stroke", "rx", "ry"].some(attribute => element.hasAttribute(attribute)))).toBe(false);
 }
 

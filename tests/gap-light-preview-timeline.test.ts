@@ -24,7 +24,7 @@ describe("gap light choreography at 1.3x playback speed", () => {
     expect(landing).not.toContain("faceSoftness");
     expect(preview).toContain('data-motion-variant="preview"');
     expect(preview).toContain(`data-duration="${GAP_LIGHT_PREVIEW_DURATION}"`);
-    expect(preview).toContain('stdDeviation=".8"');
+    expect(preview).toContain('stdDeviation="2.2"');
     expect(preview).not.toMatch(/\bstroke(?:-|=)|\bborder(?:-|:)/);
     const face = preview.match(/<rect\b[^>]*data-gap-part="face-rect"[^>]*>/)?.[0];
     expect(face).toMatch(/fill="url\(#[^\)]+-faceColor\)"/);
