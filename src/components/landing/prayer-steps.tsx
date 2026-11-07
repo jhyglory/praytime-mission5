@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { GapLightDivider } from "@/components/landing/gap-light-divider";
+import { MOTION_EASING } from "@/lib/motion";
 
 const duration = 3900;
 const stepDuration = 1300;
@@ -43,22 +44,22 @@ export function PrayerSteps() {
       const at = (time: number) => (begin + time) / duration;
       const light = item.querySelector<HTMLElement>(".prayer-light-divider")!;
       animate(light, [
-        { offset: 0, opacity: 0 }, { offset: at(0), opacity: 0 },
-        { offset: at(80), opacity: 1 }, { offset: 1, opacity: 1 },
+        { offset: 0, opacity: 0 }, { offset: at(0), opacity: 0, easing: MOTION_EASING },
+        { offset: at(200), opacity: 1 }, { offset: 1, opacity: 1 },
       ]);
       animate(light.querySelector(".prayer-light-divider__line")!, [
-        { offset: 0, transform: "scaleX(0)" }, { offset: at(0), transform: "scaleX(0)", easing: "cubic-bezier(.22,.61,.36,1)" },
+        { offset: 0, transform: "scaleX(0)" }, { offset: at(0), transform: "scaleX(0)", easing: MOTION_EASING },
         { offset: at(1000), transform: "scaleX(1)" }, { offset: 1, transform: "scaleX(1)" },
       ]);
       animate(light.querySelector(".prayer-light-divider__sweep")!, [
         { offset: 0, transform: "translateX(calc(0% - var(--light-center)))" },
-        { offset: at(0), transform: "translateX(calc(0% - var(--light-center)))", easing: "cubic-bezier(.22,.61,.36,1)" },
+        { offset: at(0), transform: "translateX(calc(0% - var(--light-center)))", easing: MOTION_EASING },
         { offset: at(1000), transform: "translateX(calc(100% - var(--light-center)))" },
         { offset: 1, transform: "translateX(calc(100% - var(--light-center)))" },
       ]);
       for (const text of item.querySelectorAll(":scope > p, :scope > h3")) {
         animate(text, [
-          { offset: 0, opacity: 0 }, { offset: at(250), opacity: 0, easing: "ease-out" },
+          { offset: 0, opacity: 0 }, { offset: at(250), opacity: 0, easing: MOTION_EASING },
           { offset: at(700), opacity: 1 }, { offset: 1, opacity: 1 },
         ]);
       }

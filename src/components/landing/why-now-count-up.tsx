@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { smootherstep } from "@/lib/motion";
 
 const duration = 1400;
 const startDelay = 500;
@@ -22,13 +23,19 @@ export function WhyNowCountUp() {
     let frame = 0;
     let disposed = false;
 
+    const setData = (element: HTMLElement, key: "countState" | "countRuns", value: string) => {
+      if (element.dataset[key] !== value) element.dataset[key] = value;
+    };
+    const setNumber = (element: HTMLElement, value: string) => {
+      if (element.textContent !== value) element.textContent = value;
+    };
     const syncState = () => {
       for (const counter of counters) {
-        counter.card.dataset.countState = counter.state;
-        counter.card.dataset.countRuns = counter.ran ? "1" : "0";
+        setData(counter.card, "countState", counter.state);
+        setData(counter.card, "countRuns", counter.ran ? "1" : "0");
       }
-      grid.dataset.countState = counters.some(counter => counter.state === "running") ? "running" : counters.some(counter => counter.state === "paused") ? "paused" : counters.some(counter => counter.state === "waiting") ? "waiting" : counters.every(counter => counter.state === "complete") ? "complete" : "pending";
-      grid.dataset.countRuns = counters.some(counter => counter.ran) ? "1" : "0";
+      setData(grid, "countState", counters.some(counter => counter.state === "running") ? "running" : counters.some(counter => counter.state === "paused") ? "paused" : counters.some(counter => counter.state === "waiting") ? "waiting" : counters.every(counter => counter.state === "complete") ? "complete" : "pending");
+      setData(grid, "countRuns", counters.some(counter => counter.ran) ? "1" : "0");
     };
 
     const clearDelay = (counter: typeof counters[number]) => {
@@ -38,7 +45,7 @@ export function WhyNowCountUp() {
 
     const finish = (counter: typeof counters[number]) => {
       clearDelay(counter);
-      counter.number.textContent = `${counter.rate.toFixed(1)}%`;
+      setNumber(counter.number, `${counter.rate.toFixed(1)}%`);
       counter.fill?.style.removeProperty("transform");
       counter.state = "complete";
       observer?.unobserve(counter.card);
@@ -61,7 +68,7 @@ export function WhyNowCountUp() {
       frame = 0;
     };
 
-    // Each card has its own active time, while number and fill share one cubic progress.
+    // Each card has its own active time; number and fill share zero-slope endpoints.
     const tick = (now: number) => {
       frame = 0;
       if (disposed) return;
@@ -69,8 +76,8 @@ export function WhyNowCountUp() {
         if (counter.state !== "running") continue;
         if (document.hidden || !counter.inView) { pause(counter, now); continue; }
         const progress = Math.min(1, Math.max(0, (counter.elapsed + now - counter.startedAt) / duration));
-        const eased = 1 - (1 - progress) ** 3;
-        counter.number.textContent = `${Math.min(counter.rate, counter.rate * eased).toFixed(1)}%`;
+        const eased = smootherstep(progress);
+        setNumber(counter.number, `${Math.min(counter.rate, counter.rate * eased).toFixed(1)}%`);
         if (counter.fill) counter.fill.style.transform = `scaleX(${eased})`;
         if (progress === 1) finish(counter);
       }
@@ -118,7 +125,7 @@ export function WhyNowCountUp() {
     for (const counter of counters) {
       if (reduced.matches || !observer) finish(counter);
       else {
-        counter.number.textContent = "0.0%";
+        setNumber(counter.number, "0.0%");
         if (counter.fill) counter.fill.style.transform = "scaleX(0)";
         observer.observe(counter.card);
       }
@@ -151,7 +158,7 @@ export function WhyNowCountUp() {
       // Restore the static fallback; Strict Mode's next setup can start cleanly.
       counters.forEach(counter => {
         clearDelay(counter);
-        counter.number.textContent = `${counter.rate.toFixed(1)}%`;
+        setNumber(counter.number, `${counter.rate.toFixed(1)}%`);
         counter.fill?.style.removeProperty("transform");
       });
     };

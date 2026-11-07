@@ -6,6 +6,7 @@ import { CleanIntro } from "./clean-intro";
 import { MobileAmbientCard } from "./mobile-ambient-cards";
 import { AmbientCard } from "./ambient-cards";
 import { PaperPlaneIcon } from "./paper-plane-icon";
+import { MOTION_EASING } from "@/lib/motion";
 import motion from "./card-intro-motion.json";
 import masonry from "./prototype-columns.json";
 
@@ -47,6 +48,7 @@ export function SignatureTransition() {
   const container = useRef<HTMLDivElement>(null);
   const cardScene = useRef<HTMLElement>(null);
   const copyShown = useRef(false);
+  const streamTime = useRef(0);
   // Stable SSR/hydration fallback. Mount only one viewport's decorative tree.
   const viewport = useSyncExternalStore(subscribeViewport, getViewport, getServerViewport);
   const variant = viewport.startsWith("mobile") ? "mobile" : "desktop";
@@ -130,15 +132,16 @@ export function SignatureTransition() {
       const frames = column ? [
         { offset:0, transform:"translate(0px, " + (descending ? -column.cycleHeight : 0) + "px)", easing:"linear" },
         { offset:1, transform:"translate(0px, " + (descending ? 0 : -column.cycleHeight) + "px)", easing:"linear" },
-      ] : track.frames;
+      ] : track.frames.map(frame => "opacity" in frame ? { ...frame, easing: MOTION_EASING } : frame);
       const animation = element.animate(frames, { duration:column ? cardDuration : source.duration, iterations:Infinity, fill:"both" });
-      animation.pause(); animation.currentTime = 0;
+      animation.pause(); animation.currentTime = streamTime.current;
       return animation;
     });
     let inView = false;
     const syncPlayback = () => {
       const time = animations[0].currentTime;
       const currentTime = typeof time === "number" ? time : 0;
+      streamTime.current = currentTime;
       if (inView && !document.hidden) {
         const now = document.timeline.currentTime;
         for (const animation of animations) {
@@ -159,6 +162,8 @@ export function SignatureTransition() {
     observer.observe(scene);
     document.addEventListener("visibilitychange", syncPlayback);
     return () => {
+      const time = animations[0].currentTime;
+      if (typeof time === "number") streamTime.current = Math.max(0, time);
       observer.disconnect();
       animations.forEach(animation => animation.cancel());
       document.removeEventListener("visibilitychange", syncPlayback);

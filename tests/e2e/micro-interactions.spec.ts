@@ -253,7 +253,7 @@ test("active navigation retains native anchor names, URLs and keyboard heading f
   }
 });
 
-test("WHY NOW waits 500ms then shares 1400ms cubic number/fill progress, once per load and after reloads", async ({ page }) => {
+test("WHY NOW waits 500ms then shares 1400ms quintic number/fill progress, once per load and after reloads", async ({ page }) => {
   await page.addInitScript(() => {
     // Obsolete session flags must not suppress the new per-page animation.
     for (const rate of [34.3, 25.3]) sessionStorage.setItem(`praytime:why-now-countup:v3:${rate}`, "done");
@@ -321,7 +321,8 @@ test("WHY NOW waits 500ms then shares 1400ms cubic number/fill progress, once pe
       // Number and decorative fill use the same eased scalar; the number rounds to one decimal.
       expect(Math.abs(sample.values[index] - final * sample.scales[index])).toBeLessThanOrEqual(0.051);
       const progress = Math.min(1, Math.max(0, (sample.at - observation.started) / 1400));
-      expect(Math.abs(sample.scales[index] - (1 - (1 - progress) ** 3))).toBeLessThan(0.025);
+      const eased = progress ** 3 * (10 - 15 * progress + 6 * progress ** 2);
+      expect(Math.abs(sample.scales[index] - eased)).toBeLessThan(0.025);
       previous = sample.values[index];
     }
   }

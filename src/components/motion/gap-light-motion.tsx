@@ -82,10 +82,21 @@ export const GapLightMotion = forwardRef<GapLightMotionHandle, GapLightMotionPro
     let disposed = false;
     let lastState: GapLightPlaybackState | undefined;
     let maskActive: boolean | undefined;
-    const set = (element: SVGElement, name: string, value: number) => element.setAttribute(name, String(value));
+    // Avoid repainting unchanged SVG fields during the dark/hold intervals.
+    const attributes = new WeakMap<SVGElement, Map<string, string>>();
+    const set = (element: SVGElement, name: string, value: number | string) => {
+      const serialized = String(value);
+      let previous = attributes.get(element);
+      if (!previous) { previous = new Map(); attributes.set(element, previous); }
+      if (previous.get(name) === serialized) return;
+      previous.set(name, serialized);
+      element.setAttribute(name, serialized);
+    };
     const notify = (state: GapLightPlaybackState) => {
-      svg.dataset.motionState = state;
-      if (lastState !== state) { lastState = state; callbacks.current.onStateChange?.(state); }
+      if (lastState === state) return;
+      set(svg, "data-motion-state", state);
+      lastState = state;
+      callbacks.current.onStateChange?.(state);
     };
     const paint = (time: number) => {
       const value = frameAt(time);
@@ -129,8 +140,8 @@ export const GapLightMotion = forwardRef<GapLightMotionHandle, GapLightMotionPro
       set(parts.travelerCore, "opacity", value.travelerCoreOpacity);
       set(parts.travelerHalo, "cx", value.travelerX);
       set(parts.travelerHalo, "cy", value.travelerY + value.travelerLength / 2);
-      svg.dataset.elapsed = String(value.time);
-      svg.dataset.phase = value.phase;
+      set(svg, "data-elapsed", value.time);
+      set(svg, "data-phase", value.phase);
       callbacks.current.onProgress?.(value.time);
     };
     const stop = () => {

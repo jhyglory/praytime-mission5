@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Accordion, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { FaqAnswer } from "@/components/landing/faq-answer";
 
 const items = [
   {
@@ -73,7 +74,7 @@ export function FaqSection() {
               <AccordionTrigger id={`faq-question-${index}`} aria-controls={`faq-answer-${index}`}>
                 <span>{question}</span>
               </AccordionTrigger>
-              <AccordionContent forceMount id={`faq-answer-${index}`} aria-labelledby={`faq-question-${index}`} hidden={!open.includes(`faq-${index}`)}>{answer.map(paragraph => <p className="body-copy" key={paragraph}>{paragraph}</p>)}</AccordionContent>
+              <FaqAnswer id={`faq-answer-${index}`} labelledBy={`faq-question-${index}`} open={open.includes(`faq-${index}`)}>{answer.map(paragraph => <p className="body-copy" key={paragraph}>{paragraph}</p>)}</FaqAnswer>
             </AccordionItem>
           ))}
         </Accordion></div>

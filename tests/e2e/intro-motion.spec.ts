@@ -81,7 +81,11 @@ test("SNS cards lead for 1700ms before the text and dark scrim reveal together o
     await scene.evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
     await expect(scene).toHaveAttribute("data-copy-state", "shown");
     await expect(text).toHaveCSS("opacity", "1");
+    const streamClock = await scene.locator(".card-intro__column").first().evaluate(el => Number(el.getAnimations()[0].currentTime));
     await page.setViewportSize({ width: width === 1440 ? 393 : 1440, height: 900 });
+    await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    const resizedClock = await scene.locator(".card-intro__column").first().evaluate(el => Number(el.getAnimations()[0].currentTime));
+    expect(resizedClock).toBeGreaterThanOrEqual(streamClock - 30);
     await expect(scene).toHaveAttribute("data-copy-state", "shown");
     await expect(text).toHaveCSS("opacity", "1");
     await page.emulateMedia({ reducedMotion: "reduce" });
@@ -159,6 +163,35 @@ test("restored white intro reveals the whole word, slit and aperture before the 
   }
 });
 
+test("intro progress survives a breakpoint change and its completed logo does not replay", async ({ page }) => {
+  await page.setViewportSize({ width:1440, height:900 });
+  await page.emulateMedia({ reducedMotion:"no-preference" });
+  await page.goto("/");
+  const intro = page.locator("[data-clean-intro]");
+  const clock = () => intro.evaluate(el => Number(el.getAnimations({ subtree:true })[0]?.currentTime));
+  await intro.evaluate(el => el.scrollIntoView({ block:"start", behavior:"instant" }));
+  await expect(intro).toHaveAttribute("data-intro-state", "running");
+  await expect.poll(clock).toBeGreaterThan(1000);
+  const beforeResize = await clock();
+  await page.setViewportSize({ width:393, height:900 });
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  expect(await clock()).toBeGreaterThanOrEqual(beforeResize - 30);
+  await intro.evaluate(el => el.scrollIntoView({ block:"start", behavior:"instant" }));
+  await expect(intro).toHaveAttribute("data-intro-state", "complete", { timeout:6000 });
+  await expect(intro.locator('[data-intro-part="brand"]')).toHaveCSS("opacity", "1");
+  await page.setViewportSize({ width:1440, height:900 });
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  await expect(intro).toHaveAttribute("data-intro-state", "complete");
+  expect(await clock()).toBe(4600);
+  await expect(intro.locator('[data-intro-part="paper"]')).toHaveCSS("opacity", "0");
+  await expect(intro.locator('[data-intro-part="brand"]')).toHaveCSS("opacity", "1");
+  await page.emulateMedia({ reducedMotion:"reduce" });
+  await expect(intro).toHaveAttribute("data-intro-state", "reduced");
+  await page.emulateMedia({ reducedMotion:"no-preference" });
+  await expect(intro).toHaveAttribute("data-intro-state", "complete");
+  expect(await clock()).toBe(4600);
+});
+
 test("Final SNS frame follows Figma and the independent intro fills the viewport", async ({ page }) => {
   await page.emulateMedia({ reducedMotion:"reduce" });
   await page.goto("/");
@@ -209,6 +242,49 @@ test("Final SNS frame follows Figma and the independent intro fills the viewport
     expect(geometry.declaration.top+geometry.declaration.height/2).toBeCloseTo(base.height/2,1);
     expect(geometry.copyAnimations).toEqual([0,0]);
     expect(geometry.documentWidth).toBeLessThanOrEqual(viewport.width);
+  }
+});
+
+test("every SNS heart and paper plane rises during every visible pulse", async ({ page }) => {
+  test.setTimeout(35_000);
+  for (const width of [1440,393]) {
+    const variant = width === 1440 ? "desktop" : "mobile";
+    await page.setViewportSize({ width, height:900 });
+    await page.emulateMedia({ reducedMotion:"no-preference" });
+    await page.goto("/");
+    const scene = page.locator(".card-intro__cards");
+    await scene.evaluate(el => el.scrollIntoView({ block:"start", behavior:"instant" }));
+    await expect(scene).toHaveAttribute("data-copy-state", "shown");
+    const particles = streams[variant].tracks.filter(track => track.frames.some(frame => "opacity" in frame)).map(track => {
+      const frames = track.frames as { offset:number; opacity:number }[];
+      const pulses = frames.flatMap((frame,index) => {
+        if (frame.opacity !== 0 || !frames[index + 1] || frames[index + 1].opacity <= 0) return [];
+        const end = frames.slice(index + 1).find(next => next.opacity === 0)?.offset
+          ?? 1 + frames.find(next => next.opacity === 0)!.offset;
+        return [{ early:(frame.offset + (end - frame.offset) * .25) * 12000,
+          late:(frame.offset + (end - frame.offset) * .75) * 12000 }];
+      });
+      return { nodeId:track.nodeId, pulses };
+    });
+    expect(particles).toHaveLength(20);
+    expect(particles.every(particle => particle.pulses.length === 4)).toBe(true);
+    const movements = await scene.evaluate((el,particles) => particles.map(particle => {
+      const target = el.querySelector<HTMLElement>('[data-node-id="' + particle.nodeId + '"]')!;
+      const animations = target.getAnimations();
+      animations.forEach(animation => animation.pause());
+      const sample = (time:number) => {
+        animations.forEach(animation => { animation.currentTime = time; });
+        const style = getComputedStyle(target);
+        return { opacity:Number(style.opacity), y:new DOMMatrixReadOnly(style.transform).m42 };
+      };
+      return { nodeId:particle.nodeId, pulses:particle.pulses.map(pulse => ({ early:sample(pulse.early), late:sample(pulse.late) })) };
+    }),particles);
+    for (const particle of movements) for (const [pulse, movement] of particle.pulses.entries()) {
+      const label = `${variant} ${particle.nodeId} pulse${pulse + 1}`;
+      expect(movement.early.opacity,label).toBeGreaterThan(.05);
+      expect(movement.late.opacity,label).toBeGreaterThan(.05);
+      expect(movement.late.y,label).toBeLessThan(movement.early.y - 1);
+    }
   }
 });
 

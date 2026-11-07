@@ -63,7 +63,7 @@
   .card-intro__cards:not([data-copy-state="shown"]) .card-intro__declaration,
   .card-intro__cards:not([data-copy-state="shown"]) .card-intro__quiet { opacity:0; }
   .card-intro__cards[data-copy-state="revealing"] .card-intro__declaration,
-  .card-intro__cards[data-copy-state="revealing"] .card-intro__quiet { opacity:1; transition:opacity 400ms ease-out; }
+  .card-intro__cards[data-copy-state="revealing"] .card-intro__quiet { opacity:1; transition:opacity 400ms var(--motion-ease); }
 }
 @media (width < 768px) {
   .card-intro__clean, .card-intro__cards { height:680px; }

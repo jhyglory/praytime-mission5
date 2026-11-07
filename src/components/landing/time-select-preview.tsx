@@ -1,17 +1,54 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element -- Retain the exact final supplied mockup. */
-import { useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import { useLayoutEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from "react";
+import { MOTION_EASING } from "@/lib/motion";
 
 const minutes = [5, 10, 15] as const;
 
 export function TimeSelectPreview() {
   const [selected, setSelected] = useState(1);
+  const [interacted, setInteracted] = useState(false);
+  const [wrapping, setWrapping] = useState<number | null>(null);
+  const overlay = useRef<HTMLDivElement>(null);
   const buttons = useRef<(HTMLButtonElement | null)[]>([]);
   const gesture = useRef<{ x: number; swiped: boolean } | null>(null);
+  useLayoutEffect(() => {
+    const element = overlay.current;
+    if (!interacted || !element) return;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduced.matches || typeof element.animate !== "function") return;
+    // Native playback also starts reliably when the first click follows a scroll.
+    const animation = element.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: MOTION_EASING });
+    const onReduced = () => { if (reduced.matches) animation.cancel(); };
+    reduced.addEventListener("change", onReduced);
+    return () => { animation.cancel(); reduced.removeEventListener("change", onReduced); };
+  }, [interacted]);
+  useLayoutEffect(() => {
+    if (wrapping === null || wrapping < 0) return;
+    const element = overlay.current?.querySelector<HTMLElement>(`[data-wheel-value="${minutes[wrapping]}"]`);
+    if (!element) return;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduced.matches || typeof element.animate !== "function") return;
+    // Restart even when the same side number wraps on consecutive selections.
+    const animation = element.animate([
+      { offset: 0, opacity: 0 },
+      { offset: .35, opacity: 0 },
+      { offset: 1, opacity: .45 },
+    ], { duration: 360, easing: MOTION_EASING });
+    const onReduced = () => { if (reduced.matches) animation.cancel(); };
+    reduced.addEventListener("change", onReduced);
+    return () => { animation.cancel(); reduced.removeEventListener("change", onReduced); };
+  }, [selected, wrapping]);
   function select(index: number, focus = false) {
     const next = (index + minutes.length) % minutes.length;
-    setSelected(next);
+    if (next !== selected) {
+      const before = [(selected + 2) % 3, selected, (selected + 1) % 3];
+      const after = [(next + 2) % 3, next, (next + 1) % 3];
+      setWrapping(minutes.findIndex((_, index) => Math.abs(before.indexOf(index) - after.indexOf(index)) > 1));
+      setInteracted(true);
+      setSelected(next);
+    }
     if (focus) buttons.current[next]?.focus({ preventScroll: true });
   }
   function keyboard(event: KeyboardEvent<HTMLDivElement>) {
@@ -33,11 +70,11 @@ export function TimeSelectPreview() {
       onPointerUp={release}
       onPointerCancel={() => { gesture.current = null; }}
       onClickCapture={event => { if (gesture.current?.swiped) { event.preventDefault(); event.stopPropagation(); gesture.current = null; } }}>
-      {/* The approved 10-minute initial state stays pixel-identical to the asset.
-          Only a changed selection paints the native wheel over its UI slot. */}
-      {selected !== 1 && <div className="wheel-native" aria-hidden="true">{slots.map((index, slot) => <div key={minutes[index]} className={`wheel-number wheel-number--${slot}`}><span>{String(minutes[index]).padStart(2, "0")}</span><small>분</small></div>)}<i className="wheel-indicator" /></div>}
+      {/* Keep the initial raster untouched, then retain stable keyed numbers so
+          returning to10 animates too. The wrapping side fades instead of crossing the center. */}
+      <div ref={overlay} className="wheel-native" aria-hidden="true" data-wheel-active={interacted}>{minutes.map((value, index) => <div key={value} className={`wheel-number wheel-number--${slots.indexOf(index)}`} data-wheel-value={value} data-wheel-wrap={wrapping === index || undefined}><span>{String(value).padStart(2, "0")}</span><small>분</small></div>)}<i className="wheel-indicator" /></div>
       {minutes.map((value, index) => <button key={value} type="button" role="radio" aria-checked={selected === index} aria-label={`${value}분`} tabIndex={selected === index ? 0 : -1}
-        className="wheel-hit-target" style={{ left: `${slots.indexOf(index) * 100 / 3}%` }}
+        className="wheel-hit-target" data-wheel-wrap={wrapping === index || undefined} style={{ left: `${slots.indexOf(index) * 100 / 3}%` }}
         ref={element => { buttons.current[index] = element; }} onClick={() => select(index)}><span className="sr-only">{value}분</span></button>)}
     </div>
     <p className="sr-only" aria-live="polite" aria-atomic="true">{minutes[selected]}분 선택</p>

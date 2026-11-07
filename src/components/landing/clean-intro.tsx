@@ -2,15 +2,20 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { MOTION_EASING } from "@/lib/motion";
 import introMotion from "./clean-intro-motion.json";
 
 export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; viewport:string }) {
   const root = useRef<HTMLElement>(null);
+  const progress = useRef({ elapsed: 0, complete: false });
 
   useEffect(() => {
     const element = root.current;
     if (!element) return;
     if (!viewport.endsWith(":motion") || typeof element.animate !== "function") {
+      // An explicit reduced-motion preference should never replay the intro
+      // when motion is enabled again; the unresolved SSR viewport is different.
+      if (viewport) progress.current = { elapsed: introMotion.duration, complete: true };
       element.dataset.introState = viewport ? "reduced" : "static";
       return;
     }
@@ -18,15 +23,18 @@ export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; 
     // The next SNS scene stays independent; play once on entry and hold the logo.
     const animations = introMotion.tracks.map(track => {
       const target = element.querySelector<HTMLElement>('[data-intro-part="' + track.part + '"]')!;
-      const animation = target.animate(track.frames, { duration:introMotion.duration, iterations:1, fill:"both" });
-      animation.pause(); animation.currentTime = 0;
+      const frames = track.frames.map(frame => frame.easing === "linear" ? frame : { ...frame, easing: MOTION_EASING });
+      const animation = target.animate(frames, { duration:introMotion.duration, iterations:1, fill:"both" });
+      animation.pause(); animation.currentTime = progress.current.complete ? introMotion.duration : progress.current.elapsed;
       return animation;
     });
     let inView = false;
     const sync = () => {
       const time = animations[0].currentTime;
       const currentTime = typeof time === "number" ? time : 0;
+      progress.current.elapsed = Math.min(introMotion.duration, currentTime);
       if (currentTime >= introMotion.duration) {
+        progress.current.complete = true;
         element.dataset.introState = "complete";
         return;
       }
@@ -40,7 +48,10 @@ export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; 
       }
       element.dataset.introState = play ? "running" : "paused";
     };
-    animations[0].onfinish = () => { element.dataset.introState = "complete"; };
+    animations[0].onfinish = () => {
+      progress.current = { elapsed: introMotion.duration, complete: true };
+      element.dataset.introState = "complete";
+    };
     const observer = new IntersectionObserver(entries => {
       inView = entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= .35);
       sync();
@@ -49,6 +60,11 @@ export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; 
     observer.observe(element);
     document.addEventListener("visibilitychange", sync);
     return () => {
+      const time = animations[0].currentTime;
+      if (typeof time === "number") {
+        progress.current.elapsed = Math.min(introMotion.duration, Math.max(0, time));
+        progress.current.complete ||= time >= introMotion.duration;
+      }
       observer.disconnect();
       document.removeEventListener("visibilitychange", sync);
       animations.forEach(animation => { animation.onfinish = null; animation.cancel(); });

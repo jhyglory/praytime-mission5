@@ -55,6 +55,15 @@ describe("gap light choreography at 1.3x playback speed", () => {
     const firstStep = sourceFrameAt(500).travelerY - sourceFrameAt(450).travelerY;
     const lastStep = sourceFrameAt(1250).travelerY - sourceFrameAt(1200).travelerY;
     expect(lastStep).toBeGreaterThan(firstStep * 5);
+    const contact = GAP_LIGHT_PREVIEW_TIMING.fallEnd;
+    const atContact = gapLightPreviewFrameAt(contact).travelerY;
+    const justBefore = gapLightPreviewFrameAt(contact - 1).travelerY;
+    const beforeThat = gapLightPreviewFrameAt(contact - 2).travelerY;
+    // A moving dash must settle into the stationary contact without a speed
+    // or acceleration jump, rather than arrive at full speed and freeze.
+    expect(atContact - justBefore).toBeLessThan(0.001);
+    expect(Math.abs(atContact - 2 * justBefore + beforeThat)).toBeLessThan(0.002);
+    expect(gapLightPreviewFrameAt(contact + 1).travelerY).toBe(atContact);
     for (let time = 0; time < 2300; time += 25) {
       const frame = sourceFrameAt(time);
       expect(frame.travelerLength).toBe(GAP_LIGHT_TRAVELER_LENGTH);

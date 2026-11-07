@@ -2,6 +2,7 @@ import {
   GAP_LIGHT_BASE, GAP_LIGHT_CENTER, GAP_LIGHT_FINAL_WIDTH, GAP_LIGHT_HEIGHT,
   GAP_LIGHT_SLIT_WIDTH, GAP_LIGHT_TOP, GAP_LIGHT_TRAVELER_LENGTH,
 } from "./gap-light-timeline";
+import { smootherstep as smooth } from "@/lib/motion";
 
 /** The approved seven-second source choreography plays at the requested1.3x. */
 export const GAP_LIGHT_PREVIEW_PLAYBACK_RATE = 1.3;
@@ -17,10 +18,6 @@ export const GAP_LIGHT_PREVIEW_TIMING = {
 } as const;
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
-const smooth = (value: number) => {
-  const p = clamp(value);
-  return p * p * (3 - 2 * p);
-};
 
 /** One clock drives the separate moving dash, connected trail and light fields. */
 export function gapLightPreviewFrameAt(milliseconds: number) {
@@ -36,9 +33,10 @@ export function gapLightPreviewFrameAt(milliseconds: number) {
   const contactPulse = 1 - smooth((sinceContact - 70 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE) / (350 / GAP_LIGHT_PREVIEW_PLAYBACK_RATE));
   const length = GAP_LIGHT_TRAVELER_LENGTH;
   const startTop = 70;
-  // Quadratic ease-in accelerates a short, centered dash toward the ground.
-  // It never stretches or paints a persistent trace during its descent.
-  const fallingTop = startTop + (GAP_LIGHT_BASE - length - startTop) * fall * fall;
+  // Accelerate through the fall, then meet the stationary contact with zero
+  // velocity and acceleration. The short dash still leaves no descent trace.
+  const fallingProgress = clamp(fall ** 5 * (21 + fall * (-35 + 15 * fall)));
+  const fallingTop = startTop + (GAP_LIGHT_BASE - length - startTop) * fallingProgress;
   const risingTop = GAP_LIGHT_BASE - length - (GAP_LIGHT_BASE - length - GAP_LIGHT_TOP) * rise;
   const faceWidth = GAP_LIGHT_SLIT_WIDTH + (GAP_LIGHT_FINAL_WIDTH - GAP_LIGHT_SLIT_WIDTH) * spread;
   const floorExpansion = impact * (0.46 + 0.54 * spread);

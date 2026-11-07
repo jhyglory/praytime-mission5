@@ -1,0 +1,355 @@
+{
+  "date": "2026-11-07T11:35:27.986Z",
+  "source": "Final worktree before the release commit. No runtime source edits after checks.",
+  "checks": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "unit": "60/60 PASS",
+    "browser": "66/66 PASS (4.9m)",
+    "webpackBuild": "PASS"
+  },
+  "actualPlayback": "Fresh Chrome responsive viewports; no seeking; local production build; all non-GET/HEAD blocked.",
+  "viewports": [
+    {
+      "width": 1440,
+      "overflowPx": 0,
+      "statWaitMs": [
+        501.7,
+        501.7
+      ],
+      "statRunMs": [
+        1406.5,
+        1406.5
+      ],
+      "statValues": [
+        "34.3%",
+        "25.3%"
+      ],
+      "statDecorativeWidths": [
+        0.8,
+        0.7
+      ],
+      "introDurationMs": 4600,
+      "introCompletedResize": true,
+      "snsWaitMs": 1701.5,
+      "snsFadeMs": 401.9,
+      "snsPhotos": {
+        "count": 80,
+        "unique": 80
+      },
+      "snsParticles": {
+        "hearts": 16,
+        "planes": 4
+      },
+      "snsColumnDirections": [
+        "up",
+        "down",
+        "up",
+        "down",
+        "up",
+        "down"
+      ],
+      "snsColumnDurationMs": 21428.57142857143,
+      "observedParticleAscentGroups": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2
+      ],
+      "snsResizeClock": {
+        "before": 2649.863999999999,
+        "after": 2749.8959999999997
+      },
+      "gapWaitMs": 1200.7,
+      "gapActiveMs": 5395.1,
+      "gapPhases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "gapGeometry": {
+        "top": 527.9902053308487,
+        "bottom": 867.98787940979,
+        "sectionHeight": 1180,
+        "centerOffset": 0
+      },
+      "prayerMs": 3915.3,
+      "finalPrayerLights": [
+        1,
+        1,
+        1
+      ],
+      "faqIntermediateOpening": true,
+      "faqClosesWithNativeHidden": true,
+      "wheelWrapFadeOnBothSelections": true,
+      "interactions": {
+        "gapAnchor": true,
+        "wheel15Then10": true,
+        "faqKeyboard": true,
+        "requiredValidationWithoutPost": true
+      }
+    },
+    {
+      "width": 393,
+      "overflowPx": 0,
+      "statWaitMs": [
+        500.6,
+        500.6
+      ],
+      "statRunMs": [
+        1412.7,
+        1412.7
+      ],
+      "statValues": [
+        "34.3%",
+        "25.3%"
+      ],
+      "statDecorativeWidths": [
+        0.8,
+        0.7
+      ],
+      "introDurationMs": 4600,
+      "introCompletedResize": true,
+      "snsWaitMs": 1701.8,
+      "snsFadeMs": 401.5,
+      "snsPhotos": {
+        "count": 80,
+        "unique": 80
+      },
+      "snsParticles": {
+        "hearts": 16,
+        "planes": 4
+      },
+      "snsColumnDirections": [
+        "up",
+        "down",
+        "up"
+      ],
+      "snsColumnDurationMs": 21428.57142857143,
+      "observedParticleAscentGroups": [
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        5,
+        5,
+        5,
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "snsResizeClock": {
+        "before": 2549.873999999999,
+        "after": 2599.7780000000007
+      },
+      "gapWaitMs": 1201.8,
+      "gapActiveMs": 5394.5,
+      "gapPhases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "gapGeometry": {
+        "top": 460.99759939193723,
+        "bottom": 690.9893726603191,
+        "sectionHeight": 1024,
+        "centerOffset": 0
+      },
+      "prayerMs": 3914.2,
+      "finalPrayerLights": [
+        1,
+        1,
+        1
+      ],
+      "faqIntermediateOpening": true,
+      "faqClosesWithNativeHidden": true,
+      "wheelWrapFadeOnBothSelections": true,
+      "interactions": {
+        "gapAnchor": true,
+        "wheel15Then10": true,
+        "faqKeyboard": true,
+        "requiredValidationWithoutPost": true
+      }
+    },
+    {
+      "width": 360,
+      "overflowPx": 0,
+      "statWaitMs": [
+        501.4,
+        501.5
+      ],
+      "statRunMs": [
+        1401.4,
+        1401.3
+      ],
+      "statValues": [
+        "34.3%",
+        "25.3%"
+      ],
+      "statDecorativeWidths": [
+        0.8,
+        0.7
+      ],
+      "introDurationMs": 4600,
+      "introCompletedResize": true,
+      "snsWaitMs": 1701.1,
+      "snsFadeMs": 402.2,
+      "snsPhotos": {
+        "count": 80,
+        "unique": 80
+      },
+      "snsParticles": {
+        "hearts": 16,
+        "planes": 4
+      },
+      "snsColumnDirections": [
+        "up",
+        "down",
+        "up"
+      ],
+      "snsColumnDurationMs": 21428.57142857143,
+      "observedParticleAscentGroups": [
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "snsResizeClock": {
+        "before": 2599.8040000000005,
+        "after": 2649.740000000001
+      },
+      "gapWaitMs": 1200.7,
+      "gapActiveMs": 5395.7,
+      "gapPhases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "gapGeometry": {
+        "top": 460.99759939193723,
+        "bottom": 690.9893726603191,
+        "sectionHeight": 1024,
+        "centerOffset": 0
+      },
+      "prayerMs": 3914.7,
+      "finalPrayerLights": [
+        1,
+        1,
+        1
+      ],
+      "faqIntermediateOpening": true,
+      "faqClosesWithNativeHidden": true,
+      "wheelWrapFadeOnBothSelections": true,
+      "interactions": {
+        "gapAnchor": true,
+        "wheel15Then10": true,
+        "faqKeyboard": true,
+        "requiredValidationWithoutPost": true
+      }
+    }
+  ],
+  "reducedMotion": {
+    "result": "PASS",
+    "questionStatsIntroSnsGapPrayerImmediate": true,
+    "wheelFaqImmediate": true
+  },
+  "developmentPreviewStatus": 404,
+  "consoleErrors": [],
+  "writeRequests": [],
+  "limits": [
+    "Chrome responsive viewport sizes, not physical devices or Safari.",
+    "Every particle is observed for12.3s on393px,3.3s on1440/360; two whole card cycles are covered by the separate full E2E suite, not this script.",
+    "No real submission or database operation."
+  ],
+  "video": {
+    "result": "SKIPPED",
+    "reason": "Bundled ffmpeg was unavailable; no installation attempted."
+  },
+  "screenshots": [
+    {
+      "file": "sns-copy-1440.png",
+      "dimensions": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "sns-copy-393.png",
+      "dimensions": [
+        393,
+        900
+      ]
+    },
+    {
+      "file": "faq-open-1440.png",
+      "dimensions": [
+        1440,
+        900
+      ]
+    },
+    {
+      "file": "faq-open-393.png",
+      "dimensions": [
+        393,
+        900
+      ]
+    }
+  ]
+}
