@@ -17,7 +17,8 @@ const accentRatios = [0.8, 0.7] as const;
 
 async function protectPage(page: Page) {
   // These browser checks must never reach an external persistence endpoint.
-  await page.route(/^https?:\/\/(?!127\.0\.0\.1:3000(?:\/|$)).*/, route => route.abort());
+  const origin=new URL(test.info().project.use.baseURL!).origin;
+  await page.route("**/*", route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
   const problems: string[] = [];
   page.on("pageerror", error => problems.push(error.message));
   page.on("console", message => {
@@ -295,11 +296,18 @@ test("WHY NOW waits 500ms then shares 1400ms quintic number/fill progress, once 
       }
     }).observe({ type: "layout-shift" });
   });
-  await centerSection(page, "#why-stats");
-  await expect(grid).toHaveAttribute("data-count-state", "waiting");
-  await page.waitForTimeout(250);
-  await expect(numbers).toHaveText(["0.0%", "0.0%"]);
-  for (const fill of await grid.locator(".stat-fill").all()) expect((await transform(fill)).scaleX).toBe(0);
+  // Sample the short hold in one browser task, without consuming it in
+  // several automation round trips on a loaded machine.
+  const held = await grid.evaluate(async element => {
+    element.scrollIntoView({ block: "center", behavior: "instant" });
+    await new Promise(resolve => setTimeout(resolve, 250));
+    return {
+      state: (element as HTMLElement).dataset.countState,
+      values: [...element.querySelectorAll("[data-stat-number]")].map(el => el.textContent),
+      scales: [...element.querySelectorAll(".stat-fill")].map(el => new DOMMatrixReadOnly(getComputedStyle(el).transform).m11),
+    };
+  });
+  expect(held).toEqual({ state: "waiting", values: ["0.0%", "0.0%"], scales: [0, 0] });
   await expect(grid).toHaveAttribute("data-count-state", "complete");
   await expect(numbers).toHaveText(["34.3%", "25.3%"]);
   await expect(grid).toHaveAttribute("data-count-runs", "1");
@@ -382,7 +390,7 @@ test("without JavaScript, WHY NOW still renders exact statistics and decorative 
     await expect(intro.locator(".card-intro__art")).toHaveCount(0);
     expect(await intro.evaluate(el => el.getAnimations({ subtree:true }).length)).toBe(0);
     await expect(intro.locator(".card-intro__scene")).toHaveAttribute("aria-hidden", "true");
-    await expect(intro.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.");
+    await expect(intro.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 SNS가 열리기 전, 기도하고 다시 선택할 시간을 만듭니다. 짧게 기도한 뒤, 지금 필요한 사용인지 살펴보세요.");
     expect(problems).toEqual([]);
   } finally {
     await context.close();
@@ -405,15 +413,31 @@ test("mobile statistics trigger individually at 40% of the unmodified viewport a
   await expect(first).toHaveAttribute("data-count-state", "pending");
   await expect(first.locator("[data-stat-number]")).toHaveText("0.0%");
   await reveal(first, 0.41);
-  await expect(first).toHaveAttribute("data-count-state", "waiting");
-  await page.waitForTimeout(250);
-  await expect(first.locator("[data-stat-number]")).toHaveText("0.0%");
-  await expect(first).toHaveAttribute("data-count-state", "running");
+  const earlyPause = await first.evaluate(async element => {
+    let sawWaiting = false;
+    let waitingStayedZero = true;
+    const deadline = performance.now() + 4000;
+    return new Promise<{ sawWaiting: boolean; waitingStayedZero: boolean; value: number }>((resolve, reject) => {
+      const sample = () => {
+        const state = (element as HTMLElement).dataset.countState;
+        const value = Number.parseFloat(element.querySelector("[data-stat-number]")!.textContent!);
+        if (state === "waiting") { sawWaiting = true; waitingStayedZero &&= value === 0; }
+        if (state === "running" && value > 0) {
+          document.getElementById("hero")!.scrollIntoView({ block: "center", behavior: "instant" });
+          resolve({ sawWaiting, waitingStayedZero, value });
+        } else if (performance.now() > deadline) reject(new Error("No visible statistic progress"));
+        else requestAnimationFrame(sample);
+      };
+      requestAnimationFrame(sample);
+    });
+  });
+  expect(earlyPause.sawWaiting).toBe(true);
+  expect(earlyPause.waitingStayedZero).toBe(true);
+  expect(earlyPause.value).toBeGreaterThan(0);
+  expect(earlyPause.value).toBeLessThan(34.3);
+  await expect(first).toHaveAttribute("data-count-state", "paused");
   await expect(second).toHaveAttribute("data-count-state", "pending");
   await expect(second.locator("[data-stat-number]")).toHaveText("0.0%");
-  await expect.poll(() => first.locator("[data-stat-number]").evaluate(el => Number.parseFloat(el.textContent!))).toBeGreaterThan(0);
-  await centerSection(page, "#hero");
-  await expect(first).toHaveAttribute("data-count-state", "paused");
   const paused = await first.evaluate(el => ({ number: el.querySelector("[data-stat-number]")!.textContent, fill: el.querySelector<HTMLElement>(".stat-fill")!.style.transform }));
   await page.waitForTimeout(250);
   expect(await first.evaluate(el => ({ number: el.querySelector("[data-stat-number]")!.textContent, fill: el.querySelector<HTMLElement>(".stat-fill")!.style.transform }))).toEqual(paused);
@@ -536,9 +560,9 @@ test("mobile touch preserves choice, wheel, FAQ and beta CTA flows without savin
     await expect(questions.nth(1)).toHaveAttribute("aria-expanded", "false");
     await expect(page.locator("#faq-answer-1")).toBeHidden();
 
-    await page.locator(".hero-actions").getByRole("link", { name: "무료로 신청하기", exact: true }).tap();
+    await page.locator(".hero-actions").getByRole("link", { name: "무료 사전예약하기", exact: true }).tap();
     await expect(page).toHaveURL(/#beta-signup$/);
-    await expect(page.getByRole("button", { name: "무료로 신청하기", exact: true })).toBeDisabled();
+    await expect(page.getByRole("button", { name: "무료 사전예약하기", exact: true })).toBeDisabled();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     expect(submissionRequests).toBe(0);
     expect(problems).toEqual([]);

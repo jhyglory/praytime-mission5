@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import copyA from "../fixtures/copy-a.json" with { type: "json" };
 
 const regions = [
   ".landing-header", ".hero", ".one-question", ".why-now",
@@ -9,9 +10,9 @@ const regions = [
 // Whole-page rhythm verified against final1209:514 /1209:1051. At360px,
 // lower content may grow as it wraps; intro fills900px and FAQ follows the85% user override.
 const referenceHeights: Record<number, readonly number[]> = {
-  1440: [88, 684, 576, 1027, 900, 760, 1180, 923.40625, 757, 834.71875, 1709, 123],
-  393: [72, 932, 416, 1138, 900, 680, 1024, 1187.734375, 999, 1065.71875, 2483, 168],
-  360: [72, 932, 416, 1138, 900, 680, 1024, 1170.390625, 1051, 1091.21875, 2509, 168],
+  1440: [88, 684, 576, 1027, 900, 760, 1180, 923.40625, 757, 783.71875, 1733, 123],
+  393: [72, 932, 416, 1138, 900, 680, 1024, 1187.734375, 1023, 989.21875, 2513, 168],
+  360: [72, 932, 416, 1138, 900, 680, 1024, 1170.390625, 1075, 989.21875, 2569, 168],
 };
 
 const observations = new WeakMap<Page, { errors: string[]; posts: string[] }>();
@@ -51,6 +52,19 @@ for (const width of [1440, 393, 360]) {
     await expect(page.locator("[data-form-group]")).toHaveCount(8);
     await expect(page.locator(".faq-item button")).toHaveCount(7);
     await expect(page.locator("#faq-question-0")).toHaveAttribute("aria-expanded", "true");
+    // Acceptance copy comes from the user's A manuscript, including closed answers.
+    const compact = (text: string) => text.replace(/\s+/g, "");
+    for (const { selector, text } of [...copyA.sections, ...copyA.form]) {
+      const element = page.locator(selector);
+      await expect(element).toHaveCount(1);
+      const actual = selector === "#nickname" ? await element.getAttribute("placeholder") : await element.textContent();
+      expect(compact(actual ?? ""), selector).toBe(compact(text));
+    }
+    for (const [index, { question, answer }] of copyA.faqs.entries()) {
+      await expect(page.locator(`#faq-question-${index}`)).toHaveText(question);
+      await expect(page.locator(`#faq-answer-${index}`)).toHaveText(answer);
+    }
+    await expect(page.getByRole("form", { name: "베타 사전예약" })).toHaveCount(1);
     await expect(page.getByText("04 / THE GAP", { exact: true })).toHaveCount(0);
     await expect(page.getByText("열기 전, 무엇 때문에 열었는지 떠올려 보세요.", { exact: true })).toHaveCount(0);
 
@@ -173,10 +187,10 @@ test("normal-motion navigation and two reloads keep the complete page healthy wi
     await expect(page.locator("#faq-question-0")).toHaveAttribute("aria-expanded", "true");
     await page.locator("#faq-question-2").click();
     await expect(page.locator("#faq-answer-2")).toBeVisible();
-    await expect(page.locator(".landing-header").getByRole("link", { name: "무료로 신청하기", exact: true })).toHaveCount(0);
-    await page.locator(".hero-actions").getByRole("link", { name: "무료로 신청하기", exact: true }).click();
+    await expect(page.locator(".landing-header").getByRole("link", { name: "무료 사전예약하기", exact: true })).toHaveCount(0);
+    await page.locator(".hero-actions").getByRole("link", { name: "무료 사전예약하기", exact: true }).click();
     await expect(page).toHaveURL(/#beta-signup$/);
-    await expect(page.getByRole("button", { name: "무료로 신청하기", exact: true })).toBeDisabled();
+    await expect(page.getByRole("button", { name: "무료 사전예약하기", exact: true })).toBeDisabled();
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
     await page.evaluate(() => {
       history.replaceState(null, "", "/");

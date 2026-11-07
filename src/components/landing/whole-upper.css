@@ -24,6 +24,8 @@
 }
 
 @media (width < 768px) {
+  /* Reserve the original copy slot so the shorter A headline does not lift CTAs. */
+  .hero-editorial { min-height:352px; }
   .landing-header { grid-template-columns: 1fr; }
   .landing-header .wordmark {
     width: 128px;

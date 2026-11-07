@@ -10,13 +10,13 @@ export function HeroSection() {
     <Header />
     <div className="hero-content">
       <div className="hero-editorial">
-        <p className="eyebrow">기독교 기반 디지털 웰니스</p>
-        <h1 id="hero-heading" tabIndex={-1}>무심코 SNS를<span className="mobile-break"><br /></span><span className="desktop-space"> </span>여는 순간,<br />기도로 멈추고<span className="mobile-break"><br /></span><span className="desktop-space"> </span>다시 선택하세요.</h1>
-        <p className="body-copy">SNS를 열기 전 잠깐 기도하고,<br />지금도 필요한지 돌아보세요.</p>
+        <p className="eyebrow">기독교인을 위한 SNS 사용 관리 앱</p>
+        <h1 id="hero-heading" tabIndex={-1}>SNS를 열기 전,<br />잠깐, 기도부터.</h1>
+        <p className="body-copy">기도 후, 돌아가거나 필요한 시간을 고르세요.<br />5·10·15분 사용 후에는 다시 제한됩니다.</p>
       </div>
       <div className="hero-artwork-interval" aria-hidden="true" />
-      <div className="hero-actions"><Button asChild><AnchorLink href="#beta-signup">무료로 신청하기</AnchorLink></Button><Button asChild variant="secondary"><AnchorLink href="#the-gap">작동 방식 보기</AnchorLink></Button></div>
-      <p className="small-copy">기도를 마쳐도 SNS가 자동으로 열리지는 않습니다.</p>
+      <div className="hero-actions"><Button asChild><AnchorLink href="#beta-signup">무료 사전예약하기</AnchorLink></Button><Button asChild variant="secondary"><AnchorLink href="#the-gap">작동 방식 보기</AnchorLink></Button></div>
+      <p className="small-copy">사전예약 무료 · 베타 일정 확정 후 이메일 안내</p>
     </div>
   </section>;
 }

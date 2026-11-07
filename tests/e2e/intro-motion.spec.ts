@@ -74,9 +74,9 @@ test("SNS cards lead for 1700ms before the text and dark scrim reveal together o
     expect(observation.samples.some(sample => sample.state === "waiting" && sample.text === 0 && sample.quiet === 0)).toBe(true);
     expect(observation.samples.some(sample => sample.text > .1 && sample.text < .9)).toBe(true);
     for (const sample of observation.samples) expect(Math.abs(sample.text - sample.quiet)).toBeLessThan(.04);
-    await expect(scene.locator(".card-intro__headline")).toContainText("손이 먼저 움직인 순간,");
-    await expect(scene.locator(".card-intro__headline")).toContainText("다시 생각할 시간을");
-    await expect(scene.locator(".card-intro__anchor")).toContainText("필요한 만큼만 선택합니다.");
+    await expect(scene.locator(".card-intro__headline")).toContainText("SNS가 열리기 전,");
+    await expect(scene.locator(".card-intro__headline")).toContainText("기도하고 다시 선택할");
+    await expect(scene.locator(".card-intro__anchor")).toContainText("지금 필요한 사용인지 살펴보세요.");
     expect(await scene.locator(".card-intro__column").evaluateAll(columns => columns.every(column => column.getAnimations().every(animation => animation.playState === "running")))).toBe(true);
     await page.locator("#hero").evaluate(el => el.scrollIntoView({ behavior: "instant" }));
     await scene.evaluate(el => el.scrollIntoView({ block: "start", behavior: "instant" }));
@@ -105,7 +105,7 @@ test.describe("SNS copy without JavaScript", () => {
       await page.goto("/");
       const scene = page.locator(".card-intro__cards");
       await expect(scene.locator(".card-intro__declaration")).toHaveCSS("opacity", "1");
-      await expect(scene.locator(".card-intro__headline")).toContainText("손이 먼저 움직인 순간,");
+      await expect(scene.locator(".card-intro__headline")).toContainText("SNS가 열리기 전,");
     }
   });
 });

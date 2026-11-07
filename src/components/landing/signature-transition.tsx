@@ -171,7 +171,7 @@ export function SignatureTransition() {
   }, [animate, cardDuration, source, variant, viewport]);
 
   return <div ref={container} className="signature-transition card-intro" data-signature-transition data-motion-state="static" data-motion-duration={cardDuration} data-particle-motion-duration={source.duration} data-motion-variant={variant} data-node-id={source.nodeId}>
-    <p className="sr-only">그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.</p>
+    <p className="sr-only">그래서, PRAYTIME은 SNS가 열리기 전, 기도하고 다시 선택할 시간을 만듭니다. 짧게 기도한 뒤, 지금 필요한 사용인지 살펴보세요.</p>
     <div className="card-intro__scene" aria-hidden="true">
       <CleanIntro variant={variant} viewport={viewport} />
       <section ref={cardScene} className="card-intro__cards" data-copy-state="pending" data-copy-delay={declarationDelay} data-copy-fade={declarationFade} data-node-id={variant === "mobile" ? "1214:831" : "1214:652"}>
@@ -196,8 +196,8 @@ export function SignatureTransition() {
           <div className="card-intro__handoff" />
         </div>}
         <div className="card-intro__declaration">
-          <div className="card-intro__headline"><p>손이 먼저 움직인 순간,</p><p>다시 생각할 시간을<span className="card-intro__desktop-space"> </span><br className="card-intro__mobile-break" />돌려드립니다.</p></div>
-          <p className="card-intro__anchor">잠깐 기도하고,<span className="card-intro__desktop-space"> </span><br className="card-intro__mobile-break" />필요한 만큼만 선택합니다.</p>
+          <div className="card-intro__headline"><p>SNS가 열리기 전,</p><p>기도하고 다시 선택할<span className="card-intro__desktop-space"> </span><br className="card-intro__mobile-break" />시간을 만듭니다.</p></div>
+          <p className="card-intro__anchor">짧게 기도한 뒤,<span className="card-intro__desktop-space"> </span><br className="card-intro__mobile-break" />지금 필요한 사용인지 살펴보세요.</p>
         </div>
       </section>
     </div>

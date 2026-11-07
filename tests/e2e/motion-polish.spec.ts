@@ -32,7 +32,8 @@ test("FAQ opens and closes through intermediate heights with immediate accessibl
     return samples;
   });
   const finalHeight = opening.at(-1)!.height;
-  expect(finalHeight).toBeGreaterThan(100);
+  expect(finalHeight).toBeGreaterThan(0);
+  expect(Math.abs(finalHeight - await answer.evaluate(el => el.scrollHeight))).toBeLessThanOrEqual(1);
   expect(opening.some(sample => sample.height > 5 && sample.height < finalHeight - 5 && sample.opacity > .05 && sample.opacity < .95)).toBe(true);
   expect(opening.at(-1)).toMatchObject({ hidden: false, opacity: 1, state: "open" });
   await expect(page.locator("#faq-question-1")).toHaveAttribute("aria-expanded", "true");

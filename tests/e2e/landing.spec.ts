@@ -7,9 +7,10 @@ declare global { interface Window { qaConversions: number } }
 const qa = path.resolve(process.cwd(), "test-results/screenshots");
 const widths = [1440, 1280, 1024, 768, 430, 393, 375, 320];
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page, baseURL }) => {
   // Automated tests must never contact an external persistence endpoint.
-  await page.route(/^https?:\/\/(?!127\.0\.0\.1:3000(?:\/|$)).*/, route => route.abort());
+  const origin=new URL(baseURL!).origin;
+  await page.route("**/*", route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
 });
 
 test("semantic structure, head metadata, assets and anchors have no runtime warnings", async ({ page }) => {
@@ -84,7 +85,7 @@ test("skip link and reduced-motion navigation support the keyboard", async ({ pa
   await expect(transition.locator(".card-intro__art")).toBeVisible();
   await expect(transition.locator(".card-intro__column")).toHaveCount(6);
   await expect(transition.locator(".card-intro__clean")).toHaveAttribute("data-intro-state", "reduced");
-  await expect(transition.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 손이 먼저 움직인 순간, 다시 생각할 시간을 돌려드립니다. 잠깐 기도하고, 필요한 만큼만 선택합니다.");
+  await expect(transition.locator(".sr-only")).toHaveText("그래서, PRAYTIME은 SNS가 열리기 전, 기도하고 다시 선택할 시간을 만듭니다. 짧게 기도한 뒤, 지금 필요한 사용인지 살펴보세요.");
   await expect(transition.locator(".card-intro__scene")).toHaveAttribute("aria-hidden", "true");
 });
 
@@ -100,8 +101,8 @@ for (const width of widths) {
     await expect(page.locator("[data-form-group]")).toHaveCount(8);
     await expect(page.getByText("04 / THE GAP", { exact: true })).toHaveCount(0);
     await expect(page.locator(".landing-header > .pt-button")).toHaveCount(0);
-    await expect(page.locator(".landing-header").getByRole("link", { name: "무료로 신청하기", exact: true })).toHaveCount(0);
-    await expect(page.locator(".hero-actions").getByRole("link", { name: "무료로 신청하기", exact: true })).toHaveCount(1);
+    await expect(page.locator(".landing-header").getByRole("link", { name: "무료 사전예약하기", exact: true })).toHaveCount(0);
+    await expect(page.locator(".hero-actions").getByRole("link", { name: "무료 사전예약하기", exact: true })).toHaveCount(1);
     for (const selector of [".why-now", ".time-section", "#faq", ".beta-section", ".site-footer"]) {
       await expect(page.locator(selector)).toHaveCSS("background-color", "rgb(245, 242, 247)");
     }
@@ -247,13 +248,13 @@ test("FAQ defaults readable, toggles independently, and supports keyboard", asyn
   await expect(page.locator("#faq-answer-0 .body-copy").first()).toHaveCSS("line-height", "25.5px");
   await expect(questions).toHaveCount(7);
   await expect(questions).toHaveText([
-    "PrayTime은 그냥 기도 앱인가요?",
-    "PrayTime은 어떻게 작동하나요?",
-    "SNS를 아예 못 쓰게 하는 앱인가요?",
-    "기도를 오래 해야 하나요?",
-    "기도를 끝내면 바로 SNS가 열리나요?",
-    "제 기도 내용을 저장하나요?",
-    "사전 신청은 무료인가요?",
+    "PrayTime은 어떤 앱인가요?",
+    "어떻게 작동하나요?",
+    "필요할 때는 SNS를 사용할 수 있나요?",
+    "기도는 어떻게 하나요?",
+    "기도를 마치면 SNS가 바로 열리나요?",
+    "기도 내용은 어떻게 다루나요?",
+    "사전예약은 무료인가요?",
   ]);
   await expect(page.locator("#faq")).toHaveCSS("background-color", "rgb(245, 242, 247)");
   await expect(page.locator("#faq-heading")).toHaveCSS("color", "rgb(24, 24, 27)");
@@ -264,16 +265,16 @@ test("FAQ defaults readable, toggles independently, and supports keyboard", asyn
   await page.keyboard.press("Enter");
   await expect(questions.nth(1)).toHaveAttribute("aria-expanded", "true");
   await expect(page.locator("#faq-answer-1")).toBeVisible();
-  await expect(page.locator("#faq-answer-1")).toContainText("5분 · 10분 · 15분");
+  await expect(page.locator("#faq-answer-1")).toContainText("5·10·15분");
   await expect(page.locator("#faq-answer-0")).toBeVisible();
   await page.keyboard.press("Space");
   await expect(page.locator("#faq-answer-1")).toBeHidden();
   await questions.nth(4).click();
-  await expect(page.locator("#faq-answer-4")).toContainText("SNS가 자동으로 열리지는 않습니다");
+  await expect(page.locator("#faq-answer-4")).toContainText("기도를 마치는 것만으로 자동으로 열리지는 않습니다");
   await questions.nth(5).click();
-  await expect(page.locator("#faq-answer-5")).toContainText("기도 원문을 기본적으로 수집하지 않는 방향");
+  await expect(page.locator("#faq-answer-5")).toContainText("기도 원문을 서버로 수집하지 않는 방향으로 설계하고 있습니다");
   await questions.nth(6).click();
-  await expect(page.locator("#faq-answer-6")).toContainText("사전 신청에는 결제가 발생하지 않습니다");
+  await expect(page.locator("#faq-answer-6")).toContainText("사전예약에는 결제가 발생하지 않습니다");
   await expect(page.locator(".beta-context")).toContainText("베타 참여 확정을 의미하지 않습니다");
   await questions.nth(6).press("Home");
   await expect(questions.first()).toBeFocused();
@@ -312,9 +313,9 @@ test("final Hero overlay, statistic count accents and anchors match the approved
   await page.getByRole("link", { name: "기도와 선택", exact: true }).focus();
   await page.keyboard.press("Enter");
   await expect(page.locator("#prayer-heading")).toBeFocused();
-  await page.getByRole("link", { name: "무료로 신청하기", exact: true }).first().click();
+  await page.getByRole("link", { name: "무료 사전예약하기", exact: true }).first().click();
   await expect(page).toHaveURL(/#beta-signup$/);
-  const betaLinks = page.getByRole("link", { name: "무료로 신청하기", exact: true });
+  const betaLinks = page.getByRole("link", { name: "무료 사전예약하기", exact: true });
   await expect(betaLinks).toHaveCount(1);
   for (const link of await betaLinks.all()) {
     await link.focus();
@@ -322,11 +323,12 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await expect(page).toHaveURL(/#beta-signup$/);
     await expect(page.locator("#signup-heading")).toBeFocused();
   }
-  // The separate card-free intro is followed by the user-slowed21.43s
-  // decorative loop. Its readable copy never waits for an animation phase.
+  // Isolate intro visibility from the earlier focused/smooth anchor navigation.
+  // The one-time card lead-in finishes before inspecting the permanent loop.
   await page.emulateMedia({ reducedMotion: "no-preference" });
   for (const width of [1440, 393]) {
     await page.setViewportSize({ width, height: 600 });
+    await page.goto("/");
     const transition = page.locator("[data-signature-transition]");
     const clean = transition.locator(".card-intro__clean");
     const cards = transition.locator(".card-intro__cards");
@@ -337,6 +339,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
     await expect(clean.locator(".ambient-card")).toHaveCount(0);
     await cards.evaluate(el => el.scrollIntoView({ block:"center", behavior:"instant" }));
     await expect(transition).toHaveAttribute("data-motion-state", "running");
+    await expect(cards).toHaveAttribute("data-copy-state", "shown");
     await expect(transition).toHaveAttribute("data-motion-duration", String(15000 / .7));
     expect(await cards.evaluate(el => el.getAnimations({ subtree: true }).length)).toBe(width < 768 ? 43 : 46);
     const renderedMotionNodes = await cards.evaluate(el => new Set(el.getAnimations({ subtree: true }).map(a => ((a.effect as KeyframeEffect).target as HTMLElement).dataset.nodeId)).size);
@@ -403,7 +406,7 @@ test("final Hero overlay, statistic count accents and anchors match the approved
 
 test("validation focuses first error; real unconfigured route returns 503 and retains input", async ({ page }) => {
   await page.goto("/?utm_source=qa&utm_campaign=mission5");
-  const submit = page.getByRole("button", { name: "무료로 신청하기", exact: true });
+  const submit = page.getByRole("button", { name: "무료 사전예약하기", exact: true });
   await expect(submit).toBeDisabled();
   await page.locator("#consent").check();
   await submit.click();
@@ -449,7 +452,7 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
     await page.getByLabel("iPhone", { exact: true }).check();
     await page.getByLabel("SNS·숏폼 사용을 줄이고 싶어서", { exact: true }).check();
     await page.locator("#consent").check();
-    await page.getByRole("button", { name: "무료로 신청하기", exact: true }).click();
+    await page.getByRole("button", { name: "무료 사전예약하기", exact: true }).click();
     try {
       const submitting = page.getByRole("button", { name: "접수 중…" });
       await expect(submitting).toBeDisabled();

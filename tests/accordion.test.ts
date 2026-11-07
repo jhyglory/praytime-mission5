@@ -24,9 +24,9 @@ describe("Landing shadcn Accordion integration", () => {
       if (index === 0) expect(answer).not.toContain("hidden=");
       else expect(answer).toContain('hidden=""');
     }
-    expect(html).toContain("5분 · 10분 · 15분");
-    expect(html).toContain("기도를 마쳤다고 SNS가 자동으로 열리지는 않습니다.");
-    expect(html).toContain("기도 원문을 기본적으로 수집하지 않는 방향");
-    expect(html).toContain("사전 신청에는 결제가 발생하지 않습니다.");
+    expect(html).toContain("5·10·15분");
+    expect(html).toContain("기도를 마치는 것만으로 자동으로 열리지는 않습니다.");
+    expect(html).toContain("기도 원문을 서버로 수집하지 않는 방향으로 설계하고 있습니다");
+    expect(html).toContain("사전예약에는 결제가 발생하지 않습니다.");
   });
 });

@@ -7,9 +7,9 @@ import { MOTION_EASING } from "@/lib/motion";
 const duration = 3900;
 const stepDuration = 1300;
 const steps = [
-  ["PAUSE", "잠깐 멈추고", "pause"],
-  ["PRAY", "하나님께 시선을 돌리고", "pray"],
-  ["CHOOSE", "지금 필요한지 다시 선택합니다.", "choose"],
+  ["PAUSE", "설정한 SNS를 열 때 멈춥니다.", "pause"],
+  ["PRAY", "직접 기도하거나 가이드를 읽습니다.", "pray"],
+  ["CHOOSE", "돌아가거나 사용할 시간을 고릅니다.", "choose"],
 ] as const;
 
 /** One shared clock adds each light and its copy, retaining every drawn step. */

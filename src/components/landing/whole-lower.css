@@ -65,6 +65,10 @@
 .voluntary-companion__body { inset: 0; width: 160px; height: 160px; object-fit: contain; }
 
 @media (width < 768px) {
+  /* Keep whole Korean words in the narrow A-copy explanations. */
+  .voluntary-prayer h3,
+  .voluntary-prayer p,
+  .beta-context > .body-copy { word-break:keep-all; }
   .voluntary-prayer { gap: 20px; }
   .voluntary-prayer h3 { font-size: 18px; line-height: 28px; }
   .voluntary-prayer p { font-size: 15px; line-height: 24px; }

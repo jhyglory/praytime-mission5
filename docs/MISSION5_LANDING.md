@@ -1,5 +1,13 @@
 # PrayTime · Mission 5 Landing Implementation Specification
 
+## A-copy release approved · 2026-11-08
+
+The user approved the verified local A-copy and requests commit/push/deploy. Earlier local-only holds are satisfied for this release. Use the existing feature branch, PR #1 and Vercel project; verify the public3widths without real submissions or DB operations. Keep approved design/motion/assets/backend/env/privacy unchanged. No main/merge/new PR/DNS change. See COPY_A_LOCAL.md for prior exact local checks and PR #1 for final deployment identity/public evidence.
+
+## Current local A-copy task · 2026-11-08
+
+Use the user's A manuscript for all8 copy groups,7FAQ items and specified form labels/helpers/CTA. Preserve all design/assets/typography, animation clocks, fields/options/required/validation/API/consent/Privacy URL, anchor/event/ARIA IDs and reduced motion. Existing static upper-light→lower-navy intro remains unchanged; the manuscript's “white intro” names the existing separate card-free scene and does not authorize recoloring the actual logo/background in this copy-only task. On Mobile preserve the original Hero editorial352px, GAP heading132px/body90px and Time Select body78px copy slots so shorter text cannot move CTAs/light/phone. Longer prayer/FAQ/form text uses natural flow without global font or spacing changes. LOCAL-ONLY: no commit/push/deploy/PR update/merge/production signup or DB operation. See [COPY_A_LOCAL.md](COPY_A_LOCAL.md) for actual verification and exclusions. Older release/copy instructions are historical for this task.
+
 ## Latest intro clarification · 2026-11-08
 
 The latest user correction restores the original STATIC upper-light→lower-navy intro gradient. The upper 그래서 area stays Soft Paper even after the word disappears, the actual logo appears and playback completes. Paper opacity stays1; no temporal background/handoff fade. Restore the original blurred paper geometry and keep4600ms/600ms word/light/logo timing, reduced/no-JS readability and the separate SNS scene. Other sections, including bright WHY NOW, are unchanged. See [INTRO_BACKGROUND_HANDOFF.md](INTRO_BACKGROUND_HANDOFF.md); the1fceb61 full-scene timed fade is superseded.

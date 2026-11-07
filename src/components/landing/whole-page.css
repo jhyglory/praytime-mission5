@@ -11,6 +11,10 @@
 .card-intro__declaration { top:280px; transform:translateX(-50%); }
 
 @media(width < 768px) {
+  /* Keep the original light/choice and phone positions with the shorter A copy. */
+  .gap-section h2 { min-height:132px; }
+  .gap-section .body-copy { min-height:90px; }
+  .time-story .body-copy { min-height:78px; }
   .why-now h2 { min-height:156px; font-size:32px; line-height:48px; }
   .why-support { min-height:144px; font-size:26px; line-height:44px; }
   .why-support + .stat-source { margin-top:40px; }

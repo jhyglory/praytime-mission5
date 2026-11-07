@@ -36,7 +36,7 @@ for (const width of [1440, 393, 360]) {
     expect(await page.evaluate(() => scrollY)).toBe(0);
     await expect(lead).toHaveCSS("opacity", "0");
     await expect(followup).toHaveCSS("opacity", "0");
-    await expect(heading).toContainText("무심코 열게 된 SNS,");
+    await expect(heading).toContainText("무심코 켠 SNS,");
     await expect(page.getByText("BEFORE YOU OPEN", { exact: true })).toHaveCount(0);
     const spacing = await heading.evaluate(element => {
       const lead = element.querySelector<HTMLElement>('[data-question-part="lead"]')!;
@@ -110,7 +110,7 @@ test("question is immediately readable with reduced motion", async ({ page }) =>
     const heading = page.locator("#question-heading");
     await expect(heading.locator('[data-question-part="lead"]')).toHaveCSS("opacity", "1");
     await expect(heading.locator('[data-question-part="followup"]')).toHaveCSS("opacity", "1");
-    await expect(heading).toContainText("연 적이 얼마나 있나요?");
+    await expect(heading).toContainText("열었는지 기억하시나요?");
     expect(await heading.evaluate(element => element.getAnimations({ subtree: true }).length)).toBe(0);
   }
 });
@@ -123,7 +123,7 @@ test.describe("question without JavaScript", () => {
       await page.goto("/");
       await expect(page.locator('#question-heading [data-question-part="lead"]')).toHaveCSS("opacity", "1");
       await expect(page.locator('#question-heading [data-question-part="followup"]')).toHaveCSS("opacity", "1");
-      await expect(page.locator("#question-heading")).toContainText("진짜 꼭 필요해서");
+      await expect(page.locator("#question-heading")).toContainText("무엇을 하려고");
       await expect(page.locator(".one-question")).toHaveAttribute("aria-labelledby", "question-heading");
       await expect(page.getByText("BEFORE YOU OPEN", { exact: true })).toHaveCount(0);
     }
