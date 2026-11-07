@@ -121,25 +121,35 @@ for (const width of widths) {
     expect(introGeometry.cleanCards).toBe(0);
     const gapArtwork = page.locator(".gap-architecture");
     await gapArtwork.scrollIntoViewIfNeeded();
-    await expect.poll(() => gapArtwork.locator("img").evaluate(el => (el as HTMLImageElement).naturalWidth)).toBe(1112);
-    await expect(gapArtwork.locator("img")).toHaveAttribute("alt", "");
-    const architecture = await gapArtwork.locator("img").evaluate(element => {
-      const image = element as HTMLImageElement;
-      return { src: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight };
-    });
-    expect(architecture.src).toContain("/assets/high-resolution/gap-hq-8f930896b76a.png");
-    expect(architecture.width).toBe(1112);
-    expect(architecture.height).toBe(1415);
-    const lightPlacement = await gapArtwork.locator("img").evaluate(el => {
-      const image = el.getBoundingClientRect();
+    await expect(gapArtwork).toHaveAttribute("aria-hidden", "true");
+    await expect(gapArtwork.locator("img")).toHaveCount(0);
+    const gapMotion = gapArtwork.locator("svg[data-gap-light-motion]");
+    await expect(gapMotion).toHaveCount(1);
+    const lightPlacement = await gapMotion.evaluate(el => {
+      const svg = el as SVGSVGElement;
+      const canvas = svg.getBoundingClientRect();
       const section = el.closest("section")!.getBoundingClientRect();
-      const scale = image.width / 1112;
-      return { center: image.left + image.width / 2, top: image.top - section.top + 148 * scale, bottom: image.top - section.top + 1246 * scale, ratio: image.width / image.height };
+      const face = svg.querySelector<SVGRectElement>('[data-gap-part="face-rect"]')!;
+      const scale = canvas.width / svg.viewBox.baseVal.width;
+      return {
+        center: canvas.left + canvas.width / 2,
+        top: canvas.top - section.top + face.y.baseVal.value * scale,
+        bottom: canvas.top - section.top + (face.y.baseVal.value + face.height.baseVal.value) * scale,
+        ratio: canvas.width / canvas.height,
+        viewWidth: svg.viewBox.baseVal.width,
+        viewHeight: svg.viewBox.baseVal.height,
+        faceFill: face.getAttribute("fill"),
+        faceStroke: face.getAttribute("stroke"),
+      };
     });
     expect(lightPlacement.center).toBeCloseTo(width / 2, 1);
     expect(lightPlacement.top).toBeCloseTo(width < 768 ? 461 : 528, 1);
     expect(lightPlacement.bottom).toBeCloseTo(width < 768 ? 691 : 868, 1);
-    expect(lightPlacement.ratio).toBeCloseTo(1112 / 1415, 3);
+    expect(lightPlacement.viewWidth).toBe(1200);
+    expect(lightPlacement.viewHeight).toBeCloseTo(1381 * 1200 / 1139, 3);
+    expect(lightPlacement.ratio).toBeCloseTo(1139 / 1381, 3);
+    expect(lightPlacement.faceFill).toBe("#FEF9E7");
+    expect(lightPlacement.faceStroke).toBeNull();
     await expect(page.locator(".gap-choice--return .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-left-arrow.svg");
     await expect(page.locator(".gap-choice--time .gap-choice__action > img")).toHaveAttribute("src", "/assets/choice-right-arrow.svg");
     await expect(page.locator(".equal-outcomes .prayer-light-divider")).toHaveCount(2);

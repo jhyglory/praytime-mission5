@@ -1,0 +1,19 @@
+{
+  "canvas": [
+    1200,
+    1440
+  ],
+  "background": "#080E26",
+  "centerX": 600,
+  "topY": 180,
+  "baseY": 1240,
+  "finalGapWidth": 14,
+  "paintOrder": [
+    "01-background",
+    "04-ambient",
+    "05-floor",
+    "02-opening",
+    "03-edges"
+  ],
+  "animated": false
+}

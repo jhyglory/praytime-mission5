@@ -1,0 +1,614 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "durationMs": 4217.600000023842,
+      "geometry": {
+        "x": 160,
+        "y": 161,
+        "width": 600,
+        "height": 727.46875
+      },
+      "final": {
+        "time": 4200,
+        "state": "complete",
+        "phase": "complete",
+        "top": 198.0684811237928,
+        "base": 1220.017559262511,
+        "faceHeight": 1021.9490781387182,
+        "faceX": 575.7682177348552,
+        "faceWidth": 48.46356453028972,
+        "faceOpacity": 1,
+        "travelerTop": 198.06848112379282,
+        "travelerLength": 40.877963125548725,
+        "travelerBottom": 238.94644424934154,
+        "travelerOpacity": 0,
+        "trailTop": 198.06848112379282,
+        "trailHeight": 1021.9490781387182,
+        "trailOpacity": 0,
+        "floorOpacity": 1,
+        "floorRX": 500,
+        "floorRY": 105,
+        "impactRX": 130,
+        "impactRY": 45,
+        "impactOpacity": 0,
+        "impactX": 600,
+        "impactY": 1220.017559262511,
+        "contactOpacity": 1,
+        "ambientOpacity": 1
+      },
+      "finalFaceCssPx": 24.23178226514486,
+      "travelerPercentOfFinalHeight": 4,
+      "reference": {
+        "width": 1139,
+        "height": 1381,
+        "rectangleWidth": 46,
+        "rectangleTop": 188,
+        "rectangleBase": 1158,
+        "note": "Vector reconstruction based on PNG geometry/color direction; not claimed pixel-identical."
+      },
+      "faceRGBSamples": [
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ]
+      ],
+      "screenshots": [
+        {
+          "name": "dark",
+          "beforeMs": 9.199999976158324,
+          "afterMs": 159.19999997615832,
+          "path": "1440-dark.png"
+        },
+        {
+          "name": "fall",
+          "requestedMs": 550,
+          "beforeMs": 559.1999999761583,
+          "afterMs": 692.499999976158,
+          "path": "1440-fall.png"
+        },
+        {
+          "name": "impact",
+          "requestedMs": 1175,
+          "beforeMs": 1175.8999999761581,
+          "afterMs": 1259.1999999761583,
+          "path": "1440-impact.png"
+        },
+        {
+          "name": "rise",
+          "requestedMs": 2100,
+          "beforeMs": 2109.099999976158,
+          "afterMs": 2209.099999976158,
+          "path": "1440-rise.png"
+        },
+        {
+          "name": "open",
+          "requestedMs": 3350,
+          "beforeMs": 3359.099999976158,
+          "afterMs": 3475.6999999761583,
+          "path": "1440-open.png"
+        }
+      ],
+      "seekResults": [
+        {
+          "requestedMs": 500,
+          "observedMs": 500
+        },
+        {
+          "requestedMs": 1200,
+          "observedMs": 1200
+        },
+        {
+          "requestedMs": 2000,
+          "observedMs": 2000
+        },
+        {
+          "requestedMs": 3300,
+          "observedMs": 3300
+        }
+      ],
+      "keyboardSeek": "PASS: ArrowRight2010 / End4200 / Home0",
+      "manualPauseResume": "PASS",
+      "manualPauseSurvivesOffscreen": "PASS",
+      "manualPauseSurvivesVisibilityEvent": "PASS (simulated visibilitychange)",
+      "automaticVisibilityPauseResume": "PASS (simulated visibilitychange)",
+      "repeatedReplayAndStill": "PASS",
+      "replayAgain": "PASS",
+      "reducedMotionAndDisabledSlider": "PASS",
+      "noEdgeOrStrokeGeometry": "PASS",
+      "actualElapsedReplay": true,
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    },
+    {
+      "width": 393,
+      "durationMs": 4214.300000011921,
+      "geometry": {
+        "x": 0,
+        "y": 186,
+        "width": 393,
+        "height": 476.484375
+      },
+      "final": {
+        "time": 4200,
+        "state": "complete",
+        "phase": "complete",
+        "top": 198.0684811237928,
+        "base": 1220.017559262511,
+        "faceHeight": 1021.9490781387182,
+        "faceX": 575.7682177348552,
+        "faceWidth": 48.46356453028972,
+        "faceOpacity": 1,
+        "travelerTop": 198.06848112379282,
+        "travelerLength": 40.877963125548725,
+        "travelerBottom": 238.94644424934154,
+        "travelerOpacity": 0,
+        "trailTop": 198.06848112379282,
+        "trailHeight": 1021.9490781387182,
+        "trailOpacity": 0,
+        "floorOpacity": 1,
+        "floorRX": 500,
+        "floorRY": 105,
+        "impactRX": 130,
+        "impactRY": 45,
+        "impactOpacity": 0,
+        "impactX": 600,
+        "impactY": 1220.017559262511,
+        "contactOpacity": 1,
+        "ambientOpacity": 1
+      },
+      "finalFaceCssPx": 15.871817383669883,
+      "travelerPercentOfFinalHeight": 4,
+      "reference": {
+        "width": 1139,
+        "height": 1381,
+        "rectangleWidth": 46,
+        "rectangleTop": 188,
+        "rectangleBase": 1158,
+        "note": "Vector reconstruction based on PNG geometry/color direction; not claimed pixel-identical."
+      },
+      "faceRGBSamples": [
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ]
+      ],
+      "screenshots": [
+        {
+          "name": "dark",
+          "beforeMs": 6.70000001192102,
+          "afterMs": 173.40000001192084,
+          "path": "393-dark.png"
+        },
+        {
+          "name": "fall",
+          "requestedMs": 550,
+          "beforeMs": 556.6000000119211,
+          "afterMs": 756.700000011921,
+          "path": "393-fall.png"
+        },
+        {
+          "name": "impact",
+          "requestedMs": 1175,
+          "beforeMs": 1190.0000000119207,
+          "afterMs": 1289.9000000119213,
+          "path": "393-impact.png"
+        },
+        {
+          "name": "rise",
+          "requestedMs": 2100,
+          "beforeMs": 2106.600000011921,
+          "afterMs": 2223.300000011921,
+          "path": "393-rise.png"
+        },
+        {
+          "name": "open",
+          "requestedMs": 3350,
+          "beforeMs": 3356.600000011921,
+          "afterMs": 3439.9000000119213,
+          "path": "393-open.png"
+        }
+      ],
+      "seekResults": [
+        {
+          "requestedMs": 500,
+          "observedMs": 500
+        },
+        {
+          "requestedMs": 1200,
+          "observedMs": 1200
+        },
+        {
+          "requestedMs": 2000,
+          "observedMs": 2000
+        },
+        {
+          "requestedMs": 3300,
+          "observedMs": 3300
+        }
+      ],
+      "keyboardSeek": "PASS: ArrowRight2010 / End4200 / Home0",
+      "manualPauseResume": "PASS",
+      "manualPauseSurvivesOffscreen": "PASS",
+      "manualPauseSurvivesVisibilityEvent": "PASS (simulated visibilitychange)",
+      "automaticVisibilityPauseResume": "PASS (simulated visibilitychange)",
+      "repeatedReplayAndStill": "PASS",
+      "replayAgain": "PASS",
+      "reducedMotionAndDisabledSlider": "PASS",
+      "noEdgeOrStrokeGeometry": "PASS",
+      "actualElapsedReplay": true,
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    },
+    {
+      "width": 360,
+      "durationMs": 4216.699999988079,
+      "geometry": {
+        "x": 0,
+        "y": 211,
+        "width": 360,
+        "height": 436.484375
+      },
+      "final": {
+        "time": 4200,
+        "state": "complete",
+        "phase": "complete",
+        "top": 198.0684811237928,
+        "base": 1220.017559262511,
+        "faceHeight": 1021.9490781387182,
+        "faceX": 575.7682177348552,
+        "faceWidth": 48.46356453028972,
+        "faceOpacity": 1,
+        "travelerTop": 198.06848112379282,
+        "travelerLength": 40.877963125548725,
+        "travelerBottom": 238.94644424934154,
+        "travelerOpacity": 0,
+        "trailTop": 198.06848112379282,
+        "trailHeight": 1021.9490781387182,
+        "trailOpacity": 0,
+        "floorOpacity": 1,
+        "floorRX": 500,
+        "floorRY": 105,
+        "impactRX": 130,
+        "impactRY": 45,
+        "impactOpacity": 0,
+        "impactX": 600,
+        "impactY": 1220.017559262511,
+        "contactOpacity": 1,
+        "ambientOpacity": 1
+      },
+      "finalFaceCssPx": 14.539069359086916,
+      "travelerPercentOfFinalHeight": 4,
+      "reference": {
+        "width": 1139,
+        "height": 1381,
+        "rectangleWidth": 46,
+        "rectangleTop": 188,
+        "rectangleBase": 1158,
+        "note": "Vector reconstruction based on PNG geometry/color direction; not claimed pixel-identical."
+      },
+      "faceRGBSamples": [
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ],
+        [
+          254,
+          249,
+          231
+        ]
+      ],
+      "screenshots": [
+        {
+          "name": "dark",
+          "beforeMs": 0,
+          "afterMs": 93.90000004768353,
+          "path": "360-dark.png"
+        },
+        {
+          "name": "fall",
+          "requestedMs": 550,
+          "beforeMs": 560.6000000476838,
+          "afterMs": 643.9000000476835,
+          "path": "360-fall.png"
+        },
+        {
+          "name": "impact",
+          "requestedMs": 1175,
+          "beforeMs": 1177.2000000476837,
+          "afterMs": 1260.6000000476838,
+          "path": "360-impact.png"
+        },
+        {
+          "name": "rise",
+          "requestedMs": 2100,
+          "beforeMs": 2110.600000047684,
+          "afterMs": 2193.9000000476835,
+          "path": "360-rise.png"
+        },
+        {
+          "name": "open",
+          "requestedMs": 3350,
+          "beforeMs": 3360.500000047684,
+          "afterMs": 3460.500000047684,
+          "path": "360-open.png"
+        }
+      ],
+      "seekResults": [
+        {
+          "requestedMs": 500,
+          "observedMs": 500
+        },
+        {
+          "requestedMs": 1200,
+          "observedMs": 1200
+        },
+        {
+          "requestedMs": 2000,
+          "observedMs": 2000
+        },
+        {
+          "requestedMs": 3300,
+          "observedMs": 3300
+        }
+      ],
+      "keyboardSeek": "PASS: ArrowRight2010 / End4200 / Home0",
+      "manualPauseResume": "PASS",
+      "manualPauseSurvivesOffscreen": "PASS",
+      "manualPauseSurvivesVisibilityEvent": "PASS (simulated visibilitychange)",
+      "automaticVisibilityPauseResume": "PASS (simulated visibilitychange)",
+      "repeatedReplayAndStill": "PASS",
+      "replayAgain": "PASS",
+      "reducedMotionAndDisabledSlider": "PASS",
+      "noEdgeOrStrokeGeometry": "PASS",
+      "actualElapsedReplay": true,
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    }
+  ],
+  "noJS": [
+    {
+      "reducedMotion": "no-preference",
+      "differentFromNavy": 0,
+      "result": "PASS"
+    },
+    {
+      "reducedMotion": "reduce",
+      "differentFromNavy": 87212,
+      "result": "PASS"
+    }
+  ],
+  "errors": [],
+  "video": {
+    "status": "PASS",
+    "path": "/Users/codeit/Documents/Codex/2026-11-06/praytime-mission-5-landing-page-1/outputs/gap-light-ivory/393-replay.webm",
+    "mimeType": "video/webm;codecs=vp8",
+    "canvas": {
+      "width": 393,
+      "height": 477
+    },
+    "decodedMetadata": {
+      "width": 393,
+      "height": 477,
+      "duration": "stream duration not indexed"
+    },
+    "sourceElapsedMs": 4200,
+    "realCaptureWallMs": 4892.6068749999995,
+    "receivedCDPFrames": 237,
+    "bytes": 88230,
+    "frameErrors": [],
+    "errors": [],
+    "posts": 0,
+    "method": "Actual Chrome Page.startScreencast JPEG frames cropped to SVG in same-page hidden canvas.captureStream, encoded by native MediaRecorder. No seeking during recorded replay and no external encoder/dependency.",
+    "canvasFrameUpdates": 233,
+    "requestedCanvasCaptureFPS": 30,
+    "decodedContent": {
+      "status": "PASS",
+      "metadata": {
+        "width": 393,
+        "height": 477,
+        "duration": "stream duration not indexed"
+      },
+      "thresholdNote": "Thin antialiased/compressed dash has lower peak luminance; visible content is checked above80 luma against~20luma navy, with final interior additionally above210RGB. Initial overlystrict200-luma threshold was adjusted after inspecting real decoded frames.",
+      "method": "Decoded saved WebM and played real-time without indexed seeking; sampled at1.0/2.4/4.5seconds.",
+      "samples": [
+        {
+          "requestedTime": 1,
+          "videoTime": 1.0466,
+          "ended": false,
+          "brightPixels": 0,
+          "visiblePixels": 28,
+          "visibleCenterBandRows": 14,
+          "centerBrightRows": 0,
+          "maximumLuminance": 169.33333333333334,
+          "centerRGB": [
+            10,
+            16,
+            38
+          ],
+          "topRGB": [
+            7,
+            14,
+            37
+          ],
+          "floorRGB": [
+            7,
+            14,
+            37
+          ]
+        },
+        {
+          "requestedTime": 2.4,
+          "videoTime": 2.414,
+          "ended": false,
+          "brightPixels": 19,
+          "visiblePixels": 637,
+          "visibleCenterBandRows": 169,
+          "centerBrightRows": 0,
+          "maximumLuminance": 205,
+          "centerRGB": [
+            7,
+            14,
+            37
+          ],
+          "topRGB": [
+            7,
+            14,
+            37
+          ],
+          "floorRGB": [
+            155,
+            158,
+            155
+          ]
+        },
+        {
+          "requestedTime": 4.5,
+          "videoTime": 4.5215,
+          "ended": false,
+          "brightPixels": 5517,
+          "visiblePixels": 16674,
+          "visibleCenterBandRows": 335,
+          "centerBrightRows": 335,
+          "maximumLuminance": 247.66666666666666,
+          "centerRGB": [
+            255,
+            250,
+            230
+          ],
+          "topRGB": [
+            253,
+            249,
+            227
+          ],
+          "floorRGB": [
+            228,
+            225,
+            214
+          ]
+        }
+      ]
+    }
+  }
+}

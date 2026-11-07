@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element -- Exact Figma choice arrow exports. */
 import { AnchorLink } from "@/components/landing/anchor-link";
 import { GapLightDivider } from "@/components/landing/gap-light-divider";
+import { GapLightMotion } from "@/components/motion/gap-light-motion";
 
 export function GapSection() {
   return <section className="landing-section section-depth gap-section" id="the-gap" aria-labelledby="gap-heading">
-    <picture className="gap-architecture"><img src="/assets/high-resolution/gap-hq-8f930896b76a.png" alt="" width="1112" height="1415" loading="lazy" decoding="async" /></picture>
+    <div className="gap-architecture" aria-hidden="true"><GapLightMotion visibilityThreshold={0.2} /></div>
     <div className="container section-stack">
     <h2 id="gap-heading" tabIndex={-1}>충동과 행동 사이,<br />기도가 머물 작은 틈을<span className="mobile-break"><br /></span><span className="desktop-space"> </span>만듭니다.</h2>
     <p className="body-copy">PrayTime은 SNS를 여는 순간에 개입합니다.<br />짧게 기도한 뒤, 지금도 필요한 사용인지<span className="mobile-break"><br /></span><span className="desktop-space"> </span>다시 선택합니다.</p>

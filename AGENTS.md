@@ -2,6 +2,18 @@
 
 ## Current task and precedence
 
+The latest user has approved connecting the completed GapLightMotion to the landing and deploying it. Replace only THE GAP's static artwork, preserving headings, body, choice anchors, section dimensions and the existing light top/ground anchors. Trigger once at20% canvas visibility; pause offscreen/background; retain the final state on re-entry and reduced-motion/no-JS fallback. Commit/push on the existing feature branch and deploy to the existing Vercel project after checks. Do not merge, change main/DNS/backend/env or perform a real signup POST. See docs/GAP_LIGHT_LANDING_RELEASE.md for current validation/release evidence.
+
+The approved GapLightMotion uses the NEW ivory PNG in docs/design-assets/gap-light-ivory/reference.png. Its proportions, borderless filled face and clean ivory light override the old ZIP,14/24-unit widths and previous8px choice. Latestfall-speedoverride: use0.7×priorfallspeed, so750/0.7=1071.428571msfall after200msdark. Contact/instantreturn1271.428571, groundspreadends1771.428571, riseends3121.428571, openingends4221.428571, settleends4521.428571. All postcontact durations remain unchanged; only shift them by321.428571ms. Movinglight remains7.2% of finalheight and has no permanent trail on descent. No stroke, edge pair, caps, ring, emptyneonframe or capsule in the final face. Floor and ambient are separate soft ivory fields.
+
+The earlier timing correction still applies: smooth eased descent with a subtle12-unit lateral arc, returning tocenter oncontact. Rise begins immediatelyoncontact togetherwithfilledgroundspread, without a stationary ground hold. The finalivoryface remains unchanged. UI timing labels derive from the timeline; sliderstepany plus explicit10ms/Home/End keyboard actions supports the exact fractional endpoint.
+
+Latestjoinfix: no visible divider between the moving short light and its trail. Use one opaque3.8-unit #FFFFF6 core from the movingheadtop to the ground during ascent; hide the separate shortcore only aftercontact, while keeping its movinghalo/kinematics. Handoff is identicalgeometry atcontact. Do not overlap two translucent cores, which double-composite antialiasededges; feather only the separate trailglow. Opening starts fromthe same3.8width; finalface/length/speed/timing stay unchanged.
+
+Keep the reusable component and development-only /dev/gap-light preview with replay, pause/resume, keyboard-accessible timeline seek and final-still controls. ReferencePNG1139×1381 maps to SVG1200×1454.960; facewidth48.464,center600,top198.068,base1220.018 (~15.87pxwideat393). The former preview-only release hold is satisfied by the user's latest approval. Keep backend and unrelated landing/user changes untouched. Earlier3.2s/ZIPpixel-equality records are historical. See docs/GAP_LIGHT_MOTION_PREVIEW.md for the preview-stage history.
+
+The previous landing baseline below remains unchanged:
+
 Apply all four current interaction changes on Desktop and Mobile: paper-plane shares, slower alternating SNS columns, per-step light centers, and the restored white-to-navy intro. Preserve the rest of the approved landing. The earlier whole-page task remains the baseline, not permission to redesign unrelated sections.
 
 1. Latest user's explicit requirements

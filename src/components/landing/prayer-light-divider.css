@@ -80,15 +80,13 @@
 }
 .prayer-light-divider--choice .prayer-light-divider__line { left: 50%; right: auto; width: min(414px, 100%); transform: translateX(-50%); }
 
-/* Keep the original headings, native anchors and equal-choice hit areas.
-   The user-supplied PNG carries the complete central light study. */
+/* Preserve the approved light top/ground anchors and both choice hit areas.
+   The approved ivory SVG motion replaces only the former static artwork. */
 .gap-section { position: relative; isolation: isolate; overflow: clip; }
 .gap-architecture { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.gap-architecture img {
-  position: absolute; top: 482.1712px; left: 50%; display: block;
-  width: 344.3352px; height: auto; max-width: none; transform: translateX(-50%);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent), linear-gradient(transparent, #000 8%, #000 92%, transparent);
-  mask-composite: intersect;
+.gap-architecture svg {
+  position: absolute; top: 462.1031px; left: 50%; display: block;
+  width: 399.2371px; height: auto; max-width: none; transform: translateX(-50%);
 }
 .gap-section .equal-outcomes { margin-top: 564px; }
 .gap-section .equal-outcomes > div::before { content: none; }
@@ -99,7 +97,7 @@
   .prayer-light-divider__bloom { top: -27.5px; }
   .prayer-light-divider__haze { top: -43.5px; }
   .prayer-light-divider--choice .prayer-light-divider__line { width: 100%; }
-  .gap-architecture img { top: 429.9982px; width: 232.9326px; }
+  .gap-architecture svg { top: 416.4227px; width: 270.0722px; }
   .gap-section .equal-outcomes { margin-top: 390px; }
   .gap-section .equal-outcomes p { color: rgb(241 241 238 / 68%); }
 }

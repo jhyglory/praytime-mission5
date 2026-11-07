@@ -25,12 +25,16 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 사용자는 검증 후 기존 feature branch / PR #1 / Vercel 프로젝트를 통한 commit/push/deploy를 승인했습니다. main 변경·merge·새 PR·새 DB·DNS 전환은 하지 않습니다.
 
+## 빛의 틈 모션
+
+THE GAP의 중앙 빛은 재사용 가능한 `GapLightMotion` SVG 컴포넌트입니다. 짧은 빛의 하강 → 접촉과 동시에 상승·바닥 확산 → 연결된 틈 → 테두리 없는 아이보리 발광면 순서로 약4.52초 동안 한 번 재생합니다. 화면 진입 시 시작하고 화면 밖/비활성 탭에서는 일시정지하며, reduced-motion과 JavaScript 비활성화에서는 최종 모습을 표시합니다. 기존 문구·CTA·섹션 크기는 유지합니다. 개발 전용 미리보기는 `npm run preview:gap-light` 후 `/dev/gap-light`에서 실행합니다. [연결·검증 기록](docs/GAP_LIGHT_LANDING_RELEASE.md).
+
 ## 전체 Landing과 현재 동작
 
 Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS declaration → THE GAP → TIME SELECT → PRAYER BEFORE CHOICE → FAQ → BETA SIGNUP → Footer 순서입니다. Header는 Hero 위 overlay이며, clean intro와 SNS scene은 서로 다른 스크롤 구간입니다.
 
 - 상단 Header의 신청 CTA는 Desktop·Mobile 모두 제거했습니다. Hero CTA와 form submit의 **“무료로 신청하기”**는 유지합니다. 로고·기존 navigation 위치·원본 artwork는 보존합니다.
-- Hero/Question과 THE GAP은 사용자가 제공한 고화질 PNG 원본으로 교체했습니다. 원본 비율·기존 glass/slit 위치를 유지하고, GAP은 화면 진입 시 지연 로드합니다. [원본 해시](docs/evidence/high-resolution-assets/originals.json).
+- Hero/Question은 사용자가 제공한 고화질 PNG 원본 비율·기존 glass 위치를 유지합니다. THE GAP은 이전 PNG의 빛 상단·바닥 위치를 보존하면서 위의 승인된 SVG 모션으로 교체했습니다. [과거 원본 해시](docs/evidence/high-resolution-assets/originals.json).
 - Hero 유리 이미지는 hover·마우스 이동에도 고정됩니다. 이전2.5px pointer parallax는 제거했으며 원본 이미지·crop·CTA hover/focus는 유지합니다.
 - ONE QUESTION은 Hero와 같은 원본 artwork의 연속 crop을 사용합니다. 최종 Figma의 Desktop56/80, Mobile32/48 제목을 적용합니다.
 - WHY NOW는 각 카드가 실제 **40%** 보인 뒤 **700ms 대기 후** 독립 시작합니다. 대기 중 화면 밖으로 나가거나 탭이 비활성화되면 취소하고 재진입 때 다시 기다립니다. 이미 시작한 애니메이션은 추가 대기 없이 이어집니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**이며 회색 track은 표시하지 않습니다. 사용자 요청에 따른 장식용 최종 길이는80% /70%이고, 실제 통계 숫자34.3% /25.3%는 그대로 유지합니다.

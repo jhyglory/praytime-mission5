@@ -1,0 +1,46 @@
+{
+  "base": "http://127.0.0.1:3000",
+  "label": "local",
+  "widths": [
+    {
+      "width": 1440,
+      "top": 527.9902053308487,
+      "bottom": 867.98787940979,
+      "center": 720,
+      "faceWidth": 16.1236011774838,
+      "state": "complete",
+      "elapsed": 4521.428571428572,
+      "scrollWidth": 1440,
+      "choices": true,
+      "reentryHeld": true
+    },
+    {
+      "width": 393,
+      "top": 460.99759939193723,
+      "bottom": 690.9893726603191,
+      "center": 196.5,
+      "faceWidth": 10.906826454997063,
+      "state": "complete",
+      "elapsed": 4521.428571428572,
+      "scrollWidth": 393,
+      "choices": true,
+      "reentryHeld": true
+    },
+    {
+      "width": 360,
+      "top": 460.99759939193723,
+      "bottom": 690.9893726603191,
+      "center": 180,
+      "faceWidth": 10.906826454997063,
+      "state": "complete",
+      "elapsed": 4521.428571428572,
+      "scrollWidth": 360,
+      "choices": true,
+      "reentryHeld": true
+    }
+  ],
+  "errors": [],
+  "posts": [],
+  "developmentPreviewStatus": 404,
+  "result": "PASS"
+}
