@@ -33,6 +33,13 @@
    the middle prayer light, typography and both GAP choice dividers intact. */
 .prayer-section .prayer-light-divider--pause { --light-center: 20%; }
 .prayer-section .prayer-light-divider--choose { --light-center: 80%; }
+.prayer-light-divider__sweep { position: absolute; inset: 0; }
+.prayer-steps .prayer-light-divider__line { transform-origin: left center; }
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .prayer-steps[data-prayer-motion="pending"] > li > p,
+  .prayer-steps[data-prayer-motion="pending"] > li > h3,
+  .prayer-steps[data-prayer-motion="pending"] > li > .prayer-light-divider { opacity: 0; }
+}
 .prayer-light-divider__highlight,
 .prayer-light-divider__near-halo {
   position: absolute;
