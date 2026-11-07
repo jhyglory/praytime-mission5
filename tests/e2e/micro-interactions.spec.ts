@@ -69,49 +69,46 @@ test.afterEach(async ({ page }) => {
   expect(runtimeProblems.get(page) ?? []).toEqual([]);
 });
 
-test("Hero responds opposite to the primary mouse within 2.5px and returns on leave", async ({ page }) => {
+test("Hero glass artwork and copy stay fixed through mouse hover, movement and leave", async ({ page }) => {
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
   const hero = page.locator("#hero");
   const artwork = hero.locator(".hero-artwork img");
-  await expect(hero).toHaveAttribute("data-pointer-motion", "enabled");
+  const artworkBefore = await artwork.boundingBox();
   const contentBefore = await hero.locator(".hero-content").boundingBox();
   const bounds = (await hero.boundingBox())!;
-  await page.mouse.move(bounds.x + bounds.width * 0.9, bounds.y + bounds.height * 0.9);
-  await expect.poll(async () => (await transform(artwork)).x).toBeLessThan(-0.5);
-  await expect.poll(async () => (await transform(artwork)).y).toBeLessThan(-0.5);
-  const moved = await transform(artwork);
-  expect(Math.hypot(moved.x, moved.y)).toBeLessThanOrEqual(2.501);
-  expect(moved.scaleX).toBe(1);
-  expect(moved.scaleY).toBe(1);
-  expect(await hero.locator(".hero-content").boundingBox()).toEqual(contentBefore);
+  for (const [x, y] of [[0.9, 0.9], [0.1, 0.1], [0.8, 0.4]]) {
+    await page.mouse.move(bounds.x + bounds.width * x, bounds.y + bounds.height * y);
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
+    await expect(artwork).toHaveCSS("transform", "none");
+    expect(await artwork.boundingBox()).toEqual(artworkBefore);
+    expect(await hero.locator(".hero-content").boundingBox()).toEqual(contentBefore);
+  }
 
-  // Secondary mouse and pen events must not replace the primary mouse sample.
-  const pointerPosition = await hero.evaluate(el => [el.style.getPropertyValue("--hero-pointer-x"), el.style.getPropertyValue("--hero-pointer-y")]);
+  // Other pointer types cannot move the now-static artwork either.
   await hero.dispatchEvent("pointermove", { pointerType: "mouse", isPrimary: false, clientX: 1, clientY: 1 });
   await hero.dispatchEvent("pointermove", { pointerType: "pen", isPrimary: true, clientX: 1, clientY: 1 });
   await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))));
-  expect(await hero.evaluate(el => [el.style.getPropertyValue("--hero-pointer-x"), el.style.getPropertyValue("--hero-pointer-y")])).toEqual(pointerPosition);
+  expect(await artwork.boundingBox()).toEqual(artworkBefore);
 
   await page.mouse.move(10, bounds.y + bounds.height + 20);
-  await expect(hero).toHaveAttribute("data-pointer-state", "idle");
-  await expect.poll(async () => Math.hypot(...Object.values(await transform(artwork)).slice(0, 2))).toBeLessThan(0.01);
-  expect(await hero.evaluate(el => [el.style.getPropertyValue("--hero-pointer-x"), el.style.getPropertyValue("--hero-pointer-y")])).toEqual(["", ""]);
+  await expect(artwork).toHaveCSS("transform", "none");
+  expect(await artwork.boundingBox()).toEqual(artworkBefore);
 });
 
-test("changing to reduced motion immediately disables and resets Hero parallax", async ({ page }) => {
+test("Hero remains fixed when the motion preference changes in either direction", async ({ page }) => {
   await page.goto("/");
+  await page.evaluate(() => document.fonts.ready);
   const hero = page.locator("#hero");
   const artwork = hero.locator(".hero-artwork img");
-  await expect(hero).toHaveAttribute("data-pointer-motion", "enabled");
+  const before = await artwork.boundingBox();
   await page.mouse.move(1250, 550);
-  await expect.poll(async () => (await transform(artwork)).x).toBeLessThan(-0.5);
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(hero).toHaveAttribute("data-pointer-motion", "disabled");
-  await expect(artwork).toHaveCSS("transform", "none");
-  await page.mouse.move(150, 150);
-  await expect(hero).toHaveAttribute("data-pointer-state", "idle");
-  await expect(artwork).toHaveCSS("transform", "none");
+  for (const reducedMotion of ["reduce", "no-preference"] as const) {
+    await page.emulateMedia({ reducedMotion });
+    await page.mouse.move(150, 150);
+    await expect(artwork).toHaveCSS("transform", "none");
+    expect(await artwork.boundingBox()).toEqual(before);
+  }
 });
 
 for (const { name, width, hasTouch } of [
@@ -125,10 +122,8 @@ for (const { name, width, hasTouch } of [
       const problems = await protectPage(page);
       await page.goto("/");
       expect(await page.evaluate(() => matchMedia("(pointer: coarse)").matches)).toBe(hasTouch);
-      await expect(page.locator("#hero")).toHaveAttribute("data-pointer-motion", "disabled");
       await page.mouse.move(width * 0.8, 400);
       await expect(page.locator(".hero-artwork img")).toHaveCSS("transform", "none");
-      await expect(page.locator("#hero")).toHaveAttribute("data-pointer-state", "idle");
       expect(problems).toEqual([]);
     } finally {
       await context.close();
@@ -518,7 +513,7 @@ test("mobile touch preserves choice, wheel, FAQ and beta CTA flows without savin
     await page.goto("/");
     await page.evaluate(() => document.fonts.ready);
     expect(await page.evaluate(() => navigator.maxTouchPoints > 0 && matchMedia("(pointer: coarse)").matches)).toBe(true);
-    await expect(page.locator("#hero")).toHaveAttribute("data-pointer-motion", "disabled");
+    await expect(page.locator(".hero-artwork img")).toHaveCSS("transform", "none");
 
     await page.getByRole("link", { name: "5 · 10 · 15분 선택", exact: true }).tap();
     await expect(page).toHaveURL(/#how-it-works$/);

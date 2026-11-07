@@ -38,6 +38,8 @@ Latest user correction: remove the signup CTA from the header on Desktop and Mob
 
 Latest user artwork override: use the two supplied high-resolution PNG originals in public/assets/high-resolution for the Hero/Question plane and GAP slit. Preserve original PNG bytes, aspect ratio, existing glass/slit placement and all interactions. Do not restore the older Hero raster or GAP SVGs as active artwork.
 
+Latest user hover correction: keep the Hero glass artwork static on all pointer types and motion preferences. The former2.5px whole-image pointer parallax is removed; do not move or separate the glass bars on hover. Preserve the original image geometry/crop and CTA hover/focus behavior.
+
 Latest GAP background override: THE GAP alone uses #080E26 on Desktop/Mobile. Keep its artwork and geometry unchanged. The four current interaction edits do not authorize changes to other section backgrounds.
 
 Latest FAQ override: question/answer text and list spacing are85% of the previous size: questions17/25.5px, answers15.3/25.5px, row padding20.4px, region/divider gap13.6px, paragraph gap25.5px. Keep the original24px chevron. Keep the section heading, outer grid/padding, seven answers and Accordion behavior unchanged.

@@ -555,14 +555,6 @@ h1 { font-size: 44px; line-height: 60px; }
 }
 
 /* Micro-interactions enhance the approved resting layout only. */
-/* The Hero object and light share one raster: move that plane within 2.5px. */
-@media (width >= 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .hero[data-pointer-motion="enabled"] .hero-artwork img {
-    transform: translate3d(var(--hero-pointer-x, 0px), var(--hero-pointer-y, 0px), 0);
-    transition: transform 240ms ease-out;
-  }
-}
-
 /* Both choices retain identical geometry, type and interaction weight. */
 .equal-outcomes > div { transition: transform 200ms ease-out; }
 .gap-choice { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; gap: inherit; padding: inherit; min-height: 44px; color: inherit; text-align: center; background: transparent; transition: background-color 200ms ease-out; }

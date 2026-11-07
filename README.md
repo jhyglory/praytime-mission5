@@ -31,6 +31,7 @@ Header/Nav → Hero → ONE QUESTION → WHY NOW → 독립 clean intro → SNS 
 
 - 상단 Header의 신청 CTA는 Desktop·Mobile 모두 제거했습니다. Hero CTA와 form submit의 **“무료로 신청하기”**는 유지합니다. 로고·기존 navigation 위치·원본 artwork는 보존합니다.
 - Hero/Question과 THE GAP은 사용자가 제공한 고화질 PNG 원본으로 교체했습니다. 원본 비율·기존 glass/slit 위치를 유지하고, GAP은 화면 진입 시 지연 로드합니다. [원본 해시](docs/evidence/high-resolution-assets/originals.json).
+- Hero 유리 이미지는 hover·마우스 이동에도 고정됩니다. 이전2.5px pointer parallax는 제거했으며 원본 이미지·crop·CTA hover/focus는 유지합니다.
 - ONE QUESTION은 Hero와 같은 원본 artwork의 연속 crop을 사용합니다. 최종 Figma의 Desktop56/80, Mobile32/48 제목을 적용합니다.
 - WHY NOW는 각 카드가 실제 **40%** 보인 뒤 **700ms 대기 후** 독립 시작합니다. 대기 중 화면 밖으로 나가거나 탭이 비활성화되면 취소하고 재진입 때 다시 기다립니다. 이미 시작한 애니메이션은 추가 대기 없이 이어집니다. 숫자와 막대가 같은 **1400ms** cubic ease-out 진행률로 `0.0% → 34.3% / 25.3%`에 도달합니다. 두 막대 모두 **Signal Red #FF4438**이며 회색 track은 표시하지 않습니다. 사용자 요청에 따른 장식용 최종 길이는80% /70%이고, 실제 통계 숫자34.3% /25.3%는 그대로 유지합니다.
 - 통계는 **카드마다 페이지 로드당 한 번** 실행합니다. 새로고침·페이지 재진입에서는 다시 실행하며, 완료 여부를 `sessionStorage`나 `localStorage`에 저장하지 않습니다. reduced-motion/no-JS는 읽을 수 있는 최종값을 표시합니다.

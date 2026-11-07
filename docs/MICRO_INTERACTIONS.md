@@ -1,5 +1,11 @@
 # Mission 5 · Micro-interaction patch
 
+## Latest Hero override · 2026-11-07
+
+사용자가 hover 때 틈이 벌어져 보이는 반응 제거를 요청했다. Hero의2.5px 전체 이미지 pointer parallax와 전용 controller/CSS를 제거하고 고정 artwork로 유지한다. 유리와 빛은 하나의 PNG이며 개별 유리 바를 벌리는 코드는 없었다. 원본 이미지·crop·mask·정렬·CTA hover/focus는 보존한다. 아래 Hero 동작과 해당 검증 기록은 이전 구현 이력이다. 현재 통계는40% 노출 뒤700ms 대기/1400ms count/페이지당1회/빨간80·70% 장식이며 AGENTS.md와 README.md가 우선한다.
+
+## Historical patch
+
 기준: 배포된 `7c77356` / `feature/mission-5-landing` / 기존 PR #1. 이번 patch는 처음에 로컬 수정·검증만 승인됐으며, diff와 전체 검사 결과 보고 후 사용자가 2026-11-06 “재배포해”로 release를 승인했습니다. 기존 feature branch commit·push, PR #1 업데이트, 기존 Vercel 재배포를 진행합니다. merge, main 변경, DB INSERT, DNS 변경은 계속 금지입니다.
 
 승인된 Figma1088 디자인·copy·8개 섹션·responsive geometry·shadcn Button/Accordion·Time Select·폼/API/privacy guard를 보존합니다. 기존 WHY NOW → THE GAP transition은 그대로 유지합니다. 새 dependency는 없습니다.
