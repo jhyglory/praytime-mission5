@@ -11,7 +11,7 @@ const steps = [
   ["CHOOSE", "지금 필요한지 다시 선택합니다.", "choose"],
 ] as const;
 
-/** One shared clock draws each light in turn; revealed copy stays in place. */
+/** One shared clock adds each light and its copy, retaining every drawn step. */
 export function PrayerSteps() {
   const root = useRef<HTMLOListElement>(null);
 
@@ -44,8 +44,7 @@ export function PrayerSteps() {
       const light = item.querySelector<HTMLElement>(".prayer-light-divider")!;
       animate(light, [
         { offset: 0, opacity: 0 }, { offset: at(0), opacity: 0 },
-        { offset: at(80), opacity: 1 }, { offset: at(1000), opacity: 1 },
-        { offset: at(1200), opacity: 0 }, { offset: 1, opacity: 0 },
+        { offset: at(80), opacity: 1 }, { offset: 1, opacity: 1 },
       ]);
       animate(light.querySelector(".prayer-light-divider__line")!, [
         { offset: 0, transform: "scaleX(0)" }, { offset: at(0), transform: "scaleX(0)", easing: "cubic-bezier(.22,.61,.36,1)" },

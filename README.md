@@ -6,7 +6,7 @@ PrayTime은 무심코 SNS·숏폼 앱을 여는 순간 잠깐 멈추고 기도�
 
 ## 현재 기준과 작업 상태
 
-기도 단계의01 PAUSE→02 PRAY→03 CHOOSE는 섹션 진입 시 빛이 선을 그으며 순서대로 나타납니다. 각 빛은 다음 단계 전에 사라지고 텍스트는 남습니다. 기존 위치·크기·문구는 유지하며 화면 밖/비활성 탭에서는 정지하고 reduced-motion/no-JS에서는 원래 정적 구성을 표시합니다. [구현·검증](docs/PRAYER_STEPS_MOTION.md).
+기도 단계의01 PAUSE→02 PRAY→03 CHOOSE는 섹션 진입 시 빛이 선을 그으며 순서대로 나타납니다. 각 단계가 추가될 때 앞서 나타난 빛과 텍스트는 그대로 남아, 마지막에는 세 개 모두 유지됩니다. 기존 위치·크기·문구는 유지하며 화면 밖/비활성 탭에서는 정지하고 reduced-motion/no-JS에서는 원래 정적 구성을 표시합니다. [구현·검증](docs/PRAYER_STEPS_MOTION.md).
 
 최신 배포 범위는 누적 interaction 보정입니다: 질문 문구의 스크롤 fade·영문 eyebrow 삭제, 통계500ms 대기, “그래서” 정지 대기600ms, SNS 카드 후1700ms에 검은 배경/문구 등장, THE GAP의1200ms 대기+약5384.62ms(1.3배 속도) 아이보리 빛 모션. 사용자가 랜딩 연결과 기존 feature/PR/Vercel을 통한 배포를 승인했습니다. 이전 “로컬만/아직 배포 안 함” 기록은 아래 보정 단계의 이력입니다. [현재 검증 및 릴리스](docs/FINAL_INTERACTION_RELEASE.md).
 

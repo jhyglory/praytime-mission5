@@ -22,7 +22,7 @@ test.afterEach(async ({ page }) => {
 });
 
 for (const width of [1440, 393, 360]) {
-  test(`prayer steps draw and reveal PAUSE then PRAY then CHOOSE once on entry at ${width}px`, async ({ page }) => {
+  test(`prayer steps draw and accumulate PAUSE then PRAY then CHOOSE once on entry at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.emulateMedia({ reducedMotion: "no-preference" });
     await page.addInitScript(() => { history.scrollRestoration = "manual"; });
@@ -81,13 +81,18 @@ for (const width of [1440, 393, 360]) {
       expect(reveal.every(sample => sample.text.slice(stage + 1).every(text => text.every(opacity => opacity === 0)))).toBe(true);
       const draw = result.samples.filter(sample => sample.clock >= stage * 1300 + 70 && sample.clock < stage * 1300 + 950);
       expect(draw.some(sample => sample.light[stage] > .05 && sample.line[stage] > .05 && sample.line[stage] < .95), `step${stage + 1} line must actually draw`).toBe(true);
-      expect(draw.some(sample => sample.light.filter((_, index) => index !== stage).every(opacity => opacity < .01)), `only step${stage + 1} light should be active`).toBe(true);
+      expect(draw.every(sample => sample.light.slice(0, stage).every(opacity => opacity > .99)), `earlier lights must stay visible during step${stage + 1}`).toBe(true);
+      expect(draw.every(sample => sample.line.slice(0, stage).every(scale => Math.abs(scale - 1) < .001)), `earlier lines must stay fully drawn during step${stage + 1}`).toBe(true);
+      expect(draw.every(sample => sample.light.slice(stage + 1).every(opacity => opacity < .01)), `future lights must stay hidden during step${stage + 1}`).toBe(true);
       const nextPhase = result.samples.find(sample => sample.clock >= stage * 1300 + 1230);
-      expect(nextPhase!.light[stage]).toBeLessThan(.01);
+      expect(nextPhase!.light[stage]).toBeGreaterThan(.99);
+      expect(nextPhase!.line[stage]).toBeCloseTo(1, 3);
+      expect(result.samples.every((sample, index) => index === 0 || sample.light[stage] + .000001 >= result.samples[index - 1].light[stage]), `step${stage + 1} light must never fade out`).toBe(true);
     }
     const final = result.samples.at(-1)!;
     expect(final.text).toEqual(Array.from({ length: 3 }, () => [1, 1, 1]));
-    expect(final.light).toEqual([0, 0, 0]);
+    expect(final.light).toEqual([1, 1, 1]);
+    expect(final.line).toEqual([1, 1, 1]);
     result.before.forEach((box, index) => {
       for (const property of ["x", "pageY", "width", "height"] as const) expect(result.after[index][property], `${property} stays fixed`).toBeCloseTo(box[property], 1);
     });
@@ -95,6 +100,9 @@ for (const width of [1440, 393, 360]) {
     await steps.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
     await expect(steps).toHaveAttribute("data-prayer-motion", "complete");
     for (const text of await steps.locator("li > h3").all()) await expect(text).toHaveCSS("opacity", "1");
+    for (const light of await steps.locator("li > .prayer-light-divider").all()) await expect(light).toHaveCSS("opacity", "1");
+    const retainedLines = await steps.locator(".prayer-light-divider__line").evaluateAll(lines => lines.map(line => new DOMMatrix(getComputedStyle(line).transform).a));
+    expect(retainedLines).toEqual([1, 1, 1]);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
   });
 }
@@ -132,6 +140,7 @@ test("prayer sequence pauses outside the viewport and in a background tab then r
   });
   await expect(steps).toHaveAttribute("data-prayer-motion", "running");
   await expect(steps).toHaveAttribute("data-prayer-motion", "complete", { timeout: 5000 });
+  for (const light of await steps.locator("li > .prayer-light-divider").all()) await expect(light).toHaveCSS("opacity", "1");
 });
 
 test("reduced motion shows readable prayer steps and static original dividers immediately", async ({ page }) => {
