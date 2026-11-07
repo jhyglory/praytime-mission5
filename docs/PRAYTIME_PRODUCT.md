@@ -1,5 +1,9 @@
 # PrayTime · Product Source of Truth
 
+## Latest intro clarification · 2026-11-08
+
+The explicit user correction keeps the full intro light for the entire visible 그래서 word, and navy from the actual PrayTime wordmark+은 entrance. Paper fades only1546–2010ms, after the word disappears and before the brand begins. Preserve4600ms duration,600ms hold, existing light/logo geometry, static/reduced readability and the separate SNS scene. See [INTRO_BACKGROUND_HANDOFF.md](INTRO_BACKGROUND_HANDOFF.md); earlier overlapping paper/word fades are superseded.
+
 ## Latest four-interaction patch authority · 2026-11-06
 
 The latest explicit four-item request overrides conflicting rules below: outline paper-plane shares everywhere in SNS; cards at70% of the prior15s speed (15000÷0.7=21428.571428571428ms), alternating Desktop↑↓↑↓↑↓ / Mobile↑↓↑; unchanged12s upward hearts/planes; Prayer highlights at each stage's20% /existing50% /80%; restored white-area black그래서 → thin light/background transition → actual red Pause Mark/wordmark+은 on navy, using the4s entry timeline. No dots, obsolete bridge sentence or SNS decorations in the intro. Preserve80 unique photos, separate SNS copy, reduced-motion/entry/pause behavior and all unrelated product/legal/backend constraints. Current sources and new verification belong in [FOUR_INTERACTIONS_PATCH.md](FOUR_INTERACTIONS_PATCH.md). Earlier all-UP15s/all-navy or centered-light rules and their PASS/release records are historical, not current authority.

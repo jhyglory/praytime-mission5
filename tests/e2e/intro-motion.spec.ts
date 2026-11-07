@@ -1,8 +1,9 @@
 import { expect, test } from "@playwright/test";
 import streams from "../../src/components/landing/card-intro-motion.json" with { type:"json" };
 
-test.beforeEach(async ({ page }) => {
-  await page.route(/^https?:\/\/(?!127\.0\.0\.1:3000(?:\/|$)).*/, route => route.abort());
+test.beforeEach(async ({ page, baseURL }) => {
+  const origin=new URL(baseURL!).origin;
+  await page.route("**/*", route => new URL(route.request().url()).origin === origin ? route.continue() : route.abort());
   await page.route("**/api/beta-signup", route => route.abort());
 });
 
@@ -110,7 +111,7 @@ test.describe("SNS copy without JavaScript", () => {
 });
 
 test("restored white intro reveals the whole word, slit and aperture before the logo on entry, with no SNS layers", async ({ page }) => {
-  for (const width of [1440,393]) {
+  for (const width of [1440,393,360]) {
     await page.setViewportSize({ width,height:width === 1440 ? 760 : 680 });
     await page.goto("/");
     const clean=page.locator("[data-clean-intro]");
@@ -134,6 +135,12 @@ test("restored white intro reveals the whole word, slit and aperture before the 
     await expect(clean.locator(".card-intro__therefore")).toHaveText("그래서");
     await expect(clean.locator(".card-intro__therefore")).toHaveCSS("color","rgb(24, 24, 27)");
     await expect(clean.locator(".clean-intro__paper")).toHaveCSS("background-color","rgb(245, 242, 247)");
+    await expect(clean.locator(".clean-intro__paper")).toHaveCSS("filter","none");
+    expect(await clean.evaluate(el => {
+      const scene=el.getBoundingClientRect();
+      const paper=el.querySelector(".clean-intro__paper")!.getBoundingClientRect();
+      return paper.top <= scene.top && paper.bottom >= scene.bottom && paper.left <= scene.left && paper.right >= scene.right;
+    })).toBe(true);
     expect(await clean.locator(".card-intro__therefore").evaluate(el => el.childElementCount)).toBe(0);
     const samples=await clean.evaluate(el => {
       const animations=el.getAnimations({ subtree:true });
@@ -144,13 +151,30 @@ test("restored white intro reveals the whole word, slit and aperture before the 
     });
     expect(samples[0]).toEqual({paper:1,therefore:0,slit:0,outer:0,brand:0});
     for (const held of samples.slice(1,4)) expect(held).toEqual({paper:1,therefore:1,slit:0,outer:0,brand:0});
-    expect(samples[4].paper).toBe(0);
+    expect(samples[4].paper).toBeGreaterThan(0);
+    expect(samples[4].paper).toBeLessThan(1);
     expect(samples[4].therefore).toBe(0);
     expect(samples[4].slit).toBe(1);
     expect(samples[5].outer).toBe(1);
     expect(samples[5].brand).toBeGreaterThan(.8);
     expect(samples[6].brand).toBe(1);
     for (const final of samples.slice(7)) expect(final).toEqual({paper:0,therefore:0,slit:0,outer:0,brand:1});
+    // The background must never darken under a still-visible black word,
+    // and must be fully navy before the white wordmark starts to appear.
+    const contrast=await clean.evaluate(el => {
+      const animations=el.getAnimations({subtree:true});
+      return [400,1200,1340,1450,1545,1546,1750,2009,2010,2100,2304].map(time => {
+        for (const animation of animations) animation.currentTime=time;
+        const opacity=(part:string) => Number(getComputedStyle(el.querySelector('[data-intro-part="' + part + '"]')!).opacity);
+        return {time,paper:opacity("paper"),word:opacity("therefore"),brand:opacity("brand"),handoff:opacity("handoff")};
+      });
+    });
+    for (const sample of contrast) {
+      if (sample.word > 0) { expect(sample.paper).toBe(1); expect(sample.handoff).toBe(0); }
+      if (sample.brand > 0) { expect(sample.paper).toBe(0); expect(sample.handoff).toBe(1); }
+      expect(sample.paper+sample.handoff).toBeCloseTo(1,5);
+    }
+    await clean.evaluate(el => el.getAnimations({subtree:true}).forEach(animation => { animation.currentTime=4600; }));
     await cards.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));
     await expect(clean).toHaveAttribute("data-intro-state","complete");
     await clean.evaluate(el => el.scrollIntoView({ block:"start",behavior:"instant" }));

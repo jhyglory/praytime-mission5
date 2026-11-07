@@ -19,7 +19,7 @@ export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; 
       element.dataset.introState = viewport ? "reduced" : "static";
       return;
     }
-    // Keep light/fade timings; the shared full-word pause is now600ms.
+    // Keep word/light/logo timings; paper stays fully light until the word ends.
     // The next SNS scene stays independent; play once on entry and hold the logo.
     const animations = introMotion.tracks.map(track => {
       const target = element.querySelector<HTMLElement>('[data-intro-part="' + track.part + '"]')!;
@@ -81,7 +81,7 @@ export function CleanIntro({ variant, viewport }: { variant:"desktop"|"mobile"; 
       {(["outer", "middle", "inner"] as const).map(kind => <div className={"clean-intro__aperture-position clean-intro__aperture-position--" + kind} key={kind}><picture className="clean-intro__aperture" data-intro-part={kind}><source media="(width < 768px)" srcSet={"/assets/restored-intro/mobile-" + kind + ".svg"} /><img src={"/assets/restored-intro/desktop-" + kind + ".svg"} alt="" /></picture></div>)}
       <div className="clean-intro__edge clean-intro__edge--left" data-intro-part="edge-left" />
       <div className="clean-intro__edge clean-intro__edge--right" data-intro-part="edge-right" />
-      <div className="clean-intro__handoff" />
+      <div className="clean-intro__handoff" data-intro-part="handoff" />
       <div className="card-intro__brand" data-intro-part="brand" data-node-id={variant === "mobile" ? "1339:37866" : "1339:37731"}>
         <picture className="card-intro__wordmark">
           <source media="(width < 768px)" srcSet="/assets/restored-intro/praytime-wordmark-mobile.svg" width="177" height="29" />
