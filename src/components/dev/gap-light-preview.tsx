@@ -7,7 +7,7 @@ import { GAP_LIGHT_PREVIEW_DURATION as GAP_LIGHT_DURATION, GAP_LIGHT_PREVIEW_TIM
 import styles from "./gap-light-preview.module.css";
 
 const phaseLabels: Record<string, string> = { dark: "어둠", fall: "짧은 빛 낙하", impact: "바닥 접촉 · 광채 확산", hold: "바닥에서 머무름", rise: "상승 · 틈 생성", open: "틈 확장", settle: "광채 정착", complete: "최종 모습" };
-const startDelayMs = 2000;
+const startDelayMs = 1200;
 
 export function GapLightPreview() {
   const player = useRef<GapLightMotionHandle>(null);

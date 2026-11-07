@@ -53,7 +53,7 @@ for (const width of [1440, 393, 360]) {
     const motion = page.locator("#the-gap svg[data-gap-light-motion]");
     await expect(motion).toHaveAttribute("data-motion-variant", "preview");
     await expect(motion).toHaveAttribute("data-duration", "7000");
-    await expect(motion).toHaveAttribute("data-start-delay", "2000");
+    await expect(motion).toHaveAttribute("data-start-delay", "1200");
     await expect(motion).toHaveAttribute("data-motion-state", "paused");
     await page.waitForTimeout(250);
     expect(await elapsed(motion)).toBe(0);
@@ -82,8 +82,8 @@ for (const width of [1440, 393, 360]) {
       const timing = (element as SVGSVGElement & { entryTiming: { waiting: number; playing: number } }).entryTiming;
       return timing.playing - timing.waiting;
     });
-    expect(waitDuration).toBeGreaterThanOrEqual(1980);
-    expect(waitDuration).toBeLessThanOrEqual(2300);
+    expect(waitDuration).toBeGreaterThanOrEqual(1180);
+    expect(waitDuration).toBeLessThanOrEqual(1500);
     await expect.poll(() => elapsed(motion)).toBeGreaterThan(0);
     await motion.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));
     await expect(motion).toHaveAttribute("data-motion-state", "complete", { timeout: 12000 });
@@ -112,7 +112,7 @@ test("landing gap light cancels its entry wait and pauses without another delay 
   await expect(motion).toHaveAttribute("data-motion-state", "waiting");
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
   await expect(motion).toHaveAttribute("data-motion-state", "paused");
-  await page.waitForTimeout(2200);
+  await page.waitForTimeout(1400);
   expect(await elapsed(motion)).toBe(0);
 
   await motion.evaluate(element => element.scrollIntoView({ block: "center", behavior: "instant" }));

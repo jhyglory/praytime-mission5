@@ -1,5 +1,7 @@
 # 누적 interaction 보정 · 최종 배포
 
+최신 빛 대기 보정: Landing/개발 미리보기의 entry/replay wait는1200ms이며 기존7000ms 동작은 유지한다(합계약8200ms). 이하2000ms 대기 측정은 이전 단계 기록이다. 후속 검증은 문서 마지막에 기록한다.
+
 최신 후속 보정: SNS 카드 선행 대기만3000→1700ms로 줄이고400ms 동시fade는 유지한다. 아래 첫 배포 범위와53개 전체검사/3000ms 측정은8085b95의 기록이다. 후속 검증은 이 문서 마지막에 별도로 기록한다.
 
 사용자가 모든 보정을 마무리한 뒤 기존 랜딩 주소에 배포하도록 승인했다. 기존 feature/mission-5-landing과 PR #1을 사용한다. 이전 로컬-only 보류는 이번 릴리스에서 종료되며 merge/main/DNS/backend/env/실제 신청 데이터는 변경하지 않는다.
@@ -53,3 +55,13 @@ THE GAP 중심·상단·바닥·섹션 높이와 두 CTA는 기존 좌표를 유
 - 관련 browser2개: PASS(13.1초). Desktop1440/Mobile393에서1700ms 대기 실측, 화면 밖 타이머 취소, 두 레이어 동시fade, 재진입/viewport 변경/reduced-motion/no-JS를 검증했다.
 - 이번1.7초 보정에서 전체53개를 다시 실행했다고 주장하지 않는다. 이전 전체53 PASS는8085b95 기록이다. 카드 이동 구현과 다른 runtime 파일은 변경하지 않았다.
 - 같은 feature branch·PR #1과 기존 Vercel URL로 배포한다. 공개 URL의 후속 실제 시간 측정은 PR #1에 기록한다. backend/env/DB/DNS/main/merge 변경과 실제 신청POST는 없다.
+
+
+## 후속 보정 · 빛 대기1200ms
+
+사용자 요청에 따라 Landing과 개발 미리보기의 entry/replay wait만2000→1200ms로 줄였다. 기존7000ms 타임라인·내부400ms 어둠·각 단계 경계·빛 표현·geometry·정지/재개·최종 상태·CTA는 유지한다. 총 대기+동작은약8200ms다. phase의2000ms 접촉 단계와 이전 실제 측정 수치는 변경하지 않았다.
+
+- lint/typecheck/unit60/webpack production build: 모두 PASS.
+- 관련 GAP browser6개: 모두 PASS(49.0초).1440/393/360px 실제 대기 실측과7초 완료, 화면 밖 대기 취소·진행 중 재개, reduced-motion/no-JS·기존 두 선택지 링크를 검증했다.
+- 이번 보정에서 전체 browser suite를 재실행했다고 주장하지 않는다. Prayer/SNS 등의 이전 측정은 해당 commit 기록으로 유지한다.
+- 같은 feature branch/PR1/Vercel에 반영하고 공개 URL에서 실제1200+7000ms를 재검증한다. 후속 배포 commit과 공개 실측은 PR #1에 기록한다. backend/env/DB/DNS/main/merge와 실제 신청POST는 변경/실행하지 않는다.

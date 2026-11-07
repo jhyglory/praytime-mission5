@@ -127,7 +127,7 @@ for (const width of widths) {
     await expect(gapMotion).toHaveCount(1);
     await expect(gapMotion).toHaveAttribute("data-motion-variant", "preview");
     await expect(gapMotion).toHaveAttribute("data-duration", "7000");
-    await expect(gapMotion).toHaveAttribute("data-start-delay", "2000");
+    await expect(gapMotion).toHaveAttribute("data-start-delay", "1200");
     const lightPlacement = await gapMotion.evaluate(el => {
       const svg = el as SVGSVGElement;
       const canvas = svg.getBoundingClientRect();
