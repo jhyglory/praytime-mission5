@@ -77,6 +77,6 @@ export function TimeSelectPreview() {
         className="wheel-hit-target" data-wheel-wrap={wrapping === index || undefined} style={{ left: `${slots.indexOf(index) * 100 / 3}%` }}
         ref={element => { buttons.current[index] = element; }} onClick={() => select(index)}><span className="sr-only">{value}분</span></button>)}
     </div>
-    <p className="sr-only" aria-live="polite" aria-atomic="true">{minutes[selected]}분 선택</p>
+    <p className="sr-only m-0" aria-live="polite" aria-atomic="true">{minutes[selected]}분 선택</p>
   </div>;
 }

@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Accordion, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { FaqAnswer } from "@/components/landing/faq-answer";
 
 const items = [
@@ -52,18 +56,61 @@ const items = [
 export function FaqSection() {
   const [open, setOpen] = useState<string[]>(["faq-0"]);
   return (
-    <section className="landing-section" id="faq" aria-labelledby="faq-heading" data-figma-node="1209:697 / 1209:1231">
-      <div className="container"><div className="section-rule" /><div className="faq-layout"><div className="content-stack faq-heading"><p className="eyebrow">QUESTIONS, ANSWERED</p><h2 id="faq-heading" tabIndex={-1}>궁금한 점을<br />먼저 확인하세요.</h2></div>
-        <Accordion className="faq-list" type="multiple" value={open} onValueChange={setOpen}>
-          {items.map(({ question, answer }, index) => (
-            <AccordionItem className="faq-item" key={question} value={`faq-${index}`}>
-              <AccordionTrigger id={`faq-question-${index}`} aria-controls={`faq-answer-${index}`}>
-                <span>{question}</span>
-              </AccordionTrigger>
-              <FaqAnswer id={`faq-answer-${index}`} labelledBy={`faq-question-${index}`} open={open.includes(`faq-${index}`)}>{answer.map(paragraph => <p className="body-copy" key={paragraph}>{paragraph}</p>)}</FaqAnswer>
-            </AccordionItem>
-          ))}
-        </Accordion></div>
+    <section
+      className="landing-section"
+      id="faq"
+      aria-labelledby="faq-heading"
+      data-figma-node="1209:697 / 1209:1231"
+    >
+      <div className="container">
+        <div className="section-rule h-px bg-border" />
+        <div className="faq-layout grid grid-cols-1 gap-8 [align-items:start] md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-10 lg:grid-cols-[minmax(0,360fr)_minmax(0,744fr)] lg:gap-24">
+          <div className="content-stack flex flex-col faq-heading gap-4">
+            <p className="eyebrow text-muted-foreground font-sans text-xs leading-5 font-normal tracking-[1.2px]">
+              QUESTIONS, ANSWERED
+            </p>
+            <h2 id="faq-heading" tabIndex={-1}>
+              궁금한 점을
+              <br />
+              먼저 확인하세요.
+            </h2>
+          </div>
+          <Accordion
+            className="faq-list"
+            type="multiple"
+            value={open}
+            onValueChange={setOpen}
+          >
+            {items.map(({ question, answer }, index) => (
+              <AccordionItem
+                className="faq-item py-[20.4px] border-b-0 [border-bottom-style:none] after:content-[''] after:block after:h-px after:mt-[13.6px] after:bg-border"
+                key={question}
+                value={`faq-${index}`}
+              >
+                <AccordionTrigger
+                  id={`faq-question-${index}`}
+                  aria-controls={`faq-answer-${index}`}
+                >
+                  <span>{question}</span>
+                </AccordionTrigger>
+                <FaqAnswer
+                  id={`faq-answer-${index}`}
+                  labelledBy={`faq-question-${index}`}
+                  open={open.includes(`faq-${index}`)}
+                >
+                  {answer.map((paragraph) => (
+                    <p
+                      className="body-copy text-muted-foreground text-base leading-[26px] font-normal md:text-lg md:leading-[30px]"
+                      key={paragraph}
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </FaqAnswer>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </div>
     </section>
   );

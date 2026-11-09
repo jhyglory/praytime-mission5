@@ -108,10 +108,10 @@ export function PrayerSteps() {
     };
   }, []);
 
-  return <ol ref={root} className="prayer-steps" data-prayer-motion="pending" data-prayer-duration={duration}>
+  return <ol ref={root} className="prayer-steps grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12" data-prayer-motion="pending" data-prayer-duration={duration}>
     {steps.map(([title, meaning, light], index) => <li key={title} data-prayer-step={index + 1}>
       <GapLightDivider variant={light} sweep />
-      <p className="eyebrow">0{index + 1}</p><h3>{title}</h3><p>{meaning}</p>
+      <p className="eyebrow text-muted-foreground font-sans text-xs leading-5 font-normal tracking-[1.2px]">0{index + 1}</p><h3>{title}</h3><p>{meaning}</p>
     </li>)}
   </ol>;
 }

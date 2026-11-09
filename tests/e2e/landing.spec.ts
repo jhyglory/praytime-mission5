@@ -464,6 +464,11 @@ for (const outcome of ["success", "duplicate", "no-receipt", "server-failure"] a
     }
     await expect(page.locator(".form-result")).toContainText(outcome === "success" ? "사전신청이 접수되었습니다." : outcome === "duplicate" ? "이미 신청된 이메일입니다." : "신청을 접수하지 못했습니다.");
     expect(requests).toBe(1);
+    // Preserve the approved result-panel presentation as well as server semantics.
+    expect(await page.locator(".form-result").evaluate(element => {
+      const style = getComputedStyle(element);
+      return { display: style.display, padding: style.padding, marginTop: style.marginTop, borderRadius: style.borderRadius, background: style.backgroundColor };
+    })).toEqual({ display: "flex", padding: "24px", marginTop: "24px", borderRadius: "18px", background: "rgb(252, 252, 250)" });
     expect(dialogs).toEqual(outcome === "success" ? [{ type: "alert", message: "사전신청이 접수되었습니다.\n관심을 보내주셔서 감사합니다." }] : []);
     expect(await page.evaluate(() => window.qaConversions)).toBe(outcome === "success" ? 1 : 0);
   });

@@ -4,6 +4,10 @@ import { describe, expect, it } from "vitest";
 import { Button } from "../src/components/ui/button";
 import { AnchorLink } from "../src/components/landing/anchor-link";
 
+function classes(html: string) {
+  return html.match(/class="([^"]*)"/)?.[1].split(/\s+/) ?? [];
+}
+
 describe("shadcn Button integration", () => {
   it("preserves native disabled form submission and the approved primary styling", () => {
     for (const state of [undefined, "default"] as const) {
@@ -20,7 +24,7 @@ describe("shadcn Button integration", () => {
       expect(html).toContain('data-state="disabled"');
       expect(html).not.toContain("aria-busy");
       expect(html).toContain('aria-describedby="signup-help"');
-      expect(html).toContain('class="pt-button pt-button--primary pt-button--disabled"');
+      expect(classes(html)).toEqual(expect.arrayContaining(["pt-button", "pt-button--primary", "pt-button--disabled"]));
       expect(html).toContain("무료로 신청하기</button>");
     }
   });
@@ -34,7 +38,7 @@ describe("shadcn Button integration", () => {
       expect(html).toMatch(/^<a\b/);
       expect(html).toContain('href="#beta-signup"');
       expect(html).toContain('aria-label="무료로 신청하기"');
-      expect(html).toContain(`class="pt-button pt-button--${variant}"`);
+      expect(classes(html)).toEqual(expect.arrayContaining(["pt-button", `pt-button--${variant}`]));
       expect(html).toContain('data-state="default"');
       expect(html.match(/<a\b/g)).toHaveLength(1);
       expect(html).not.toContain("<button");
@@ -55,7 +59,7 @@ describe("shadcn Button integration", () => {
     expect(html).toContain('type="submit"');
     expect(html).toContain('disabled=""');
     expect(html).toContain(`data-state="${state}"`);
-    expect(html).toContain(`class="pt-button pt-button--secondary pt-button--${state}"`);
+    expect(classes(html)).toEqual(expect.arrayContaining(["pt-button", "pt-button--secondary", `pt-button--${state}`]));
     if (state === "submitting") {
       expect(html).toContain('aria-busy="true"');
       expect(html).toContain("접수 중…</button>");

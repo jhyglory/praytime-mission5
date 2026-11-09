@@ -1,27 +1,9 @@
 /* Fresh Desktop1209:514 / Mobile1209:1051 lower-section audit.
    Preserve existing interactions and form behavior; restore source geometry. */
-.time-section,
-.prayer-section,
-#faq,
-#beta-signup,
-.site-footer { word-break: normal; overflow-wrap: anywhere; }
-
-.faq-layout,
-.beta-layout { align-items: start; }
+#faq, #beta-signup { word-break: normal; overflow-wrap: anywhere; }
 
 /* Latest user override: FAQ list typography and vertical spacing at 85%.
    Keep the section heading, grid and copy unchanged. */
-#faq .faq-item { padding-block: 20.4px; border-bottom: 0; }
-#faq .faq-item h3 { font-size: 17px; line-height: 25.5px; }
-#faq .faq-item::after {
-  content: "";
-  display: block;
-  height: 1px;
-  margin-top: 13.6px;
-  background: var(--border);
-}
-#faq .faq-item button { min-height: 25.5px; gap: 13.6px; }
-#faq .faq-item button > span { flex: 1; min-width: 0; }
 #faq .faq-item [role="region"] { padding-top: 13.6px; }
 #faq .faq-item [role="region"] .body-copy { font-size: 15.3px; line-height: 25.5px; }
 #faq .faq-item [role="region"] .body-copy + .body-copy { margin-top: 25.5px; }
@@ -69,7 +51,6 @@
   .voluntary-prayer h3,
   .voluntary-prayer p,
   .beta-context > .body-copy { word-break:keep-all; }
-  .voluntary-prayer { gap: 20px; }
   .voluntary-prayer h3 { font-size: 18px; line-height: 28px; }
   .voluntary-prayer p { font-size: 15px; line-height: 24px; }
   .voluntary-companion,

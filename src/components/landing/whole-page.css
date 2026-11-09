@@ -1,10 +1,7 @@
 /* Complete final1209 Desktop/Mobile audit; explicit latest requirements override
    earlier fullscreen/alternating motion and decorative statistic bars. */
-.why-now { position:relative; isolation:isolate; }
-.stat-source { color:#696a70; opacity:1; }
 /* Preserve citation spacing after the relocated explanation. */
 .why-support + .stat-source { margin-top:64px; }
-.stat-track { max-width:none; }
 .card-intro__clean { min-height:100vh; min-height:100dvh; }
 .card-intro__cards { height:760px; }
 .card-intro__art { top:50%; transform:translate(-50%,-50%) scale(var(--card-scene-scale,1)); }
@@ -18,7 +15,6 @@
   .why-now h2 { min-height:156px; font-size:32px; line-height:48px; }
   .why-support { min-height:144px; font-size:26px; line-height:44px; }
   .why-support + .stat-source { margin-top:40px; }
-  .stat-track { max-width:none; }
   .card-intro__cards { height:680px; }
   .card-intro__declaration { top:235px; }
 }

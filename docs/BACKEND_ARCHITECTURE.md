@@ -2,7 +2,7 @@
 
 ## 실제 접수 활성화 승인 · 2026-11-06
 
-사용자가 실제 저장을 요청했고, 수집 항목 정정안 게시를 승인했다. 기존 Privacy URL에 정정안을 게시한 뒤 HTTP 200 및 본문을 확인했다. 새 snapshot/version과 `PRIVACY_COLLECTION_APPROVED=true`를 사용한다. Production에서 기존 Supabase 연결과 `BETA_SIGNUP_PERSISTENCE=supabase`를 설정하는 release를 진행한다. Preview·자동 테스트·기본 로컬 설정은 disabled다. 기존 beta_signups/UNIQUE(email)/INSERT 전용 RLS를 유지하며, 새 DB·migration·공개 SELECT/UPDATE/DELETE·service-role key는 없다. 사용자가 승인한 QA 신청 1건만 생성·검증하고 기존 신청자 행은 조회·수정하지 않는다. merge·main 변경·DNS 전환은 계속 금지다. 아래 이전 저장 OFF/법률 문구 작성 금지 기록은 이 승인 이전의 이력이다. 실제 배포/QA 결과는 docs/BACKEND_ACTIVATION.md에 기록한다.
+사용자가 실제 저장을 요청했고, 수집 항목 정정안 게시를 승인했다. 기존 Privacy URL에 정정안을 게시한 뒤 HTTP 200 및 본문을 확인했다. 새 snapshot/version과 `PRIVACY_COLLECTION_APPROVED=true`를 사용한다. Production에서 기존 Supabase 연결과 `BETA_SIGNUP_PERSISTENCE=supabase`를 설정하는 release를 진행한다. Preview·자동 테스트·기본 로컬 설정은 disabled다. 기존 beta_signups/UNIQUE(email)/INSERT 전용 RLS를 유지하며, 새 DB·migration·공개 SELECT/UPDATE/DELETE·service-role key는 없다. 사용자가 승인한 QA 신청 1건만 생성·검증하고 기존 신청자 행은 조회·수정하지 않는다. merge·main 변경·DNS 전환은 계속 금지다. 아래 이전 저장 OFF/법률 문구 작성 금지 기록은 이 승인 이전의 이력이다. 실제 배포/QA 결과는 BACKEND_ACTIVATION.md에 기록되어 있다.
 
 기준일: 2026-11-06 KST. 기존 배포 소스·Lovable 원본 env·DB catalog·이전 승인 QA의 저장된 증거를 기준으로 정리했습니다. 이번 준비 단계에서 운영 row 조회·수정, migration 실행, 신규 POST는 하지 않았습니다.
 
@@ -102,8 +102,8 @@ publishable key는 `apikey`에 넣고 동일 publishable key의 Bearer Authoriza
 - 이번 단계에서 정책·grant·constraint·trigger를 변경하지 않았습니다.
 - 기존 public INSERT는 그대로 접근 가능하므로 Mission 5 서버의 동의 강제는 이 Route Handler를 통과한 신청에 적용됩니다. 기존 Lovable client를 포함한 모든 직접 insert에 동의 metadata를 강제하는 DB 제약은 추가하지 않았습니다.
 
-근거: `docs/evidence/lovable-db-metadata.json`, `consent-migration-security-verification.json`, 마스킹된 env와 원본 코드, `CONSENT_RECORDING_QA.md`. DB에 새로 연결해 재조회한 결과로 표현하지 않습니다.
+근거: `docs/evidence/lovable-db-metadata.json`, `consent-migration-security-verification.json`, 마스킹된 env와 원본 코드, archived `CONSENT_RECORDING_QA.md`. DB에 새로 연결해 재조회한 결과로 표현하지 않습니다.
 
-## Latest production gate
+## Current status and historical limits
 
-LEGAL REVIEW REQUIRED. The user deferred all actual INSERT QA until notice alignment. Vercel Production/Preview persistence stays disabled, without Supabase credentials. In Production, PRIVACY_COLLECTION_APPROVED=false returns503 PRIVACY_REVIEW_REQUIRED before getStore, even if persistence is misconfigured. Missing/invalid fields still return422 before this gate. Success/duplicate/provider failure remain covered by mocked tests; no final-stage live applicant was created.
+Production signup was enabled in the user-approved activation release (see BACKEND_ACTIVATION.md). Preview/default local/automated tests stay disabled or explicitly mocked. This styling refactor does not change persistence, credentials, consent gates or RLS, and does not perform a live POST or query. Earlier pre-activation privacy-blocked reports are archived history.

@@ -1,7 +1,6 @@
 /* Final full-page frames: Desktop1209:514 / Mobile1209:1051.
    Keep the existing full-bleed Hero artwork and native interactions. */
 /* Keep the navigation in place after removing the header signup CTA. */
-.landing-header { display: grid; grid-template-columns: 168.5px minmax(0, 1fr) 196px; }
 .landing-header nav { justify-self: center; }
 .landing-header .solid-pause i { box-shadow: none; }
 .landing-header .wordmark { width: 168.5px; flex-shrink: 0; }
@@ -19,14 +18,8 @@
   .one-question [data-question-reveal="shown"] > [data-question-part="followup"] { transition-delay:1200ms; }
 }
 
-@media (768px <= width < 1200px) {
-  .landing-header { grid-template-columns: 168.5px minmax(0, 1fr) 160px; }
-}
-
 @media (width < 768px) {
   /* Reserve the original copy slot so the shorter A headline does not lift CTAs. */
-  .hero-editorial { min-height:352px; }
-  .landing-header { grid-template-columns: 1fr; }
   .landing-header .wordmark {
     width: 128px;
     gap: 10.285714px;

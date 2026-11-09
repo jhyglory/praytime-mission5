@@ -4,7 +4,7 @@
 
 사용자가 실제 저장을 요청했고, 수집 항목 정정안 게시를 승인했다. 기존 Privacy URL에 정정안을 게시한 뒤 HTTP 200 및 본문을 확인했다. 새 snapshot/version과 `PRIVACY_COLLECTION_APPROVED=true`를 사용한다. Production에서 기존 Supabase 연결과 `BETA_SIGNUP_PERSISTENCE=supabase`를 설정하는 release를 진행한다. Preview·자동 테스트·기본 로컬 설정은 disabled다. 기존 beta_signups/UNIQUE(email)/INSERT 전용 RLS를 유지하며, 새 DB·migration·공개 SELECT/UPDATE/DELETE·service-role key는 없다. 사용자가 승인한 QA 신청 1건만 생성·검증하고 기존 신청자 행은 조회·수정하지 않는다. merge·main 변경·DNS 전환은 계속 금지다. 아래 이전 저장 OFF/법률 문구 작성 금지 기록은 이 승인 이전의 이력이다. 기존 감사표의 누락/불일치는 이번 승인된 게시본에서 정정됐다. 법률 검토 메모는 정합성 확인과 별개로 유지한다. 실제 배포/QA 결과는 docs/BACKEND_ACTIVATION.md에 기록한다.
 
-**LEGAL REVIEW REQUIRED** — 현재 운영 Privacy URL을 유지합니다. Terms와 법률 문구를 임의로 만들지 않습니다. 고지 정합성이 해결되기 전에는 실제 INSERT와 production submission을 비활성화합니다.
+**LEGAL REVIEW REQUIRED** — 아래 표는 승인된 정정안 게시 전의 역사적 비교입니다. 누락 항목은 위 활성화 기록의 승인된 게시본에서 정정됐습니다. 이 스타일 작업에서는 운영 Privacy URL·법률 문구·수집 항목·저장 설정을 변경하지 않습니다. 이 문서는 법률 적합성 판정이 아닙니다.
 
 확인일: 2026-11-06 KST. [운영 개인정보처리방침](https://praytime.glorifier.kr/privacy)과 실제 `beta-signup.ts` / form / server consent payload를 비교했습니다. 법률 문구의 새 작성·수정은 하지 않았습니다.
 
@@ -42,7 +42,7 @@
 
 이는 필요한 항목 목록이며 법률 문구 초안이 아닙니다. 별도 Terms URL은 없으며 추정하거나 만들지 않습니다.
 
-Production 보호: persistence는 disabled, Supabase key는 Vercel에 등록하지 않습니다. 추가로 handler가 VERCEL_ENV=production 및 PRIVACY_COLLECTION_APPROVED=false 상태에서 유효 payload도503 PRIVACY_REVIEW_REQUIRED로 막고 store를 호출하지 않습니다. 성공 receipt를 발행하지 않습니다.
+정정안 게시 전 보호 조치(과거 기록): persistence는 disabled였고 Supabase key를 Vercel에 등록하지 않았습니다. 추가로 handler가 VERCEL_ENV=production 및 PRIVACY_COLLECTION_APPROVED=false 상태에서 유효 payload도503 PRIVACY_REVIEW_REQUIRED로 막고 store를 호출하지 않습니다. 성공 receipt를 발행하지 않습니다.
 
 ## 항목별 구분 요약
 

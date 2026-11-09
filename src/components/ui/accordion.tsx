@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element -- Exact approved Figma 24px chevron. */
 // Adapted from shadcn/ui's MIT-licensed Radix Accordion registry source.
-// See docs/SHADCN_ADOPTION.md and docs/licenses/shadcn-ui-LICENSE.md.
+// See docs/licenses/shadcn-ui-LICENSE.md and README.md.
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
@@ -27,15 +27,27 @@ const AccordionTrigger = React.forwardRef<
   React.ComponentRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header data-slot="accordion-header">
+  <AccordionPrimitive.Header
+    data-slot="accordion-header"
+    className="text-[17px] leading-[25.5px] font-medium"
+  >
     <AccordionPrimitive.Trigger
       ref={ref}
       data-slot="accordion-trigger"
-      className={cn(className)}
+      className={cn(
+        "flex w-full min-h-[25.5px] items-center justify-between gap-[13.6px] bg-transparent text-left text-inherit [&>span]:flex-1 [&>span]:min-w-0",
+        className,
+      )}
       {...props}
     >
       {children}
-      <img src="/assets/faq-chevron.svg" alt="" width="24" height="24" className="faq-icon" />
+      <img
+        src="/assets/faq-chevron.svg"
+        alt=""
+        width="24"
+        height="24"
+        className="faq-icon"
+      />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));
