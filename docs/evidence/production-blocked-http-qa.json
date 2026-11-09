@@ -1,0 +1,45 @@
+[
+  {
+    "case": "valid-but-locked",
+    "status": 503,
+    "body": {
+      "status": "error",
+      "code": "PRIVACY_REVIEW_REQUIRED",
+      "message": "신청을 접수하지 못했습니다. 입력 내용은 유지됩니다. 잠시 후 다시 시도해주세요."
+    },
+    "cache_control": "no-store"
+  },
+  {
+    "case": "invalid-email",
+    "status": 422,
+    "body": {
+      "status": "invalid",
+      "errors": {
+        "email": "올바른 이메일 주소를 입력해 주세요."
+      }
+    },
+    "cache_control": "no-store"
+  },
+  {
+    "case": "missing-consent",
+    "status": 422,
+    "body": {
+      "status": "invalid",
+      "errors": {
+        "consent": "개인정보 수집 및 이용에 동의해 주세요."
+      }
+    },
+    "cache_control": "no-store"
+  },
+  {
+    "case": "missing-required",
+    "status": 422,
+    "body": {
+      "status": "invalid",
+      "errors": {
+        "nickname": "Invalid input: expected string, received undefined"
+      }
+    },
+    "cache_control": "no-store"
+  }
+]

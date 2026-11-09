@@ -1,0 +1,28 @@
+> praytime-mission5@1.0.0 build
+> next build --webpack
+
+▲ Next.js 16.4.5 (webpack)
+- Environments: .env.local
+✓ Running next.config.ts took 59ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1677ms
+  Running TypeScript ...
+  Finished TypeScript in 2.8s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4)
+  Generating static pages using 5 workers (2/4)
+  Generating static pages using 5 workers (3/4)
+✓ Generating static pages using 5 workers (4/4) in 907ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+└ ƒ /api/beta-signup
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

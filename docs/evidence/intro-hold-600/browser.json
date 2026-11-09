@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "width": 1440,
+      "holdMs": 600,
+      "logoStartsAtMs": 2010,
+      "durationMs": 4600,
+      "realFrames": 278,
+      "errors": []
+    },
+    {
+      "width": 393,
+      "holdMs": 600,
+      "logoStartsAtMs": 2010,
+      "durationMs": 4600,
+      "realFrames": 278,
+      "errors": []
+    }
+  ]
+}

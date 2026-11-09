@@ -1,0 +1,830 @@
+[
+  {
+    "node": "1209:622",
+    "name": "imgTimeSelectSupplied10MinWheelMockup",
+    "url": "https://www.figma.com/api/mcp/asset/17990df2-26b4-4c9d-9be0-2dd0dca8796c.png",
+    "file": "1209-622-0.png",
+    "sha256": "ffafff2bbf684c94d903e177314a8820af13801236a3a43fea4c523224109597",
+    "matches": [
+      "outputs/praytime/public/assets/time-select-wheel.png"
+    ],
+    "implementation": "public/assets/time-select-wheel.png"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgPuzzCompanionOneAppearance",
+    "url": "https://www.figma.com/api/mcp/asset/0c5ed9f5-457c-4e5a-bad2-8d8109dfb81c.png",
+    "file": "1209-657-0.png",
+    "sha256": "f78bd063bc1488401ecc993f809ae727896acb8a96fc1a323991dea517c02708",
+    "matches": [
+      "outputs/praytime/public/assets/puzz-final.png",
+      "outputs/praytime/public/assets/puzz-quiet-companion.png"
+    ],
+    "implementation": "public/assets/puzz-final.png"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgPrayerLight10881051Bloom",
+    "url": "https://www.figma.com/api/mcp/asset/c0eb0020-ff33-4dac-8717-64dab8a9d5d3.svg",
+    "file": "1209-657-1.svg",
+    "sha256": "2abc8fba1605df51527f99536c56b9b6a1b8b90bc54d2b165d427c8e5f33ec30",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-desktop-pause-bloom.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 242,
+        "height": 60,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 58080
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 242,
+        "height": 60,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 58080
+      },
+      "equal": true,
+      "freshHash": "9ac2e3040a41a8ea99a63bcafde785cb55811cbd84d1bac13a6b7ba850be5e77",
+      "existingHash": "9ac2e3040a41a8ea99a63bcafde785cb55811cbd84d1bac13a6b7ba850be5e77"
+    },
+    "implementation": "public/assets/landing-desktop-pause-bloom.svg"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgPrayerLight10881051Haze",
+    "url": "https://www.figma.com/api/mcp/asset/ee26e4e8-9a07-4c47-85c9-353c3c9a0019.svg",
+    "file": "1209-657-2.svg",
+    "sha256": "a9b2aaae2b8b827cff6c14f94a6443cf2034889130295e8e17636b7a6330571e",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-desktop-pause-haze.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 350,
+        "height": 100,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 140000
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 350,
+        "height": 100,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 140000
+      },
+      "equal": true,
+      "freshHash": "2527b5f44b9dcc49c7a33de562a3458a68a2c6a165d331d8e341f225c44c72ee",
+      "existingHash": "2527b5f44b9dcc49c7a33de562a3458a68a2c6a165d331d8e341f225c44c72ee"
+    },
+    "implementation": "public/assets/landing-desktop-pause-haze.svg"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgPrayerLight10881056Bloom",
+    "url": "https://www.figma.com/api/mcp/asset/85a63012-4315-478f-ab10-ff50e613b11f.svg",
+    "file": "1209-657-3.svg",
+    "sha256": "c3c2216accd27d16a607a70507eb514ab6040f82b91a73604101b03e32724415",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-desktop-pray-bloom.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 242,
+        "height": 60,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 58080
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 242,
+        "height": 60,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 58080
+      },
+      "equal": true,
+      "freshHash": "48fbfa38501d6e7eb08347f7fb76abc7e2c8f3ec364955378d8bd56ddf8770be",
+      "existingHash": "48fbfa38501d6e7eb08347f7fb76abc7e2c8f3ec364955378d8bd56ddf8770be"
+    },
+    "implementation": "public/assets/landing-desktop-pray-bloom.svg"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgPrayerLight10881056Haze",
+    "url": "https://www.figma.com/api/mcp/asset/8f520c8e-3691-4b88-9851-ff5f5200d843.svg",
+    "file": "1209-657-4.svg",
+    "sha256": "6e7992e48a8b33f19e42d8cf6e248c21d55ac4744dd5781a1035d1ee7e76e03b",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-desktop-pray-haze.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 350,
+        "height": 100,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 140000
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 350,
+        "height": 100,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 140000
+      },
+      "equal": true,
+      "freshHash": "ad1b8b9ccf0f40270b3e9ae6c751a36561d922c7cd6e901b3f11ba793ea59fc0",
+      "existingHash": "ad1b8b9ccf0f40270b3e9ae6c751a36561d922c7cd6e901b3f11ba793ea59fc0"
+    },
+    "implementation": "public/assets/landing-desktop-pray-haze.svg"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgPrayerLight10881061Bloom",
+    "url": "https://www.figma.com/api/mcp/asset/7132f0f9-840c-4964-bee0-2dfde872541b.svg",
+    "file": "1209-657-5.svg",
+    "sha256": "79c41ee1ff0105dba92dbd08df555d7a56149e3a3882940164e3c6109a35d91f",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-desktop-choose-bloom.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 242,
+        "height": 60,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 58080
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 242,
+        "height": 60,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 58080
+      },
+      "equal": true,
+      "freshHash": "496cf9a34db786553a411a773805ce45e531248a013959c3a715cb2a7d5ddca2",
+      "existingHash": "496cf9a34db786553a411a773805ce45e531248a013959c3a715cb2a7d5ddca2"
+    },
+    "implementation": "public/assets/landing-desktop-choose-bloom.svg"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgPrayerLight10881061Haze",
+    "url": "https://www.figma.com/api/mcp/asset/2a7e1c15-20d8-47d7-a325-49076a5748c5.svg",
+    "file": "1209-657-6.svg",
+    "sha256": "125b1527a7d9a27c176a70199c94a867c5fe651c7ca7fcef3b826190c53b105e",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-desktop-choose-haze.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 350,
+        "height": 100,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 140000
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 350,
+        "height": 100,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 140000
+      },
+      "equal": true,
+      "freshHash": "f84ae9de14cdb4fbeb3e19e3f05727440f5530f23597563938616dd6c0cc2bf1",
+      "existingHash": "f84ae9de14cdb4fbeb3e19e3f05727440f5530f23597563938616dd6c0cc2bf1"
+    },
+    "implementation": "public/assets/landing-desktop-choose-haze.svg"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgLocalGroundLowOvalReflection",
+    "url": "https://www.figma.com/api/mcp/asset/89addf77-b97c-42f9-a2e0-713bf9951950.svg",
+    "file": "1209-657-7.svg",
+    "sha256": "208b744857b67cc014fa8b08561b269c1fc7aea443b3bdbabedebc8a24704315",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/puzz-ground-final.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 80,
+        "height": 19,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 6080
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 80,
+        "height": 19,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 6080
+      },
+      "equal": true,
+      "freshHash": "cb27775706650c86a33887ded3431465085818ea269ec7b7b19ae9a53530c70d",
+      "existingHash": "cb27775706650c86a33887ded3431465085818ea269ec7b7b19ae9a53530c70d"
+    },
+    "implementation": "public/assets/puzz-ground-final.svg"
+  },
+  {
+    "node": "1209:657",
+    "name": "imgContactShadowUnderFeet",
+    "url": "https://www.figma.com/api/mcp/asset/13a8490a-1fc7-44af-a5bf-bbd8bee47cf3.svg",
+    "file": "1209-657-8.svg",
+    "sha256": "d6f6d66e5f87d902584d66d38e73ecdea91abba9d2fda3b6708a80aeee01afa5",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/puzz-shadow-final.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 50,
+        "height": 8,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1600
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 50,
+        "height": 8,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1600
+      },
+      "equal": true,
+      "freshHash": "d43f6f198141d1b53674644850d9a8bf97f9cb0c0f6234a5f5238af321f8782f",
+      "existingHash": "d43f6f198141d1b53674644850d9a8bf97f9cb0c0f6234a5f5238af321f8782f"
+    },
+    "implementation": "public/assets/puzz-shadow-final.svg"
+  },
+  {
+    "node": "1209:697",
+    "name": "imgChevronDown",
+    "url": "https://www.figma.com/api/mcp/asset/1fd162bc-652b-4252-a792-04ca3266ff40.svg",
+    "file": "1209-697-0.svg",
+    "sha256": "2d35ba2703dc39599efe797bc34283f064fb3d953ed608bd235af7b76b296f15",
+    "matches": [
+      "outputs/praytime/public/assets/faq-chevron.svg"
+    ],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/faq-chevron.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "equal": true,
+      "freshHash": "35f17fa475a552b8fb579edeacf29f0b40cb1b225da6eb8cf8d242cf69181a3b",
+      "existingHash": "35f17fa475a552b8fb579edeacf29f0b40cb1b225da6eb8cf8d242cf69181a3b"
+    },
+    "implementation": "public/assets/faq-chevron.svg"
+  },
+  {
+    "node": "1209:747",
+    "name": "imgControlIndicatorAligned",
+    "url": "https://www.figma.com/api/mcp/asset/b467a2e7-15d2-4338-92ef-b4074ad36f20.svg",
+    "file": "1209-747-0.svg",
+    "sha256": "e4fe89d3c1accb858c8eb475cc4f04d92d07af57cf1eedb8ff58dad83047575a",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/radio-final.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 20,
+        "height": 20,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1600
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 20,
+        "height": 20,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1600
+      },
+      "equal": true,
+      "freshHash": "7bb0521881a5c661a2f6205dc573f692e5cb20cdfb32ac9138674340dd7e3472",
+      "existingHash": "7bb0521881a5c661a2f6205dc573f692e5cb20cdfb32ac9138674340dd7e3472"
+    },
+    "implementation": "public/assets/radio-final.svg"
+  },
+  {
+    "node": "1209:747",
+    "name": "imgChevron",
+    "url": "https://www.figma.com/api/mcp/asset/c64792c3-e8f0-4f93-bbaa-f4e73d8d599e.svg",
+    "file": "1209-747-1.svg",
+    "sha256": "d55ae68ce0b065d269f7245eab2fe9a1f381104f1727465ef8bc4e7c6475f4f9",
+    "matches": [
+      "outputs/praytime/public/assets/chevron.svg",
+      "outputs/praytime/public/assets/chevron-final.svg"
+    ],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/chevron.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "equal": true,
+      "freshHash": "e209931b7335ebb307b7a19eeb09eef73efd59b234cd06a5e24440e4112b4fdc",
+      "existingHash": "e209931b7335ebb307b7a19eeb09eef73efd59b234cd06a5e24440e4112b4fdc"
+    },
+    "implementation": "public/assets/chevron.svg"
+  },
+  {
+    "node": "1209:1157",
+    "name": "imgTimeSelectSupplied10MinWheelMockup",
+    "url": "https://www.figma.com/api/mcp/asset/69991184-e081-4215-bbf3-816121788ff6.png",
+    "file": "1209-1157-0.png",
+    "sha256": "ffafff2bbf684c94d903e177314a8820af13801236a3a43fea4c523224109597",
+    "matches": [
+      "outputs/praytime/public/assets/time-select-wheel.png"
+    ],
+    "implementation": "public/assets/time-select-wheel.png"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgPuzzCompanionOneAppearance",
+    "url": "https://www.figma.com/api/mcp/asset/4016b9f0-616c-4473-87b7-4bcbe578748c.png",
+    "file": "1209-1191-0.png",
+    "sha256": "f78bd063bc1488401ecc993f809ae727896acb8a96fc1a323991dea517c02708",
+    "matches": [
+      "outputs/praytime/public/assets/puzz-final.png",
+      "outputs/praytime/public/assets/puzz-quiet-companion.png"
+    ],
+    "implementation": "public/assets/puzz-final.png"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgPrayerLight10881383Bloom",
+    "url": "https://www.figma.com/api/mcp/asset/ad39241e-b5d9-42b5-91b6-738483040783.svg",
+    "file": "1209-1191-1.svg",
+    "sha256": "97ba47709d18df087ba1aac1d0975504fcb5cecd64a7ba1623bf158fb06b862e",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-mobile-pause-bloom.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 181,
+        "height": 56,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 40544
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 181,
+        "height": 56,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 40544
+      },
+      "equal": true,
+      "freshHash": "8ad99d3b323c16c4a5daf3f9d194933e4b726afa6cfad25663c6f86cc089a86d",
+      "existingHash": "8ad99d3b323c16c4a5daf3f9d194933e4b726afa6cfad25663c6f86cc089a86d"
+    },
+    "implementation": "public/assets/landing-mobile-pause-bloom.svg"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgPrayerLight10881383Haze",
+    "url": "https://www.figma.com/api/mcp/asset/5b5b90ff-524d-458d-adf6-b2081de8ff74.svg",
+    "file": "1209-1191-2.svg",
+    "sha256": "d3c761e017afc27ecf60aef8d2202da631c0d7189e8021f1805bece05321e9d3",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-mobile-pause-haze.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 266,
+        "height": 88,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 93632
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 266,
+        "height": 88,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 93632
+      },
+      "equal": true,
+      "freshHash": "adc10d28da6519d4f05a0be991988f5ad3f4bd5fa7770b46ba6f9cf482e9c6d8",
+      "existingHash": "adc10d28da6519d4f05a0be991988f5ad3f4bd5fa7770b46ba6f9cf482e9c6d8"
+    },
+    "implementation": "public/assets/landing-mobile-pause-haze.svg"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgPrayerLight10881388Bloom",
+    "url": "https://www.figma.com/api/mcp/asset/96ceba7b-f26e-4f5b-9dab-bcac138dac75.svg",
+    "file": "1209-1191-3.svg",
+    "sha256": "32320fbe2ed3423cce6a91b7aa8ed827686eab027079d54b9bb50c290f614c0a",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-mobile-pray-bloom.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 181,
+        "height": 56,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 40544
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 181,
+        "height": 56,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 40544
+      },
+      "equal": true,
+      "freshHash": "27e9354d424ce5a14a8ca1d302c7e26e096c1abb9717b07cf3ee92181bcd3114",
+      "existingHash": "27e9354d424ce5a14a8ca1d302c7e26e096c1abb9717b07cf3ee92181bcd3114"
+    },
+    "implementation": "public/assets/landing-mobile-pray-bloom.svg"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgPrayerLight10881388Haze",
+    "url": "https://www.figma.com/api/mcp/asset/28d56f03-f5b6-497b-9e91-e7209aaab2d6.svg",
+    "file": "1209-1191-4.svg",
+    "sha256": "c6039724aebda5a50aaef64b4f3112401d9e6c97e59adb655681ebbc679522b9",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-mobile-pray-haze.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 266,
+        "height": 88,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 93632
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 266,
+        "height": 88,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 93632
+      },
+      "equal": true,
+      "freshHash": "cf82489480d8844008000379cadd4897f2022bf921c69a089e3bf0cbb660551b",
+      "existingHash": "cf82489480d8844008000379cadd4897f2022bf921c69a089e3bf0cbb660551b"
+    },
+    "implementation": "public/assets/landing-mobile-pray-haze.svg"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgPrayerLight10881393Bloom",
+    "url": "https://www.figma.com/api/mcp/asset/a3530c97-af18-4727-8a3b-4ef5357fc755.svg",
+    "file": "1209-1191-5.svg",
+    "sha256": "9fcf412b62f76ebd4666299702bde30a47076f624e0e6e7583dc3f7dd62ddd60",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-mobile-choose-bloom.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 181,
+        "height": 56,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 40544
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 181,
+        "height": 56,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 40544
+      },
+      "equal": true,
+      "freshHash": "982769a3c586b840397b3cc1777b104af0befc51dd75d9c4b19e384ffd09b39f",
+      "existingHash": "982769a3c586b840397b3cc1777b104af0befc51dd75d9c4b19e384ffd09b39f"
+    },
+    "implementation": "public/assets/landing-mobile-choose-bloom.svg"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgPrayerLight10881393Haze",
+    "url": "https://www.figma.com/api/mcp/asset/3d1a858b-259f-485a-abaa-41469d4d43b7.svg",
+    "file": "1209-1191-6.svg",
+    "sha256": "5dc46e1d3e1741d350cede20eea054650e79151c5d9214e4d20380bc25697b1d",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/landing-mobile-choose-haze.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 266,
+        "height": 88,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 93632
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 266,
+        "height": 88,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 93632
+      },
+      "equal": true,
+      "freshHash": "979aa51b4c89ec4df24c93958aa733c8c962dd4197996861b417f9bddad88294",
+      "existingHash": "979aa51b4c89ec4df24c93958aa733c8c962dd4197996861b417f9bddad88294"
+    },
+    "implementation": "public/assets/landing-mobile-choose-haze.svg"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgLocalGroundLowOvalReflection",
+    "url": "https://www.figma.com/api/mcp/asset/48997847-9b24-4dd5-b421-2bb454c437d8.svg",
+    "file": "1209-1191-7.svg",
+    "sha256": "c571de6bea87d7a7c611f0b1cb19f3c21ffe8139eac5eac5608f6986461486fc",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/puzz-ground-final.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 64,
+        "height": 16,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 4096
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 64,
+        "height": 16,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 4096
+      },
+      "equal": false,
+      "freshHash": "54f22dce8f6537d5faa8a41a11e19ec084a3bed51108abf6ca3894eb699a198c",
+      "existingHash": "c7f6ffbb9ea5e040240bdc663c0368fa13d2a50ec887634566c2a5b61f4dfdc7"
+    },
+    "implementation": "public/assets/whole-page/prayer-mobile-ground.svg",
+    "sourceNode": "I1209:1227;834:13"
+  },
+  {
+    "node": "1209:1191",
+    "name": "imgContactShadowUnderFeet",
+    "url": "https://www.figma.com/api/mcp/asset/7ab1ac2d-1abe-47c9-91d9-43cfffb17697.svg",
+    "file": "1209-1191-8.svg",
+    "sha256": "f82825df281cee176561d726fa8fd90cbf449317c4208ebeaef595f0e44478a6",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/puzz-shadow-final.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 40,
+        "height": 7,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1120
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 40,
+        "height": 7,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1120
+      },
+      "equal": false,
+      "freshHash": "337ccea7a2a4cd2549463844f9005f4f0f1d1e9a9d0a0845be3fe4166c05c298",
+      "existingHash": "ceb78cd519ce15357348a056bf7b954664cc460e73f40a052523e13e308afec1"
+    },
+    "implementation": "public/assets/whole-page/prayer-mobile-shadow.svg",
+    "sourceNode": "I1209:1227;834:14"
+  },
+  {
+    "node": "1209:1231",
+    "name": "imgChevronDown",
+    "url": "https://www.figma.com/api/mcp/asset/27d64872-5ee3-4a1e-a66b-f417baa53b40.svg",
+    "file": "1209-1231-0.svg",
+    "sha256": "2d35ba2703dc39599efe797bc34283f064fb3d953ed608bd235af7b76b296f15",
+    "matches": [
+      "outputs/praytime/public/assets/faq-chevron.svg"
+    ],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/faq-chevron.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "equal": true,
+      "freshHash": "35f17fa475a552b8fb579edeacf29f0b40cb1b225da6eb8cf8d242cf69181a3b",
+      "existingHash": "35f17fa475a552b8fb579edeacf29f0b40cb1b225da6eb8cf8d242cf69181a3b"
+    },
+    "implementation": "public/assets/faq-chevron.svg"
+  },
+  {
+    "node": "1209:1281",
+    "name": "imgControlIndicatorAligned",
+    "url": "https://www.figma.com/api/mcp/asset/439d2333-acc9-4f15-96fc-842c957348e4.svg",
+    "file": "1209-1281-0.svg",
+    "sha256": "0f463ca90dfbf983ce2022e6f2af8a7d9d56fc90b0263621ccbf3a3dad38fbcf",
+    "matches": [],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/radio-final.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 20,
+        "height": 20,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1600
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 20,
+        "height": 20,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 1600
+      },
+      "equal": true,
+      "freshHash": "7bb0521881a5c661a2f6205dc573f692e5cb20cdfb32ac9138674340dd7e3472",
+      "existingHash": "7bb0521881a5c661a2f6205dc573f692e5cb20cdfb32ac9138674340dd7e3472"
+    },
+    "implementation": "public/assets/radio-final.svg"
+  },
+  {
+    "node": "1209:1281",
+    "name": "imgChevron",
+    "url": "https://www.figma.com/api/mcp/asset/ce72333e-34c7-45ca-a18e-50fc2a165356.svg",
+    "file": "1209-1281-1.svg",
+    "sha256": "d55ae68ce0b065d269f7245eab2fe9a1f381104f1727465ef8bc4e7c6475f4f9",
+    "matches": [
+      "outputs/praytime/public/assets/chevron.svg",
+      "outputs/praytime/public/assets/chevron-final.svg"
+    ],
+    "pixelCompare": {
+      "existing": "outputs/praytime/public/assets/chevron.svg",
+      "freshInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "oldInfo": {
+        "format": "raw",
+        "width": 24,
+        "height": 24,
+        "channels": 4,
+        "depth": "uchar",
+        "premultiplied": false,
+        "hasAlpha": true,
+        "size": 2304
+      },
+      "equal": true,
+      "freshHash": "e209931b7335ebb307b7a19eeb09eef73efd59b234cd06a5e24440e4112b4fdc",
+      "existingHash": "e209931b7335ebb307b7a19eeb09eef73efd59b234cd06a5e24440e4112b4fdc"
+    },
+    "implementation": "public/assets/chevron.svg"
+  }
+]

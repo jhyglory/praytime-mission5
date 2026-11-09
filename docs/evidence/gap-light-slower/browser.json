@@ -1,0 +1,50 @@
+[
+  {
+    "width": 1440,
+    "totalMs": 4521.428571428572,
+    "expectedFallMs": 1071.4285714285716,
+    "observedFallMs": 1066.7999999523163,
+    "effectiveSpeed": 0.7,
+    "returning": {
+      "bottom": 1211.2369184372026,
+      "ground": 1220.017559262511,
+      "pool": 14.732032092942108
+    },
+    "keyboard": "PASS: 10ms arrows / exact fractional End / Home",
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0
+  },
+  {
+    "width": 393,
+    "totalMs": 4521.428571428572,
+    "expectedFallMs": 1071.4285714285716,
+    "observedFallMs": 1066.699999988079,
+    "effectiveSpeed": 0.7,
+    "returning": {
+      "bottom": 1210.9220384484543,
+      "ground": 1220.017559262511,
+      "pool": 15.226230403349678
+    },
+    "keyboard": "PASS: 10ms arrows / exact fractional End / Home",
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0
+  },
+  {
+    "width": 360,
+    "totalMs": 4521.428571428572,
+    "expectedFallMs": 1071.4285714285716,
+    "observedFallMs": 1066.800000011921,
+    "effectiveSpeed": 0.7,
+    "returning": {
+      "bottom": 1211.0718547618808,
+      "ground": 1220.017559262511,
+      "pool": 14.991326302748156
+    },
+    "keyboard": "PASS: 10ms arrows / exact fractional End / Home",
+    "reducedMotion": "PASS",
+    "errors": [],
+    "posts": 0
+  }
+]

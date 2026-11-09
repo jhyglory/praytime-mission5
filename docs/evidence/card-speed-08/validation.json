@@ -1,0 +1,90 @@
+{
+  "validatedAt": "2026-11-06T13:09:31.373887+00:00",
+  "baseCommit": "ce24a6301dddaa6a47981e13c69ea4fdec004351",
+  "cardSpeed": 0.8,
+  "cardDurationMs": 15000,
+  "particleDurationMs": 12000,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "unitPassed": 47,
+  "browserPassed": 40,
+  "browserDuration": "2.7m",
+  "build": "PASS --webpack",
+  "realPlaybackPerWidthMs": ">30100",
+  "widths": [
+    1440,
+    393,
+    360
+  ],
+  "testedCardSeamsMs": [
+    15000,
+    30000
+  ],
+  "beforeProductionMeasurements": [
+    {
+      "width": 1440,
+      "columns": [
+        {
+          "duration": 12000,
+          "deltaPerSecond": -373.841
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -364.248
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -353.601
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -367.694
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -353.601
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -353.601
+        }
+      ]
+    },
+    {
+      "width": 393,
+      "columns": [
+        {
+          "duration": 12000,
+          "deltaPerSecond": -382.872
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -382.872
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -378.93
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "columns": [
+        {
+          "duration": 12000,
+          "deltaPerSecond": -382.872
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -382.872
+        },
+        {
+          "duration": 12000,
+          "deltaPerSecond": -378.93
+        }
+      ]
+    }
+  ],
+  "productionPosts": 0,
+  "backendChanges": false
+}

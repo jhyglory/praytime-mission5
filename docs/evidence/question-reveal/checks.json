@@ -1,0 +1,26 @@
+{
+  "question": "Initially hidden; first scroll plus15% heading visibility starts800ms opacity fade; shown state retained",
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "unit": 60,
+  "build": "PASS webpack",
+  "productionBrowser": {
+    "passed": 7,
+    "scope": "question-reveal4 + whole-page layout3",
+    "durationSeconds": 13.5,
+    "widths": [
+      1440,
+      393,
+      360
+    ]
+  },
+  "developmentBrowser": {
+    "questionPassed": 4,
+    "layoutChecks": "3 failed only on existing Next Image development warnings; repeated production checks PASS"
+  },
+  "layout": "No movement during fade; reference heights updated for previously approved eyebrow removal416/320/320px",
+  "actualSignupPosts": 0,
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

@@ -1,0 +1,196 @@
+{
+  "sourcePage": "933:2",
+  "desktopFrame": "1088:916",
+  "mobileFrame": "1088:1251",
+  "assets": [
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgOffsetIntervalAtmosphericArtwork",
+      "path": "/assets/landing-continuous-hero.png",
+      "sha256": "0671496ca3dff6801cca6dfdd154500689cc8b568519a6deb313d6376dcff745",
+      "bytes": 1771526
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgArchitecturalLightHiddenSourceAmbientLayers",
+      "path": "/assets/landing-gap-desktop.svg",
+      "sha256": "e1fd75a7da781d1ceed3127654944f6dfe5681a77af15bfc5b2ffa1566c203b6",
+      "bytes": 3947
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgLavenderAmbientFading",
+      "path": "/assets/landing-transition-desktop-ambient.svg",
+      "sha256": "21d525c1ad2c33651c3108d24cd32d0af6e1933e2da5853a962a0ac4ba894d24",
+      "bytes": 745
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerApertureOuterLavenderAtmosphere",
+      "path": "/assets/landing-transition-desktop-aperture-outer.svg",
+      "sha256": "66d94a5e2efd019cab9506e09d09cda410a374654f0cd280ca0937c79f13e05f",
+      "bytes": 761
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerApertureMiddleIvoryIllumination",
+      "path": "/assets/landing-transition-desktop-aperture-middle.svg",
+      "sha256": "a99f6954c4b405252716a97d60b68a132aacfd11a7bc8ce6bea29cc5f3b640c1",
+      "bytes": 764
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerApertureInnerWarmLight",
+      "path": "/assets/landing-transition-desktop-aperture-inner.svg",
+      "sha256": "ebf63772e3ceee333c7d9e9e2bb51a23006536c5257e1b82caa8d4b13b7e1494",
+      "bytes": 735
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight1088996Bloom",
+      "path": "/assets/landing-desktop-choice-bloom.svg",
+      "sha256": "45ac2ffa8a9ef539b95c237cf1297b74c82116a9178bbe55c91ae22f74b5d2ae",
+      "bytes": 698
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight1088996Haze",
+      "path": "/assets/landing-desktop-choice-haze.svg",
+      "sha256": "1306fa2495ea64f12309c4a1718cda1e3e7d4969fca1bd7e778bd16424aa2e39",
+      "bytes": 700
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight10881051Bloom",
+      "path": "/assets/landing-desktop-pause-bloom.svg",
+      "sha256": "153666c8a8d689522bb201e1d1040569ead4288e0ee9b9697be1e26ea580d013",
+      "bytes": 714
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight10881051Haze",
+      "path": "/assets/landing-desktop-pause-haze.svg",
+      "sha256": "e104152b4ae1007631fd9d4fc77e45e9aeff755dd36419e4d8b58a0310009a4d",
+      "bytes": 713
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight10881056Bloom",
+      "path": "/assets/landing-desktop-pray-bloom.svg",
+      "sha256": "be87dc1b2d2d5cc2ff2da2410f4aa73e01504388bf8f2ed979d5d914d5edef79",
+      "bytes": 712
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight10881056Haze",
+      "path": "/assets/landing-desktop-pray-haze.svg",
+      "sha256": "9c2296f65271a547097a83674bba3a7c7a32440ba23c86f11b18215f2bb0abf9",
+      "bytes": 711
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight10881061Bloom",
+      "path": "/assets/landing-desktop-choose-bloom.svg",
+      "sha256": "4cb29fb3204be06106d23a967855424ab70279c741892a22ae01e65a3e3b4c6a",
+      "bytes": 714
+    },
+    {
+      "variant": "desktop",
+      "figmaAsset": "imgPrayerLight10881061Haze",
+      "path": "/assets/landing-desktop-choose-haze.svg",
+      "sha256": "cffde04149db7e68ba23d5a6d08c0584253c962be9facd9ab3dd6a8ee8ac5175",
+      "bytes": 712
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgArchitecturalLightHiddenSourceAmbientLayers",
+      "path": "/assets/landing-gap-mobile.svg",
+      "sha256": "0e967e7bb506e77664d7dfa2c25d1652e4478dafe8084082e0a2adc8310d6820",
+      "bytes": 3969
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgLavenderAmbientFading",
+      "path": "/assets/landing-transition-mobile-ambient.svg",
+      "sha256": "cffae581a165ee89601c665eb615737b911649b3a1c7777adca61177f87274ca",
+      "bytes": 708
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerApertureOuterLavenderAtmosphere",
+      "path": "/assets/landing-transition-mobile-aperture-outer.svg",
+      "sha256": "dd7e672764dfa1dcaad1e29a4db5d74c6485880b75947395b913f42a58654f23",
+      "bytes": 723
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerApertureMiddleIvoryIllumination",
+      "path": "/assets/landing-transition-mobile-aperture-middle.svg",
+      "sha256": "b4176d848c7bb40e8ba1ace724694ed4390b701da7d3a4413049ca72416a4239",
+      "bytes": 722
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerApertureInnerWarmLight",
+      "path": "/assets/landing-transition-mobile-aperture-inner.svg",
+      "sha256": "5687b05719529cb92a31e0f1b77cac469d74db29611db70102e4daab2b910ca2",
+      "bytes": 715
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881329Bloom",
+      "path": "/assets/landing-mobile-choice-bloom.svg",
+      "sha256": "8a27cc43ab427f86777a31ed5c79a74ac7d3e41e151520cad97492cab80afe20",
+      "bytes": 701
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881329Haze",
+      "path": "/assets/landing-mobile-choice-haze.svg",
+      "sha256": "87835f63de1735c2deb3c9f42c9193c4b3896f08adc26a81763f6e33e6f0d404",
+      "bytes": 698
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881383Bloom",
+      "path": "/assets/landing-mobile-pause-bloom.svg",
+      "sha256": "8d8fc6a32c9f14abb932c944e88d6def8cd8695779a62d8d620c99af24911d70",
+      "bytes": 701
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881383Haze",
+      "path": "/assets/landing-mobile-pause-haze.svg",
+      "sha256": "f4de897039eb2923284d4872c7c17ce7a60af6c53afade060ad469c45728a960",
+      "bytes": 699
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881388Bloom",
+      "path": "/assets/landing-mobile-pray-bloom.svg",
+      "sha256": "5fd1cea3ae0d50b15c8a3dc095419741c2ff30b492bb47479dd79f41d1ddf948",
+      "bytes": 699
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881388Haze",
+      "path": "/assets/landing-mobile-pray-haze.svg",
+      "sha256": "af106fcb43493f8314780e004041d866610eebbbe5fdef744ca37139f50423e4",
+      "bytes": 697
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881393Bloom",
+      "path": "/assets/landing-mobile-choose-bloom.svg",
+      "sha256": "d11cca921a018fbaf047213b042e096a8fbbf29418ca868193c60178e03775ff",
+      "bytes": 701
+    },
+    {
+      "variant": "mobile",
+      "figmaAsset": "imgPrayerLight10881393Haze",
+      "path": "/assets/landing-mobile-choose-haze.svg",
+      "sha256": "4c071a75469643408a43d869d5a081548332a29580369c704aed50343f804bc5",
+      "bytes": 698
+    }
+  ]
+}

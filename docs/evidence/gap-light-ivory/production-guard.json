@@ -1,0 +1,16 @@
+{
+  "localOnly": true,
+  "posts": 0,
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "previewSvgPresent": false
+    },
+    {
+      "path": "/dev/gap-light",
+      "status": 404,
+      "previewSvgPresent": false
+    }
+  ]
+}

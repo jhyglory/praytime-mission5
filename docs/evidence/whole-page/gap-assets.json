@@ -1,0 +1,16 @@
+[
+  {
+    "type": "desktop",
+    "pixelsIdentical": true,
+    "sourceBytes": 3925,
+    "existingBytes": 3947,
+    "pixelSha256": "3492b5b2ccd9d013010f9d57369132eb3e7ff08b50d1e4c9bd9c6e0274df2005"
+  },
+  {
+    "type": "mobile",
+    "pixelsIdentical": true,
+    "sourceBytes": 3947,
+    "existingBytes": 3969,
+    "pixelSha256": "8979a6a43c1d08240626b22ed145e6d3e8381b383530d953050b66538c7be6e8"
+  }
+]

@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "metadata": {
+    "width": 393,
+    "height": 477,
+    "duration": "stream duration not indexed"
+  },
+  "thresholdNote": "Thin antialiased/compressed dash has lower peak luminance; visible content is checked above80 luma against~20luma navy, with final interior additionally above210RGB. Initial overlystrict200-luma threshold was adjusted after inspecting real decoded frames.",
+  "method": "Decoded saved WebM and played real-time without indexed seeking; sampled at1.0/2.4/4.5seconds.",
+  "samples": [
+    {
+      "requestedTime": 1,
+      "videoTime": 1.0466,
+      "ended": false,
+      "brightPixels": 0,
+      "visiblePixels": 28,
+      "visibleCenterBandRows": 14,
+      "centerBrightRows": 0,
+      "maximumLuminance": 169.33333333333334,
+      "centerRGB": [
+        10,
+        16,
+        38
+      ],
+      "topRGB": [
+        7,
+        14,
+        37
+      ],
+      "floorRGB": [
+        7,
+        14,
+        37
+      ]
+    },
+    {
+      "requestedTime": 2.4,
+      "videoTime": 2.414,
+      "ended": false,
+      "brightPixels": 19,
+      "visiblePixels": 637,
+      "visibleCenterBandRows": 169,
+      "centerBrightRows": 0,
+      "maximumLuminance": 205,
+      "centerRGB": [
+        7,
+        14,
+        37
+      ],
+      "topRGB": [
+        7,
+        14,
+        37
+      ],
+      "floorRGB": [
+        155,
+        158,
+        155
+      ]
+    },
+    {
+      "requestedTime": 4.5,
+      "videoTime": 4.5215,
+      "ended": false,
+      "brightPixels": 5517,
+      "visiblePixels": 16674,
+      "visibleCenterBandRows": 335,
+      "centerBrightRows": 335,
+      "maximumLuminance": 247.66666666666666,
+      "centerRGB": [
+        255,
+        250,
+        230
+      ],
+      "topRGB": [
+        253,
+        249,
+        227
+      ],
+      "floorRGB": [
+        228,
+        225,
+        214
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+.canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  background: #080e26;
+}
+
+.preview { overflow: hidden; }
+
+/* Initial server-rendered frame is dark; static geometry is the final pose. */
+.canvas[data-motion-state="idle"] .light,
+.canvas[data-motion-state="idle"] .transient {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .canvas[data-motion-state="idle"] .light { opacity: 1; }
+  .transient { opacity: 0 !important; }
+}
+
+/* The server-rendered SVG already contains its final geometry. */
+@media (scripting: none) {
+  .canvas[data-motion-state="idle"] .light { opacity: 1; }
+  .transient { opacity: 0 !important; }
+}

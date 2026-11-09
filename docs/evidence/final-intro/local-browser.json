@@ -1,0 +1,38 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "introHasSns": 0,
+    "logo": "http://127.0.0.1:3001/assets/card-intro/praytime-wordmark-desktop.png",
+    "headlineSize": "44px",
+    "supportSize": "36px",
+    "staticColumns": 6,
+    "animations": 0
+  },
+  {
+    "width": 393,
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "introHasSns": 0,
+    "logo": "http://127.0.0.1:3001/assets/card-intro/praytime-wordmark-mobile.png",
+    "headlineSize": "32px",
+    "supportSize": "26px",
+    "staticColumns": 3,
+    "animations": 0
+  },
+  {
+    "width": 320,
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "introHasSns": 0,
+    "logo": "http://127.0.0.1:3001/assets/card-intro/praytime-wordmark-mobile.png",
+    "headlineSize": "32px",
+    "supportSize": "26px",
+    "staticColumns": 3,
+    "animations": 0
+  }
+]

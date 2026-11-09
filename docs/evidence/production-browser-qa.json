@@ -1,0 +1,58 @@
+{
+  "url": "https://praytime-mission5.vercel.app",
+  "mode": "isolated Chrome context (no profile extensions)",
+  "viewports": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "missing": []
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "missing": []
+    },
+    {
+      "width": 1024,
+      "scrollWidth": 1024,
+      "missing": []
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "missing": []
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "missing": []
+    },
+    {
+      "width": 393,
+      "scrollWidth": 393,
+      "missing": []
+    },
+    {
+      "width": 375,
+      "scrollWidth": 375,
+      "missing": []
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "missing": []
+    }
+  ],
+  "checks": [
+    "semantic structure",
+    "anchor focus",
+    "wheel tap/keyboard/swipe",
+    "FAQ click/keyboard",
+    "live 503/privacy review guard",
+    "input retained",
+    "no success receipt"
+  ],
+  "pageErrors": [],
+  "failedAssets": [],
+  "actualInsert": false
+}

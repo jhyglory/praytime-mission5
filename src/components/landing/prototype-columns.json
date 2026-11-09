@@ -1,0 +1,2598 @@
+{
+  "desktop": [
+    {
+      "id": "1284:14248",
+      "x": 10,
+      "y": -538.3312377929688,
+      "width": 220,
+      "height": 8972.1875,
+      "cycleHeight": 4486.09375,
+      "cards": [
+        {
+          "id": "1284:14250",
+          "y": 0,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_001.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14251",
+          "y": 272.14117431640625,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_038.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14252",
+          "y": 493.7529296875,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14253",
+          "y": 638.12939453125,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14254",
+          "y": 785.9764404296875,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_075.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_069.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_032.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14255",
+          "y": 1090.529296875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14256",
+          "y": 1201.6116943359375,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_026.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14257",
+          "y": 1473.7529296875,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_063.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14258",
+          "y": 1695.36474609375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14259",
+          "y": 1839.7412109375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14260",
+          "y": 1987.5882568359375,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_020.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_014.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_057.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14261",
+          "y": 2292.14111328125,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14262",
+          "y": 2403.223388671875,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_051.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14263",
+          "y": 2675.364501953125,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_008.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14264",
+          "y": 2896.976318359375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14265",
+          "y": 3041.352783203125,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14266",
+          "y": 3189.19970703125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14267",
+          "y": 3333.576171875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14268",
+          "y": 3444.658447265625,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_045.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14269",
+          "y": 3716.799560546875,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_002.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14270",
+          "y": 3938.411376953125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14271",
+          "y": 4082.787841796875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14272",
+          "y": 4230.634765625,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14273",
+          "y": 4375.01123046875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "1284:14299",
+      "x": 250,
+      "y": -2491.456298828125,
+      "width": 220,
+      "height": 8741.9521484375,
+      "cycleHeight": 4370.97607421875,
+      "cards": [
+        {
+          "id": "1284:14301",
+          "y": 0,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14302",
+          "y": 144.37646484375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14303",
+          "y": 292.2235107421875,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_039.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_033.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_076.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14304",
+          "y": 596.7764282226562,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14305",
+          "y": 707.8587646484375,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_070.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14306",
+          "y": 979.9999389648438,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_027.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14307",
+          "y": 1201.6116943359375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14308",
+          "y": 1345.9881591796875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14309",
+          "y": 1493.835205078125,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_064.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_058.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_021.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14310",
+          "y": 1798.38818359375,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14311",
+          "y": 1909.4705810546875,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_015.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14312",
+          "y": 2181.61181640625,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_052.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14313",
+          "y": 2403.2236328125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14314",
+          "y": 2547.60009765625,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14315",
+          "y": 2695.447265625,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_009.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_003.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_046.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14316",
+          "y": 3000.000244140625,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14317",
+          "y": 3111.08251953125,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_040.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14318",
+          "y": 3383.2236328125,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14319",
+          "y": 3531.07080078125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14320",
+          "y": 3675.447265625,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14321",
+          "y": 3823.29443359375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14322",
+          "y": 3967.6708984375,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14323",
+          "y": 4078.753173828125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14324",
+          "y": 4223.1298828125,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "1284:14350",
+      "x": 490,
+      "y": -1230.5313720703125,
+      "width": 220,
+      "height": 8486.4228515625,
+      "cycleHeight": 4243.21142578125,
+      "cards": [
+        {
+          "id": "1284:14352",
+          "y": 0,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_077.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_071.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_034.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14353",
+          "y": 304.55291748046875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14354",
+          "y": 415.63525390625,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_028.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14355",
+          "y": 687.7764282226562,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_065.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14356",
+          "y": 909.38818359375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14357",
+          "y": 1053.7646484375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14358",
+          "y": 1201.6116943359375,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_022.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_016.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_059.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14359",
+          "y": 1506.16455078125,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14360",
+          "y": 1617.2469482421875,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_053.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14361",
+          "y": 1889.38818359375,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_010.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14362",
+          "y": 2111,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14363",
+          "y": 2255.37646484375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14364",
+          "y": 2403.2236328125,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_047.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_041.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_004.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14365",
+          "y": 2707.776611328125,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14366",
+          "y": 2818.85888671875,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14367",
+          "y": 2963.2353515625,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14368",
+          "y": 3111.08251953125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14369",
+          "y": 3255.458984375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14370",
+          "y": 3403.30615234375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14371",
+          "y": 3547.6826171875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14372",
+          "y": 3658.764892578125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14373",
+          "y": 3803.141357421875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14374",
+          "y": 3950.98828125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14375",
+          "y": 4095.36474609375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "1284:14401",
+      "x": 730,
+      "y": -3441.61669921875,
+      "width": 220,
+      "height": 8824.658203125,
+      "cycleHeight": 4412.3291015625,
+      "cards": [
+        {
+          "id": "1284:14403",
+          "y": 0,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_078.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14404",
+          "y": 272.14117431640625,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_035.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14405",
+          "y": 493.7529296875,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14406",
+          "y": 638.12939453125,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14407",
+          "y": 785.9764404296875,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_072.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_066.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_029.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14408",
+          "y": 1090.529296875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14409",
+          "y": 1201.6116943359375,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_023.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14410",
+          "y": 1473.7529296875,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_060.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14411",
+          "y": 1695.36474609375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14412",
+          "y": 1839.7412109375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14413",
+          "y": 1987.5882568359375,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_017.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_011.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_054.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14414",
+          "y": 2292.14111328125,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14415",
+          "y": 2403.223388671875,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_048.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14416",
+          "y": 2675.364501953125,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_005.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14417",
+          "y": 2896.976318359375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14418",
+          "y": 3041.352783203125,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14419",
+          "y": 3189.19970703125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14420",
+          "y": 3333.576171875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14421",
+          "y": 3444.658447265625,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_042.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14422",
+          "y": 3716.799560546875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14423",
+          "y": 3864.646484375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14424",
+          "y": 4009.02294921875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14425",
+          "y": 4156.8701171875,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14426",
+          "y": 4301.24658203125,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "1284:14452",
+      "x": 970,
+      "y": -84.86422729492188,
+      "width": 220,
+      "height": 8486.4228515625,
+      "cycleHeight": 4243.21142578125,
+      "cards": [
+        {
+          "id": "1284:14454",
+          "y": 0,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14455",
+          "y": 144.37646484375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14456",
+          "y": 292.2235107421875,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_079.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_073.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_036.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14457",
+          "y": 596.7764282226562,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14458",
+          "y": 707.8587646484375,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_030.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14459",
+          "y": 979.9999389648438,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_067.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14460",
+          "y": 1201.6116943359375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14461",
+          "y": 1345.9881591796875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14462",
+          "y": 1493.835205078125,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_024.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_018.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_061.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14463",
+          "y": 1798.38818359375,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14464",
+          "y": 1909.4705810546875,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_055.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14465",
+          "y": 2181.61181640625,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_012.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14466",
+          "y": 2403.2236328125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14467",
+          "y": 2547.60009765625,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14468",
+          "y": 2695.447265625,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_049.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_043.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_006.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14469",
+          "y": 3000.000244140625,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14470",
+          "y": 3111.08251953125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14471",
+          "y": 3255.458984375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14472",
+          "y": 3403.30615234375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14473",
+          "y": 3547.6826171875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14474",
+          "y": 3695.52978515625,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14475",
+          "y": 3839.90625,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14476",
+          "y": 3950.988525390625,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14477",
+          "y": 4095.364990234375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "1284:14503",
+      "x": 1210,
+      "y": -1867.0130615234375,
+      "width": 220,
+      "height": 8486.4228515625,
+      "cycleHeight": 4243.21142578125,
+      "cards": [
+        {
+          "id": "1284:14505",
+          "y": 0,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_080.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_074.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_037.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14506",
+          "y": 304.55291748046875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14507",
+          "y": 415.63525390625,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_031.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14508",
+          "y": 687.7764282226562,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_068.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14509",
+          "y": 909.38818359375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14510",
+          "y": 1053.7646484375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14511",
+          "y": 1201.6116943359375,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_025.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_019.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_062.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14512",
+          "y": 1506.16455078125,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14513",
+          "y": 1617.2469482421875,
+          "height": 252.1411590576172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_056.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14514",
+          "y": 1889.38818359375,
+          "height": 201.61175537109375,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_013.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14515",
+          "y": 2111,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14516",
+          "y": 2255.37646484375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14517",
+          "y": 2403.2236328125,
+          "height": 284.55291748046875,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_050.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_044.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_007.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:14518",
+          "y": 2707.776611328125,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14519",
+          "y": 2818.85888671875,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14520",
+          "y": 2963.2353515625,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14521",
+          "y": 3111.08251953125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14522",
+          "y": 3255.458984375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14523",
+          "y": 3403.30615234375,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14524",
+          "y": 3547.6826171875,
+          "height": 91.08235168457031,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:14525",
+          "y": 3658.764892578125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14526",
+          "y": 3803.141357421875,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:14527",
+          "y": 3950.98828125,
+          "height": 124.37646484375,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:14528",
+          "y": 4095.36474609375,
+          "height": 127.84705352783203,
+          "kind": 3,
+          "images": []
+        }
+      ]
+    }
+  ],
+  "mobile": [
+    {
+      "id": "1284:22496",
+      "x": -27.5,
+      "y": -551.3350830078125,
+      "width": 140,
+      "height": 9188.91796875,
+      "cycleHeight": 4594.458984375,
+      "cards": [
+        {
+          "id": "1284:22498",
+          "y": 0,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_001.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22499",
+          "y": 176.6352996826172,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_038.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22500",
+          "y": 320.7411804199219,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22501",
+          "y": 416.435302734375,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22502",
+          "y": 513.2470703125,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_075.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_069.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_032.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22503",
+          "y": 709.2352905273438,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22504",
+          "y": 782.4588012695312,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_026.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22505",
+          "y": 959.0941162109375,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_063.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22506",
+          "y": 1103.199951171875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22507",
+          "y": 1198.89404296875,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22508",
+          "y": 1295.705810546875,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_020.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_014.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_057.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22509",
+          "y": 1491.694091796875,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22510",
+          "y": 1564.9176025390625,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_051.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22511",
+          "y": 1741.5528564453125,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_008.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22512",
+          "y": 1885.65869140625,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22513",
+          "y": 1981.352783203125,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22514",
+          "y": 2078.16455078125,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_045.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_039.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_002.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22515",
+          "y": 2274.15283203125,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22516",
+          "y": 2347.37646484375,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_076.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22517",
+          "y": 2524.01171875,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_033.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22518",
+          "y": 2668.11767578125,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22519",
+          "y": 2763.811767578125,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22520",
+          "y": 2860.62353515625,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_070.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_064.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_027.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22521",
+          "y": 3056.61181640625,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22522",
+          "y": 3129.83544921875,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_021.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22523",
+          "y": 3306.470703125,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_058.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22524",
+          "y": 3450.57666015625,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22525",
+          "y": 3546.270751953125,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22526",
+          "y": 3643.08251953125,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_015.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_009.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_052.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22527",
+          "y": 3839.07080078125,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22528",
+          "y": 3912.29443359375,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_046.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22529",
+          "y": 4088.9296875,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_003.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22530",
+          "y": 4233.03564453125,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22531",
+          "y": 4328.72998046875,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22532",
+          "y": 4425.5419921875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22533",
+          "y": 4521.236328125,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        }
+      ]
+    },
+    {
+      "id": "1284:22571",
+      "x": 126.5,
+      "y": -2618.841552734375,
+      "width": 140,
+      "height": 9188.91796875,
+      "cycleHeight": 4594.458984375,
+      "cards": [
+        {
+          "id": "1284:22573",
+          "y": 0,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22574",
+          "y": 95.69412231445312,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22575",
+          "y": 192.50588989257812,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_040.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_034.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_077.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22576",
+          "y": 388.494140625,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22577",
+          "y": 461.7176513671875,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_071.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22578",
+          "y": 638.3529663085938,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_028.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22579",
+          "y": 782.4588623046875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22580",
+          "y": 878.1529541015625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22581",
+          "y": 974.9647216796875,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_065.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_059.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_022.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22582",
+          "y": 1170.9530029296875,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22583",
+          "y": 1244.176513671875,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_016.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22584",
+          "y": 1420.811767578125,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_053.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22585",
+          "y": 1564.9176025390625,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22586",
+          "y": 1660.6116943359375,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22587",
+          "y": 1757.4234619140625,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_010.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_004.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_047.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22588",
+          "y": 1953.4117431640625,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22589",
+          "y": 2026.63525390625,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_041.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22590",
+          "y": 2203.2705078125,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_078.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22591",
+          "y": 2347.37646484375,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22592",
+          "y": 2443.070556640625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22593",
+          "y": 2539.88232421875,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_035.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_029.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_072.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22594",
+          "y": 2735.87060546875,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22595",
+          "y": 2809.09423828125,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_066.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22596",
+          "y": 2985.7294921875,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_023.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22597",
+          "y": 3129.83544921875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22598",
+          "y": 3225.529541015625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22599",
+          "y": 3322.34130859375,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_060.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_054.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_017.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22600",
+          "y": 3518.32958984375,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22601",
+          "y": 3591.55322265625,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_011.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22602",
+          "y": 3768.1884765625,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_048.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22603",
+          "y": 3912.29443359375,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22604",
+          "y": 4007.988525390625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22605",
+          "y": 4104.80029296875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22606",
+          "y": 4200.49462890625,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22607",
+          "y": 4273.71826171875,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_005.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22608",
+          "y": 4450.353515625,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_042.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1284:22646",
+      "x": 280.5,
+      "y": -1318.677734375,
+      "width": 140,
+      "height": 9094.3291015625,
+      "cycleHeight": 4547.16455078125,
+      "cards": [
+        {
+          "id": "1284:22648",
+          "y": 0,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_079.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_073.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_036.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22649",
+          "y": 195.9882354736328,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22650",
+          "y": 269.2117614746094,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_030.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22651",
+          "y": 445.8470458984375,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_067.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22652",
+          "y": 589.9529418945312,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22653",
+          "y": 685.6470947265625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22654",
+          "y": 782.4588623046875,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_024.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_018.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_061.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22655",
+          "y": 978.4470825195312,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22656",
+          "y": 1051.670654296875,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_055.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22657",
+          "y": 1228.305908203125,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_012.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22658",
+          "y": 1372.4117431640625,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22659",
+          "y": 1468.1058349609375,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22660",
+          "y": 1564.9176025390625,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_049.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_043.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_006.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22661",
+          "y": 1760.9058837890625,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22662",
+          "y": 1834.12939453125,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_080.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22663",
+          "y": 2010.7646484375,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_037.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22664",
+          "y": 2154.87060546875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22665",
+          "y": 2250.564697265625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22666",
+          "y": 2347.37646484375,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_074.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_068.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_031.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22667",
+          "y": 2543.36474609375,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22668",
+          "y": 2616.58837890625,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_025.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22669",
+          "y": 2793.2236328125,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_062.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22670",
+          "y": 2937.32958984375,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22671",
+          "y": 3033.023681640625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22672",
+          "y": 3129.83544921875,
+          "height": 181.9882354736328,
+          "kind": 4,
+          "images": [
+            {
+              "slot": "collection0",
+              "src": "/assets/prototype-cards/pt_019.jpg"
+            },
+            {
+              "slot": "collection1",
+              "src": "/assets/prototype-cards/pt_013.jpg"
+            },
+            {
+              "slot": "collection2",
+              "src": "/assets/prototype-cards/pt_056.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22673",
+          "y": 3325.82373046875,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22674",
+          "y": 3399.04736328125,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_050.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22675",
+          "y": 3575.6826171875,
+          "height": 130.1058807373047,
+          "kind": 1,
+          "images": [
+            {
+              "slot": "video",
+              "src": "/assets/prototype-cards/pt_007.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22676",
+          "y": 3719.78857421875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22677",
+          "y": 3815.482666015625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22678",
+          "y": 3912.29443359375,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22679",
+          "y": 4007.988525390625,
+          "height": 59.22352981567383,
+          "kind": 5,
+          "images": []
+        },
+        {
+          "id": "1284:22680",
+          "y": 4081.212158203125,
+          "height": 162.6352996826172,
+          "kind": 0,
+          "images": [
+            {
+              "slot": "photo",
+              "src": "/assets/prototype-cards/pt_044.jpg"
+            }
+          ]
+        },
+        {
+          "id": "1284:22681",
+          "y": 4257.84765625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        },
+        {
+          "id": "1284:22682",
+          "y": 4354.6591796875,
+          "height": 81.69412231445312,
+          "kind": 2,
+          "images": []
+        },
+        {
+          "id": "1284:22683",
+          "y": 4450.353515625,
+          "height": 82.811767578125,
+          "kind": 3,
+          "images": []
+        }
+      ]
+    }
+  ]
+}

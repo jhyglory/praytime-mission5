@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "path": "/rest/v1/beta_signups?select=consent&limit=0",
+  "status": 400,
+  "errorCode": "42703",
+  "message": "column beta_signups.consent does not exist",
+  "rowsRequested": 0
+}

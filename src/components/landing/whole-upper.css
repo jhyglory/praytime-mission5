@@ -1,0 +1,50 @@
+/* Final full-page frames: Desktop1209:514 / Mobile1209:1051.
+   Keep the existing full-bleed Hero artwork and native interactions. */
+/* Keep the navigation in place after removing the header signup CTA. */
+.landing-header nav { justify-self: center; }
+.landing-header .solid-pause i { box-shadow: none; }
+.landing-header .wordmark { width: 168.5px; flex-shrink: 0; }
+.hero-content .body-copy { max-width: 520px; }
+.hero-content .small-copy { max-width: 560px; font-size: 14px; }
+.one-question h2 { font-size: 56px; line-height: 80px; }
+.one-question [data-question-part] { display:block; }
+/* Three line-heights between phrase starts; keep wrapped lines at their original leading. */
+.one-question [data-question-part="followup"] { margin-block-start:160px; }
+/* Keep the text in layout and available to assistive technology while it fades.
+   The controller requires both a scroll and heading visibility before reveal. */
+@media (scripting:enabled) and (prefers-reduced-motion:no-preference) {
+  .one-question [data-question-reveal="pending"] > [data-question-part] { opacity:0; }
+  .one-question [data-question-reveal="shown"] > [data-question-part] { opacity:1; transition:opacity 800ms var(--motion-ease); }
+  .one-question [data-question-reveal="shown"] > [data-question-part="followup"] { transition-delay:1200ms; }
+}
+
+@media (width < 768px) {
+  /* Reserve the original copy slot so the shorter A headline does not lift CTAs. */
+  .landing-header .wordmark {
+    width: 128px;
+    gap: 10.285714px;
+    font-size: 16px;
+    line-height: 20.571429px;
+    letter-spacing: 3.428571px;
+    flex-shrink: 0;
+  }
+  .landing-header .solid-pause { width: 13.714286px; height: 20.571429px; }
+  .landing-header .solid-pause i { width: 3.142857px; height: 12.571429px; top: 4px; border-radius: 1.571429px; }
+  .landing-header .solid-pause i + i { left: 8.571429px; }
+  .hero h1 { font-size: 34px; }
+  .one-question h2 { font-size: 32px; line-height: 48px; }
+  .one-question [data-question-part="followup"] { margin-block-start:96px; }
+}
+
+/* Latest user originals: preserve the glass bars' existing size/position.
+   The landscape image stays at its native aspect ratio inside the shared plane. */
+.hero-artwork img, .question-artwork img {
+  position: absolute;
+  left: 6.55%;
+  top: .1%;
+  width: 91%;
+  height: auto;
+  object-fit: contain;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 95%, transparent), linear-gradient(transparent, #000 2%, #000 80%, transparent);
+  mask-composite: intersect;
+}

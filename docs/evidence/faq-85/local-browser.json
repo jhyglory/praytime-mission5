@@ -1,0 +1,122 @@
+[
+  {
+    "width": 1440,
+    "metrics": {
+      "y": 6651.40625,
+      "height": 834.71875,
+      "question": {
+        "font": 17,
+        "line": 25.5
+      },
+      "answer": {
+        "font": 15.3,
+        "line": 25.5
+      },
+      "heading": {
+        "font": 40,
+        "line": 56
+      },
+      "rowPadding": 20.4,
+      "regionGap": 13.6,
+      "paragraphGap": 25.5,
+      "dividerGap": 13.6,
+      "closedRowHeight": 80.875,
+      "chevronWidth": 24
+    },
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "keyboard": "PASS",
+    "allSevenOpen": true
+  },
+  {
+    "width": 393,
+    "metrics": {
+      "y": 7200.734375,
+      "height": 1065.71875,
+      "question": {
+        "font": 17,
+        "line": 25.5
+      },
+      "answer": {
+        "font": 15.3,
+        "line": 25.5
+      },
+      "heading": {
+        "font": 28,
+        "line": 40
+      },
+      "rowPadding": 20.4,
+      "regionGap": 13.6,
+      "paragraphGap": 25.5,
+      "dividerGap": 13.6,
+      "closedRowHeight": 80.875,
+      "chevronWidth": 24
+    },
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "keyboard": "PASS",
+    "allSevenOpen": true
+  },
+  {
+    "width": 360,
+    "metrics": {
+      "y": 7235.390625,
+      "height": 1091.21875,
+      "question": {
+        "font": 17,
+        "line": 25.5
+      },
+      "answer": {
+        "font": 15.3,
+        "line": 25.5
+      },
+      "heading": {
+        "font": 28,
+        "line": 40
+      },
+      "rowPadding": 20.4,
+      "regionGap": 13.6,
+      "paragraphGap": 25.5,
+      "dividerGap": 13.6,
+      "closedRowHeight": 80.875,
+      "chevronWidth": 24
+    },
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "keyboard": "PASS",
+    "allSevenOpen": true
+  },
+  {
+    "width": 320,
+    "metrics": {
+      "y": 7298.671875,
+      "height": 1142.21875,
+      "question": {
+        "font": 17,
+        "line": 25.5
+      },
+      "answer": {
+        "font": 15.3,
+        "line": 25.5
+      },
+      "heading": {
+        "font": 28,
+        "line": 40
+      },
+      "rowPadding": 20.4,
+      "regionGap": 13.6,
+      "paragraphGap": 25.5,
+      "dividerGap": 13.6,
+      "closedRowHeight": 80.875,
+      "chevronWidth": 24
+    },
+    "errors": [],
+    "posts": 0,
+    "overflow": 0,
+    "keyboard": "PASS",
+    "allSevenOpen": true
+  }
+]

@@ -1,0 +1,193 @@
+{
+  "actualElapsedReplay": true,
+  "results": [
+    {
+      "width": 1440,
+      "geometry": {
+        "x": 160,
+        "y": 161,
+        "width": 600,
+        "height": 720
+      },
+      "measuredDurationMs": 3216.599999964237,
+      "traceSamples": 195,
+      "birthSamples": 26,
+      "drawSamples": 72,
+      "openSamples": 78,
+      "drawShotTime": 963.6999999880791,
+      "openShotTime": 2163.5999999880787,
+      "final": {
+        "time": 3200,
+        "state": "complete",
+        "phase": "complete",
+        "lineTop": 178,
+        "lineHeight": 1064,
+        "openingX": 593,
+        "openingWidth": 14,
+        "edgePath": "M593 180V1240 M607 180V1240",
+        "openingOpacity": 1,
+        "edgesOpacity": 1,
+        "ambientOpacity": 1,
+        "floorHaloOpacity": 1,
+        "floorContactOpacity": 1,
+        "transform": "none"
+      },
+      "sourcePixelComparison": {
+        "width": 600,
+        "height": 720,
+        "pixelsDifferent": 80077,
+        "pixelDifferencePercent": 18.536342592592593,
+        "maxChannelDiff": 4,
+        "meanAbsoluteChannelDiff": 0.13547685185185185,
+        "note": "Separate-page comparison; renderer/capture context differences are reported separately from same-root equality."
+      },
+      "sameContextComparison": {
+        "width": 600,
+        "height": 720,
+        "pixelsDifferent": 0,
+        "pixelDifferencePercent": 0,
+        "maxChannelDiff": 0,
+        "meanAbsoluteChannelDiff": 0
+      },
+      "narrowLinePixelContrast": 423,
+      "rapidReplayAndStillHold": "PASS",
+      "replayAfterFinish": "PASS",
+      "reducedMotion": "PASS",
+      "heldFinal": "PASS",
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    },
+    {
+      "width": 393,
+      "geometry": {
+        "x": 0,
+        "y": 186,
+        "width": 393,
+        "height": 471.59375
+      },
+      "measuredDurationMs": 3217.199999988079,
+      "traceSamples": 195,
+      "birthSamples": 26,
+      "drawSamples": 72,
+      "openSamples": 78,
+      "drawShotTime": 964.7999999761582,
+      "openShotTime": 2164.6999999761583,
+      "final": {
+        "time": 3200,
+        "state": "complete",
+        "phase": "complete",
+        "lineTop": 178,
+        "lineHeight": 1064,
+        "openingX": 593,
+        "openingWidth": 14,
+        "edgePath": "M593 180V1240 M607 180V1240",
+        "openingOpacity": 1,
+        "edgesOpacity": 1,
+        "ambientOpacity": 1,
+        "floorHaloOpacity": 1,
+        "floorContactOpacity": 1,
+        "transform": "none"
+      },
+      "sourcePixelComparison": {
+        "width": 393,
+        "height": 472,
+        "pixelsDifferent": 6972,
+        "pixelDifferencePercent": 3.7585716134040625,
+        "maxChannelDiff": 2,
+        "meanAbsoluteChannelDiff": 0.01412069981742643,
+        "note": "Separate-page comparison; renderer/capture context differences are reported separately from same-root equality."
+      },
+      "sameContextComparison": {
+        "width": 393,
+        "height": 472,
+        "pixelsDifferent": 0,
+        "pixelDifferencePercent": 0,
+        "maxChannelDiff": 0,
+        "meanAbsoluteChannelDiff": 0
+      },
+      "narrowLinePixelContrast": 562,
+      "rapidReplayAndStillHold": "PASS",
+      "replayAfterFinish": "PASS",
+      "reducedMotion": "PASS",
+      "heldFinal": "PASS",
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    },
+    {
+      "width": 360,
+      "geometry": {
+        "x": 0,
+        "y": 186,
+        "width": 360,
+        "height": 432
+      },
+      "measuredDurationMs": 3216.800000011921,
+      "traceSamples": 195,
+      "birthSamples": 26,
+      "drawSamples": 72,
+      "openSamples": 78,
+      "drawShotTime": 965.400000023842,
+      "openShotTime": 2165.3000000238417,
+      "final": {
+        "time": 3200,
+        "state": "complete",
+        "phase": "complete",
+        "lineTop": 178,
+        "lineHeight": 1064,
+        "openingX": 593,
+        "openingWidth": 14,
+        "edgePath": "M593 180V1240 M607 180V1240",
+        "openingOpacity": 1,
+        "edgesOpacity": 1,
+        "ambientOpacity": 1,
+        "floorHaloOpacity": 1,
+        "floorContactOpacity": 1,
+        "transform": "none"
+      },
+      "sourcePixelComparison": {
+        "width": 360,
+        "height": 432,
+        "pixelsDifferent": 5947,
+        "pixelDifferencePercent": 3.8239454732510287,
+        "maxChannelDiff": 2,
+        "meanAbsoluteChannelDiff": 0.01433684842249657,
+        "note": "Separate-page comparison; renderer/capture context differences are reported separately from same-root equality."
+      },
+      "sameContextComparison": {
+        "width": 360,
+        "height": 432,
+        "pixelsDifferent": 0,
+        "pixelDifferencePercent": 0,
+        "maxChannelDiff": 0,
+        "meanAbsoluteChannelDiff": 0
+      },
+      "narrowLinePixelContrast": 288,
+      "rapidReplayAndStillHold": "PASS",
+      "replayAfterFinish": "PASS",
+      "reducedMotion": "PASS",
+      "heldFinal": "PASS",
+      "overflow": 0,
+      "errors": [],
+      "posts": 0
+    }
+  ],
+  "noJS": [
+    {
+      "reducedMotion": "no-preference",
+      "pixelsDifferentFromNavy": 0,
+      "result": "PASS"
+    },
+    {
+      "reducedMotion": "reduce",
+      "pixelsDifferentFromNavy": 38747,
+      "result": "PASS"
+    }
+  ],
+  "video": {
+    "status": "NOT_REQUESTED",
+    "note": "Core replay/screenshots only; optional video omitted on rerun."
+  },
+  "errors": []
+}

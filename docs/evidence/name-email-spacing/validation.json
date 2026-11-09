@@ -1,0 +1,16 @@
+{
+  "validatedAt": "2026-11-06T13:48:43.897812+00:00",
+  "baseCommit": "28d8c95084a7dbd3ce82402cf7ad60ffa1b1ef06",
+  "removedEmptyReservationPx": 30,
+  "nicknameInputToEmailLabelPx": 32,
+  "nicknameInputToEmailInputPx": 64,
+  "otherGroupGapPx": 32,
+  "validationLogicChanged": false,
+  "apiChanged": false,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "unitPassed": 47,
+  "browserPassed": 22,
+  "build": "PASS --webpack",
+  "productionPosts": 0
+}

@@ -1,0 +1,34 @@
+{
+  "verifiedAt": "2026-11-06T12:57:40.800681+00:00",
+  "sourceCommit": "834b5b0b347fddaa7824edd87e62055f15bc59a4",
+  "sourceBranch": "feature/mission-5-landing",
+  "pr": 1,
+  "productionUrl": "https://praytime-mission5.vercel.app/",
+  "deploymentId": "dpl_CJ3sXTGH6dmLjKxj4Rqry2vzZyyg",
+  "immutableDeploymentUrl": "https://praytime-mission5-ozzrxl4s2-glorifier1.vercel.app",
+  "state": "READY",
+  "productionAliasConfirmed": true,
+  "actualChromeWidths": [
+    1440,
+    393,
+    360
+  ],
+  "productionPosts": 0,
+  "productionInserts": 0,
+  "backendEnvSchemaRlsChanged": false,
+  "mainChanged": false,
+  "merged": false,
+  "dnsChanged": false,
+  "runtimeErrors": 0,
+  "overflow": 0,
+  "publicScreenshots": [
+    "production-whole-1440.png",
+    "production-whole-393.png",
+    "production-whole-360.png"
+  ],
+  "publicMotionScreenshots": [
+    "production-sns-1440.png",
+    "production-sns-393.png",
+    "production-sns-360.png"
+  ]
+}

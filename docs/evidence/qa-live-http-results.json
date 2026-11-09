@@ -1,0 +1,106 @@
+[
+  {
+    "startedAt": "2026-11-05T16:58:23.395Z",
+    "receivedAt": "2026-11-05T16:58:24.429Z",
+    "httpStatus": 201,
+    "body": {
+      "status": "success",
+      "receipt": true
+    },
+    "request": {
+      "nickname": "QA_MISSION5_CONSENT_54700a47",
+      "email": "qa-mission5-consent-20261106-54700a47@example.com",
+      "os": "iPhone",
+      "signup_reason": [
+        "SNS·숏폼 사용을 줄이고 싶어서"
+      ],
+      "age_range": "30~34",
+      "target_apps": [
+        "Instagram"
+      ],
+      "reduction_methods": [
+        "해본 적 없음"
+      ],
+      "consent": true,
+      "company": "",
+      "attribution": {
+        "utm_source": "codex_qa",
+        "utm_medium": "qa_test",
+        "utm_campaign": "mission5_consent_20261106",
+        "utm_content": "54700a47",
+        "referrer": null
+      }
+    },
+    "deliveredAt": "2026-11-05T16:58:27.997Z"
+  },
+  {
+    "startedAt": "2026-11-05T17:00:08.038Z",
+    "receivedAt": "2026-11-05T17:00:08.261Z",
+    "httpStatus": 409,
+    "body": {
+      "status": "duplicate",
+      "message": "이미 신청된 이메일입니다."
+    },
+    "request": {
+      "nickname": "QA_MISSION5_CONSENT_54700a47",
+      "email": "qa-mission5-consent-20261106-54700a47@example.com",
+      "os": "iPhone",
+      "signup_reason": [
+        "SNS·숏폼 사용을 줄이고 싶어서"
+      ],
+      "age_range": "30~34",
+      "target_apps": [
+        "Instagram"
+      ],
+      "reduction_methods": [
+        "해본 적 없음"
+      ],
+      "consent": true,
+      "company": "",
+      "attribution": {
+        "utm_source": "codex_qa",
+        "utm_medium": "qa_test",
+        "utm_campaign": "mission5_consent_20261106",
+        "utm_content": "54700a47",
+        "referrer": null
+      }
+    },
+    "deliveredAt": "2026-11-05T17:00:08.262Z"
+  },
+  {
+    "startedAt": "2026-11-05T17:00:32.545Z",
+    "receivedAt": "2026-11-05T17:00:32.558Z",
+    "httpStatus": 422,
+    "body": {
+      "status": "invalid",
+      "errors": {
+        "consent": "개인정보 수집 및 이용에 동의해 주세요."
+      }
+    },
+    "request": {
+      "email": "qa-mission5-consent-20261106-54700a47@example.com",
+      "nickname": "QA_MISSION5_CONSENT_54700a47",
+      "os": "iPhone",
+      "signup_reason": [
+        "SNS·숏폼 사용을 줄이고 싶어서"
+      ],
+      "age_range": "30~34",
+      "target_apps": [
+        "Instagram"
+      ],
+      "reduction_methods": [
+        "해본 적 없음"
+      ],
+      "consent": false,
+      "company": "",
+      "attribution": {
+        "utm_source": "codex_qa",
+        "utm_medium": "qa_test",
+        "utm_campaign": "mission5_consent_20261106",
+        "utm_content": "54700a47",
+        "referrer": null
+      }
+    },
+    "deliveredAt": "2026-11-05T17:00:32.559Z"
+  }
+]

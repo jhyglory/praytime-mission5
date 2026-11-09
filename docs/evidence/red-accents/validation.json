@@ -1,0 +1,26 @@
+{
+  "validatedAt": "2026-11-06T13:39:44.377655+00:00",
+  "baseCommit": "c06ee1cca6336e9b898dfd6c59a79550759f7f23",
+  "statisticValues": [
+    34.3,
+    25.3
+  ],
+  "decorativeAccentRatios": [
+    0.8,
+    0.7
+  ],
+  "trackBackground": "transparent",
+  "fillColor": "#FF4438",
+  "ariaHidden": true,
+  "dataMaxRemoved": true,
+  "animationDurationMs": 1400,
+  "visibilityThreshold": 0.4,
+  "widthToleranceCssPx": 0.016625,
+  "lint": "PASS",
+  "typecheck": "PASS",
+  "unitPassed": 47,
+  "browserPassed": 37,
+  "browserDuration": "59.0s",
+  "build": "PASS --webpack",
+  "productionPosts": 0
+}

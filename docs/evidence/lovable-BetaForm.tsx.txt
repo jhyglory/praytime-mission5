@@ -1,0 +1,456 @@
+import { useEffect, useRef, useState } from "react";
+import { Loader2 } from "lucide-react";
+import { z } from "zod";
+
+import { supabase } from "@/integrations/supabase/client";
+import { readAttribution, track } from "@/lib/analytics";
+import { CTA_LABEL } from "@/lib/hero-config";
+
+const OS_OPTIONS = ["iPhone", "Android", "둘 다 / 잘 모르겠어요"] as const;
+const AGE_OPTIONS = ["10대", "20~24", "25~29", "30~34", "35~39", "40대", "50대", "60대 이상"] as const;
+const APP_OPTIONS = ["Instagram", "YouTube", "TikTok", "Threads", "X", "기타"] as const;
+const METHOD_OPTIONS = [
+  "iPhone 스크린타임 / Android 디지털 웰빙",
+  "별도 차단 앱",
+  "앱 삭제 또는 로그아웃",
+  "알림 끄기",
+  "집중모드",
+  "스스로 사용시간 정하기 / 디지털 금식",
+  "해본 적 없음",
+] as const;
+const REASON_OPTIONS = [
+  "SNS·숏폼 사용을 줄이고 싶어서",
+  "무심코 SNS를 여는 습관을 줄이고 싶어서",
+  "스마트폰을 보는 시간을 기도로 바꾸고 싶어서",
+  "기도 습관을 만들고 싶어서",
+  "자녀의 스마트폰 사용을 관리하고 싶어서",
+  "PrayTime이 어떤 서비스인지 궁금해서",
+  "기타",
+] as const;
+
+const schema = z.object({
+  nickname: z
+    .string()
+    .trim()
+    .min(1, "이름(닉네임)을 입력해 주세요.")
+    .max(40, "이름이 너무 깁니다."),
+  email: z
+    .string()
+    .trim()
+    .min(1, "이메일을 입력해 주세요.")
+    .email("올바른 이메일 형식이 아니에요.")
+    .max(255, "이메일이 너무 깁니다."),
+  os: z.enum(OS_OPTIONS, { message: "사용 기기를 선택해 주세요." }),
+  signup_reason: z
+    .array(z.enum(REASON_OPTIONS))
+    .min(1, "신청 사유를 선택해 주세요."),
+  age_range: z.enum(AGE_OPTIONS).nullable(),
+  target_apps: z.array(z.enum(APP_OPTIONS)).max(6),
+  reduction_methods: z.array(z.enum(METHOD_OPTIONS)).max(7),
+  consent: z.literal(true, { message: "개인정보 수집 및 이용에 동의해 주세요." }),
+});
+
+type FieldErrors = Partial<Record<"nickname" | "email" | "os" | "signup_reason" | "consent", string>>;
+
+export function BetaForm({ onSuccess }: { onSuccess: () => void }) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const startedRef = useRef(false);
+
+  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
+  const [os, setOs] = useState<string>("");
+  const [reasons, setReasons] = useState<string[]>([]);
+  const [age, setAge] = useState<string>("");
+  const [apps, setApps] = useState<string[]>([]);
+  const [methods, setMethods] = useState<string[]>([]);
+  const [consent, setConsent] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [formError, setFormError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            track("form_view");
+            observer.disconnect();
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  function markStart() {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    track("form_start");
+  }
+
+  function toggleApp(value: string) {
+    markStart();
+    setApps((current) =>
+      current.includes(value) ? current.filter((item) => item !== value) : [...current, value],
+    );
+  }
+
+  function toggleReason(value: string) {
+    markStart();
+    setReasons((current) =>
+      current.includes(value) ? current.filter((item) => item !== value) : [...current, value],
+    );
+  }
+
+  function toggleMethod(value: string) {
+    markStart();
+    setMethods((current) =>
+      current.includes(value) ? current.filter((item) => item !== value) : [...current, value],
+    );
+  }
+
+  async function handleSubmit(event: React.FormEvent) {
+    event.preventDefault();
+    setFormError(null);
+
+    // Honeypot: silently succeed for bots without writing anything.
+    if (honeypot) {
+      onSuccess();
+      return;
+    }
+
+    const parsed = schema.safeParse({
+      nickname,
+      email,
+      os,
+      signup_reason: reasons,
+      age_range: age || null,
+      target_apps: apps,
+      reduction_methods: methods,
+      consent,
+    });
+
+    if (!parsed.success) {
+      const next: FieldErrors = {};
+      for (const issue of parsed.error.issues) {
+        const key = issue.path[0];
+        if (key === "nickname" || key === "email" || key === "os" || key === "signup_reason" || key === "consent")
+          next[key] = issue.message;
+      }
+      setErrors(next);
+      track("form_error", { reason: "validation" });
+      return;
+    }
+
+    setErrors({});
+    setSubmitting(true);
+    track("form_submit");
+
+    const attribution = readAttribution();
+    const { error } = await supabase.from("beta_signups").insert({
+      nickname: parsed.data.nickname,
+      email: parsed.data.email.toLowerCase(),
+      os: parsed.data.os,
+      signup_reason: parsed.data.signup_reason.join(", "),
+      age_range: parsed.data.age_range,
+      target_apps: parsed.data.target_apps,
+      reduction_methods: parsed.data.reduction_methods,
+      ...attribution,
+    });
+
+    setSubmitting(false);
+
+    if (error) {
+      const duplicate = error.code === "23505";
+      setFormError(
+        duplicate
+          ? "이미 신청된 이메일이에요. 오픈 소식을 가장 먼저 보내드릴게요!"
+          : "잠시 문제가 생겼어요. 잠시 후 다시 시도해 주세요.",
+      );
+      track("form_error", { reason: duplicate ? "duplicate" : "server" });
+      if (duplicate) onSuccess();
+      return;
+    }
+
+    track("form_success");
+    onSuccess();
+  }
+
+  return (
+    <div ref={sectionRef} className="rounded-[2rem] bg-cream p-6 text-ink shadow-soft md:p-10">
+      <form onSubmit={handleSubmit} noValidate className="space-y-7">
+        <div>
+          <label htmlFor="nickname" className="block text-sm font-bold">
+            이름 (닉네임) <span className="text-signal">*</span>
+          </label>
+          <input
+            id="nickname"
+            type="text"
+            autoComplete="nickname"
+            value={nickname}
+            onChange={(event) => {
+              markStart();
+              setNickname(event.target.value);
+            }}
+            placeholder="불려지는 이름을 적어주세요"
+            aria-invalid={Boolean(errors.nickname)}
+            aria-describedby={errors.nickname ? "nickname-error" : undefined}
+            className="mt-2 min-h-[52px] w-full rounded-2xl border border-border bg-white px-4 text-base outline-none transition-colors focus:border-signal"
+          />
+          {errors.nickname ? (
+            <p id="nickname-error" className="mt-2 text-sm font-medium text-signal">
+              {errors.nickname}
+            </p>
+          ) : null}
+        </div>
+
+        <div>
+          <label htmlFor="email" className="block text-sm font-bold">
+            이메일 <span className="text-signal">*</span>{" "}
+            <span className="font-medium text-ink/60">(정확한 신청을 위해 이메일 다시 한 번 확인해주세요)</span>
+          </label>
+          <input
+            id="email"
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            value={email}
+            onChange={(event) => {
+              markStart();
+              setEmail(event.target.value);
+            }}
+            placeholder="you@example.com"
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className="mt-2 min-h-[52px] w-full rounded-2xl border border-border bg-white px-4 text-base outline-none transition-colors focus:border-signal"
+          />
+          {errors.email ? (
+            <p id="email-error" className="mt-2 text-sm font-medium text-signal">
+              {errors.email}
+            </p>
+          ) : null}
+        </div>
+
+        <ChoiceGroup
+          label="사용 기기"
+          required
+          options={[...OS_OPTIONS]}
+          value={os}
+          onSelect={(value) => {
+            markStart();
+            setOs(value);
+          }}
+          error={errors.os ?? null}
+        />
+
+        <MultiChoiceGroup
+          label="PrayTime을 신청한 이유는 무엇인가요? (복수 선택 가능)"
+          required
+          options={[...REASON_OPTIONS]}
+          values={reasons}
+          onToggle={toggleReason}
+          error={errors.signup_reason ?? null}
+        />
+
+        <ChoiceGroup
+          label="연령대 (선택)"
+          options={[...AGE_OPTIONS]}
+          value={age}
+          onSelect={(value) => {
+            markStart();
+            setAge(value === age ? "" : value);
+          }}
+          error={null}
+        />
+
+        <fieldset>
+          <legend className="text-sm font-bold">
+            가장 줄이고 싶은 앱 (선택, 복수 선택 가능)
+          </legend>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {APP_OPTIONS.map((option) => {
+              const active = apps.includes(option);
+              return (
+                <button
+                  key={option}
+                  type="button"
+                  aria-pressed={active}
+                  onClick={() => toggleApp(option)}
+                  className={`min-h-[44px] rounded-full border px-4 text-sm font-semibold transition-colors ${
+                    active
+                      ? "border-signal bg-signal text-cream"
+                      : "border-border bg-white text-foreground/70 hover:border-signal/50"
+                  }`}
+                >
+                  {option}
+                </button>
+              );
+            })}
+          </div>
+        </fieldset>
+
+        <MultiChoiceGroup
+          label="최근 3개월 안에 SNS·스마트폰 사용을 줄이기 위해 해본 방법이 있나요? (복수 선택 가능)"
+          options={[...METHOD_OPTIONS]}
+          values={methods}
+          onToggle={toggleMethod}
+          error={null}
+        />
+
+        {/* honeypot */}
+        <div className="hidden" aria-hidden>
+          <label htmlFor="company">Company</label>
+          <input
+            id="company"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            value={honeypot}
+            onChange={(event) => setHoneypot(event.target.value)}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="consent" className="flex items-start gap-3 text-[15px] leading-relaxed">
+            <input
+              id="consent"
+              type="checkbox"
+              checked={consent}
+              onChange={(event) => {
+                markStart();
+                setConsent(event.target.checked);
+              }}
+              aria-invalid={Boolean(errors.consent)}
+              aria-describedby={errors.consent ? "consent-error" : undefined}
+              className="mt-1 size-5 shrink-0 accent-[oklch(0.63_0.22_28)]"
+            />
+            <span>
+              [필수] <a href="/privacy" className="font-semibold text-signal underline">개인정보처리방침</a>
+              을 확인했으며 베타 신청 정보 수집 및 이용에 동의합니다.
+            </span>
+          </label>
+          {errors.consent ? (
+            <p id="consent-error" className="mt-2 text-sm font-medium text-signal">
+              {errors.consent}
+            </p>
+          ) : null}
+        </div>
+
+        {formError ? (
+          <p role="alert" className="rounded-2xl bg-signal-soft px-4 py-3 text-sm font-medium text-signal">
+            {formError}
+          </p>
+        ) : null}
+
+        <div>
+          <button
+            type="submit"
+            disabled={submitting || !consent}
+            className="inline-flex min-h-[58px] w-full items-center justify-center gap-2 rounded-full bg-signal px-8 text-lg font-bold text-cream shadow-lift transition-transform hover:-translate-y-[3px] disabled:translate-y-0 disabled:opacity-60"
+          >
+            {submitting ? <Loader2 className="size-5 animate-spin" /> : null}
+            {submitting ? "신청 중..." : CTA_LABEL}
+          </button>
+          <p className="mt-4 text-center text-xs leading-relaxed text-foreground/55">
+            신청 과정에서 결제는 발생하지 않습니다.
+          </p>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function ChoiceGroup({
+  label,
+  options,
+  value,
+  onSelect,
+  error,
+  required = false,
+}: {
+  label: string;
+  options: string[];
+  value: string;
+  onSelect: (value: string) => void;
+  error: string | null;
+  required?: boolean;
+}) {
+  return (
+    <fieldset>
+      <legend className="text-sm font-bold">
+        {label} {required ? <span className="text-signal">*</span> : null}
+      </legend>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {options.map((option) => {
+          const active = value === option;
+          return (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={active}
+              onClick={() => onSelect(option)}
+              className={`min-h-[44px] rounded-full border px-4 text-sm font-semibold transition-colors ${
+                active
+                  ? "border-signal bg-signal text-cream"
+                  : "border-border bg-white text-foreground/70 hover:border-signal/50"
+              }`}
+            >
+              {option}
+            </button>
+          );
+        })}
+      </div>
+      {error ? <p className="mt-2 text-sm font-medium text-signal">{error}</p> : null}
+    </fieldset>
+  );
+}
+
+function MultiChoiceGroup({
+  label,
+  options,
+  values,
+  onToggle,
+  error,
+  required = false,
+}: {
+  label: string;
+  options: string[];
+  values: string[];
+  onToggle: (value: string) => void;
+  error: string | null;
+  required?: boolean;
+}) {
+  return (
+    <fieldset>
+      <legend className="text-sm font-bold">
+        {label} {required ? <span className="text-signal">*</span> : null}
+      </legend>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {options.map((option) => {
+          const active = values.includes(option);
+          return (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={active}
+              onClick={() => onToggle(option)}
+              className={`min-h-[44px] rounded-full border px-4 text-sm font-semibold transition-colors ${
+                active
+                  ? "border-signal bg-signal text-cream"
+                  : "border-border bg-white text-foreground/70 hover:border-signal/50"
+              }`}
+            >
+              {option}
+            </button>
+          );
+        })}
+      </div>
+      {error ? <p className="mt-2 text-sm font-medium text-signal">{error}</p> : null}
+    </fieldset>
+  );
+}

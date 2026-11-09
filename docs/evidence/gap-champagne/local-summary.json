@@ -1,0 +1,147 @@
+{
+  "date": "2026-11-07T15:09:05.856Z",
+  "source": "Validated worktree before release commit; actual playback without seeking.",
+  "checks": {
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "unit": "60/60 PASS",
+    "browser": "10/10 PASS (47.4s)",
+    "webpackBuild": "PASS"
+  },
+  "results": [
+    {
+      "width": 1440,
+      "waitMs": 1201.4,
+      "activeMs": 5397.1,
+      "phases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "palette": {
+        "kind": "radialGradient",
+        "stops": [
+          "#FFFEED",
+          "#FFF8DF",
+          "#FFEEC4",
+          "#F0D396"
+        ],
+        "line": "#FFF7DD",
+        "trail": "#FFF7DD",
+        "near": "#FFE8AE"
+      },
+      "face": {
+        "fill": "url(#gap-light-_R_2mavb_-faceColor)",
+        "filter": "url(#gap-light-_R_2mavb_-faceSoftness)",
+        "stroke": null,
+        "rx": null,
+        "blur": "2.2"
+      },
+      "geometry": {
+        "sectionHeight": 1180,
+        "top": 527.9902053308487,
+        "bottom": 867.98787940979,
+        "centerOffset": 0,
+        "faceWidth": 16.1236011774838
+      },
+      "overflow": 0
+    },
+    {
+      "width": 393,
+      "waitMs": 1201.6,
+      "activeMs": 5401.5,
+      "phases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "palette": {
+        "kind": "radialGradient",
+        "stops": [
+          "#FFFEED",
+          "#FFF8DF",
+          "#FFEEC4",
+          "#F0D396"
+        ],
+        "line": "#FFF7DD",
+        "trail": "#FFF7DD",
+        "near": "#FFE8AE"
+      },
+      "face": {
+        "fill": "url(#gap-light-_R_2mavb_-faceColor)",
+        "filter": "url(#gap-light-_R_2mavb_-faceSoftness)",
+        "stroke": null,
+        "rx": null,
+        "blur": "2.2"
+      },
+      "geometry": {
+        "sectionHeight": 1024,
+        "top": 460.99759939193723,
+        "bottom": 690.9893726603191,
+        "centerOffset": 0,
+        "faceWidth": 10.906826454997063
+      },
+      "overflow": 0
+    },
+    {
+      "width": 360,
+      "waitMs": 1201.2,
+      "activeMs": 5396.3,
+      "phases": [
+        "dark",
+        "fall",
+        "impact",
+        "hold",
+        "rise",
+        "open",
+        "settle",
+        "complete"
+      ],
+      "palette": {
+        "kind": "radialGradient",
+        "stops": [
+          "#FFFEED",
+          "#FFF8DF",
+          "#FFEEC4",
+          "#F0D396"
+        ],
+        "line": "#FFF7DD",
+        "trail": "#FFF7DD",
+        "near": "#FFE8AE"
+      },
+      "face": {
+        "fill": "url(#gap-light-_R_2mavb_-faceColor)",
+        "filter": "url(#gap-light-_R_2mavb_-faceSoftness)",
+        "stroke": null,
+        "rx": null,
+        "blur": "2.2"
+      },
+      "geometry": {
+        "sectionHeight": 1024,
+        "top": 460.99759939193723,
+        "bottom": 690.9893726603191,
+        "centerOffset": 0,
+        "faceWidth": 10.906826454997063
+      },
+      "overflow": 0
+    }
+  ],
+  "reduced": {
+    "status": "PASS",
+    "width": 393,
+    "immediateFinal": true,
+    "elapsed": 5384.615384615385
+  },
+  "errors": [],
+  "writes": []
+}
