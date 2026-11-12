@@ -73,3 +73,5 @@ BetaSignupForm → POST /api/beta-signup → 서버 validation/동의 기록 →
 - [기능 명세·원본 비교·DB 매핑·Storage·적재·QA·배포](docs/PRAYER_CMS.md)
 
 CMS는 Preview 환경을 우선 사용하며 기존 Production과 사전신청 설정을 변경하지 않습니다. DB 미설정 상태는 오류로 표시하고 JSON·localStorage로 성공을 흉내내지 않습니다.
+
+CMS Preview: [기도문 관리 화면](https://praytime-mission5-ixfy3numt-glorifier1.vercel.app/admin/prayers). 현재 서버 비밀 키와 평가자 공유 승인 대기 상태여서 실제 웹 CRUD·Storage QA는 미완료입니다. 기존 운영 사이트 대신 이 Preview에서 후속 검증합니다.

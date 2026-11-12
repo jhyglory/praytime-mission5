@@ -105,3 +105,16 @@ npm run prayers:seed -- --apply
 - 서버 비밀 키는 아직 비어 있습니다. Git 제외 `.env.cms.local`에 입력해야 실제 웹 연결과 Preview 환경변수 설정을 완료할 수 있습니다. 실제 웹 저장과 배포 QA가 완료된 상태로 보고하지 않습니다.
 
 공식 참고: [서버 API key](https://supabase.com/docs/guides/getting-started/api-keys), [bucket 제한](https://supabase.com/docs/reference/javascript/storage-createbucket), [페이지 range](https://supabase.com/docs/reference/javascript/range), [Vercel 요청 제한](https://vercel.com/docs/functions/limitations).
+
+
+### 현재 배포와 남은 실제 검증
+
+- 구현 commit: `2d1a7bfc6d301904c5b7c32ba378858e9bbd7495`.
+- [GitHub 작업 브랜치](https://github.com/jhyglory/praytime-mission5/tree/feature/mission-6-prayer-cms).
+- [Preview 관리 화면](https://praytime-mission5-ixfy3numt-glorifier1.vercel.app/admin/prayers): Vercel Ready / Preview, 현재 로그인 보호됨. 외부 평가자용 공유 링크 생성은 사용자 승인을 기다립니다.
+- 기존 Production은 `praytime-mission5-rfvx1hg9z-glorifier1.vercel.app` /2026-11-09 배포 그대로임을 확인했습니다. 이번 branch용 Preview 환경변수만 설정했고 운영 환경변수·도메인·Production branch·기존 PR/merge는 변경하지 않았습니다.
+- 접근 확인 CLI가 자동 생성한 automation bypass는 즉시 철회했으며, 기존 SSO 설정이 동일하고 automation bypass가 남아 있지 않음을 확인했습니다. Preview의 외부 HTTP 접속은 로그인 페이지로 이동했습니다. 이를 앱의 HTTP200/DB 검증 성공으로 계산하지 않습니다.
+- 비밀 키 없는 상태에서 완료된 것은 코드·migration·초기 SQL 적재·모의/설정 누락 QA와 Preview 빌드입니다. **실제 Next.js→Supabase CRUD·Storage 왕복, CLI 실제 적재 재실행, 평가자 익명 접근·배포 환경2MiB 업로드 검증은 아직 미완료**입니다.
+- 이어서 할 일: Git 제외 `.env.cms.local`의 `SUPABASE_SECRET_KEY` 입력 → 로컬 실제 QA용 등록/수정/삭제·Storage 검증 → 해당 branch Preview에 Secret 환경변수 설정·재배포 → 승인된 공유 링크로 외부 접근과 실제 DB/파일 QA. 원본100편은 QA 삭제 대상으로 사용하지 않습니다.
+
+SQL 적용 재현: 새 별도 과제 프로젝트에서 해당 프로젝트의 Dashboard SQL Editor를 열고 migration 파일을 실행합니다. 현재 `cibcyeyznfmywacfiokh`에는 이미 적용했으므로 다시 실행하지 않습니다. CLI를 쓴다면 현재 설치 버전의 `db push --help`와 적용 대상 ref를 먼저 확인합니다.
