@@ -11,3 +11,5 @@ supabase/.temp/
 !docs/evidence/final-visual-patch/*.log
 .DS_Store
 .vercel
+
+!.env.example

@@ -60,3 +60,16 @@ BetaSignupForm → POST /api/beta-signup → 서버 validation/동의 기록 →
 ## 제한사항
 
 이 저장소는 Landing이며 실제 OS 앱 차단 기능은 모바일 제품의 범위입니다. 기도 원문 수집 여부는 설계 방향으로 표현합니다. 물리 모바일/Safari 검수와 Lighthouse는 별도 확인이 필요합니다. 현재 검색엔진 indexing 설정(noindex/nofollow)은 이번 스타일 변경에서 수정하지 않았으며 정식 공개 범위에 맞춰 별도로 검토해야 합니다.
+
+## 기도문 CMS · Mission 6
+
+**인증 없는 과제용 관리 화면**입니다. 과제 전용 Supabase에서 일반 서비스 기도문만 관리하며 운영 사전신청 데이터와 분리합니다. 등록 → 목록(20개 페이지네이션) → 상세 → 수정 → 확인 후 삭제, 선택적 대표 이미지 업로드·교체·제거를 제공합니다. 로그인·역할·사용자별 권한은 Mission7에서 구현합니다. 개인정보나 개인 기도제목을 입력하지 마세요.
+
+- 진입: `/admin` → `/admin/prayers`
+- 로컬: `npm run dev:cms`
+- 원본 JSON100편은 iOS/Android가 바이트까지 동일하며 원본 수정 없이 한 번만 초기 적재합니다.
+- `npm run prayers:seed:dry-run` / 명시적 실제 적재는 `npm run prayers:seed -- --apply`
+- `.env.example`의 변수 이름만 참고하고 실제 비밀 값은 Git 제외 환경 파일에 보관합니다.
+- [기능 명세·원본 비교·DB 매핑·Storage·적재·QA·배포](docs/PRAYER_CMS.md)
+
+CMS는 Preview 환경을 우선 사용하며 기존 Production과 사전신청 설정을 변경하지 않습니다. DB 미설정 상태는 오류로 표시하고 JSON·localStorage로 성공을 흉내내지 않습니다.
